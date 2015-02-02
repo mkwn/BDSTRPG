@@ -1,0 +1,2036 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% cleveref allows \ref{thm:asdf} instead of Theorem~\ref{thm:asdf}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+\AtBeginDocument{\renewcommand{\ref}[1]{\cref{#1}}}
+
+\usepackage[parfill]{parskip}
+\setlength{\parskip}{\bigskipamount}
+
+%have space before theorems
+\begingroup
+    \makeatletter
+    \@for\theoremstyle:=definition,remark,plain\do{%
+        \expandafter\g@addto@macro\csname th@\theoremstyle\endcsname{%
+            \addtolength\thm@preskip\parskip
+            }%
+        }
+\endgroup
+
+% LyX won't let me include cleveref before theorem declarations so I need to redefine everything as a hack
+\theoremstyle{plain}
+\newtheorem{mythm}{\protect\theoremname}
+\renewenvironment{thm}{\begin{mythm}}{\end{mythm}}
+\crefname{mythm}{Theorem}{Theorems}
+\theoremstyle{definition}
+\newtheorem{mydefn}[mythm]{\protect\definitionname}
+\renewenvironment{defn}{\begin{mydefn}}{\end{mydefn}}
+\theoremstyle{definition}
+\newtheorem{myexample}[mythm]{\protect\examplename}
+\renewenvironment{example}{\begin{myexample}}{\end{myexample}}
+\theoremstyle{plain}
+\newtheorem{myprop}[mythm]{\protect\propositionname}
+\renewenvironment{prop}{\begin{myprop}}{\end{myprop}}
+\theoremstyle{plain}
+\newtheorem{mycor}[mythm]{\protect\corollaryname}
+\renewenvironment{cor}{\begin{mycor}}{\end{mycor}}
+\theoremstyle{plain}
+\newtheorem{mylem}[mythm]{\protect\lemmaname}
+\renewenvironment{lem}{\begin{mylem}}{\end{mylem}}
+\crefname{mylem}{Lemma}{Lemmas}
+\theoremstyle{plain}
+\newtheorem{myconjecture}[mythm]{\protect\conjecturename}
+\renewenvironment{conjecture}{\begin{myconjecture}}{\end{myconjecture}}
+\theoremstyle{remark}
+\newtheorem{myrem}[mythm]{\protect\remarkname}
+\renewenvironment{rem}{\begin{myrem}}{\end{myrem}}
+\theoremstyle{remark}
+\newtheorem{myclaim}[mythm]{\protect\claimname}
+\renewenvironment{claim}{\begin{myclaim}}{\end{myclaim}}
+
+% equation cref format
+\crefformat{equation}{#2(#1)#3}
+
+% \left(\right) should behave the same as ()
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+\usepackage{pgfplots}
+\usetikzlibrary{pgfplots.groupplots}
+\usepackage{verbatim}
+
+%make sure tildes in url are vertically centered
+\makeatletter
+\renewcommand*{\UrlTildeSpecial}{%
+  \do\~{%
+    \mbox{%
+      \fontfamily{ptm}\selectfont
+      \textasciitilde
+    }%
+  }%  
+}%    
+\let\Url@force@Tilde\UrlTildeSpecial
+\makeatother
+
+%graph drawing
+\usepackage{tikz}
+\usetikzlibrary{external}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows.meta}
+\tikzexternalize
+\tikzstyle{vertex}=[circle,draw=black,fill=black,inner sep=0,minimum size=0.2cm,text=white,font=\footnotesize]
+\tikzset{arc/.style={
+        decoration={markings,
+            mark= at position 0.5 with {\arrow{Latex[length=2mm,width=2mm]}} ,
+        },
+        postaction={decorate}
+    }
+}
+\tikzset{every loop/.style={min distance=50,in=50,out=130,looseness=7}}
+
+%caption labels
+\usepackage[labelfont=bf,labelsep=period]{caption}
+
+\usepackage{enumitem}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman cmr
+\font_sans cmss
+\font_typewriter cmtt
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing other 0.98
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch Folded
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip bigskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Bounded-degree spanning trees in randomly perturbed graphs
+\end_layout
+
+\begin_layout Author
+Michael Krivelevich, Matthew Kwan, Benny Sudakov
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\RR}{\mathbb{R}}
+{\boldsymbol{\mathbb{R}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\QQ}{\mathbb{Q}}
+{\boldsymbol{\mathbb{Q}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\HH}{\mathbb{H}}
+{\boldsymbol{\mathbb{H}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+{\boldsymbol{\mathbb{E}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Var}{\operatorname{Var}}
+{\mathbf{Var}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\CC}{\mathbb{C}}
+{\boldsymbol{\mathbb{C}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\NN}{\mathbb{N}}
+{\boldsymbol{\mathbb{N}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ZZ}{\mathbb{Z}}
+{\boldsymbol{\mathbb{Z}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\GG}{\mathbb{G}}
+{\boldsymbol{\mathbb{G}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\BB}{\mathbb{B}}
+{\boldsymbol{\mathbb{B}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\DD}{\mathbb{D}}
+{\boldsymbol{\mathbb{D}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cL}{\mathcal{L}}
+{\boldsymbol{\mathcal{L}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\supp}{\operatorname{supp}}
+{\mathbf{supp}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\one}{\boldsymbol{1}}
+{\boldsymbol{\boldsymbol{1}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\range}[1]{\left[#1\right]}
+{\boldsymbol{\left[#1\right]}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\d}{\operatorname{d}}
+{\mathbf{d}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\falling}[2]{\left(#1\right)_{#2}}
+{\boldsymbol{\left(#1\right)_{#2}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\f}{\mathbf{f}}
+{\boldsymbol{\mathbf{f}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\im}{\operatorname{im}}
+{\mathbf{im}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sp}{\operatorname{span}}
+{\mathbf{span}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sign}{\operatorname{sign}}
+{\mathbf{sign}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\mod}{\operatorname{mod}}
+{\mathbf{mod}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\id}{\operatorname{id}}
+{\mathbf{id}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\disc}{\operatorname{disc}}
+{\mathbf{disc}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\lindisc}{\operatorname{lindisc}}
+{\mathbf{lindisc}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\tr}{\operatorname{tr}}
+{\mathbf{tr}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\adj}{\operatorname{adj}}
+{\mathbf{adj}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Unif}{\operatorname{Unif}}
+{\mathbf{Unif}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Po}{\operatorname{Po}}
+{\mathbf{Po}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Bin}{\operatorname{Bin}}
+{\mathbf{Bin}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Ber}{\operatorname{Ber}}
+{\mathbf{Ber}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Geom}{\operatorname{Geom}}
+{\mathbf{Geom}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Hom}{\operatorname{Hom}}
+{\mathbf{Hom}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor }
+{\boldsymbol{\left\lfloor #1\right\rfloor }}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ceil}[1]{\left\lceil #1\right\rceil }
+{\boldsymbol{\left\lceil #1\right\rceil }}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+abstract
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Folded
+status open
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{comment}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+t
+\end_layout
+
+\begin_layout Corollary
+c
+\end_layout
+
+\begin_layout Lemma
+l
+\end_layout
+
+\begin_layout Proposition
+p
+\end_layout
+
+\begin_layout Conjecture
+c
+\end_layout
+
+\begin_layout Definition
+d
+\end_layout
+
+\begin_layout Example
+e
+\end_layout
+
+\begin_layout Remark
+r
+\end_layout
+
+\begin_layout Claim
+c
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{comment}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We are trying to prove the following theorem.
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\a}{\alpha}
+{\boldsymbol{\alpha}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\c}{c}
+{\boldsymbol{c}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\g}{g}
+{\boldsymbol{g}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\q}{q}
+{\boldsymbol{q}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\D}{\Delta}
+{\boldsymbol{\Delta}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\G}{G}
+{\boldsymbol{G}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\T}{T}
+{\boldsymbol{T}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\R}{R}
+{\boldsymbol{R}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:main-theorem"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\GG\left(n,m\right)$
+\end_inset
+
+ be the uniform distribution on 
+\begin_inset Formula $m$
+\end_inset
+
+-edge 
+\begin_inset Formula $k$
+\end_inset
+
+-uniform hypergraphs on the vertex set 
+\begin_inset Formula $\range n$
+\end_inset
+
+.
+ There is 
+\begin_inset Formula $\c=\c\left(\a,\D\right)$
+\end_inset
+
+ such that if 
+\begin_inset Formula $\G$
+\end_inset
+
+ is a graph on the vertex set 
+\begin_inset Formula $\range n$
+\end_inset
+
+ with minimum degree at least 
+\begin_inset Formula $\a n$
+\end_inset
+
+, 
+\begin_inset Formula $\T$
+\end_inset
+
+ is a tree on 
+\begin_inset Formula $\range n$
+\end_inset
+
+ with maximum degree at most 
+\begin_inset Formula $\D$
+\end_inset
+
+, and 
+\begin_inset Formula $\R\in\GG\left(n,\c n\right)$
+\end_inset
+
+, then a.a.s.
+ 
+\begin_inset Formula $\T\subseteq\G\cup\R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A key ingredient of the proof is the following lemma: with the random edges
+ in 
+\begin_inset Formula $\R$
+\end_inset
+
+ alone, we can embed trees that are not too big.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[{
+\backslash
+cite[Theorem 1.1]{AKS07}}]
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:almost-spanning"
+
+\end_inset
+
+There is 
+\begin_inset Formula $\g=\g\left(\varepsilon,\D\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\G\in\GG\left(n,\g/n\right)$
+\end_inset
+
+ a.a.s.
+ contains every tree of maximum degree at most 
+\begin_inset Formula $\D$
+\end_inset
+
+ on 
+\begin_inset Formula $\left(1-\varepsilon\right)n$
+\end_inset
+
+ vertices.
+\end_layout
+
+\begin_layout Standard
+We will split the proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:main-theorem"
+
+\end_inset
+
+ into two cases in a similar way to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kri10"
+
+\end_inset
+
+.
+ If our spanning tree 
+\begin_inset Formula $\T$
+\end_inset
+
+ has many leaves, then we remove the leaves and embed the resulting non-spanning
+ tree in 
+\begin_inset Formula $\R$
+\end_inset
+
+ (using 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:almost-spanning"
+
+\end_inset
+
+).
+ To complete this into our spanning tree 
+\begin_inset Formula $\T$
+\end_inset
+
+, it remains to match the leftover vertices with the vertices needing leaves.
+ This amounts to finding a perfect matching in a certain bipartite graph.
+ The random edges in 
+\begin_inset Formula $\R$
+\end_inset
+
+ provide several almost-perfect matchings on their own; we combine these
+ with the dense graph 
+\begin_inset Formula $\G$
+\end_inset
+
+ to satisfy the conditions of Hall's marriage theorem and guarantee the
+ required perfect matching.
+\end_layout
+
+\begin_layout Standard
+The more difficult case is if 
+\begin_inset Formula $\T$
+\end_inset
+
+ has few leaves.
+ In this case 
+\begin_inset Formula $\T$
+\end_inset
+
+ cannot be very 
+\begin_inset Quotes eld
+\end_inset
+
+complicated
+\begin_inset Quotes erd
+\end_inset
+
+ and must be homeomorphic to a small tree.
+ In particular 
+\begin_inset Formula $\T$
+\end_inset
+
+ must have many long 
+\emph on
+bare paths
+\emph default
+: paths where each vertex has degree exactly two.
+ By removing these bare paths we obtain a small forest.
+ We would like to embed this forest into 
+\begin_inset Formula $\R$
+\end_inset
+
+ using 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:almost-spanning"
+
+\end_inset
+
+, then complete it into the spanning tree 
+\begin_inset Formula $\T$
+\end_inset
+
+.
+ This would involve joining up distinguished pairs of vertices with disjoint
+ paths of certain lengths.
+ In order to make this task feasible we first use Szemer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+edi's regularity lemma to divide the vertex set into a bounded number of
+ small groups, each of which induces a subgraph of 
+\begin_inset Formula $\G$
+\end_inset
+
+ which is dense and has its edges very well-distributed.
+ We also split our forest into corresponding groups.
+ We then embed these subforests in the appropriate vertex groups of 
+\begin_inset Formula $\R$
+\end_inset
+
+.
+ In order to finish the embedding of 
+\begin_inset Formula $\T$
+\end_inset
+
+ we need to embed some paths between groups (this is feasible because there
+ are a bounded number of such paths), and we need to embed some paths within
+ groups.
+ In order to embed the paths within groups we 
+\begin_inset Quotes eld
+\end_inset
+
+merge
+\begin_inset Quotes erd
+\end_inset
+
+ each pair of endpoints into a single vertex, so that our task reduces to
+ finding a certain cycle cover of each vertex group.
+ Since the corresponding subgraphs of 
+\begin_inset Formula $\G$
+\end_inset
+
+ have their edges well-distributed, we can accomplish this with the blow-up
+ lemma, after making some adjustments using the random edges in 
+\begin_inset Formula $\R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This second part is achieved by reducing the problem to that of finding
+ a certain cycle cover
+\end_layout
+
+\begin_layout Standard
+which we can embed into 
+\begin_inset Formula $\R$
+\end_inset
+
+.
+ In order to complete this forest into our spanning tree 
+\begin_inset Formula $\T$
+\end_inset
+
+, we need to connect distinguished pairs of vertices with disjoint paths
+ of certain lengths, using the remaining vertices.
+ If we 
+\begin_inset Quotes eld
+\end_inset
+
+merge
+\begin_inset Quotes erd
+\end_inset
+
+ each distinguished pair of vertices into a single vertex, then our task
+ reduces to finding a cycle cover in a certain subgraph of 
+\begin_inset Formula $\G\cup\R$
+\end_inset
+
+satisfying some properties.
+ To find this cycle cover we will first use Szemer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+edi's regularity lemma to split our graph into pieces with well-distributed
+ edges
+\end_layout
+
+\begin_layout Standard
+In both cases we split the random edges into multiple 
+\begin_inset Quotes eld
+\end_inset
+
+phases
+\begin_inset Quotes erd
+\end_inset
+
+: 
+\begin_inset Formula $\R=\bigcup_{i=1}^{r}\R_{i}$
+\end_inset
+
+, where 
+\begin_inset Formula $\R_{i}\in\GG\left(n,\c_{i}\left(\a,\D\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Roughly speaking, the first case is where 
+\begin_inset Formula $\T$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+First, suppose there are 
+\begin_inset Formula $\varepsilon n$
+\end_inset
+
+ leaves in 
+\begin_inset Formula $\T$
+\end_inset
+
+ (for some fixed constant 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ to be determined).
+ Then consider the tree 
+\begin_inset Formula $\T'$
+\end_inset
+
+ with some 
+\begin_inset Formula $\varepsilon n$
+\end_inset
+
+ leaves removed.
+\end_layout
+
+\begin_layout Standard
+If our tree 
+\begin_inset Formula $\T$
+\end_inset
+
+ has many leaves, then we remove the leaves and embed the resulting non-spanning
+ tree .
+ The we
+\end_layout
+
+\begin_layout Standard
+We split the proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:main-theorem"
+
+\end_inset
+
+ into two cases.
+\end_layout
+
+\begin_layout Standard
+First, suppose there are 
+\begin_inset Formula $\varepsilon n$
+\end_inset
+
+ leaves in 
+\begin_inset Formula $\T$
+\end_inset
+
+ (for some fixed constant 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ to be determined).
+ Then consider the tree 
+\begin_inset Formula $\T'$
+\end_inset
+
+ with some 
+\begin_inset Formula $\varepsilon n$
+\end_inset
+
+ leaves removed.
+\end_layout
+
+\begin_layout Standard
+By 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem 1.1"
+key "AKS07"
+
+\end_inset
+
+, 
+\begin_inset Formula $\T'$
+\end_inset
+
+ can be embedded into 
+\begin_inset Formula $\R_{1}$
+\end_inset
+
+ for large 
+\begin_inset Formula $\c_{1}$
+\end_inset
+
+.
+ We will complete this embedding into a copy of 
+\begin_inset Formula $\T$
+\end_inset
+
+ in the same way as 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Lemma 2.3"
+key "Kri10"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We need two lemmas.
+\end_layout
+
+\begin_layout Standard
+In both cases we split the random edges into two 
+\begin_inset Quotes eld
+\end_inset
+
+phases
+\begin_inset Quotes erd
+\end_inset
+
+: 
+\begin_inset Formula $\R=\R_{1}\cup\R_{2}$
+\end_inset
+
+, where 
+\begin_inset Formula $\R_{i}\in\GG\left(n,\c_{i}\left(\a,\D\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We split the proof into two cases.
+ In both cases we split the random edges into two 
+\begin_inset Quotes eld
+\end_inset
+
+phases
+\begin_inset Quotes erd
+\end_inset
+
+: 
+\begin_inset Formula $\R=\R_{1}\cup\R_{2}$
+\end_inset
+
+, where 
+\begin_inset Formula $\R_{i}\in\GG\left(n,\c_{i}\left(\a,\D\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:bipartite-matching"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\BB\left(n,p\right)$
+\end_inset
+
+ be the random bipartite graph model with vertex set 
+\begin_inset Formula $\range{2n}$
+\end_inset
+
+, where each edge between 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $i+n$
+\end_inset
+
+ is present with independent probability 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ There is 
+\begin_inset Formula $\q=\q\left(\a\right)$
+\end_inset
+
+ such that if 
+\begin_inset Formula $\G$
+\end_inset
+
+ is a bipartite graph with minimum degree at least 
+\begin_inset Formula $\a n$
+\end_inset
+
+ and 
+\begin_inset Formula $\R\in\BB\left(n,\q/n\right)$
+\end_inset
+
+, then a.a.s.
+ 
+\begin_inset Formula $\G\cup\R$
+\end_inset
+
+ has a perfect matching.
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Sketch proof of 
+\backslash
+ref{lem:bipartite-matching}]
+\end_layout
+
+\end_inset
+
+random edges provide multiple almost-perfect matchings, which show that
+ a.a.s.
+ large sets expand.
+ Density shows that small sets expand; apply Hall's marriage theorem.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[{
+\backslash
+cite[Theorem 1.1]{AKS07}}]
+\end_layout
+
+\end_inset
+
+There is 
+\begin_inset Formula $\c=\c\left(\varepsilon,\D\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\GG\left(n,c/n\right)$
+\end_inset
+
+ a.a.s.
+ contains every tree of maximum degree at most 
+\begin_inset Formula $\D$
+\end_inset
+
+ on 
+\begin_inset Formula $\left(1-\varepsilon\right)n$
+\end_inset
+
+ vertices.
+\end_layout
+
+\begin_layout Standard
+We split the proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:main-theorem"
+
+\end_inset
+
+ into two cases.
+ In both cases we split the random edges into two 
+\begin_inset Quotes eld
+\end_inset
+
+phases
+\begin_inset Quotes erd
+\end_inset
+
+: 
+\begin_inset Formula $\R=\R_{1}\cup\R_{2}$
+\end_inset
+
+, where 
+\begin_inset Formula $\R_{i}\in\GG\left(n,\c_{i}\left(\a,\D\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+First, suppose there are 
+\begin_inset Formula $\varepsilon n$
+\end_inset
+
+ leaves in 
+\begin_inset Formula $\T$
+\end_inset
+
+ (for some fixed constant 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ to be determined).
+ Then consider the tree 
+\begin_inset Formula $\T'$
+\end_inset
+
+ with some 
+\begin_inset Formula $\varepsilon n$
+\end_inset
+
+ leaves removed.
+ By 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem 1.1"
+key "AKS07"
+
+\end_inset
+
+, 
+\begin_inset Formula $\T'$
+\end_inset
+
+ can be embedded into 
+\begin_inset Formula $\R_{1}$
+\end_inset
+
+ for large 
+\begin_inset Formula $\c_{1}$
+\end_inset
+
+.
+ We will complete this embedding into a copy of 
+\begin_inset Formula $\T$
+\end_inset
+
+ in the same way as 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Lemma 2.3"
+key "Kri10"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A'$
+\end_inset
+
+ be the set of vertices of 
+\begin_inset Formula $\T'$
+\end_inset
+
+ which had a leaf deleted from them, and let 
+\begin_inset Formula $B$
+\end_inset
+
+ be the set of 
+\begin_inset Formula $\varepsilon n$
+\end_inset
+
+ vertices not part of 
+\begin_inset Formula $\T'$
+\end_inset
+
+.
+ By the vertex-permutation-invariance of the distribution 
+\begin_inset Formula $\R$
+\end_inset
+
+, we can assume 
+\begin_inset Formula $A'$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are uniformly random sets of the appropriate size (note 
+\begin_inset Formula $\left|A'\right|\ge\varepsilon n/\D$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|B\right|=\varepsilon n$
+\end_inset
+
+).
+ By Chernoff bounds, a.a.s.
+ each 
+\begin_inset Formula $a\in A'$
+\end_inset
+
+ has a linear number of neighbours in 
+\begin_inset Formula $B$
+\end_inset
+
+ and each 
+\begin_inset Formula $b\in B$
+\end_inset
+
+ has a linear number of neighbours in 
+\begin_inset Formula $A'$
+\end_inset
+
+ (say both are a.a.s.
+ at least 
+\begin_inset Formula $\beta n$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+We construct a set 
+\begin_inset Formula $A$
+\end_inset
+
+ and a bipartite graph 
+\begin_inset Formula $\G'$
+\end_inset
+
+ between 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ as follows.
+ For each vertex 
+\begin_inset Formula $a\in A'$
+\end_inset
+
+ which needs 
+\begin_inset Formula $\ell$
+\end_inset
+
+ extra leaves, add 
+\begin_inset Formula $\ell$
+\end_inset
+
+ vertices to 
+\begin_inset Formula $A$
+\end_inset
+
+ each of which is adjacent to the same vertices of 
+\begin_inset Formula $B$
+\end_inset
+
+ which 
+\begin_inset Formula $a$
+\end_inset
+
+ is (in 
+\begin_inset Formula $\G$
+\end_inset
+
+).
+ Note 
+\begin_inset Formula $\G'$
+\end_inset
+
+ is a bipartite graph with 
+\begin_inset Formula $\varepsilon n$
+\end_inset
+
+ vertices in each partition and minimum degree at least 
+\begin_inset Formula $\beta n$
+\end_inset
+
+.
+ Next, let 
+\begin_inset Formula $\R'\in\BB\left(\varepsilon n,\c'/n\right)$
+\end_inset
+
+.
+ For large 
+\begin_inset Formula $\c'$
+\end_inset
+
+ there is a.a.s.
+ a perfect matching in 
+\begin_inset Formula $\G'\cup\R'$
+\end_inset
+
+ by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:bipartite-matching"
+
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\R''$
+\end_inset
+
+ be the graph where if any copy of 
+\begin_inset Formula $a\in A'$
+\end_inset
+
+ is adjacent to some 
+\begin_inset Formula $b\in B$
+\end_inset
+
+ in 
+\begin_inset Formula $\R'$
+\end_inset
+
+, then 
+\begin_inset Formula $a$
+\end_inset
+
+ is adjacent to 
+\begin_inset Formula $b$
+\end_inset
+
+ in 
+\begin_inset Formula $\R''$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\G'\cup\R'$
+\end_inset
+
+ has a perfect matching, 
+\begin_inset Formula $\G\cup\R''$
+\end_inset
+
+ has the required leaves to extend our copy of 
+\begin_inset Formula $\T'$
+\end_inset
+
+ to 
+\begin_inset Formula $\T$
+\end_inset
+
+.
+ Also, 
+\begin_inset Formula $\left(1-\c'/n\right)^{\Delta}\ge\c_{2}n/{n \choose 2}$
+\end_inset
+
+ for large 
+\begin_inset Formula $\c_{2}$
+\end_inset
+
+, so 
+\begin_inset Formula $\R_{2}$
+\end_inset
+
+ stochastically dominates 
+\begin_inset Formula $\R''$
+\end_inset
+
+ and 
+\begin_inset Formula $\G\cup\R_{1}\cup\R_{2}$
+\end_inset
+
+ has a copy of 
+\begin_inset Formula $\T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the second case, there are less than 
+\begin_inset Formula $\varepsilon n$
+\end_inset
+
+ leaves in 
+\begin_inset Formula $\T$
+\end_inset
+
+.
+ We need the following lemma (
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Lemma 2.1"
+key "Kri10"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:bare-paths-if-no-leaves"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\T$
+\end_inset
+
+ be a tree on 
+\begin_inset Formula $n$
+\end_inset
+
+ vertices with at most 
+\begin_inset Formula $\ell$
+\end_inset
+
+ leaves.
+ Then 
+\begin_inset Formula $\T$
+\end_inset
+
+ contains a collection of at least 
+\begin_inset Formula $\left(n-\left(2\ell-2\right)\left(k+1\right)\right)/\left(k+1\right)$
+\end_inset
+
+ vertex-disjoint bare paths of length 
+\begin_inset Formula $k$
+\end_inset
+
+ each.
+\end_layout
+
+\begin_layout Standard
+Remove the interior vertices of all such bare paths to obtain a small forest
+ 
+\begin_inset Formula $\T'$
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $\gamma>0$
+\end_inset
+
+, if we choose 
+\begin_inset Formula $\ell$
+\end_inset
+
+ large enough and 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ small enough, then 
+\begin_inset Formula $\T'$
+\end_inset
+
+ has less than 
+\begin_inset Formula $\gamma n$
+\end_inset
+
+ vertices, so can be embedded into 
+\begin_inset Formula $\R_{1}$
+\end_inset
+
+ by 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem 1.1"
+key "AKS07"
+
+\end_inset
+
+ for large 
+\begin_inset Formula $\c_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Apply the regularity lemma on original graph to get a dense (minimum degree
+ 
+\begin_inset Formula $\alpha'k$
+\end_inset
+
+) cluster graph, in cluster graph we can find a cover by nontrivial stars
+ of size at most 
+\begin_inset Formula $\ell$
+\end_inset
+
+ provided 
+\begin_inset Formula $\ell$
+\end_inset
+
+ is big enough (at least 
+\begin_inset Formula $1/\alpha'$
+\end_inset
+
+).
+ Do this greedily.
+ (for each vertex make a new star unless you cant, then add the vertex to
+ an existing star with the smallest number of leaves possible).
+\end_layout
+
+\begin_layout Standard
+Define a new cluster graph which is a perfect matching with irregular cluster
+ sizes by bunching up all leaves in each star into superclusters.
+ some vertices are not dense enough and some vertices are exceptional.
+ put these vertices somewhere they are dense.
+ The edges of the new cluster graph correspond to superregular pairs.
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $\left(s_{i},t_{i}\right)$
+\end_inset
+
+ be 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ many pairs of vertices (all vertices distinct) in a dense graph.
+ Then after adding linearly many random edges we can find vertex-disjoint
+ length-
+\begin_inset Formula $\ell$
+\end_inset
+
+ paths between each 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Sketch proof]
+\end_layout
+
+\end_inset
+
+For 
+\begin_inset Formula $\ell=3$
+\end_inset
+
+, choose disjoint sets of 
+\begin_inset Formula $\Omega\left(n\right)$
+\end_inset
+
+ neighbours of 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+, there is an edge between them.
+ Induction on 
+\begin_inset Formula $\ell$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+There are 
+\begin_inset Formula $M=O\left(1\right)$
+\end_inset
+
+ cluster-edges.
+ Split the trees in 
+\begin_inset Formula $\T'$
+\end_inset
+
+ into 
+\begin_inset Formula $M$
+\end_inset
+
+ appropriately sized 
+\begin_inset Quotes eld
+\end_inset
+
+contiguous
+\begin_inset Quotes erd
+\end_inset
+
+ groups, and (randomly) embed them in the vertex sets using random edges.
+ We need to add 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ paths between clusters, this can be done with the lemma.
+ We also need to add linearly many paths between pairs of vertices in each
+ cluster.
+\end_layout
+
+\begin_layout Standard
+Within each cluster, forget about everything but the vertices of the bare
+ paths.
+ We need to link up the endpoints, which come in pairs 
+\begin_inset Formula $s_{i},t_{i}$
+\end_inset
+
+.
+ Randomly divide the non-endpoints into equal-sized sets 
+\begin_inset Formula $V_{1},V_{2}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $V_{0}$
+\end_inset
+
+ be the set of symbols 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+.
+ For the original and perturbed graphs, we define an 
+\begin_inset Formula $\ell$
+\end_inset
+
+-partite graph on 
+\begin_inset Formula $\bigcup_{i}V_{i}$
+\end_inset
+
+ as follows.
+ Put all induced edges between sets 
+\begin_inset Formula $V_{i},V_{i+1}$
+\end_inset
+
+, put an edge between 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $v\in V_{1}$
+\end_inset
+
+ if 
+\begin_inset Formula $s_{i}\sim v$
+\end_inset
+
+, put an edge between 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $v\in V_{\ell-1}$
+\end_inset
+
+ if 
+\begin_inset Formula $t_{i}\in v$
+\end_inset
+
+.
+ By randomness the transformed original graph is still dense and random
+ edges are still added with the same probability (but only the edges between
+ 
+\begin_inset Formula $V_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{i+1}$
+\end_inset
+
+, indices mod 
+\begin_inset Formula $\ell$
+\end_inset
+
+).
+ Now it suffices to find a cycle cover of length-
+\begin_inset Formula $\ell$
+\end_inset
+
+ cycles of the form 
+\begin_inset Formula $v_{0}v_{1}v^{\left(1\right)},\dots v^{\left(\ell-2\right)}v_{2}$
+\end_inset
+
+, where 
+\begin_inset Formula $v_{i}\in V_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $v^{\left(i\right)}\in V_{1}\cup V_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Each cluster-edge splits into a cluster-
+\begin_inset Formula $K_{3,3}$
+\end_inset
+
+, which contains two cluster-triangles each with a 
+\begin_inset Formula $V_{1},V_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{0}$
+\end_inset
+
+ cluster.
+ We want to tweak things for each so that 
+\begin_inset Formula $V_{1}\cup V_{2}$
+\end_inset
+
+ is 
+\begin_inset Formula $\ell-1$
+\end_inset
+
+ times as big as 
+\begin_inset Formula $V_{0}$
+\end_inset
+
+.
+ Do this by removing cycles globally using the following lemma
+\end_layout
+
+\begin_layout Lemma
+Suppose we have groups of size 
+\begin_inset Formula $\Omega\left(n\right)$
+\end_inset
+
+, as well as 
+\begin_inset Formula $V_{0},V_{1},V_{2}$
+\end_inset
+
+ forming a superregular cluster-triangle.
+ Prescribe a number of vertices to be in each partition (with 1 in 
+\begin_inset Formula $V_{0}$
+\end_inset
+
+, at least 1 in 
+\begin_inset Formula $V_{1}$
+\end_inset
+
+ and at least 1 in 
+\begin_inset Formula $V_{2}$
+\end_inset
+
+).
+ Then we can find lots of length-
+\begin_inset Formula $\ell$
+\end_inset
+
+ cycles as prescribed.
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Sketch proof]
+\end_layout
+
+\end_inset
+
+Find lots of disjoint length-
+\begin_inset Formula $\left(\ell-1\right)$
+\end_inset
+
+ paths from 
+\begin_inset Formula $V_{1}$
+\end_inset
+
+ to 
+\begin_inset Formula $V_{2}$
+\end_inset
+
+ with appropriate partition amounts except 
+\begin_inset Formula $V_{0}$
+\end_inset
+
+, using the random edges.
+ Now there are lots of random pairs of vertices which we need to match into
+ cherries.
+ Do this greedily (the probability each random pair matches with a specific
+ vertex is about 
+\begin_inset Formula $\alpha^{2}$
+\end_inset
+
+ where 
+\begin_inset Formula $\alpha n$
+\end_inset
+
+ is the minimum degree).
+ Repeat this as necessary.
+\end_layout
+
+\begin_layout Standard
+(We dont need to do much tweaking if the splitting of 
+\begin_inset Formula $\T'$
+\end_inset
+
+ was good, so we don't ruin density doing this).
+ Now randomly split 
+\begin_inset Formula $V_{1}\cup V_{2}$
+\end_inset
+
+ into 
+\begin_inset Formula $\ell-1$
+\end_inset
+
+ pieces to maintain density and get an 
+\begin_inset Formula $\ell$
+\end_inset
+
+-cluster-cycle.
+ Use blowup lemma to find a union of cycles.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "references"
+options "amsplain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
