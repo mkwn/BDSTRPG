@@ -123,7 +123,7 @@ theorems-ams
 \bibtex_command default
 \index_command default
 \paperfontsize 11
-\spacing other 0.98
+\spacing other 0.96
 \use_hyperref true
 \pdf_bookmarks true
 \pdf_bookmarksnumbered false
@@ -661,6 +661,10 @@ end{comment}
 
 \end_layout
 
+\begin_layout Section
+Introduction
+\end_layout
+
 \begin_layout Standard
 We will prove the following theorem.
 \end_layout
@@ -785,19 +789,26 @@ key "Kri10"
 \begin_inset Formula $\T$
 \end_inset
 
- has many leaves, then we remove the leaves and embed the resulting non-spanning
- tree in 
+ has many leaves (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:many-leaves"
+
+\end_inset
+
+), then we remove the leaves and embed the resulting non-spanning tree in
+ 
 \begin_inset Formula $\R$
 \end_inset
 
- (using 
+ using 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:almost-spanning"
 
 \end_inset
 
-).
+.
  To complete this into our spanning tree 
 \begin_inset Formula $\T$
 \end_inset
@@ -818,11 +829,18 @@ reference "lem:almost-spanning"
 \end_layout
 
 \begin_layout Standard
-The more difficult case is if 
+The more difficult case is where 
 \begin_inset Formula $\T$
 \end_inset
 
- has few leaves.
+ has few leaves, which we attack in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:few leaves"
+
+\end_inset
+
+.
  In this case 
 \begin_inset Formula $\T$
 \end_inset
@@ -845,8 +863,8 @@ complicated
 bare paths
 \emph default
 : paths where each vertex has degree exactly two.
- By removing some of these bare paths we can obtain a non-spanning forest.
- We would like to embed such a forest into 
+ By removing these bare paths we obtain a small forest which we can embed
+ into 
 \begin_inset Formula $\R$
 \end_inset
 
@@ -857,14 +875,28 @@ reference "lem:almost-spanning"
 
 \end_inset
 
-, then complete it into the spanning tree 
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:embed-forest"
+
+\end_inset
+
+).
+ In order to complete this into our spanning tree 
 \begin_inset Formula $\T$
 \end_inset
 
-.
- This would involve joining up distinguished pairs of vertices with disjoint
- paths of certain lengths.
- In order to make this task feasible we first use Szemer
+, we need to join up distinguished pairs of vertices with disjoint paths
+ of certain lengths.
+ In order to make this task feasible, in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:partition-into-blobs"
+
+\end_inset
+
+ we first use Szemer
 \begin_inset ERT
 status open
 
@@ -891,24 +923,67 @@ super-regular pair
 \end_inset
 
  (that is, a dense subgraph with edges very well-distributed).
- When we embed our forest, some of the paths we need to add will be between
- pieces, and some will be within pieces.
- We carefully choose which bare paths to remove, and choose how to embed
- the resulting forest, in such a way that very few such paths need to be
- between pieces.
- We first greedily embed this small number of paths between pieces.
- Then the super-regularity of the pieces allows us to use a tool called
- the blow-up lemma to finish joining up the paths, after making some adjustments
- using the random edges in 
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:embed-paths-between"
+
+\end_inset
+
+ we use 
 \begin_inset Formula $\R$
 \end_inset
 
-.
+ to find most of our desired paths, in such a way that it only remains to
+ join up pairs of vertices within the same superregular pair.
+ We make some further adjustments with 
+\begin_inset Formula $\R$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:embed-relative-sizes"
+
+\end_inset
+
+), after which the super-regularity of the pairs allows us to find the rest
+ of our paths using a tool called the blow-up lemma (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:blow-up"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+Proof of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{}{Theorem~}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:main-theorem"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Now we proceed to the details of the proof.
- It is convenient to work in the model where 
+It is convenient to work in the model where 
 \begin_inset Formula $\R$
 \end_inset
 
@@ -948,6 +1023,21 @@ phases
 ).
 \end_layout
 
+\begin_layout Subsection
+Case 1: 
+\begin_inset Formula $\T$
+\end_inset
+
+ has many leaves
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:many-leaves"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 For our first case suppose there are at least 
 \begin_inset Formula $\lambda n$
@@ -961,7 +1051,7 @@ For our first case suppose there are at least
 \begin_inset Formula $\lambda=\lambda\left(\a\right)>0$
 \end_inset
 
- to be determined).
+ to be determined in the second case).
  Then consider the tree 
 \begin_inset Formula $\T'$
 \end_inset
@@ -1538,9 +1628,61 @@ reference "lem:bipartite-matching"
 \end_layout
 
 \begin_layout Proof
+\begin_inset ERT
+status open
 
-\series bold
-Is this OK, or do you think I should explain these symmetry arguments more?
+\begin_layout Plain Layout
+
+
+\backslash
+begin{comment}
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $H_{i}=\bigcup_{j=1}^{i}M_{j}$
+\end_inset
+
+; if we condition on 
+\begin_inset Formula $N_{H_{i}}\left(W\right)$
+\end_inset
+
+ then 
+\begin_inset Formula $N_{H_{i+1}}\left(W\right)=N_{H_{i+1}}\left(W\right)\cup N_{M_{i+1}}\left(W\right)$
+\end_inset
+
+ is hypergeometrically distributed.
+ By repeated application of a concentration inequality for the hypergeometric
+ distribution, 
+\begin_inset Formula $N_{H_{r}}\left(W\right)$
+\end_inset
+
+ is tightly concentrated around its expectation, which is at least 
+\begin_inset Formula 
+\[
+\sum_{b\in B}\Pr\left(b\in N_{H_{r}}\left(W\right)\right)=n\left(1-\prod_{i=1}^{r}\left(1-\left|W_{i}\right|/n\right)\right)\le\left(1-\left(1-\a/2\right)^{r}\right)n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{comment}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Proof
@@ -1631,6 +1773,30 @@ since there are at most
 .
 \end_layout
 
+\begin_layout Proof
+
+\series bold
+Instead of proving this via negative association and a Chernoff bound, its
+ possible to use a concentration inequality for the hypergeometric distribution
+ several times.
+ But I tried writing both ways and this way seems cleaner.
+\end_layout
+
+\begin_layout Subsection
+Case 2: 
+\begin_inset Formula $\T$
+\end_inset
+
+ has few leaves
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:few leaves"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Now we address the second case where there are fewer than 
 \begin_inset Formula $\lambda n$
@@ -1641,12 +1807,35 @@ Now we address the second case where there are fewer than
 \end_inset
 
 .
- As outlined, we first need to divide the vertex set into groups such that
- the edges of 
-\begin_inset Formula $\G$
+\end_layout
+
+\begin_layout Subsubsection
+Partitioning into super-regular pairs
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:partition-into-blobs"
+
 \end_inset
 
- are well distributed within those groups.
+
+\end_layout
+
+\begin_layout Standard
+As outlined, we first need to divide 
+\begin_inset Formula $G$
+\end_inset
+
+ into a bounded number of pairs of clusters with edges well-distributed
+ between them.
+ This partition will inform the way we use 
+\begin_inset Formula $\R$
+\end_inset
+
+ to embed 
+\begin_inset Formula $\T$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1731,7 +1920,7 @@ density
 \begin_inset Formula $\left(\varepsilon,\delta\right)$
 \end_inset
 
--semi-super-regular
+-dense
 \emph default
 .
  Let 
@@ -1746,7 +1935,7 @@ density
 \begin_inset Formula $\left(\varepsilon,\delta\right)$
 \end_inset
 
--semi-super-regular and moreover each 
+-dense and moreover each 
 \begin_inset Formula $v\in V_{\h}$
 \end_inset
 
@@ -1771,29 +1960,6 @@ density
 -super-regular
 \emph default
 .
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Is there already some word to describe what I'm calling 
-\begin_inset Quotes eld
-\end_inset
-
-semi-super-regularity
-\begin_inset Quotes erd
-\end_inset
-
-? It is basically a one-sided version of regularity.
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\renewcommand{\h}{h}
-{\boldsymbol{h}}
-\end_inset
-
-
 \end_layout
 
 \begin_layout Lemma
@@ -2301,7 +2467,7 @@ centre
 \end_inset
 
  with 
-\begin_inset Formula $\left|U^{\h}\right|\ge\varepsilon'W_{i}^{\h}$
+\begin_inset Formula $\left|U^{\h}\right|\ge\varepsilon'\left|W_{i}^{\h}\right|$
 \end_inset
 
 , and let 
@@ -2468,7 +2634,7 @@ maximal extension
 \end_inset
 
  neighbours in its partner cluster 
-\begin_inset Formula $V_{i}^{2-\h}$
+\begin_inset Formula $V_{i}^{\bar{\h}}$
 \end_inset
 
 , each 
@@ -2617,11 +2783,11 @@ That is, each pair
 \end_inset
 
  has at least 
-\begin_inset Formula $\delta'\left|S_{i}^{\bar{\h}}\right|/2\ge\delta'\left|V_{i}^{\bar{\h}}\right|/\left(2\left(4\varepsilon'/\a'+1\right)\right)\ge\delta\left|V_{i}^{\h}\right|$
+\begin_inset Formula $\delta'\left|S_{i}^{\bar{\h}}\right|/2\ge\delta'\left|V_{i}^{\bar{\h}}\right|/\left(2\left(4\varepsilon'/\a'+1\right)\right)\ge\delta\left|V_{i}^{\bar{\h}}\right|$
 \end_inset
 
  neighbours in its partner cluster 
-\begin_inset Formula $V_{i}^{\h}$
+\begin_inset Formula $V_{i}^{\bar{\h}}$
 \end_inset
 
 , so in fact each pair 
@@ -2642,6 +2808,61 @@ That is, each pair
 \end_inset
 
 , we are done.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{comment}
+\end_layout
+
+\end_inset
+
+
+\series bold
+You mentioned the preceding arguments are quite standard and there might
+ be something I can cite.
+ But I haven't been able to find anything yet.
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{comment}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\bi}{\mathbf{i}}
+{\boldsymbol{\mathbf{i}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\bj}{\mathbf{j}}
+{\boldsymbol{\mathbf{j}}}
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2661,7 +2882,38 @@ reference "lem:partition-into-blobs"
 \end_inset
 
  to be determined.
- Proceeding with the proof outline, we need the fact that 
+ For 
+\begin_inset Formula $\bi=\left(i,\h\right)$
+\end_inset
+
+, let 
+\begin_inset Formula $V_{\bi}=V_{i}^{\h}$
+\end_inset
+
+, and let 
+\begin_inset Formula $\left|V_{\bi}\right|=s_{\bi}n=s_{i}^{\h}n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Embedding a small subforest of 
+\begin_inset Formula $\T$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:embed-forest"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Proceeding with the proof outline, we need the fact that 
 \begin_inset Formula $\T$
 \end_inset
 
@@ -2731,319 +2983,6 @@ Let
 \end_layout
 
 \begin_layout Standard
-In our case 
-\begin_inset Formula $\ell=\lambda n$
-\end_inset
-
-.
- For any 
-\begin_inset Formula $\phi=\phi\left(\a\right)>0$
-\end_inset
-
- (which we will determine later), if we choose 
-\begin_inset Formula $k=k\left(\phi\right)$
-\end_inset
-
- large enough and 
-\begin_inset Formula $\lambda=\lambda\left(k\right)$
-\end_inset
-
- small enough, then 
-\begin_inset Formula $\T$
-\end_inset
-
- contains a collection of 
-\begin_inset Formula $\left(1-\phi\right)n/\left(k-1\right)$
-\end_inset
-
- disjoint bare 
-\begin_inset Formula $k$
-\end_inset
-
--paths.
- If we delete the interior vertices of these paths, then we are left with
- a forest 
-\begin_inset Formula $\F$
-\end_inset
-
- on at most 
-\begin_inset Formula $\phi n$
-\end_inset
-
- vertices.
- We define a 
-\begin_inset Quotes eld
-\end_inset
-
-reduced
-\begin_inset Quotes erd
-\end_inset
-
- tree 
-\begin_inset Formula $\r{\T}$
-\end_inset
-
- whose vertices are the trees in 
-\begin_inset Formula $\F$
-\end_inset
-
-, with an edge between two of these vertices if the corresponding trees
- were originally joined by a bare path.
- Note that 
-\begin_inset Formula $\r{\T}$
-\end_inset
-
- has 
-\begin_inset Formula $\left(1-\phi\right)n/\left(k-1\right)$
-\end_inset
-
- edges and therefore 
-\begin_inset Formula $\left(1-\phi\right)n/\left(k-1\right)+1$
-\end_inset
-
- vertices.
-\end_layout
-
-\begin_layout Standard
-Now, every subforest of 
-\begin_inset Formula $\r{\T}$
-\end_inset
-
- corresponds to a subforest of 
-\begin_inset Formula $\T$
-\end_inset
-
-, obtained by 
-\begin_inset Quotes eld
-\end_inset
-
-expanding
-\begin_inset Quotes erd
-\end_inset
-
- vertices back into trees and edges back into bare paths.
- We want to choose an appropriate subforest 
-\begin_inset Formula $\r{\F'}\subseteq\r{\T}$
-\end_inset
-
-, and embed the corresponding subforest 
-\begin_inset Formula $\F'\subseteq\T$
-\end_inset
-
- into 
-\begin_inset Formula $\R_{2}$
-\end_inset
-
-.
- We want to do both these things in such a way that most of the bare paths
- in 
-\begin_inset Formula $\T\backslash\F'$
-\end_inset
-
- have both their endpoints in the same cluster 
-\begin_inset Formula $V_{i}^{\h}$
-\end_inset
-
-.
- The way we will accomplish our goal depends on the structure of 
-\begin_inset Formula $\r{\T}$
-\end_inset
-
-, as follows.
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:decompose-tree"
-
-\end_inset
-
-For 
-\begin_inset Formula $\tau>0$
-\end_inset
-
- and 
-\begin_inset Formula $q\in\NN$
-\end_inset
-
-, there is 
-\begin_inset Formula $\gamma=\gamma\left(\tau,q\right)$
-\end_inset
-
- such that one of the following holds for any tree 
-\begin_inset Formula $\T$
-\end_inset
-
- on 
-\begin_inset Formula $n$
-\end_inset
-
- vertices (where 
-\begin_inset Formula $n$
-\end_inset
-
- is sufficiently large).
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[(a)]
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $\T$
-\end_inset
-
- has at least 
-\begin_inset Formula $\gamma n$
-\end_inset
-
- leaves,
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[(b)]
-\end_layout
-
-\end_inset
-
-There is a spanning subforest 
-\begin_inset Formula $\F=\bigcup_{i=1}^{q}\F_{i}$
-\end_inset
-
- of 
-\begin_inset Formula $\T$
-\end_inset
-
-, such that the 
-\begin_inset Formula $\F_{i}$
-\end_inset
-
- are disjoint subforests each with at least 
-\begin_inset Formula $\gamma n$
-\end_inset
-
- edges, and such that there are at most 
-\begin_inset Formula $\tau n$
-\end_inset
-
- edges in 
-\begin_inset Formula $\T$
-\end_inset
-
- that are not in 
-\begin_inset Formula $\F$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\begin_layout Proof
-We use 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:bare-paths-if-no-leaves"
-
-\end_inset
-
-.
- For sufficiently small 
-\begin_inset Formula $\gamma$
-\end_inset
-
-, either 
-\begin_inset Formula $\r{\T}$
-\end_inset
-
- has 
-\begin_inset Formula $\gamma n$
-\end_inset
-
- leaves or it has 
-\begin_inset Formula $\gamma n$
-\end_inset
-
- disjoint bare paths of length 
-\begin_inset Formula $2\left(q-1\right)$
-\end_inset
-
-.
- In the second case, divide some 
-\begin_inset Formula $\gamma n$
-\end_inset
-
- such bare paths evenly into 
-\begin_inset Formula $q-1$
-\end_inset
-
- forests of paths 
-\begin_inset Formula $\F_{1},\dots,\F_{q-1}$
-\end_inset
-
- (we can assume 
-\begin_inset Formula $q>1$
-\end_inset
-
-, or else (b) trivially holds).
- Then, let 
-\begin_inset Formula $\F_{q}=\T\backslash\bigcup_{i=1}^{q-1}\F_{i}$
-\end_inset
-
-.
- For small 
-\begin_inset Formula $\gamma$
-\end_inset
-
-, there are at most 
-\begin_inset Formula $2\gamma n\le\tau n$
-\end_inset
-
- edges of 
-\begin_inset Formula $\T$
-\end_inset
-
- not in some 
-\begin_inset Formula $\F_{i}$
-\end_inset
-
-, each 
-\begin_inset Formula $\F_{i}$
-\end_inset
-
- (
-\begin_inset Formula $i\le q-1$
-\end_inset
-
-)has at least 
-\begin_inset Formula $\left(2\left(q-1\right)-1\right)\gamma n/\left(q-1\right)\ge\gamma n$
-\end_inset
-
- edges, and 
-\begin_inset Formula $\F_{q}$
-\end_inset
-
- has 
-\begin_inset Formula $n-\left(\left(q-1\right)/\tau+2\right)\gamma n\ge\gamma n$
-\end_inset
-
- edges.
-\end_layout
-
-\begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\x}{x}
 {\boldsymbol{x}}
@@ -3062,228 +3001,65 @@ reference "lem:bare-paths-if-no-leaves"
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-It seems pretty ugly that I apply 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:bare-paths-if-no-leaves"
-
+In our case 
+\begin_inset Formula $\ell=\lambda n$
 \end_inset
 
- twice...
- I spent some time thinking about whether this can really be reduced to
- one application but I couldn't seem to do it.
-\end_layout
-
-\begin_layout Standard
-We apply 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:decompose-tree"
-
+.
+ For any 
+\begin_inset Formula $\phi=\phi\left(\a\right)>0$
 \end_inset
 
- to 
-\begin_inset Formula $\r{\T}$
+ (which we will determine later), if we choose 
+\begin_inset Formula $k=k\left(\phi,\a\right)$
 \end_inset
 
- with some 
-\begin_inset Formula $\tau=\tau\left(\a\right)>0$
+ large enough and 
+\begin_inset Formula $\lambda=\lambda\left(k\right)$
 \end_inset
 
- to be determined.
- In case (a), 
-\begin_inset Formula $\r{\T}$
+ small enough, then 
+\begin_inset Formula $\T$
 \end_inset
 
- has at least 
-\begin_inset Formula $\gamma\left(\left(1-\phi\right)n/\left(k-1\right)+1\right)\ge\gamma n/\left(2k\right)$
+ contains a collection of 
+\begin_inset Formula $\psi n:=\left(1-\phi\right)n/\left(k-1\right)$
 \end_inset
 
- leaves.
- Let 
-\begin_inset Formula $\r{\T'}\subseteq\r{\T}$
-\end_inset
-
- be a subtree obtained by deleting 
-\begin_inset Formula $\gamma n/\left(2k\right)$
-\end_inset
-
- leaves.
- Then 
-\begin_inset Formula $\T'$
-\end_inset
-
- has at most 
-\begin_inset Formula $\left(1-\gamma/2\right)n$
-\end_inset
-
- vertices (it is 
-\begin_inset Quotes eld
-\end_inset
-
-missing
-\begin_inset Quotes erd
-\end_inset
-
- at least 
+ disjoint bare 
 \begin_inset Formula $k$
 \end_inset
 
- vertices from each bare path associated with our 
-\begin_inset Formula $\gamma n/\left(2k\right)$
+-paths.
+ (We also impose that 
+\begin_inset Formula $k$
 \end_inset
 
- leaves of 
-\begin_inset Formula $\r{\T}$
+ is odd, for reasons that will become clear later).
+ If we delete the interior vertices of these paths, then we are left with
+ a forest 
+\begin_inset Formula $\F$
 \end_inset
 
-).
- For large 
-\begin_inset Formula $\c_{1}$
+ on 
+\begin_inset Formula $\phi n$
 \end_inset
 
-, we can a.a.s.
- embed 
-\begin_inset Formula $\T'$
+ vertices.
+\end_layout
+
+\begin_layout Standard
+Now, embed 
+\begin_inset Formula $\F$
 \end_inset
 
  into 
 \begin_inset Formula $\R_{1}$
 \end_inset
 
-; for such an embedding, let 
-\begin_inset Formula $X$
-\end_inset
-
- be the set of 
-\begin_inset Formula $\gamma n/\left(2k\right)$
-\end_inset
-
- vertices of 
-\begin_inset Formula $\T'$
-\end_inset
-
- that need a bare path attached to them.
- By the permutation-invariance of the distribution of 
-\begin_inset Formula $\R_{1}$
-\end_inset
-
-, we can assume the vertex set of the embedding of 
-\begin_inset Formula $\T'$
-\end_inset
-
- is a uniformly random set of size 
-\begin_inset Formula $\left|\T'\right|$
-\end_inset
-
-, and 
-\begin_inset Formula $X$
-\end_inset
-
- is a uniformly random 
-\begin_inset Formula $\gamma n/\left(2k\right)$
-\end_inset
-
--vertex subset.
- By a concentration inequality for the hypergeometric distribution, a.a.s.
- each 
-\begin_inset Formula $V_{i}^{\h}$
-\end_inset
-
- has at least 
-\begin_inset Formula $a\gamma n/\left(3k\right)$
-\end_inset
-
- and at most 
-\begin_inset Formula $b\gamma n/k$
-\end_inset
-
- elements of 
-\begin_inset Formula $X$
-\end_inset
-
-, and there are at least 
-\begin_inset Formula $a\gamma n/3$
-\end_inset
-
- vertices in each 
-\begin_inset Formula $V_{i}^{\h}$
-\end_inset
-
- that were not used for 
-\begin_inset Formula $\T'$
-\end_inset
-
 .
- For each 
-\begin_inset Formula $\x\in X$
-\end_inset
-
-, let 
-\begin_inset Formula $\T_{\x}\subseteq\F$
-\end_inset
-
- be the tree that needs to be connected to 
-\begin_inset Formula $\x$
-\end_inset
-
- via a 
-\begin_inset Formula $k$
-\end_inset
-
--path.
- For each 
-\begin_inset Formula $V_{i}^{\h}$
-\end_inset
-
-, embed 
-\begin_inset Formula $\bigcup_{\x\in V_{i}\cap X}\T_{\x}$
-\end_inset
-
- randomly into 
-\begin_inset Formula $\R_{2}\left[V_{i}^{\h}\backslash\T'\right]$
-\end_inset
-
-.
- In order to ensure this is a.a.s.
- possible and that there are still at least 
-\begin_inset Formula $a\gamma/3$
-\end_inset
-
- vertices left over, choose 
-\begin_inset Formula $\phi=a\gamma/6$
-\end_inset
-
- (we also need 
-\begin_inset Formula $\c_{2}$
-\end_inset
-
- to be large).
- Now, all that remains is to find 
-\begin_inset Formula $k$
-\end_inset
-
--paths that connect each 
-\begin_inset Formula $\x\in X$
-\end_inset
-
- to some specific vertex 
-\begin_inset Formula $\y$
-\end_inset
-
- (let 
-\begin_inset Formula $Y$
-\end_inset
-
- be the set of all such 
-\begin_inset Formula $\y$
-\end_inset
-
-).
- Call the pairs 
-\begin_inset Formula $\left(\x,\y\right)$
+ There are 
+\begin_inset Formula $\psi n$
 \end_inset
 
  
@@ -3294,105 +3070,25 @@ special pairs
 \begin_inset Quotes erd
 \end_inset
 
-, and call a 
+ of vertices of 
+\begin_inset Formula $\F\subseteq\R_{1}$
+\end_inset
+
+ that need to be connected with 
 \begin_inset Formula $k$
 \end_inset
 
--path connecting a special pair a 
+-paths.
+ We call such connecting paths 
 \begin_inset Quotes eld
 \end_inset
 
-special path
+special paths
 \begin_inset Quotes erd
 \end_inset
 
 .
- By construction, all special pairs 
-\begin_inset Formula $\left(\x,\y\right)$
-\end_inset
-
- have 
-\begin_inset Formula $\x$
-\end_inset
-
- and 
-\begin_inset Formula $\y$
-\end_inset
-
- in the same 
-\begin_inset Formula $V_{i}^{\h}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-In case (b), we have a decomposition of the vertex set of 
-\begin_inset Formula $\r{\T}$
-\end_inset
-
- into 
-\begin_inset Formula $2q$
-\end_inset
-
- forests 
-\begin_inset Formula $\r{\F_{i}^{\h}}$
-\end_inset
-
-.
- Each of these forests 
-\begin_inset Formula $\r{\F_{i}^{\h}}$
-\end_inset
-
- corresponds to a forest 
-\begin_inset Formula $\F_{i}^{\h}=\bigcup V\left(\r{\F_{i}^{\h}}\right)\subseteq\F$
-\end_inset
-
- (that is, we expand the vertices of 
-\begin_inset Formula $\r{\F_{i}^{\h}}$
-\end_inset
-
- to trees but throw away the edges of 
-\begin_inset Formula $\r{\F_{i}^{\h}}$
-\end_inset
-
-).
- With large 
-\begin_inset Formula $\c_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\phi<a/2$
-\end_inset
-
-, we can a.a.s.
- embed each 
-\begin_inset Formula $\F_{i}^{\h}$
-\end_inset
-
- into 
-\begin_inset Formula $\R_{1}\left[V_{i}^{\h}\right]$
-\end_inset
-
- with 
-\begin_inset Formula $an/2$
-\end_inset
-
- vertices left over.
- We have now embedded 
-\begin_inset Formula $\F$
-\end_inset
-
- into 
-\begin_inset Formula $\R_{1}$
-\end_inset
-
- but nothing else; it remains to join up 
-\begin_inset Formula $\left(1-\phi\right)n/\left(k-1\right)$
-\end_inset
-
- special pairs of vertices with special paths.
- For each special pair, arbitrarily designate one vertex as an 
+ For each special pair, arbitrarily choose one vertex to be 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3404,7 +3100,7 @@ In case (b), we have a decomposition of the vertex set of
 \begin_inset Quotes erd
 \end_inset
 
- endpoint and the other as 
+ and the other to be 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3421,117 +3117,185 @@ In case (b), we have a decomposition of the vertex set of
 \begin_inset Formula $X$
 \end_inset
 
- be the set of 
-\begin_inset Formula $\x$
-\end_inset
-
--type endpoints and let 
+ and 
 \begin_inset Formula $Y$
 \end_inset
 
  be the set of 
-\begin_inset Formula $\y$
-\end_inset
-
--type endpoints.
- There are at most 
-\begin_inset Formula $\tau\left(\left(1-\phi\right)n/k+1\right)$
-\end_inset
-
- special pairs 
-\begin_inset Formula $\left(\x,\y\right)$
-\end_inset
-
- which have 
 \begin_inset Formula $\x$
 \end_inset
 
- and 
+-type and 
 \begin_inset Formula $\y$
 \end_inset
 
- in different groups 
-\begin_inset Formula $V_{i}^{\h}$
+-type vertices, respectively.
+ By symmetry we can assume 
+\begin_inset Formula 
+\[
+X\,\cup\,Y\,\cup\,\F\backslash\left(X\cup Y\right)\,\cup\,V\backslash\F
+\]
+
 \end_inset
 
- (call these 
-\begin_inset Quotes eld
+is a uniformly random partition of 
+\begin_inset Formula $V$
 \end_inset
 
-annoying
-\begin_inset Quotes erd
+ into parts of sizes 
+\begin_inset Formula $\psi n$
 \end_inset
 
- special pairs), and each 
-\begin_inset Formula $V_{i}^{\h}$
+, 
+\begin_inset Formula $\psi n$
 \end_inset
 
- includes at least 
-\begin_inset Formula $\gamma\left(\left(1-\phi\right)n/\left(k-1\right)+1\right)\ge\gamma n/\left(2k\right)$
+, 
+\begin_inset Formula $\left(\phi-2\psi\right)n$
 \end_inset
 
- special pairs.
-\end_layout
-
-\begin_layout Standard
-Now, in both cases, for each 
-\begin_inset Formula $j=\left(i,\h\right)\in\range q\times\range 2$
+, 
+\begin_inset Formula $\left(1-\phi\right)n$
 \end_inset
 
-, let 
-\begin_inset Formula $W_{j}^{0}=V_{i}^{\h}\cap X$
+, and the special pairs correspond to a random bijection between 
+\begin_inset Formula $X$
 \end_inset
 
  and 
-\begin_inset Formula $W_{j}^{4}=V_{i}^{\h}\cap Y$
+\begin_inset Formula $Y$
 \end_inset
 
 .
- Consider the sets 
-\begin_inset Formula $U_{j}^{\h}$
+ For 
+\begin_inset Formula $\bi=\left(i,\h\right)$
 \end_inset
 
- obtained by deleting from 
-\begin_inset Formula $V_{i}^{\h}$
+, let 
+\begin_inset Formula $X_{\bi}=X_{i}^{\h}=V_{\bi}\cap X$
 \end_inset
 
- every vertex that has been used towards our embedding of 
+ and 
+\begin_inset Formula $Y_{\bi}=Y_{i}^{\h}=V_{\bi}\cap Y$
+\end_inset
+
+, and let 
+\begin_inset Formula $Z_{\bi,\bj}$
+\end_inset
+
+ be the set of special pairs in 
+\begin_inset Formula $X_{\bi}\times Y_{\bj}$
+\end_inset
+
+.
+ By a concentration inequality for the hypergeometric distribution and the
+ union bound, a.a.s.
+ each 
+\begin_inset Formula $\left|V_{\bi}\backslash\left(\F\backslash\left(X\cup Y\right)\right)\right|\sim\left(1-\phi+2\psi\right)s_{\bi}n$
+\end_inset
+
+.
+ Each 
+\begin_inset Formula $\left|X_{\bi}\right|\sim\psi s_{\bi}n$
+\end_inset
+
+, and therefore each 
+\begin_inset Formula $\left|Z_{\bi,\bj}\right|\sim\psi s_{\bi}s_{\bj}n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Now we have embedded 
+\begin_inset Formula $\F$
+\end_inset
+
+, we no longer care about the vertices used to embed 
+\begin_inset Formula $\F\backslash\left(X\cup Y\right)$
+\end_inset
+
+; they will never be used again.
+ It is convenient to imagine, for the duration of the proof, that instead
+ of embedding parts of 
 \begin_inset Formula $\T$
 \end_inset
 
- so far.
- That is, let 
-\begin_inset Formula $U_{i}^{\h}=V_{i}^{\h}\backslash\left(V\left(\T'\right)\cup\bigcup_{\x\in X}V\left(\T_{\x}\right)\right)$
+, we are 
+\begin_inset Quotes eld
 \end_inset
 
- in case (a) and 
-\begin_inset Formula $U_{i}^{\h}=V_{i}^{\h}\backslash V\left(\left(\F\right)\cup\bigcup_{i=1}^{r}V\left(P_{i}\right)\right)$
+removing
+\begin_inset Quotes erd
 \end_inset
 
- in case (b).
- Partition each 
-\begin_inset Formula $U_{i}^{\h}$
+ vertices from 
+\begin_inset Formula $\G\cup\R$
 \end_inset
 
- into 3 equal-size sets 
-\begin_inset Formula $W_{\left(i,\bar{\h}\right)}^{1},W_{\left(i,\h\right)}^{2},W_{\left(i,\bar{\h}\right)}^{3}$
+, gradually making the remaining graph easier to deal with.
+ So, remove from each 
+\begin_inset Formula $V_{\bi}$
 \end_inset
 
- uniformly at random (if 
-\begin_inset Formula $3\nmid\left|U_{i}^{\h}\right|$
+ all vertices used in 
+\begin_inset Formula $\F\backslash\left(X\cup Y\right)$
 \end_inset
 
- then allow one or two of the parts to have an extra vertex).
- Each of the pairs 
-\begin_inset Formula $\left(W_{j}^{i},W_{j}^{i+1}\right)$
+.
+ Update 
+\begin_inset Formula $n$
 \end_inset
 
- is a.a.s.
- 
-\begin_inset Formula $\left(\varepsilon,\delta/2\right)$
+ to be the number of vertices not used to embed 
+\begin_inset Formula $\F\backslash\left(X\cup Y\right)$
 \end_inset
 
--super-regular, by the following lemma.
+ (previously 
+\begin_inset Formula $\left(1-\phi+2\psi\right)n$
+\end_inset
+
+), and update each 
+\begin_inset Formula $s_{\bi}$
+\end_inset
+
+ to still satisfy 
+\begin_inset Formula $s_{\bi}n=\left|V_{\bi}\right|$
+\end_inset
+
+ (this does not change 
+\begin_inset Formula $s_{\bi}$
+\end_inset
+
+ asymptotically).
+ We now have 
+\begin_inset Formula 
+\[
+\left|Z_{\bi,\bj}\right|\sim\psi\left(1-\phi\right)/\left(1-\phi+2\psi\right)s_{\bi}s_{\bj}n=s_{\bi}s_{\bj}n/\left(k+1\right).
+\]
+
+\end_inset
+
+For 
+\begin_inset Formula $\bi=\left(i,\h\right)$
+\end_inset
+
+, also let 
+\begin_inset Formula $W_{i}^{\h}=W_{\bi}=V_{\bi}\backslash\left(X\cup Y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Here and in future phases, it is critical that after removing vertices from
+ the 
+\begin_inset Formula $V_{\bi}$
+\end_inset
+
+ we do not destroy super-regularity.
+ This will mostly be guaranteed by making choices randomly and applying
+ the following lemma.
 \end_layout
 
 \begin_layout Lemma
@@ -3541,11 +3305,12 @@ name "lem:random-preserves-superregular"
 
 \end_inset
 
-For some 
+Fix any 
 \begin_inset Formula $a>0$
 \end_inset
 
-, let 
+.
+ Let 
 \begin_inset Formula $\left(V_{1},V_{2}\right)$
 \end_inset
 
@@ -3604,7 +3369,7 @@ Since
 \begin_inset Formula $\left(\varepsilon,\delta/2\right)$
 \end_inset
 
--semi-super-regular.
+-dense.
  Each vertex in 
 \begin_inset Formula $W_{\h}$
 \end_inset
@@ -3630,1085 +3395,68 @@ Since
 \end_layout
 
 \begin_layout Standard
-Now, we deal with the annoying special pairs in case (b).
- For small 
-\begin_inset Formula $\tau$
-\end_inset
-
-, there are at most 
-\begin_inset Formula 
-\[
-\tau\left(\left(1-\phi\right)n/k+1\right)\le\delta an/\left(4k\right)
-\]
-
-\end_inset
-
-such.
- Consider a maximal collection 
-\begin_inset Formula $P_{1},\dots,P_{m}$
-\end_inset
-
- of special paths in 
-\begin_inset Formula $\G\cup\R_{2}$
-\end_inset
-
- connecting annoying special pairs.
- Let 
-\begin_inset Formula $\G'=\G\backslash\bigcup_{i=1}^{m}P_{i}$
-\end_inset
-
- (we are deleting vertices, not just edges).
- Since we have removed fewer than 
-\begin_inset Formula $\delta an/4$
-\end_inset
-
- vertices, 
-\begin_inset Formula $\G'$
-\end_inset
-
- has minimum degree at least 
-\begin_inset Formula $\delta an/4$
-\end_inset
-
-.
- Now, suppose there is some annoying special pair 
-\begin_inset Formula $\left(\x,\y\right)$
-\end_inset
-
- left unconnected.
- Let 
-\begin_inset Formula $\x\dots u$
-\end_inset
-
- be a path of length 
-\begin_inset Formula $k-3$
-\end_inset
-
- in 
-\begin_inset Formula $\G$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $U$
-\end_inset
-
- be a set of 
-\begin_inset Formula $\delta an/8$
-\end_inset
-
- neighbours of 
-\begin_inset Formula $u$
-\end_inset
-
- and let 
-\begin_inset Formula $Y$
-\end_inset
-
- be a set of 
-\begin_inset Formula $\delta an/8$
-\end_inset
-
- neighbours of 
-\begin_inset Formula $Y$
-\end_inset
-
-, in such a way that 
-\begin_inset Formula $U$
-\end_inset
-
- and 
-\begin_inset Formula $Y$
-\end_inset
-
- are disjoint with each other and with our new 
-\begin_inset Formula $\left(k-3\right)$
-\end_inset
-
--path (we can do this because all the vertices we have used in the 
-\begin_inset Formula $P_{i}$
-\end_inset
-
- and the new path comprise at most 
-\begin_inset Formula $\delta an/4$
-\end_inset
-
- vertices).
- Now, note that (if 
-\begin_inset Formula $\c_{2}$
-\end_inset
-
- is large), there is a.a.s.
- an edge in 
-\begin_inset Formula $\R_{2}$
-\end_inset
-
- between any pair of disjoint sets of size 
-\begin_inset Formula $\delta an/4$
-\end_inset
-
- (the proof of this is basically identical to the proof of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:bipartite-matching"
-
-\end_inset
-
-).
-
- 
-\lang english
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{comment}
-\end_layout
-
-\end_inset
-
- To see this, note that the probability a particular two such sets do not
- have an edge between them is 
-\begin_inset Formula $\left(1-p\right)^{\left(\delta an/4\right)^{2}}\le e^{-\c_{3}\left(\delta a/4\right)^{2}n}$
-\end_inset
-
-, but there are at most 
-\begin_inset Formula $2^{2n}$
-\end_inset
-
- such pairs of sets, so we can prove our desired claim with the union bound.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{comment}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-But such an edge between 
-\begin_inset Formula $U$
-\end_inset
-
- and 
-\begin_inset Formula $Y$
-\end_inset
-
- would allow us to augment our collection of paths 
-\begin_inset Formula $P_{1},\dots,P_{m}$
-\end_inset
-
-, contradicting its maximality.
- Therefore a.a.s.
- we can connect all the annoying special pairs.
- Let 
-\begin_inset Formula $S_{j}^{i}=W_{j}^{i}\backslash\bigcup_{i=1}^{m}P_{i}$
-\end_inset
-
-, so the pairs 
-\begin_inset Formula $\left(S_{j}^{i},S_{j}^{i+1}\right)$
-\end_inset
-
- are 
-\begin_inset Formula $\left(\varepsilon/2,\delta/4\right)$
-\end_inset
-
--super-regular.
- In case (a), we can just let 
-\begin_inset Formula $S_{j}^{i}=W_{j}^{i}$
-\end_inset
-
-.
- For large 
-\begin_inset Formula $k$
-\end_inset
-
-, in both cases 
-\begin_inset Formula $2\left|S_{j}^{0}\right|=2\left|S_{j}^{4}\right|\le\left|S_{j}^{1}\right|,\left|S_{j}^{3}\right|$
-\end_inset
-
-, and there is 
-\begin_inset Formula $a'=a'\left(a,\gamma,k\right)$
-\end_inset
-
- such that each 
-\begin_inset Formula $a'n\le\left|S_{j}^{\h}\right|\le bn$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-After some adjustments using 
-\begin_inset Formula $\R_{3}$
-\end_inset
-
-, the 
-\begin_inset Quotes eld
-\end_inset
-
-cluster-paths
-\begin_inset Quotes erd
-\end_inset
-
- 
-\begin_inset Formula $\left(S_{j}^{0},S_{j}^{1},S_{j}^{2},S_{j}^{3},S_{j}^{4}\right)$
-\end_inset
-
- will eventually decompose into our required special paths, using 
-\begin_inset Formula $\R_{4}$
-\end_inset
-
- and the following lemma.
- (We also impose that 
-\begin_inset Formula $k$
-\end_inset
-
- is even).
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:connect-within"
-
-\end_inset
-
-For any 
-\begin_inset Formula $\delta,a>0$
-\end_inset
-
- and any even integer 
-\begin_inset Formula $k>6$
-\end_inset
-
-, there is 
-\begin_inset Formula $\varepsilon=\varepsilon\left(\delta\right)>0$
-\end_inset
-
- and 
-\begin_inset Formula $\c=\c\left(k,\delta\right)$
-\end_inset
-
- such that the following holds.
- Let 
-\begin_inset Formula $\G$
-\end_inset
-
- be a graph on the vertex set 
-\begin_inset Formula $\range n$
-\end_inset
-
-, together with a vertex partition 
-\begin_inset Formula $\range n=V_{0}\cup V_{1}\cup V_{2}\cup V_{3}\cup V_{4}$
-\end_inset
-
-, such that each 
-\begin_inset Formula $\left(V_{i},V_{i+1}\right)$
-\end_inset
-
- is 
-\begin_inset Formula $\left(\varepsilon,\delta\right)$
-\end_inset
-
--superregular.
- Suppose each vertex 
-\begin_inset Formula $\x\in V_{0}$
-\end_inset
-
- is bijectively paired with a vertex 
-\begin_inset Formula $\y\in V_{4}$
-\end_inset
-
-, comprising a special pair 
-\begin_inset Formula $\left(\x,\y\right)$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $n_{i}=\left|V_{i}\right|$
-\end_inset
-
- and suppose 
-\begin_inset Formula $\left(k-1\right)n_{0}=n_{1}+n_{2}+n_{3}$
-\end_inset
-
-, 
-\begin_inset Formula $an\le n_{i}$
-\end_inset
-
-, and 
-\begin_inset Formula $2n_{0}\le n_{1},n_{3}$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $\R\in\GG\left(n,\c/n\right)$
-\end_inset
-
-.
- Then 
-\begin_inset Formula $\G\cup\R$
-\end_inset
-
- a.a.s.
- contains a spanning vertex-disjoint collection of 
-\begin_inset Formula $n_{0}$
-\end_inset
-
- special paths.
-\end_layout
-
-\begin_layout Standard
-After some adjustments, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:connect-within"
-
-\end_inset
-
- will in turn follow from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:connect-blowup"
-
-\end_inset
-
- (upcoming shortly), which is proved with the blow-up lemma.
-\end_layout
-
-\begin_layout Lemma
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Blow-up Lemma 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "KSS97"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
 Let 
-\begin_inset Formula $\delta,\Delta>0$
+\begin_inset Formula $X_{\bi,\bj}$
 \end_inset
 
  and 
-\begin_inset Formula $r\in\NN$
-\end_inset
-
-.
- There is 
-\begin_inset Formula $\varepsilon=\varepsilon\left(r,\delta,\Delta\right)$
-\end_inset
-
- such that the following holds.
- Let 
-\begin_inset Formula $C$
-\end_inset
-
- be a graph on the vertex set 
-\begin_inset Formula $\range r$
-\end_inset
-
-, and let 
-\begin_inset Formula $n_{1},\dots,n_{r}$
-\end_inset
-
- be arbitrary positive integers.
- Let 
-\begin_inset Formula $V_{1},\dots,V_{r}$
-\end_inset
-
- be pairwise disjoint sets of sizes 
-\begin_inset Formula $n_{1},\dots,n_{r}$
-\end_inset
-
-.
- We construct two graphs on the vertex set 
-\begin_inset Formula $V=\bigcup_{i=1}^{r}V_{i}$
-\end_inset
-
- as follows.
- The first graph 
-\begin_inset Formula $b\left(C\right)$
-\end_inset
-
- (the 
-\begin_inset Quotes eld
-\end_inset
-
-complete blow-up
-\begin_inset Quotes erd
-\end_inset
-
-) is obtained by putting the complete bipartite graph between 
-\begin_inset Formula $V_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $V_{j}$
-\end_inset
-
- whenever 
-\begin_inset Formula $\left\{ i,j\right\} $
-\end_inset
-
- is an edge in 
-\begin_inset Formula $C$
-\end_inset
-
-.
- The second graph 
-\begin_inset Formula $b_{\varepsilon,\delta}\left(C\right)$
-\end_inset
-
- (the 
-\begin_inset Quotes eld
-\end_inset
-
-super-regular blow-up
-\begin_inset Quotes erd
-\end_inset
-
-) is obtained by putting edges between each such 
-\begin_inset Formula $V_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $V_{j}$
-\end_inset
-
- such that 
-\begin_inset Formula $\left(V_{i},V_{j}\right)$
-\end_inset
-
- is an 
-\begin_inset Formula $\left(\varepsilon,\delta\right)$
-\end_inset
-
--super-regular pair.
- If a graph 
-\begin_inset Formula $H$
-\end_inset
-
- with maximum degree bounded by 
-\begin_inset Formula $\Delta$
-\end_inset
-
- can be embedded into 
-\begin_inset Formula $b\left(C\right)$
-\end_inset
-
-, then it can be embedded into 
-\begin_inset Formula $b_{\varepsilon,\delta}\left(C\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Our promised lemma is as follows.
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:connect-blowup"
-
-\end_inset
-
-For any 
-\begin_inset Formula $\delta>0$
-\end_inset
-
-, there is 
-\begin_inset Formula $\varepsilon=\varepsilon\left(\delta\right)>0$
-\end_inset
-
- such that the following holds.
- Let 
-\begin_inset Formula $\G$
-\end_inset
-
- be a graph with a vertex partition 
-\begin_inset Formula $V\left(\G\right)=V_{0}\cup V_{1}\cup V_{2}\cup V_{3}\cup V_{4}$
-\end_inset
-
-, such that each 
-\begin_inset Formula $\left(V_{i},V_{i+1}\right)$
-\end_inset
-
- is 
-\begin_inset Formula $\left(\varepsilon,\delta\right)$
-\end_inset
-
--superregular.
- Suppose each vertex 
-\begin_inset Formula $\x\in V_{0}$
-\end_inset
-
- is bijectively paired with a vertex 
-\begin_inset Formula $\y\in V_{4}$
-\end_inset
-
-, comprising a special pair 
-\begin_inset Formula $\left(\x,\y\right)$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $n_{i}=\left|V_{i}\right|$
-\end_inset
-
- and suppose 
-\begin_inset Formula $\left(k-1\right)n_{0}=n_{1}+n_{2}+n_{3}$
-\end_inset
-
-, 
-\begin_inset Formula $n_{0}=n_{4}\le n_{1},n_{3}$
-\end_inset
-
- and 
-\begin_inset Formula $n_{0}+n_{2}=n_{1}+n_{3}$
-\end_inset
-
- for some even 
-\begin_inset Formula $k$
-\end_inset
-
-.
- Then 
-\begin_inset Formula $\G$
-\end_inset
-
- contains a spanning vertex-disjoint collection of 
-\begin_inset Formula $n_{0}$
-\end_inset
-
- special paths.
-\end_layout
-
-\begin_layout Proof
-Let 
-\begin_inset Formula $W_{0}$
+\begin_inset Formula $Y_{\bi,\bj}$
 \end_inset
 
  be the set of 
-\begin_inset Formula $n_{0}$
-\end_inset
-
- special pairs, and let 
-\begin_inset Formula $W_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $W_{2}$
-\end_inset
-
- be additional 
-\begin_inset Formula $n_{0}$
-\end_inset
-
--element sets (disjoint to everything so far).
- We construct a new multipartite graph 
-\begin_inset Formula $b_{\varepsilon,\delta}\left(C\right)$
-\end_inset
-
- on the vertex set 
-\begin_inset Formula $W_{0}\cup W_{1}\cup W_{2}\cup V_{1}\cup V_{2}\cup V_{3}$
-\end_inset
-
- as follows.
- Every vertex of 
-\begin_inset Formula $W_{i}$
-\end_inset
-
- is adjacent to every vertex of 
-\begin_inset Formula $W_{j}$
-\end_inset
-
- (
-\begin_inset Formula $i\ne j$
-\end_inset
-
-).
- A vertex 
-\begin_inset Formula $\left(\x,\y\right)\in W_{0}$
-\end_inset
-
- is adjacent to a vertex 
-\begin_inset Formula $v\in V_{1}$
-\end_inset
-
- if 
 \begin_inset Formula $\x$
 \end_inset
 
- is adjacent to 
-\begin_inset Formula $v$
-\end_inset
-
- in 
-\begin_inset Formula $\G$
-\end_inset
-
-, and 
-\begin_inset Formula $\left(\x,\y\right)$
-\end_inset
-
- is adjacent to 
-\begin_inset Formula $v\in W_{3}$
-\end_inset
-
- if 
+-type and 
 \begin_inset Formula $\y$
 \end_inset
 
- is adjacent to 
-\begin_inset Formula $v$
+-type vertices in pairs in 
+\begin_inset Formula $Z_{\bi,\bj}$
 \end_inset
 
- in 
-\begin_inset Formula $G$
+, respectively.
+ An immediate consequence of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:random-preserves-superregular"
+
 \end_inset
 
-.
- The adjacencies between 
-\begin_inset Formula $V_{1}$
+ is that each 
+\begin_inset Formula $\left(X_{\left(i,\h\right),\bj},W_{i}^{\bar{\h}}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(W_{i}^{1},W_{i}^{2}\right)$
 \end_inset
 
  and 
-\begin_inset Formula $V_{2}$
+\begin_inset Formula $\left(W_{i}^{\h},Y_{\bj,\left(i,\bar{\h}\right)}\right)$
 \end_inset
 
-, and between 
-\begin_inset Formula $V_{2}$
+ are 
+\begin_inset Formula $\left(\varepsilon,\delta/2\right)$
 \end_inset
 
- and 
-\begin_inset Formula $V_{3}$
-\end_inset
-
-, are as in 
-\begin_inset Formula $\G$
-\end_inset
-
-.
- Then 
-\begin_inset Formula $b_{\varepsilon,\delta}\left(C\right)$
-\end_inset
-
- is a 
-\begin_inset Formula $\left(\varepsilon,\delta\right)$
-\end_inset
-
--super-regular blow-up of the following graph.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
+-super-regular.
 \end_layout
 
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tikzpicture}[scale=1]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-def
-\backslash
-labelsep{0.2}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (W0) at (0,0){};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (W1) at (-1,1){};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (W2) at (-1,-1){};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (V1) at (1,1){};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (V2) at (2,0){};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (V3) at (1,-1){};
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-draw (W0) -- (W1) -- (W2) -- (W0) -- (V1) -- (V2) -- (V3) -- (W0);
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node at (-2,0) {$C=$};
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tikzpicture}
-\backslash
-end{center}
-\end_layout
+\begin_layout Subsubsection
+Embedding special paths not compatible with the super-regular partition
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:embed-paths-between"
 
 \end_inset
 
-Now, let 
-\begin_inset Formula $H$
-\end_inset
 
- be a disjoint union of 
-\begin_inset Formula $n_{0}$
-\end_inset
-
- copies of the following graph with maximum degree 4.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tikzpicture}[scale=1]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-def
-\backslash
-labelsep{0.2}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (W0) at (0,0){};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (W1) at (-1,1){};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (W2) at (-1,-1){};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (V1) at (1,1){};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (V2m) at (1,0.5){};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (V2p) at (1,-0.5){};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node[vertex] (V3) at (1,-1){};
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-draw (V2p) -- (V3) -- (W0) -- (W1) -- (W2) -- (W0) -- (V1) -- (V2m);
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-draw [dashed] (V2p) -- (V2m);
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node [align=left,anchor=west] at (1.3,0) {$
-\backslash
-left.
-\backslash
-rule{0pt}{40pt}
-\backslash
-right
-\backslash
-}
-\backslash
-text{path of length $k-1$}$};
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node at (-2,0) {$H'=$};
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tikzpicture}
-\backslash
-end{center}
-\end_layout
-
-\end_inset
-
-The conditions on the 
-\begin_inset Formula $n_{i}$
-\end_inset
-
- ensure that 
-\begin_inset Formula $H$
-\end_inset
-
- is embeddable in the complete blow-up 
-\begin_inset Formula $b\left(C\right)$
-\end_inset
-
-.
- Specifically, to embed each copy of 
-\begin_inset Formula $H'$
-\end_inset
-
- in 
-\begin_inset Formula $b\left(C\right)$
-\end_inset
-
-, embed the triangular part using the clusters 
-\begin_inset Formula $W_{i}$
-\end_inset
-
-, then embed the 
-\begin_inset Formula $\left(k-1\right)$
-\end_inset
-
--path zigzagging through the clusters 
-\begin_inset Formula $V_{i}$
-\end_inset
-
-.
- By the blow-up lemma, for small 
-\begin_inset Formula $\varepsilon$
-\end_inset
-
- the super-regular blow-up 
-\begin_inset Formula $b_{\varepsilon,\delta}\left(C\right)$
-\end_inset
-
- contains 
-\begin_inset Formula $H$
-\end_inset
-
- as well.
- This embedding of 
-\begin_inset Formula $H$
-\end_inset
-
- into 
-\begin_inset Formula $b_{\varepsilon,\delta}\left(C\right)$
-\end_inset
-
- must be of the same type as our embedding into 
-\begin_inset Formula $b\left(C\right)$
-\end_inset
-
-: the triangular part of 
-\begin_inset Formula $H'$
-\end_inset
-
- can only be embedded using the clusters 
-\begin_inset Formula $W_{i}$
-\end_inset
-
-, and embedding all 
-\begin_inset Formula $n_{0}$
-\end_inset
-
- of these triangular parts uses up all the vertices in the 
-\begin_inset Formula $W_{i}$
-\end_inset
-
-.
- Therefore the embeddings of the 
-\begin_inset Formula $k$
-\end_inset
-
--cycle part of 
-\begin_inset Formula $H'$
-\end_inset
-
- give us the special paths in 
-\begin_inset Formula $G$
-\end_inset
-
- we require.
-\end_layout
-
-\begin_layout Proof
-
-\series bold
-This seems like a silly way to apply the blow-up lemma...
- I add the 3-cycle just to make sure my 
-\begin_inset Formula $\boldsymbol{k}$
-\end_inset
-
--cycles are embedded in the 
-\begin_inset Quotes eld
-\end_inset
-
-right
-\begin_inset Quotes erd
-\end_inset
-
- way.
- Is there a better way to guarantee this?
 \end_layout
 
 \begin_layout Standard
-It remains to explain the 
-\begin_inset Quotes eld
-\end_inset
-
-adjustments
-\begin_inset Quotes erd
-\end_inset
-
- necessary to apply the above two lemmas.
- For both, we make use of the following lemma 
-\begin_inset Formula $O\left(1\right)$
-\end_inset
-
- times, repeatedly removing sets of 
-\begin_inset Quotes eld
-\end_inset
-
-adjusting
-\begin_inset Quotes erd
-\end_inset
-
- special paths.
+Next, we want to eliminate almost all special pairs which are not between
+ clusters of a super-regular pair.
+ This is achieved using the following lemma (which will be used again later).
 \end_layout
 
 \begin_layout Lemma
@@ -4719,7 +3467,7 @@ name "lem:adjusting-paths"
 \end_inset
 
 For any 
-\begin_inset Formula $\delta<0$
+\begin_inset Formula $\delta>0$
 \end_inset
 
 , 
@@ -4731,15 +3479,14 @@ For any
 \end_inset
 
  there is 
-\begin_inset Formula $\delta'=\delta'\left(\delta\right)>0$
-\end_inset
-
- and 
 \begin_inset Formula $\c=\c\left(\delta,f,k\right)$
 \end_inset
 
  such that the following holds.
- Let 
+\end_layout
+
+\begin_layout Lemma
+Let 
 \begin_inset Formula $\G$
 \end_inset
 
@@ -4752,7 +3499,7 @@ For any
 \end_inset
 
  clusters, such that some of the pairs of clusters 
-\begin_inset Formula $\left(V,W\right)$
+\begin_inset Formula $\left(U,W\right)$
 \end_inset
 
  are 
@@ -4761,37 +3508,44 @@ For any
 
 -super-regular.
  Consider any sequence of clusters 
-\begin_inset Formula $V_{0},\dots,V_{k}$
+\begin_inset Formula $X,V_{1},\dots,V_{r},Y$
 \end_inset
 
-, such that 
-\begin_inset Formula $\left(V_{0},V_{1}\right)$
+, and any partition 
+\begin_inset Formula $t_{1}+\dots+t_{r}=k-1$
+\end_inset
+
+ (with each 
+\begin_inset Formula $t_{i}\in\NN$
+\end_inset
+
+), such that 
+\begin_inset Formula $\left|V_{i}\right|\ge t_{i}n$
 \end_inset
 
  and 
-\begin_inset Formula $\left(V_{k-1},V_{k}\right)$
+\begin_inset Formula $\left|X\right|,\left|Y\right|\ge n$
+\end_inset
+
+.
+ Suppose that 
+\begin_inset Formula $\left(X,V_{1}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(V_{r},Y\right)$
 \end_inset
 
  are 
 \begin_inset Formula $\left(\varepsilon,\delta\right)$
 \end_inset
 
--super-regular pairs, and such that if a cluster appears in the sequence
- 
-\begin_inset Formula $t$
-\end_inset
-
- times, then it has at least 
-\begin_inset Formula $tn$
-\end_inset
-
- vertices.
- Suppose further that each 
-\begin_inset Formula $\x\in V_{0}$
+-super-regular pairs, and suppose further that each 
+\begin_inset Formula $\x\in X$
 \end_inset
 
  is bijectively paired with a vertex 
-\begin_inset Formula $\y\in V_{k}$
+\begin_inset Formula $\y\in Y$
 \end_inset
 
 , comprising a special pair 
@@ -4800,69 +3554,58 @@ For any
 
 .
  Let 
-\begin_inset Formula $\R\in\GG\left(n,\c/n\right)$
+\begin_inset Formula $\R\in\GG\left(N,\c/N\right)$
 \end_inset
 
 .
- Then for any 
+\end_layout
+
+\begin_layout Lemma
+Then, for any 
 \begin_inset Formula $m\le fn$
 \end_inset
 
-, there are 
-\begin_inset Formula $m$
-\end_inset
-
- vertex-disjoint special paths of the form 
-\begin_inset Formula $v_{1}\dots v_{k}$
-\end_inset
-
- (
-\begin_inset Formula $v_{i}\in V_{i}$
-\end_inset
-
-) in 
+, in 
 \begin_inset Formula $\G\cup\R$
 \end_inset
 
+ there are 
+\begin_inset Formula $m$
+\end_inset
+
+ vertex-disjoint special paths, each with 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ vertices in each 
+\begin_inset Formula $V_{i}$
+\end_inset
+
 .
- Let 
-\begin_inset Formula $P$
+ These paths can be chosen such that after their removal, each 
+\begin_inset Formula $\left(U,W\right)$
 \end_inset
 
- be the union of our special paths; we can choose these paths in such a
- way that 
-\begin_inset Formula $\left(V\backslash P,W\backslash P\right)$
-\end_inset
-
- is 
-\begin_inset Formula $\left(\varepsilon,\delta'\right)$
-\end_inset
-
--super-regular for each 
-\begin_inset Formula $\left(V,W\right)$
-\end_inset
-
- that was 
+ that was previously 
 \begin_inset Formula $\left(\varepsilon,\delta\right)$
 \end_inset
 
--super-regular (in 
-\begin_inset Formula $\G$
+-super-regular is now 
+\begin_inset Formula $\left(\varepsilon,\delta/4\right)$
 \end_inset
 
-).
+-super-regular.
 \end_layout
 
 \begin_layout Standard
-We also give a simplified form of the same lemma, which we will use in the
- proof of 
+It is convenient to prove 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:adjusting-paths"
 
 \end_inset
 
-.
+ using a similar, but simpler, version of the lemma.
 \end_layout
 
 \begin_layout Lemma
@@ -4894,11 +3637,11 @@ For any
 \end_inset
 
  be a graph on the vertex set 
-\begin_inset Formula $\range{kn}$
+\begin_inset Formula $\range{\left(k+1\right)n}$
 \end_inset
 
 , together with a vertex partition 
-\begin_inset Formula $\range{kn}=V_{0}\cup\dots\cup V_{k}$
+\begin_inset Formula $\range{\left(k+1\right)n}=X\cup V_{1}\dots\cup V_{k-1}\cup Y$
 \end_inset
 
 .
@@ -4928,11 +3671,11 @@ For any
 
 ).
  Suppose further that each 
-\begin_inset Formula $\x\in V_{0}$
+\begin_inset Formula $\x\in X$
 \end_inset
 
  is bijectively paired with a vertex 
-\begin_inset Formula $\y\in V_{k}$
+\begin_inset Formula $\y\in Y$
 \end_inset
 
 , comprising a special pair 
@@ -4951,7 +3694,7 @@ For any
 \end_inset
 
  vertex-disjoint special paths of the form 
-\begin_inset Formula $v_{1}\dots v_{k}$
+\begin_inset Formula $xv_{1}\dots v_{k-1}y$
 \end_inset
 
  (
@@ -5059,7 +3802,11 @@ reference "lem:bipartite-matching"
 \end_inset
 
 ).
- We can assume that 
+ For each 
+\begin_inset Formula $j$
+\end_inset
+
+, we can assume that 
 \begin_inset Formula $v_{j}^{1},\dots,v_{j}^{\gamma n}$
 \end_inset
 
@@ -5147,68 +3894,12 @@ reference "lem:adjusting-paths"
 
 \end_inset
 
-First note that we can assume each 
-\begin_inset Formula $V_{i}$
+Let 
+\begin_inset Formula $V_{0}=X$
 \end_inset
 
- is distinct.
- For, we can take every cluster that appears multiple times (say 
-\begin_inset Formula $t$
-\end_inset
-
- times) in the sequence and split that cluster into 
-\begin_inset Formula $t$
-\end_inset
-
- equal-sized subclusters uniformly at random.
- Since 
-\begin_inset Formula $t\le k=O\left(1\right)$
-\end_inset
-
-, by 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:random-preserves-superregular"
-
-\end_inset
-
- super-regularity is a.a.s.
- preserved by these splits.
- That is, if 
-\begin_inset Formula $\left(V,W\right)$
-\end_inset
-
- was 
-\begin_inset Formula $\left(\varepsilon,\delta\right)$
-\end_inset
-
--super-regular in 
-\begin_inset Formula $\G$
-\end_inset
-
-, and 
-\begin_inset Formula $V'\subseteq V$
-\end_inset
-
-, 
-\begin_inset Formula $W'\subseteq W$
-\end_inset
-
- are clusters after the splits, then 
-\begin_inset Formula $\left(V',W'\right)$
-\end_inset
-
- is a.a.s.
- 
-\begin_inset Formula $\left(\varepsilon,\delta/2\right)$
-\end_inset
-
--super-regular.
-\end_layout
-
-\begin_layout Proof
-So we proceed with distinct 
-\begin_inset Formula $V_{i}$
+ and 
+\begin_inset Formula $V_{k}=Y$
 \end_inset
 
 .
@@ -5221,20 +3912,80 @@ So we proceed with distinct
 \end_inset
 
  of size 
-\begin_inset Formula $\left(\left|V_{i}\right|-m\right)/2$
+\begin_inset Formula $\left(\left|V_{i}\right|-t_{i}m\right)/2$
 \end_inset
 
 .
- Let 
-\begin_inset Formula $U_{i}=V_{i}\backslash D_{i}$
+ Divide each 
+\begin_inset Formula $V_{i}\backslash D_{i}$
 \end_inset
 
- so that 
-\begin_inset Formula $\left|V_{i}\backslash D_{i}\right|\ge n/2$
+ (
+\begin_inset Formula $1\le i\le k-1$
+\end_inset
+
+) randomly into 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ equal-sized pieces and order the resulting 
+\begin_inset Formula $k-1$
+\end_inset
+
+ clusters as 
+\begin_inset Formula $U_{1},\dots,U_{k-1}$
+\end_inset
+
+ such that 
+\begin_inset Formula $U_{1}\subseteq V_{1}$
 \end_inset
 
  and 
-\begin_inset Formula $m\le2f\left|V_{i}\backslash D_{i}\right|/\left(1+f\right)$
+\begin_inset Formula $U_{k-1}\subseteq V_{r}$
+\end_inset
+
+.
+ By 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:random-preserves-superregular"
+
+\end_inset
+
+, 
+\begin_inset Formula $\left(X,U_{1}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(U_{k-1},Y\right)$
+\end_inset
+
+ are 
+\begin_inset Formula $\left(\varepsilon,\delta/2\right)$
+\end_inset
+
+-super-regular.
+ Each 
+\begin_inset Formula $\left|U_{i}\right|\ge n/\left(2\left(k-1\right)\right)$
+\end_inset
+
+ and also note 
+\begin_inset Formula 
+\begin{align*}
+\left|V_{i}\backslash D_{i}\right| & =\left|V_{i}\right|/2+t_{i}m/2,\\
+m & \le f\left|V_{i}\right|/t_{i}\\
+ & \le2f\left|V_{i}\backslash D_{i}\right|/t_{i}-fm,\\
+\left(1+f\right)m & \le2f\left|V_{i}\backslash D_{i}\right|/t_{i}.
+\end{align*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $f'=2f/\left(1+f\right)$
+\end_inset
+
+ so each 
+\begin_inset Formula $f'\left|U_{i}\right|\ge m$
 \end_inset
 
 .
@@ -5245,10 +3996,6 @@ reference "lem:easy-adjusting-paths"
 
 \end_inset
 
- with 
-\begin_inset Formula $g=2f/\left(1+f\right)$
-\end_inset
-
  to find 
 \begin_inset Formula $m$
 \end_inset
@@ -5257,13 +4004,17 @@ reference "lem:easy-adjusting-paths"
 \begin_inset Formula $\G\cup\R$
 \end_inset
 
- through the clusters 
-\begin_inset Formula $V_{0}\backslash D_{0},\dots V_{k}\backslash D_{k}$
+ with the required intersection with each 
+\begin_inset Formula $V_{i}$
 \end_inset
 
 .
- Note that each 
-\begin_inset Formula $\left|V_{i}\backslash P\right|=2\left|D_{i}\right|$
+ After removing these paths, there are 
+\begin_inset Formula $2\left|D_{i}\right|$
+\end_inset
+
+ vertices left in each 
+\begin_inset Formula $V_{i}$
 \end_inset
 
 .
@@ -5279,7 +4030,7 @@ reference "lem:easy-adjusting-paths"
 \begin_inset Formula $\left(V_{i},W\right)$
 \end_inset
 
-), by 
+) in the original graph, by 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:random-preserves-superregular"
@@ -5315,291 +4066,1998 @@ reference "lem:random-preserves-superregular"
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Proof of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:connect-within"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-First consider the case where 
-\begin_inset Formula $n_{0}+n_{2}>n_{1}+n_{3}$
-\end_inset
-
-.
- By the constraints on the 
-\begin_inset Formula $n_{i}$
-\end_inset
-
-, we have 
-\begin_inset Formula $n_{2}\le\left(k-5\right)n_{0}$
-\end_inset
-
- and 
-\begin_inset Formula $n_{0}+n_{2}-\left(n_{1}+n_{3}\right)\le\left(k-6\right)n_{0}$
-\end_inset
-
-.
- With 
-\begin_inset Formula $f=\frac{k-6}{k-4}$
-\end_inset
-
-, we can find 
-\begin_inset Formula $\floor{\frac{n_{0}+n_{2}-\left(n_{1}+n_{3}\right)}{k-4}}$
-\end_inset
-
- disjoint special paths through the clusters 
-\begin_inset Formula 
-\[
-V_{0},V_{1},\underbrace{V_{2},\dots,,V_{2}}_{k-3},V_{3},V_{4}.
-\]
-
-\end_inset
-
-Let 
-\begin_inset Formula $q=\left(k-4\right)\left\langle \frac{n_{0}+n_{2}-\left(n_{1}+n_{3}\right)}{k-4}\right\rangle $
-\end_inset
-
- (where 
-\begin_inset Formula $\left\langle \cdot\right\rangle $
-\end_inset
-
- gives the fractional part of a real number).
- From the vertices that remain after removing the paths so far, apply 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:adjusting-paths"
-
-\end_inset
-
- again with a small 
-\begin_inset Formula $\sigma$
-\end_inset
-
- to find a single path through the clusters
-\begin_inset Formula 
-\[
-V_{0},\underbrace{V_{1},\dots,V_{1}}_{\left(k-2-q\right)/2},\underbrace{V_{2},\dots,V_{2}}_{\left(k-2+q\right)/2},V_{3},V_{4}
-\]
-
-\end_inset
-
-or through
-\begin_inset Formula 
-\[
-V_{0},V_{1},\underbrace{V_{2},\dots,V_{2}}_{\left(k-2+q\right)/2},\underbrace{V_{3},\dots,V_{3}}_{\left(k-2-q\right)/2},V_{4}
-\]
-
-\end_inset
-
-(one of these is possible).
- After removing all the adjusting paths the conditions for 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:connect-blowup"
-
-\end_inset
-
- are satisfied, and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:connect-blowup"
-
-\end_inset
-
- ensures that we can finish connecting the special pairs.
-\end_layout
-
-\begin_layout Proof
-The case 
-\begin_inset Formula $n_{0}+n_{2}<n_{1}+n_{3}$
-\end_inset
-
- is almost identical.
- Remove many paths through the clusters 
-\begin_inset Formula 
-\[
-V_{0},V_{1},\underbrace{V_{3},\dots,,V_{3}}_{k-2},V_{4},
-\]
-
-\end_inset
-
-then through the clusters
-\begin_inset Formula 
-\[
-V_{0},\underbrace{V_{1},\dots,,V_{1}}_{k-2},V_{3},V_{4},
-\]
-
-\end_inset
-
-then clean up by removing a single path before applying 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:connect-blowup"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Now, we conclude the proof of 
+Now we return to the proof of 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:main-theorem"
 
 \end_inset
 
-: recall that we are trying to remove paths from the clusters 
-\begin_inset Formula $S_{j}^{i}$
+.
+ For each 
+\begin_inset Formula $\bi=\left(i,\h\right)$
 \end_inset
 
- using 
-\begin_inset Formula $\R_{3}$
+ and each 
+\begin_inset Formula $\bj=\left(j,g\right)\ne\left(i,\bar{\h}\right)$
 \end_inset
 
-, in order to apply 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:connect-within"
-
+ and some very small 
+\begin_inset Formula $\xi=\xi\left(a,\delta\right)>0$
 \end_inset
 
- with 
-\begin_inset Formula $\R_{4}$
+, we want to find 
+\begin_inset Formula $\left(1-\xi\right)s_{\bi}s_{\bj}n/\left(k+1\right)$
+\end_inset
+
+ special paths connecting special pairs in 
+\begin_inset Formula $V_{\bi,\bj}$
+\end_inset
+
+, where each of these special paths has one interior vertex from 
+\begin_inset Formula $W_{i}^{\bar{\h}}$
+\end_inset
+
+, one interior vertex from 
+\begin_inset Formula $W_{j}^{g}$
+\end_inset
+
+ and the other 
+\begin_inset Formula $k-3$
+\end_inset
+
+ interior vertices from 
+\begin_inset Formula $W_{i}^{\h}$
 \end_inset
 
 .
- This proceeds in the same way as the adjusting path arguments in the proof
- of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:connect-within"
-
+ Provided 
+\begin_inset Formula $k$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-Suppose 
-\begin_inset Formula $\left|S_{j}^{1}\cup S_{j}^{2}\cup S_{j}^{3}\right|+m\ge\left(k-1\right)\left|S_{j}^{0}\right|$
+ is large we can find our desired paths with at most 
+\begin_inset Formula $\left(2q\right)^{2}$
 \end_inset
 
- and 
-\begin_inset Formula $\left|S_{r}^{1}\cup S_{r}^{2}\cup S_{r}^{3}\right|-m\le\left(k-1\right)\left|S_{j'}^{0}\right|$
-\end_inset
-
- for some 
-\begin_inset Formula $j,r$
-\end_inset
-
-, where one of these inequalities is an equality.
- Then use Lemma 
+ applications of 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:adjusting-paths"
 
 \end_inset
 
- with 
-\begin_inset Formula $f=1-a'/\left(bk\right)$
+ (splitting 
+\begin_inset Formula $\R_{2}$
 \end_inset
 
- to find 
-\begin_inset Formula $\floor{m/\left(k-3\right)}$
+ into 
+\begin_inset Formula $\left(2q\right)^{2}$
 \end_inset
 
- paths through the clusters 
-\begin_inset Formula 
-\[
-S_{r}^{0},S_{r}^{1},\underbrace{S_{j}^{2},\dots,S_{j}^{2}}_{k-3},S_{r}^{3},S_{r}^{4}.
-\]
-
-\end_inset
-
-After removing these paths (plus an additional 
-\begin_inset Quotes eld
-\end_inset
-
-cleanup path
-\begin_inset Quotes erd
-\end_inset
-
-) to obtain clusters 
-\begin_inset Formula $F_{j}^{i}$
-\end_inset
-
-, we have 
-\begin_inset Formula $\left|F_{g}^{1}\cup F_{g}^{2}\cup F_{g}^{3}\right|=\left(k-1\right)\left|F_{g}^{0}\right|$
-\end_inset
-
- for some 
-\begin_inset Formula $g\in\left\{ j,r\right\} $
-\end_inset
-
-, and still each 
-\begin_inset Formula $\left|F_{g}^{1}\right|,\left|F_{g}^{3}\right|\ge2\left|F_{g}^{0}\right|$
-\end_inset
-
-.
- After removing paths in this way 
-\begin_inset Formula $q=O\left(1\right)$
-\end_inset
-
- times, the conditions for 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:connect-within"
-
-\end_inset
-
- are satisfied for each cluster-path.
+ phases).
 \end_layout
 
 \begin_layout Standard
+Remove these paths, and update each 
+\begin_inset Formula $V_{\bi},W_{\bi},X_{\bi},Y_{\bi}X_{\bi,\bj},Y_{\bi,\bj},Z_{\bi,\bj}$
+\end_inset
 
-\series bold
-These 
+ accordingly.
+ (but we do not update 
+\begin_inset Formula $n$
+\end_inset
+
+ or the 
+\begin_inset Formula $s_{\bi}$
+\end_inset
+
+).
+ Each 
+\begin_inset Formula $\left(X_{\left(i,\h\right),\bj},W_{i}^{\bar{\h}}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(W_{i}^{1},W_{i}^{2}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(W_{i}^{\h},Y_{\bj,\left(i,\bar{\h}\right)}\right)$
+\end_inset
+
+ are 
+\begin_inset Formula $\left(\varepsilon,\delta'\right)$
+\end_inset
+
+-regular, where 
+\begin_inset Formula $\delta'=\left(\delta/2\right)/4^{\left(2q\right)^{2}}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $a'=a'\left(a\right)$
+\end_inset
+
+ give a lower bound on the sizes of the 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+: 
+\begin_inset Formula $\left|W_{\bi}\right|\ge a'n$
+\end_inset
+
+.
+ (for large 
+\begin_inset Formula $k$
+\end_inset
+
+, 
+\begin_inset Formula $a'=a^{2}/2$
+\end_inset
+
+ will do).
+\end_layout
+
+\begin_layout Standard
+Now, for every 
+\begin_inset Formula $\bi=\left(i,\h\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\bj=\left(j,g\right)\ne\left(i,\bar{\h}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left|Z_{\bi,\bj}\right|=\xi s_{\bi}s_{\bj}n/\left(k+1\right)$
+\end_inset
+
+.
+ The special pairs in all such 
+\begin_inset Formula $Z_{\bi,\bj}$
+\end_inset
+
+ comprise a total of at most 
+\begin_inset Formula $\xi n/\left(k+1\right)$
+\end_inset
+
+ special pairs.
+ For small 
+\begin_inset Formula $\xi$
+\end_inset
+
+ this is less than  
+\begin_inset Formula $\delta'a'n/\left(2\left(k-1\right)\right)$
+\end_inset
+
+ special pairs, which we deal with greedily, as follows.
+ For some such special pair 
+\begin_inset Formula $\left(\x,\y\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $\x\in X_{i}^{\h}$
+\end_inset
+
+, choose a length-
+\begin_inset Formula $\left(k-3\right)$
+\end_inset
+
+ path 
+\begin_inset Formula $\x w_{1},\dots,w_{k-3}$
+\end_inset
+
+, where the 
+\begin_inset Formula $w_{\ell}$
+\end_inset
+
+ alternate between 
+\begin_inset Formula $W_{i}^{\h}$
+\end_inset
+
+ and 
+\begin_inset Formula $W_{i}^{\bar{\h}}$
+\end_inset
+
+ with 
+\begin_inset Formula $w_{k-3}\in W_{i}^{\h}$
+\end_inset
+
+ (recall, 
+\begin_inset Formula $k$
+\end_inset
+
+ is odd).
+ Then choose a set 
+\begin_inset Formula $U_{x}\subseteq W_{i}^{\bar{\h}}$
+\end_inset
+
+ of 
+\begin_inset Formula $\delta'a'n/4$
+\end_inset
+
+ neighbours of 
+\begin_inset Formula $w_{k-3}$
+\end_inset
+
+ and a disjoint set 
+\begin_inset Formula $U_{y}\subseteq W_{j}^{\bar{g}}$
+\end_inset
+
+ of 
+\begin_inset Formula $\delta'a'n/4$
+\end_inset
+
+ neighbours of 
+\begin_inset Formula $\y$
+\end_inset
+
+, where 
+\begin_inset Formula $\y\in V_{j}^{g}$
+\end_inset
+
+.
+ Now, note that (if 
+\begin_inset Formula $\c_{3}$
+\end_inset
+
+ is large), there is a.a.s.
+ an edge in 
+\begin_inset Formula $\R_{3}$
+\end_inset
+
+ between any pair of disjoint sets of size 
+\begin_inset Formula $\delta'a'n/4$
+\end_inset
+
+ (the proof of this is basically identical to the proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:bipartite-matching"
+
+\end_inset
+
+).
+ Such an edge allows us to complete a 
+\begin_inset Formula $k$
+\end_inset
+
+-path from 
+\begin_inset Formula $\x$
+\end_inset
+
+ to 
+\begin_inset Formula $\y$
+\end_inset
+
+, which we remove.
+ We can repeat this for each unconnected special pair in 
+\begin_inset Formula $Z_{\bi,\bj}$
+\end_inset
+
+.
+ Note that these special paths comprise less than 
+\begin_inset Formula $\delta'a'n/2$
+\end_inset
+
+ vertices total, which is so few that each 
+\begin_inset Formula $\left(W_{i}^{1},W_{i}^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon,\delta'/2\right)$
+\end_inset
+
+-super-regular, and each 
+\begin_inset Formula $\x\in X_{i}^{\h}$
+\end_inset
+
+ (respectively 
+\begin_inset Formula $\y\in Y_{i}^{\h}$
+\end_inset
+
+) has at least 
+\begin_inset Formula $\delta a'n/2$
+\end_inset
+
+ neighbours in 
+\begin_inset Formula $W_{i}^{\bar{\h}}$
+\end_inset
+
+, throughout the whole process.
+\end_layout
+
+\begin_layout Standard
+Now, update all the relevant variables.
+ We are left with a set of clusters 
+\begin_inset Formula $X_{\bi},W_{\bi},Y_{\bi}$
+\end_inset
+
+ partitioning the vertices of 
+\begin_inset Formula $\G\cup\R$
+\end_inset
+
+, such that each 
+\begin_inset Formula $\left(X_{i}^{\h},W_{i}^{\bar{\h}}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(W_{i}^{1},W_{i}^{2}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(W_{i}^{\h},Y_{i}^{\bar{\h}}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon,\delta'/2\right)$
+\end_inset
+
+-regular, and each special pair is in some 
+\begin_inset Formula $X_{i}^{\h}\times Y_{i}^{\bar{\h}}$
+\end_inset
+
+.
+ Moreover, with 
+\begin_inset Formula $X$
+\end_inset
+
+ (respectively 
+\begin_inset Formula $Y$
+\end_inset
+
+) being the set of 
+\begin_inset Formula $\x$
+\end_inset
+
+-type (respectively 
+\begin_inset Formula $\y$
+\end_inset
+
+-type) vertices remaining, and 
+\begin_inset Formula $W$
+\end_inset
+
+ being the set of non-special vertices remaining, we have 
+\begin_inset Formula $\left(k-1\right)\left|X\right|=\left(k-1\right)\left|Y\right|=\left|W\right|$
+\end_inset
+
+.
+ For large 
+\begin_inset Formula $k$
+\end_inset
+
+ each 
+\begin_inset Formula $an\le\left|X_{\bi}\right|,\left|Y_{\bi}\right|,\left|W_{\bi}\right|\le bn$
+\end_inset
+
+ for some 
+\begin_inset Formula $a,b$
+\end_inset
+
+, and each 
+\begin_inset Formula $\left|X_{\bi}\right|,\left|Y_{\bi}\right|\le\left|W_{\bj}\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Adjusting the relative sizes of the clusters
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:embed-relative-sizes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The next step is to remove paths such that in the graph that remains, we
+ have 
+\begin_inset Formula $\left|W_{\bi}\right|=\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2$
+\end_inset
+
+ for each 
+\begin_inset Formula $\bi$
+\end_inset
+
+.
+ This is easily achievable through repeated application of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:adjusting-paths"
+
+\end_inset
+
+, but is a bit fiddly to explain.
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2+m\ge\left|W_{\bi}\right|$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(k-1\right)\left|X_{\bj}\cup Y_{\bj}\right|/2+m\le\left|W_{\bj}\right|$
+\end_inset
+
+, where one of these inequalities is an equality.
+ Let 
+\begin_inset Formula $\bi=\left(i,\h\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\bj=\left(j,g\right)$
+\end_inset
+
+.
+ Use 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:adjusting-paths"
+
+\end_inset
+
+ and 
+\begin_inset Formula $\R_{4}$
+\end_inset
+
+ to find 
+\begin_inset Formula $\floor{m/\left(\left(k-1\right)/2-1\right)}$
+\end_inset
+
+ special paths connecting special pairs in 
+\begin_inset Formula $X_{i}^{\h}\times Y_{i}^{\bar{\h}}$
+\end_inset
+
+, each with 
+\begin_inset Formula $\left(k-1\right)/2$
+\end_inset
+
+ interior vertices in 
+\begin_inset Formula $W_{i}^{\bar{\h}}$
+\end_inset
+
+, one interior vertex in 
+\begin_inset Formula $W_{i}^{\h}$
+\end_inset
+
+, and the remaining 
+\begin_inset Formula $\left(k-1\right)/2-1$
+\end_inset
+
+ interior vertices in 
+\begin_inset Formula $W_{j}^{g}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Then, let 
+\begin_inset Formula $r=\left(\left(k-1\right)/2-1\right)\left\langle m/\left(\left(k-1\right)/2-1\right)\right\rangle $
+\end_inset
+
+, where 
+\begin_inset Formula $\left\langle \cdot\right\rangle $
+\end_inset
+
+ denotes the fractional part of a real number.
+ With another application of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:adjusting-paths"
+
+\end_inset
+
+, find a single special path of the same type, except it has 
+\begin_inset Formula $\left(k-1\right)/2-1-r$
+\end_inset
+
+ interior vertices in 
+\begin_inset Formula $W_{i}^{\h}$
+\end_inset
+
+ and 
+\begin_inset Formula $r$
+\end_inset
+
+ interior vertices in 
+\begin_inset Formula $W_{j}^{g}$
+\end_inset
+
+.
+ We now have either 
+\begin_inset Formula $\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2=\left|W_{\bi}\right|$
+\end_inset
+
+ or 
+\begin_inset Formula $\left(k-1\right)\left|X_{\bj}\cup Y_{\bj}\right|/2\le\left|W_{\bj}\right|$
+\end_inset
+
+.
+ After at most 
+\begin_inset Formula $2q$
+\end_inset
+
+ iterations of this argument, we will have each 
+\begin_inset Formula $\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2=\left|W_{\bi}\right|$
+\end_inset
+
+ as desired.
+ Each 
+\begin_inset Formula $\left(X_{i}^{\h},W_{i}^{\bar{\h}}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(W_{i}^{1},W_{i}^{2}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(W_{i}^{\h},Y_{i}^{\bar{\h}}\right)$
+\end_inset
+
+ is now 
+\begin_inset Formula $\left(\varepsilon,\delta''\right)$
+\end_inset
+
+-super-regular, where 
+\begin_inset Formula $\delta''=\delta/4^{2q}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Completing the embedding with the blow-up lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:blow-up"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have now finished with 
+\begin_inset Formula $\R$
+\end_inset
+
+; what remains is sufficiently well-structured that we can embed the remaining
+ paths using the blow-up lemma and the super-regularity in 
+\begin_inset Formula $\G$
+\end_inset
+
+.
+ The idea is illustrated in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cluster-paths"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Uniformly at random divide each 
+\begin_inset Formula $W_{i}^{\h}$
+\end_inset
+
+ into sets 
+\begin_inset Formula $A_{i}^{\h}$
+\end_inset
+
+ and 
+\begin_inset Formula $B_{i}^{\h}$
+\end_inset
+
+ of size 
+\begin_inset Formula $\left(k-1\right)\left|X_{i}^{\h}\right|/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(k-1\right)\left|Y_{i}^{\h}\right|/2$
+\end_inset
+
+ respectively.
+ For 
+\begin_inset Formula $\bi=\left(i,\h\right)$
+\end_inset
+
+, let 
+\begin_inset Formula $S_{\bi}^{0}=X_{i}^{\h}$
+\end_inset
+
+, 
+\begin_inset Formula $S_{\bi}^{1}=B_{i}^{\bar{\h}}$
+\end_inset
+
+, 
+\begin_inset Formula $S_{\bi}^{2}=A_{i}^{\h}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{\bi}^{3}=Y_{i}^{\bar{\h}}$
+\end_inset
+
+, so that each 
+\begin_inset Formula $\left(S_{\bi}^{0},S_{\bi}^{2},S_{\bi}^{3},S_{\bi}^{3}\right)$
+\end_inset
+
+ is a sequence of clusters of sizes 
+\begin_inset Formula $n_{\bi},\left(k-1\right)n_{\bi}/2,\left(k-1\right)n_{\bi}/2,n_{\bi}$
+\end_inset
+
+ for some 
+\begin_inset Formula $n_{\bi}$
+\end_inset
+
+, and each 
+\begin_inset Formula $\left(S_{\bi}^{\ell},S_{\bi}^{\ell+1}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon,\delta''/2\right)$
+\end_inset
+
+-super-regular.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Blow-up Lemma 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KSS97"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $\delta,\Delta>0$
+\end_inset
+
+ and 
+\begin_inset Formula $r\in\NN$
+\end_inset
+
+.
+ There is 
+\begin_inset Formula $\varepsilon=\varepsilon\left(r,\delta,\Delta\right)$
+\end_inset
+
+ such that the following holds.
+ Let 
+\begin_inset Formula $C$
+\end_inset
+
+ be a graph on the vertex set 
+\begin_inset Formula $\range r$
+\end_inset
+
+, and let 
+\begin_inset Formula $n_{1},\dots,n_{r}$
+\end_inset
+
+ be arbitrary positive integers.
+ Let 
+\begin_inset Formula $V_{1},\dots,V_{r}$
+\end_inset
+
+ be pairwise disjoint sets of sizes 
+\begin_inset Formula $n_{1},\dots,n_{r}$
+\end_inset
+
+.
+ We construct two graphs on the vertex set 
+\begin_inset Formula $V=\bigcup_{i=1}^{r}V_{i}$
+\end_inset
+
+ as follows.
+ The first graph 
+\begin_inset Formula $b\left(C\right)$
+\end_inset
+
+ (the 
 \begin_inset Quotes eld
 \end_inset
 
-adjusting path
+complete blow-up
 \begin_inset Quotes erd
 \end_inset
 
- arguments are extremely unwiedly.
- Maybe there's some different way to express the situation that makes it
- easier to state what I'm doing?
+) is obtained by putting the complete bipartite graph between 
+\begin_inset Formula $V_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{j}$
+\end_inset
+
+ whenever 
+\begin_inset Formula $\left\{ i,j\right\} $
+\end_inset
+
+ is an edge in 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ The second graph 
+\begin_inset Formula $b_{\varepsilon,\delta}\left(C\right)$
+\end_inset
+
+ (a 
+\begin_inset Quotes eld
+\end_inset
+
+super-regular blow-up
+\begin_inset Quotes erd
+\end_inset
+
+) is obtained by putting edges between each such 
+\begin_inset Formula $V_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{j}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left(V_{i},V_{j}\right)$
+\end_inset
+
+ is an 
+\begin_inset Formula $\left(\varepsilon,\delta\right)$
+\end_inset
+
+-super-regular pair.
+ If a graph 
+\begin_inset Formula $H$
+\end_inset
+
+ with maximum degree bounded by 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ can be embedded into 
+\begin_inset Formula $b\left(C\right)$
+\end_inset
+
+, then it can be embedded into 
+\begin_inset Formula $b_{\varepsilon,\delta}\left(C\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For each 
+\begin_inset Formula $\bi$
+\end_inset
+
+, we construct an auxiliary graph 
+\begin_inset Formula $G_{\bi}$
+\end_inset
+
+ as follows.
+ Start with the 4-partite subgraph of 
+\begin_inset Formula $\G$
+\end_inset
+
+ induced by 
+\begin_inset Formula $S_{\bi}^{0}\cup S_{\bi}^{2}\cup S_{\bi}^{3}\cup S_{\bi}^{3}$
+\end_inset
+
+, and remove every edge not between some 
+\begin_inset Formula $S_{\bi}^{\ell}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{\bi}^{\ell+1}$
+\end_inset
+
+.
+ Contract each special pair to a single vertex, to obtain a super-regular
+ 
+\begin_inset Quotes eld
+\end_inset
+
+cluster-cycle
+\begin_inset Quotes erd
+\end_inset
+
+ with 3 clusters 
+\begin_inset Formula $S_{\bi}^{*},S_{\bi}^{1},S_{\bi}^{2}$
+\end_inset
+
+ of sizes 
+\begin_inset Formula $n_{\bi},\left(k-1\right)n_{\bi}/2,\left(k-1\right)n_{\bi}/2$
+\end_inset
+
+.
+ This is a 
+\begin_inset Formula $\left(\varepsilon,\delta''\right)$
+\end_inset
+
+-super-regular blow-up of a 3-cycle 
+\begin_inset Formula $C_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The complete blow-up 
+\begin_inset Formula $b\left(C_{3}\right)$
+\end_inset
+
+ contains 
+\begin_inset Formula $n_{\bi}$
+\end_inset
+
+ disjoint 
+\begin_inset Formula $k$
+\end_inset
+
+-cycles (each has a vertex in 
+\begin_inset Formula $S_{\bi}^{*}$
+\end_inset
+
+ and its other 
+\begin_inset Formula $k-1$
+\end_inset
+
+ vertices alternate between 
+\begin_inset Formula $S_{\bi}^{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{\bi}^{2}$
+\end_inset
+
+).
+ By the blow-up lemma, for small 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ the 
+\begin_inset Formula $\left(\varepsilon,\delta''\right)$
+\end_inset
+
+-super-regular blow-up 
+\begin_inset Formula $G_{\bi}$
+\end_inset
+
+ of 
+\begin_inset Formula $C_{3}$
+\end_inset
+
+ also contains 
+\begin_inset Formula $n_{\bi}$
+\end_inset
+
+ disjoint 
+\begin_inset Formula $k$
+\end_inset
+
+-cycles.
+ Since 
+\begin_inset Formula $k$
+\end_inset
+
+ is odd, each of these must use at least one vertex from 
+\begin_inset Formula $S_{\bi}^{*}$
+\end_inset
+
+, but since 
+\begin_inset Formula $\left|S_{\bi}^{*}\right|=n_{0}$
+\end_inset
+
+, each cycle must then use exactly one vertex from 
+\begin_inset Formula $S_{\bi}^{*}$
+\end_inset
+
+.
+ Each of these cycles corresponds to a special path running through 
+\begin_inset Formula $S_{\bi}^{0},S_{\bi}^{2},S_{\bi}^{3},S_{\bi}^{3}$
+\end_inset
+
+, and these special paths complete our embedding of 
+\begin_inset Formula $\T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[scale=0.63]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+y{0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+h{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (0,
+\backslash
+y) -| (9,1+
+\backslash
+y) -| (8,
+\backslash
+y)
+\end_layout
+
+\begin_layout Plain Layout
+
+      (8,1+
+\backslash
+y) -| (4,
+\backslash
+y)
+\end_layout
+
+\begin_layout Plain Layout
+
+      (4,1+
+\backslash
+y) -| (2,
+\backslash
+y)
+\end_layout
+
+\begin_layout Plain Layout
+
+      (2,1+
+\backslash
+y) -| (0,
+\backslash
+y);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (-0.7,0.5+
+\backslash
+y) {$V^
+\backslash
+h$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (1,0.5+
+\backslash
+y) {$X^
+\backslash
+h$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (3,0.5+
+\backslash
+y) {$B^
+\backslash
+h$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (6,0.5+
+\backslash
+y) {$A^
+\backslash
+h$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (8.5,0.5+
+\backslash
+y) {$Y^
+\backslash
+h$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+y{-7}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+h{2}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (0,
+\backslash
+y) -| (9,1+
+\backslash
+y) -| (7,
+\backslash
+y)
+\end_layout
+
+\begin_layout Plain Layout
+
+      (7,1+
+\backslash
+y) -| (5,
+\backslash
+y)
+\end_layout
+
+\begin_layout Plain Layout
+
+      (5,1+
+\backslash
+y) -| (1,
+\backslash
+y)
+\end_layout
+
+\begin_layout Plain Layout
+
+      (1,1+
+\backslash
+y) -| (0,
+\backslash
+y);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (-0.7,0.5+
+\backslash
+y) {$V^
+\backslash
+h$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (0.5,0.5+
+\backslash
+y) {$X^
+\backslash
+h$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (3,0.5+
+\backslash
+y) {$B^
+\backslash
+h$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (6,0.5+
+\backslash
+y) {$A^
+\backslash
+h$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (8,0.5+
+\backslash
+y) {$Y^
+\backslash
+h$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill [opacity=0.15] (0.25,0) -- (1.75,0) -- (4.75,1+
+\backslash
+y) -- (1.25,1+
+\backslash
+y) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill [opacity=0.15] (2.25,0) -- (3.75,0) -- (0.75,1+
+\backslash
+y) -- (0.25,1+
+\backslash
+y) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill [opacity=0.15] (4.25,0) -- (7.75,0) -- (4.75,1+
+\backslash
+y) -- (1.25,1+
+\backslash
+y) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill [opacity=0.15] (2.25,0) -- (3.75,0) -- (6.75,1+
+\backslash
+y) -- (5.25,1+
+\backslash
+y) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill [opacity=0.15] (4.25,0) -- (7.75,0) -- (8.75,1+
+\backslash
+y) -- (7.25,1+
+\backslash
+y) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill [opacity=0.15] (8.25,0) -- (8.75,0) -- (6.75,1+
+\backslash
+y) -- (5.25,1+
+\backslash
+y) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+sqrt{1.41421356237}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+x{13}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+y{-3}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (
+\backslash
+x,
+\backslash
+y-1) -| (
+\backslash
+x+2,
+\backslash
+y+1) -| cycle
+\end_layout
+
+\begin_layout Plain Layout
+
+      (
+\backslash
+x,
+\backslash
+y) -- (
+\backslash
+x+2,
+\backslash
+y);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (
+\backslash
+x+2.5,
+\backslash
+y+4) -- (
+\backslash
+x+2.5+1/
+\backslash
+sqrt,
+\backslash
+y+4+1/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+5/
+\backslash
+sqrt,
+\backslash
+y+4-3/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+4/
+\backslash
+sqrt,
+\backslash
+y+4-4/
+\backslash
+sqrt) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (
+\backslash
+x+2.5,
+\backslash
+y-4) -- (
+\backslash
+x+2.5+1/
+\backslash
+sqrt,
+\backslash
+y-4-1/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+5/
+\backslash
+sqrt,
+\backslash
+y-4+3/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+4/
+\backslash
+sqrt,
+\backslash
+y-4+4/
+\backslash
+sqrt) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill [opacity=0.15] (
+\backslash
+x+0.25,
+\backslash
+y-1) -- (
+\backslash
+x+1.75,
+\backslash
+y-1) -- (
+\backslash
+x+2.5+3.75/
+\backslash
+sqrt,
+\backslash
+y-4+3.75/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+0.25/
+\backslash
+sqrt,
+\backslash
+y-4+0.25/
+\backslash
+sqrt) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill [opacity=0.15] (
+\backslash
+x+0.25,
+\backslash
+y+1) -- (
+\backslash
+x+1.75,
+\backslash
+y+1) -- (
+\backslash
+x+2.5+3.75/
+\backslash
+sqrt,
+\backslash
+y+4-3.75/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+0.25/
+\backslash
+sqrt,
+\backslash
+y+4-0.25/
+\backslash
+sqrt) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill [opacity=0.15] (
+\backslash
+x+2.5+3.75/
+\backslash
+sqrt,
+\backslash
+y-4+3.75/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+0.25/
+\backslash
+sqrt,
+\backslash
+y-4+0.25/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+0.25/
+\backslash
+sqrt,
+\backslash
+y+4-0.25/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+3.75/
+\backslash
+sqrt,
+\backslash
+y+4-3.75/
+\backslash
+sqrt) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (
+\backslash
+x+1,
+\backslash
+y-1) -- (
+\backslash
+x+2.5+1/
+\backslash
+sqrt,
+\backslash
+y-4+1/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+1.5/
+\backslash
+sqrt,
+\backslash
+y+4-1.5/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+2/
+\backslash
+sqrt,
+\backslash
+y-4+2/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+2/
+\backslash
+sqrt,
+\backslash
+y+4-2/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+1.5/
+\backslash
+sqrt,
+\backslash
+y-4+1.5/
+\backslash
+sqrt) -- (
+\backslash
+x+2.5+1/
+\backslash
+sqrt,
+\backslash
+y+4-1/
+\backslash
+sqrt) -- (
+\backslash
+x+1,
+\backslash
+y+1);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (
+\backslash
+x+1,
+\backslash
+y+0.5) {$S^0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (
+\backslash
+x+1,
+\backslash
+y-0.5) {$S^3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (
+\backslash
+x+2.5+2.5/
+\backslash
+sqrt,
+\backslash
+y+4-1.5/
+\backslash
+sqrt) {$S^1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (
+\backslash
+x+2.5+2.5/
+\backslash
+sqrt,
+\backslash
+y-4+1.5/
+\backslash
+sqrt) {$S^2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+x{19}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+y{-3}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+sqrt{1.41421356237}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (
+\backslash
+x+1,
+\backslash
+y-1) -| (
+\backslash
+x+2,
+\backslash
+y+1) -| cycle
+\end_layout
+
+\begin_layout Plain Layout
+
+      (
+\backslash
+x+1,
+\backslash
+y) -- (
+\backslash
+x+2,
+\backslash
+y);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (
+\backslash
+x+3,
+\backslash
+y+3) -- (
+\backslash
+x+3+1/
+\backslash
+sqrt,
+\backslash
+y+3+1/
+\backslash
+sqrt) -- (
+\backslash
+x+3+3/
+\backslash
+sqrt,
+\backslash
+y+3-1/
+\backslash
+sqrt) -- (
+\backslash
+x+3+2/
+\backslash
+sqrt,
+\backslash
+y+3-2/
+\backslash
+sqrt) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (
+\backslash
+x+3,
+\backslash
+y-3) -- (
+\backslash
+x+3+1/
+\backslash
+sqrt,
+\backslash
+y-3-1/
+\backslash
+sqrt) -- (
+\backslash
+x+3+3/
+\backslash
+sqrt,
+\backslash
+y-3+1/
+\backslash
+sqrt) -- (
+\backslash
+x+3+2/
+\backslash
+sqrt,
+\backslash
+y-3+2/
+\backslash
+sqrt) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill [opacity=0.15] (
+\backslash
+x+1.25,
+\backslash
+y-1) -- (
+\backslash
+x+1.75,
+\backslash
+y-1) -- (
+\backslash
+x+3+1.75/
+\backslash
+sqrt,
+\backslash
+y-3+1.75/
+\backslash
+sqrt) -- (
+\backslash
+x+3+0.25/
+\backslash
+sqrt,
+\backslash
+y-3+0.25/
+\backslash
+sqrt) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill [opacity=0.15] (
+\backslash
+x+1.25,
+\backslash
+y+1) -- (
+\backslash
+x+1.75,
+\backslash
+y+1) -- (
+\backslash
+x+3+1.75/
+\backslash
+sqrt,
+\backslash
+y+3-1.75/
+\backslash
+sqrt) -- (
+\backslash
+x+3+0.25/
+\backslash
+sqrt,
+\backslash
+y+3-0.25/
+\backslash
+sqrt) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill [opacity=0.15] (
+\backslash
+x+3+1.75/
+\backslash
+sqrt,
+\backslash
+y-3+1.75/
+\backslash
+sqrt) -- (
+\backslash
+x+3+0.25/
+\backslash
+sqrt,
+\backslash
+y-3+0.25/
+\backslash
+sqrt) -- (
+\backslash
+x+3+0.25/
+\backslash
+sqrt,
+\backslash
+y+3-0.25/
+\backslash
+sqrt) -- (
+\backslash
+x+3+1.75/
+\backslash
+sqrt,
+\backslash
+y+3-1.75/
+\backslash
+sqrt) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (
+\backslash
+x+1.5,
+\backslash
+y+0.5) {$S^0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (
+\backslash
+x+1.5,
+\backslash
+y-0.5) {$S^3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (
+\backslash
+x+3+1.5/
+\backslash
+sqrt,
+\backslash
+y+3-0.5/
+\backslash
+sqrt) {$S^1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (
+\backslash
+x+3+1.5/
+\backslash
+sqrt,
+\backslash
+y-3+0.5/
+\backslash
+sqrt) {$S^2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node [font=
+\backslash
+Huge] at (11,-3) {$
+\backslash
+rightsquigarrow$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cluster-paths"
+
+\end_inset
+
+From super-regular pairs to cluster-cycles.
+ An example special path is shown, for 
+\begin_inset Formula $k=7$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "references"
-options "amsplain"
+options "amsplain_initials"
 
 \end_inset
 
