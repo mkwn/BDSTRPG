@@ -508,6 +508,15 @@ Michael Krivelevich, Matthew Kwan, Benny Sudakov
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\flip}[1]{\overline{#1}}
+{\boldsymbol{\overline{#1}}}
+\end_inset
+
+
+\end_layout
+
 \begin_layout Abstract
 abstract
 \end_layout
@@ -654,8 +663,8 @@ end{comment}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\B}[1]{\BB\left(#1\right)}
-{\boldsymbol{\BB\left(#1\right)}}
+\newcommand{\B}[1]{G_{A,B}\left(#1\right)}
+{\boldsymbol{G_{A,B}\left(#1\right)}}
 \end_inset
 
 
@@ -789,15 +798,8 @@ key "Kri10"
 \begin_inset Formula $\T$
 \end_inset
 
- has many leaves (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:many-leaves"
-
-\end_inset
-
-), then we remove the leaves and embed the resulting non-spanning tree in
- 
+ has many leaves, then we remove the leaves and embed the resulting non-spanning
+ tree in 
 \begin_inset Formula $\R$
 \end_inset
 
@@ -826,6 +828,14 @@ reference "lem:almost-spanning"
 
  to satisfy the conditions of Hall's marriage theorem and guarantee the
  required perfect matching.
+ The details for this case are given in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:many-leaves"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -875,7 +885,7 @@ reference "lem:almost-spanning"
 
 \end_inset
 
- (
+ (the details are in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:embed-forest"
@@ -883,7 +893,7 @@ reference "sub:embed-forest"
 \end_inset
 
 ).
- In order to complete this into our spanning tree 
+ In order to complete this forest into our spanning tree 
 \begin_inset Formula $\T$
 \end_inset
 
@@ -935,7 +945,7 @@ reference "sub:embed-paths-between"
 \end_inset
 
  to find most of our desired paths, in such a way that it only remains to
- join up pairs of vertices within the same superregular pair.
+ join up pairs of vertices within the same super-regular pair.
  We make some further adjustments with 
 \begin_inset Formula $\R$
 \end_inset
@@ -948,7 +958,15 @@ reference "sub:embed-relative-sizes"
 \end_inset
 
 ), after which the super-regularity of the pairs allows us to find the rest
- of our paths using a tool called the blow-up lemma (
+ of our paths using a tool called the 
+\begin_inset Quotes eld
+\end_inset
+
+blow-up lemma
+\begin_inset Quotes erd
+\end_inset
+
+ (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:blow-up"
@@ -1180,32 +1198,7 @@ key "JLR00"
 \end_layout
 
 \begin_layout Standard
-For any graph 
-\begin_inset Formula $H$
-\end_inset
-
- on 
-\begin_inset Formula $\range n$
-\end_inset
-
-, we define a bipartite graph 
-\begin_inset Formula $\B H$
-\end_inset
-
- by throwing away all edges not between 
-\begin_inset Formula $B$
-\end_inset
-
- and 
-\begin_inset Formula $A'$
-\end_inset
-
-, then making multiple copies of the vertices in 
-\begin_inset Formula $A'$
-\end_inset
-
-.
- Specifically, let 
+Let 
 \begin_inset Formula $A$
 \end_inset
 
@@ -1226,15 +1219,23 @@ For any graph
 \end_inset
 
 ).
- Let 
+ For any graph 
+\begin_inset Formula $H$
+\end_inset
+
+ on 
+\begin_inset Formula $\range n$
+\end_inset
+
+, we define a bipartite graph 
 \begin_inset Formula $\B H$
 \end_inset
 
- be the bipartite graph on the vertex set 
+ on the vertex set 
 \begin_inset Formula $A\cup B$
 \end_inset
 
- which has an edge between 
+, with an edge between 
 \begin_inset Formula $a\in A$
 \end_inset
 
@@ -1255,7 +1256,7 @@ For any graph
 \end_inset
 
  in 
-\begin_inset Formula $\B H$
+\begin_inset Formula $H$
 \end_inset
 
 .
@@ -1581,7 +1582,7 @@ reference "lem:bipartite-matching"
 \end_inset
 
  is large we can find a 
-\begin_inset Formula $\left(1-\a/2\right)n$
+\begin_inset Formula $\left(1-\a/3\right)n$
 \end_inset
 
 -edge matching 
@@ -1593,164 +1594,78 @@ reference "lem:bipartite-matching"
 \end_inset
 
 .
- Condition on the vertices 
-\begin_inset Formula $W_{i}:=W\cap M_{i}$
+ Let 
+\begin_inset Formula $N_{i}=N_{M_{i}}\left(W\right)$
 \end_inset
 
- matched by each 
+ be the set of vertices matched with 
+\begin_inset Formula $W$
+\end_inset
+
+ in each 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+, and note that each 
+\begin_inset Formula $\left|W\right|-\a n/3\le\left|N_{i}\right|\le\left|W\right|$
+\end_inset
+
+.
+ Condition on 
+\begin_inset Formula $N_{1}$
+\end_inset
+
+, and condition on the number of vertices 
+\begin_inset Formula $\left|N_{i}\right|$
+\end_inset
+
+ matched by 
+\begin_inset Formula $W$
+\end_inset
+
+ in each 
 \begin_inset Formula $M_{i}$
 \end_inset
 
 .
- The distribution of 
-\begin_inset Formula $\R_{1}$
+ Now, for each 
+\begin_inset Formula $i>1$
 \end_inset
 
- is invariant under permutations of 
-\begin_inset Formula $B$
+, note that 
+\begin_inset Formula $N_{i}\cap N_{1}$
 \end_inset
 
-, so we can assume each 
-\begin_inset Formula $N_{M_{i}}\left(W\right)$
-\end_inset
-
- is an independently and uniformly random 
-\begin_inset Formula $\left|W_{i}\right|$
-\end_inset
-
--element subset of 
-\begin_inset Formula $B$
+ is hypergeometrically distributed with mean 
+\begin_inset Formula $\left|N_{i}\right|\left|N_{1}\right|/n$
 \end_inset
 
 .
- We will use this kind of argument implicitly throughout this paper, to
- assume that objects embedded in random graphs are themselves random.
-\end_layout
-
-\begin_layout Proof
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{comment}
-\end_layout
-
-\end_inset
-
-Let 
-\begin_inset Formula $H_{i}=\bigcup_{j=1}^{i}M_{j}$
-\end_inset
-
-; if we condition on 
-\begin_inset Formula $N_{H_{i}}\left(W\right)$
-\end_inset
-
- then 
-\begin_inset Formula $N_{H_{i+1}}\left(W\right)=N_{H_{i+1}}\left(W\right)\cup N_{M_{i+1}}\left(W\right)$
-\end_inset
-
- is hypergeometrically distributed.
- By repeated application of a concentration inequality for the hypergeometric
- distribution, 
-\begin_inset Formula $N_{H_{r}}\left(W\right)$
-\end_inset
-
- is tightly concentrated around its expectation, which is at least 
+ Note that 
 \begin_inset Formula 
 \[
-\sum_{b\in B}\Pr\left(b\in N_{H_{r}}\left(W\right)\right)=n\left(1-\prod_{i=1}^{r}\left(1-\left|W_{i}\right|/n\right)\right)\le\left(1-\left(1-\a/2\right)^{r}\right)n
+\left|N_{i}\right|\left|N_{1}\right|/n\le\left|W\right|^{2}/n\le\left|W\right|\left(1-\a\right)\le2\left(\left|W\right|-\a/3\right)-\a/3\le\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|,
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{comment}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-For each 
-\begin_inset Formula $b\in B$
-\end_inset
-
-, let 
-\begin_inset Formula $X_{b,i}$
-\end_inset
-
- be the indicator random variable for the event that 
-\begin_inset Formula $b\notin N_{M_{i}}\left(W\right)$
-\end_inset
-
-.
- The random variables 
-\begin_inset Formula $X_{b,i}$
-\end_inset
-
- are said to be 
-\emph on
-negatively associated
-\emph default
- (see 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "JDP83"
-
-\end_inset
-
-, in particular property 
-\begin_inset Formula $P_{7}$
-\end_inset
-
- and Application 3.1(c)).
- Hence, the random variables 
-\begin_inset Formula $X_{b}=\min_{i}X_{b,i}$
-\end_inset
-
- (which are indicators for the events 
-\begin_inset Formula $b\notin N_{G}\left(W\right)$
-\end_inset
-
-) are also negatively associated.
- This means in particular that we can apply Chernoff bounds even though
- the 
-\begin_inset Formula $X_{b}$
-\end_inset
-
- are not independent.
- We have 
+so by a concentration inequality for the hypergeometric distribution,
 \begin_inset Formula 
-\[
-\E\sum_{b\in B}X_{b}=n\prod_{i=1}^{r}\left(\left(n-\left|W_{i}\right|\right)/n\right)\le\left(1-\a/2\right)^{r}n,
-\]
+\begin{align*}
+\Pr\left(\left|N_{\R}\left(W\right)\right|<\left|W\right|\right) & \le\prod_{i=2}^{r}\Pr\left(\left|N_{i}\cap N_{1}\right|>\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|\right)=e^{-\Omega\left(r\a^{2}n\right)}.
+\end{align*}
 
 \end_inset
 
-so by the Chernoff bound, 
-\begin_inset Formula 
-\[
-\Pr\left(\left|N\left(W\right)\right|<\left|W\right|\right)=\Pr\left(\sum_{b\in B}X_{b}>n-\left|W\right|\right)\le\Pr\left(\sum_{b\in B}X_{b}>\a n\right)=\exp\left(-\Omega\left(\left(1-\a/2\right)^{-r}\a^{2}\right)\right).
-\]
-
+If 
+\begin_inset Formula $r$
 \end_inset
 
-since there are at most 
+ is large this probability is 
+\begin_inset Formula $o\left(2^{-n}\right)$
+\end_inset
+
+, and since there are at most 
 \begin_inset Formula $2^{n}$
 \end_inset
 
@@ -1758,11 +1673,7 @@ since there are at most
 \begin_inset Formula $W$
 \end_inset
 
-, for large 
-\begin_inset Formula $r$
-\end_inset
-
- the union bound gives 
+, the union bound gives 
 \begin_inset Formula $\left|N_{\R}\left(W\right)\right|\ge\left|W\right|$
 \end_inset
 
@@ -1771,15 +1682,6 @@ since there are at most
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Proof
-
-\series bold
-Instead of proving this via negative association and a Chernoff bound, its
- possible to use a concentration inequality for the hypergeometric distribution
- several times.
- But I tried writing both ways and this way seems cleaner.
 \end_layout
 
 \begin_layout Subsection
@@ -1924,7 +1826,7 @@ density
 \emph default
 .
  Let 
-\begin_inset Formula $\bar{\h}=2-\h$
+\begin_inset Formula $\flip{\h}=2-\h$
 \end_inset
 
 ; if 
@@ -1940,11 +1842,11 @@ density
 \end_inset
 
  has at least 
-\begin_inset Formula $\delta\left|V_{\bar{\h}}\right|$
+\begin_inset Formula $\delta\left|V_{\flip{\h}}\right|$
 \end_inset
 
  neighbours in 
-\begin_inset Formula $V_{\bar{\h}}$
+\begin_inset Formula $V_{\flip{\h}}$
 \end_inset
 
 , then we say 
@@ -2054,7 +1956,7 @@ reference "lem:partition-into-blobs"
 
 \end_inset
 
-, we apply Szemer
+, we will apply Szemer
 \begin_inset ERT
 status open
 
@@ -2071,13 +1973,611 @@ edi's regularity lemma to obtain a reduced
 \emph on
 cluster graph
 \emph default
-, then decompose this cluster graph into small stars with the following
- auxiliary lemma, each of which will roughly correspond to a pair 
-\begin_inset Formula $\left(V_{i}^{1},V_{i}^{2}\right)$
+, then decompose this cluster graph into small stars.
+ In each star 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+, the centre cluster will correspond to 
+\begin_inset Formula $V_{i}^{2}$
+\end_inset
+
+ and the leaf clusters will be combined to form 
+\begin_inset Formula $V_{i}^{2}$
 \end_inset
 
 .
- We will then redistribute some of the vertices to ensure super-regularity.
+ We will then have to redistribute some of the vertices to ensure super-regulari
+ty.
+ Before giving the details of the proof, we give a statement of (a version
+ of) Szemer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+edi's regularity lemma and some auxiliary lemmas for working with regularity
+ and super-regularity.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Szemer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+edi's regularity lemma, minimum degree form
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:szemeredi-regularity"
+
+\end_inset
+
+For every 
+\begin_inset Formula $\a>0$
+\end_inset
+
+, and any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ that is sufficiently small relative to 
+\begin_inset Formula $\a$
+\end_inset
+
+, there is 
+\begin_inset Formula $\a'=\a'\left(\a\right)>0$
+\end_inset
+
+ and 
+\begin_inset Formula $K=K\left(\varepsilon\right)$
+\end_inset
+
+ such that the following holds.
+ For any graph 
+\begin_inset Formula $\G$
+\end_inset
+
+ of minimum degree at least 
+\begin_inset Formula $\a\left|\G\right|$
+\end_inset
+
+, there is a partition of 
+\begin_inset Formula $V\left(\G\right)$
+\end_inset
+
+ into clusters 
+\begin_inset Formula $V_{0},V_{1},\dots V_{k}$
+\end_inset
+
+ (
+\begin_inset Formula $k\le K$
+\end_inset
+
+), and a spanning subgraph 
+\begin_inset Formula $\G'$
+\end_inset
+
+ of 
+\begin_inset Formula $\G$
+\end_inset
+
+, satisfying the following properties.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+exceptional cluster
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $V_{0}$
+\end_inset
+
+ has size at most 
+\begin_inset Formula $\varepsilon n$
+\end_inset
+
+, and the other clusters have equal size 
+\begin_inset Formula $sn$
+\end_inset
+
+.
+ The minimum degree of 
+\begin_inset Formula $\G'$
+\end_inset
+
+ is at least 
+\begin_inset Formula $\a'n$
+\end_inset
+
+.
+ There are no edges of 
+\begin_inset Formula $\G'$
+\end_inset
+
+ within clusters, and each pair of non-exceptional clusters is 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regular in 
+\begin_inset Formula $\G'$
+\end_inset
+
+ with density zero or at least 
+\begin_inset Formula $\a'$
+\end_inset
+
+.
+ Moreover, define the 
+\emph on
+cluster graph
+\emph default
+ 
+\begin_inset Formula $C$
+\end_inset
+
+ as the graph whose vertices are the 
+\begin_inset Formula $k$
+\end_inset
+
+ non-exceptional clusters 
+\begin_inset Formula $V_{i}$
+\end_inset
+
+, and whose edges are the pairs of clusters between which there is nonzero
+ density in 
+\begin_inset Formula $\G'$
+\end_inset
+
+.
+ The minimum degree of 
+\begin_inset Formula $C$
+\end_inset
+
+ is at least 
+\begin_inset Formula $\a'k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This version of Szemeredi's regularity lemma follows directly from 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Proposition~9"
+key "KOT05"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{comment}
+\end_layout
+
+\end_inset
+
+It will be convenient to make a further assumption:
+\end_layout
+
+\begin_layout Lemma
+In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:szemeredi-regularity"
+
+\end_inset
+
+, we can in fact assume the between-cluster densities in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:szemeredi-regularity"
+
+\end_inset
+
+ are zero or differ from 
+\begin_inset Formula $\a'$
+\end_inset
+
+ by at most 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Apply 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:szemeredi-regularity"
+
+\end_inset
+
+ with regularity parameter 
+\begin_inset Formula $\varepsilon/2$
+\end_inset
+
+.
+ For each 
+\begin_inset Formula $\left(V_{i},V_{j}\right)$
+\end_inset
+
+ with density 
+\begin_inset Formula $d>\a'$
+\end_inset
+
+, there are 
+\begin_inset Formula $d\left(sn\right)^{2}$
+\end_inset
+
+ edges between 
+\begin_inset Formula $V_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{j}$
+\end_inset
+
+.
+ Uniformly at random delete 
+\begin_inset Formula $\left(d-\a'\right)\left(sn\right)^{2}$
+\end_inset
+
+ of these edges.
+ Consider any 
+\begin_inset Formula $U_{i}\subseteq V_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $U_{j}\subseteq V_{j}$
+\end_inset
+
+ with 
+\begin_inset Formula $\left|U_{\ell}\right|\ge\varepsilon\left|V_{\ell}\right|$
+\end_inset
+
+.
+ By a Chernoff bound and 
+\begin_inset Formula $\varepsilon/2$
+\end_inset
+
+-regularity, the number of edges that remain between 
+\begin_inset Formula $U_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $U_{j}$
+\end_inset
+
+ is in the range 
+\begin_inset Formula 
+\[
+\left(\left(1-\frac{\varepsilon}{2}\right)\frac{\a'}{d}\left(d-\frac{\varepsilon}{2}\right)\left|U_{i}\right|\left|U_{j}\right|,\;\left(1+\frac{\varepsilon}{2}\right)\frac{\a'}{d}\left(d+\frac{\varepsilon}{2}\right)\left|U_{i}\right|\left|U_{j}\right|\right)\subseteq\left(\left(\a'-\varepsilon\right)\left|U_{i}\right|\left|U_{j}\right|,\;\left(\a'+\varepsilon\right)\left|U_{i}\right|\left|U_{j}\right|\right)
+\]
+
+\end_inset
+
+with probability 
+\begin_inset Formula $e^{-\Omega\left(n^{2}\right)}$
+\end_inset
+
+ uniformly over 
+\begin_inset Formula $U_{i},U_{j}$
+\end_inset
+
+.
+ There are less than 
+\begin_inset Formula $2^{2n}$
+\end_inset
+
+ choices of 
+\begin_inset Formula $U_{i},U_{j}$
+\end_inset
+
+ so by a union bound, with positive probability our deletions have resulted
+ in a spanning subgraph 
+\begin_inset Formula $\G''$
+\end_inset
+
+ with the desired property.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{comment}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We now give some simple lemmas about regularity, which we will use in the
+ proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:main-theorem"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:combine-clusters"
+
+\end_inset
+
+Suppose 
+\begin_inset Formula $V_{1},\dots,V_{r}$
+\end_inset
+
+ are clusters of the same sizes such that each 
+\begin_inset Formula $\left(V^{1},V_{i}^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon,\delta\right)$
+\end_inset
+
+-dense.
+ Let 
+\begin_inset Formula $V^{2}=\bigcup_{i=1}^{r}V_{i}^{2}$
+\end_inset
+
+; then 
+\begin_inset Formula $\left(V^{1},V^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon,\left(\delta-\varepsilon\right)/r\right)$
+\end_inset
+
+-dense.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $U^{\h}\subseteq V^{\h}$
+\end_inset
+
+ with 
+\begin_inset Formula $\left|U^{\h}\right|\ge\varepsilon\left|V^{\h}\right|$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $V_{i}^{2}$
+\end_inset
+
+ be the cluster which has the largest intersection with 
+\begin_inset Formula $U^{2}$
+\end_inset
+
+, so we have 
+\begin_inset Formula $\left|U^{2}\cap V_{i}^{2}\right|\ge\varepsilon\left|V^{2}\right|/r=\varepsilon\left|V_{i}^{2}\right|$
+\end_inset
+
+, and there are therefore at least 
+\begin_inset Formula $\left(\delta-\varepsilon\right)\left|U^{1}\right|\left|U^{2}\cap V_{i}^{2}\right|\ge\left(\left(\delta-\varepsilon\right)/r\right)\left|U^{1}\right|\left|U^{2}\right|$
+\end_inset
+
+ edges between 
+\begin_inset Formula $U^{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $U^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:robust-regular"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\left(V^{1},V^{2}\right)$
+\end_inset
+
+ be an 
+\begin_inset Formula $\left(\varepsilon,\delta\right)$
+\end_inset
+
+-dense pair, let 
+\begin_inset Formula $0\le\gamma\le1$
+\end_inset
+
+, and let 
+\begin_inset Formula $\left(W^{1},W^{2}\right)$
+\end_inset
+
+ be a pair such that each 
+\begin_inset Formula $\left|V^{\h}\triangle W^{\h}\right|\le\gamma\left|V^{\h}\right|$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\left(W^{1},W^{2}\right)$
+\end_inset
+
+ is an 
+\begin_inset Formula $\left(\varepsilon',\delta'\right)$
+\end_inset
+
+-dense pair, with 
+\begin_inset Formula $\varepsilon'=\varepsilon+6\sqrt{\gamma/\left(1+\gamma\right)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta'=\delta-4\sqrt{\gamma/\left(1+\gamma\right)}$
+\end_inset
+
+ If moreover 
+\begin_inset Formula $\left(V^{1},V^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon,\delta\right)$
+\end_inset
+
+-super-regular and each vertex in 
+\begin_inset Formula $W^{\h}$
+\end_inset
+
+ has at least 
+\begin_inset Formula $\delta\left|W^{\flip{\h}}\right|$
+\end_inset
+
+ neighbours in 
+\begin_inset Formula $W^{\flip{\h}}$
+\end_inset
+
+, then 
+\begin_inset Formula $\left(W^{1},W^{2}\right)$
+\end_inset
+
+ is an 
+\begin_inset Formula $\left(\varepsilon',\delta'\right)$
+\end_inset
+
+-super-regular pair.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:robust-regular"
+
+\end_inset
+
+ says that regularity-type properties are 
+\begin_inset Quotes eld
+\end_inset
+
+robust
+\begin_inset Quotes erd
+\end_inset
+
+ with respect to small alterations of the clusters.
+ It is almost the same as 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Proposition~8"
+key "BST08"
+
+\end_inset
+
+, and has exactly the same proof.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:regular-contains-superregular"
+
+\end_inset
+
+Every 
+\begin_inset Formula $\left(\varepsilon,\delta\right)$
+\end_inset
+
+-dense pair 
+\begin_inset Formula $\left(V^{1},V^{2}\right)$
+\end_inset
+
+ contains a 
+\begin_inset Formula $\left(2\varepsilon,\delta-2\varepsilon\right)$
+\end_inset
+
+-super-regular sub-pair 
+\begin_inset Formula $\left(W^{1},W^{2}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\left|W^{\h}\right|\le\left(1-\varepsilon\right)\left|V^{\h}\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:regular-contains-superregular"
+
+\end_inset
+
+ follows easily from the same proof as 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Proposition~6"
+key "BST08"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Now we prove 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:partition-into-blobs"
+
+\end_inset
+
+.
+ First we need a lemma for our decomposition into small stars.
 \end_layout
 
 \begin_layout Lemma
@@ -2117,7 +2617,7 @@ Let
 \begin_inset Formula $Q$
 \end_inset
 
- be a maximal-size union of such stars.
+ be a union of such stars with the maximum number of vertices.
  Suppose there is a vertex 
 \begin_inset Formula $v$
 \end_inset
@@ -2221,15 +2721,7 @@ reference "lem:partition-into-blobs"
 
 \end_inset
 
-We apply the 
-\begin_inset Quotes eld
-\end_inset
-
-degree form
-\begin_inset Quotes erd
-\end_inset
-
- of Szemer
+Apply our minimum degree form of Szemer
 \begin_inset ERT
 status open
 
@@ -2242,174 +2734,16 @@ status open
 
 \end_inset
 
-edi's regularity lemma (
-\begin_inset CommandInset citation
-LatexCommand cite
-after "Theorem~1.10"
-key "KS96"
-
-\end_inset
-
-) with density threshold 
-\begin_inset Formula $\a'=\a/3$
-\end_inset
-
- and some regularity parameter 
+edi's regularity lemma, with some 
 \begin_inset Formula $\varepsilon'$
 \end_inset
 
-, which we will repeatedly assume is very small relative to 
-\begin_inset Formula $\a'$
-\end_inset
-
-.
- There is large 
-\begin_inset Formula $M=M\left(\a\right)$
-\end_inset
-
-, a partition of 
-\begin_inset Formula $\range n$
-\end_inset
-
- into clusters 
-\begin_inset Formula $V_{0},\dots,V_{k}$
-\end_inset
-
- (
-\begin_inset Formula $k\le M$
-\end_inset
-
-) and a subgraph 
-\begin_inset Formula $\G'\subseteq\G$
-\end_inset
-
- satisfying the following conditions.
- The 
-\begin_inset Quotes eld
-\end_inset
-
-exceptional cluster
-\begin_inset Quotes erd
-\end_inset
-
- 
-\begin_inset Formula $V_{0}$
-\end_inset
-
- has size at most 
-\begin_inset Formula $\varepsilon'n$
-\end_inset
-
-, and the other clusters have equal size 
-\begin_inset Formula $sn$
-\end_inset
-
- (so 
-\begin_inset Formula $1-\varepsilon'\le ks\le1$
-\end_inset
-
-).
- The minimum degree of 
-\begin_inset Formula $\G'$
-\end_inset
-
- is at least 
-\begin_inset Formula $\left(\a'+\varepsilon'\right)n$
-\end_inset
-
-.
- There are no edges of 
-\begin_inset Formula $\G'$
-\end_inset
-
- within clusters, and each pair of non-exceptional clusters is 
-\begin_inset Formula $\varepsilon'$
-\end_inset
-
--regular in 
-\begin_inset Formula $\G'$
-\end_inset
-
- with density at least 
-\begin_inset Formula $\a'$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Proof
-Define the cluster graph 
-\begin_inset Formula $C$
-\end_inset
-
- as the bipartite graph whose vertices are the non-exceptional clusters
- 
-\begin_inset Formula $V_{i}$
-\end_inset
-
-, and whose edges are the pairs of clusters between which there is nonzero
- density in 
-\begin_inset Formula $G'$
-\end_inset
-
-.
- The fact that 
-\begin_inset Formula $G$
-\end_inset
-
- is dense implies that 
-\begin_inset Formula $C$
-\end_inset
-
- is dense as well, as follows.
- In 
-\begin_inset Formula $\G'$
-\end_inset
-
- each 
-\begin_inset Formula $V_{i}$
-\end_inset
-
- has at least 
-\begin_inset Formula $\left(\left(\a'+\varepsilon'\right)n\right)\left(sn\right)$
-\end_inset
-
- edges to other clusters.
- There are at most 
-\begin_inset Formula $\left(\varepsilon'n\right)\left(sn\right)$
-\end_inset
-
- edges to the exceptional cluster 
-\begin_inset Formula $V_{0}$
-\end_inset
-
- and at most 
-\begin_inset Formula $\left(sn\right)^{2}$
-\end_inset
-
- edges to each other cluster.
- So, 
-\begin_inset Formula $d_{C}\left(V_{i}\right)\ge\left(\left(\a'+\varepsilon\right)n-\varepsilon'n\right)sn/\left(sn\right)^{2}\ge\a'k$
-\end_inset
-
-.
- That is, 
-\begin_inset Formula $C$
-\end_inset
-
- has minimum degree at least 
-\begin_inset Formula $\a'k$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Proof
-Now, let 
+ to be determined.
+ Let 
 \begin_inset Formula $Q$
 \end_inset
 
- be a star cover of 
+ be a cover of 
 \begin_inset Formula $C$
 \end_inset
 
@@ -2462,62 +2796,14 @@ centre
 \end_inset
 
 ).
- Consider any 
-\begin_inset Formula $U^{\h}\subseteq W_{i}^{\h}$
-\end_inset
-
- with 
-\begin_inset Formula $\left|U^{\h}\right|\ge\varepsilon'\left|W_{i}^{\h}\right|$
-\end_inset
-
-, and let 
-\begin_inset Formula $\ell$
-\end_inset
-
- be the number of leaves in 
-\begin_inset Formula $T_{i}$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $V_{p}$
-\end_inset
-
- be the leaf of 
-\begin_inset Formula $T_{i}$
-\end_inset
-
- with the most vertices in 
-\begin_inset Formula $U^{2}$
-\end_inset
-
-, so that 
-\begin_inset Formula $\left|U^{2}\cap V_{p}\right|\ge\left|U^{2}\right|/\ell\ge\varepsilon'sn$
-\end_inset
-
-.
  By 
-\begin_inset Formula $\varepsilon'$
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:combine-clusters"
+
 \end_inset
 
--regularity there are at least 
-\begin_inset Formula $\left(\a'-\varepsilon'\right)\left|U^{1}\right|\left(\left|U^{2}\right|/\ell\right)\ge\left(\left(\a'\right)^{2}/2\right)\left|U^{1}\right|\left|U^{2}\right|$
-\end_inset
-
- edges between 
-\begin_inset Formula $U^{2}\cap V_{p}$
-\end_inset
-
- and 
-\begin_inset Formula $U^{1}$
-\end_inset
-
-.
- That is, 
-\begin_inset Formula $d\left(U^{1},U^{2}\right)\ge\left(\a'\right)^{2}/2$
-\end_inset
-
-, so with 
+, with 
 \begin_inset Formula $\delta'=\left(\a'\right)^{2}/2$
 \end_inset
 
@@ -2529,322 +2815,169 @@ centre
 \begin_inset Formula $\left(\varepsilon',\delta'\right)$
 \end_inset
 
--semi-super-regular.
+-dense.
 \end_layout
 
 \begin_layout Proof
-There are still some vertices left over from exceptional clusters, and we
- cannot guarantee that the 
-\begin_inset Formula $\left(W_{i}^{1},W_{i}^{2}\right)$
+Apply 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:regular-contains-superregular"
+
 \end_inset
 
- are super-regular (there may be vertices without enough neighbours in their
+ to obtain sets 
+\begin_inset Formula $V_{i}^{\h}\subseteq W_{i}^{\h}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left|V_{i}^{\h}\right|=\left(1-\varepsilon\right)\left|W_{i}^{\h}\right|$
+\end_inset
+
+ and each 
+\begin_inset Formula $\left(V_{i}^{1},V_{i}^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon'',\delta''\right)$
+\end_inset
+
+-super-regular, for some 
+\begin_inset Formula $\varepsilon''=\varepsilon''\left(\varepsilon'\right)>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta''=\delta''\left(\delta\right)>0$
+\end_inset
+
+.
+ Combining the exceptional set 
+\begin_inset Formula $V_{0}$
+\end_inset
+
+ and all the 
+\begin_inset Formula $V_{i}^{\h}\backslash W_{i}^{\h}$
+\end_inset
+
+, there are at most 
+\begin_inset Formula $2\varepsilon'n$
+\end_inset
+
  
 \begin_inset Quotes eld
 \end_inset
 
-partner
+bad
 \begin_inset Quotes erd
 \end_inset
 
- cluster).
- We now make some adjustments to fix these problems.
+ vertices not part of a super-regular pair.
 \end_layout
 
 \begin_layout Proof
-If 
-\begin_inset Formula $D_{i}^{\h}$
-\end_inset
-
- is the set of vertices of 
-\begin_inset Formula $W_{i}^{\h}$
-\end_inset
-
- with degree less than 
-\begin_inset Formula $\delta'\left|W_{i}^{\bar{\h}}\right|$
-\end_inset
-
-, then there are fewer than 
-\begin_inset Formula $\delta'\left|D_{i}^{\h}\right|\left|W_{i}^{\bar{\h}}\right|$
-\end_inset
-
- edges between 
-\begin_inset Formula $D_{i}^{\h}$
-\end_inset
-
- and 
-\begin_inset Formula $W_{i}^{\bar{\h}}$
-\end_inset
-
-.
- So, we must have 
-\begin_inset Formula $\left|D_{i}^{\h}\right|<\varepsilon'\left|W_{i}^{\h}\right|$
-\end_inset
-
-, by semi-super-regularity.
- Let 
-\begin_inset Formula $S_{i}^{\h}=W_{i}^{\h}\backslash D_{i}^{\h}$
-\end_inset
-
-.
- Note that each 
-\begin_inset Formula $v\in S_{i}^{\h}$
+Each bad vertex 
+\begin_inset Formula $v$
 \end_inset
 
  has at least 
-\begin_inset Formula $\left(1-\varepsilon\right)\delta'\left|S_{i}^{\h}\right|\ge\delta'\left|S_{i}^{\h}\right|/2$
+\begin_inset Formula $\left(\a-2\varepsilon'\right)n$
 \end_inset
 
- neighbours in its partner cluster 
-\begin_inset Formula $S_{i}^{\bar{\h}}$
-\end_inset
-
-.
- Now, let 
+ neighbours to the clusters 
 \begin_inset Formula $V_{i}^{\h}$
 \end_inset
 
- correspond to a 
-\begin_inset Quotes eld
+, and if 
+\begin_inset Formula $\delta''<\a-2\varepsilon'$
 \end_inset
 
-maximal extension
-\begin_inset Quotes erd
+ then some cluster must have 
+\begin_inset Formula $\delta''s\left(1-\varepsilon'\right)$
 \end_inset
 
- of the clusters 
-\begin_inset Formula $S_{i}^{\h}$
-\end_inset
-
-, as follows.
- Each 
-\begin_inset Formula $V_{i}^{\h}\supseteq S_{i}^{\h}$
-\end_inset
-
-, each 
-\begin_inset Formula $V_{i}^{\h}$
-\end_inset
-
- is disjoint, each 
-\begin_inset Formula $v\in V_{i}^{\h}$
-\end_inset
-
- has at least 
-\begin_inset Formula $\delta'\left|S_{i}^{\bar{\h}}\right|/2$
-\end_inset
-
- neighbours in its partner cluster 
-\begin_inset Formula $V_{i}^{\bar{\h}}$
-\end_inset
-
-, each 
-\begin_inset Formula $\left|V_{i}^{\h}\backslash S_{i}^{\h}\right|\le\left(4\varepsilon'/\a'\right)\left|V_{i}^{\h}\right|$
-\end_inset
-
-, and none of the 
-\begin_inset Formula $V_{i}^{\h}$
-\end_inset
-
- can be enlarged retaining these properties.
-\end_layout
-
-\begin_layout Proof
-Let 
-\begin_inset Formula $P=V_{0}\cup\bigcup_{i=1}^{q}\left(D_{i}^{1}\cup D_{i}^{2}\right)$
-\end_inset
-
- be the set of at most 
-\begin_inset Formula $2\varepsilon'n$
-\end_inset
-
- vertices not in any 
-\begin_inset Formula $S_{i}^{\h}$
-\end_inset
-
-.
- If 
-\begin_inset Formula $\left|V_{i}^{\h}\backslash S_{i}^{\h}\right|=\left(4\varepsilon'/\a'\right)\left|V_{i}^{\h}\right|$
-\end_inset
-
- then we say 
-\begin_inset Formula $V_{i}^{\h}$
-\end_inset
-
- is 
-\begin_inset Quotes eld
-\end_inset
-
-full
-\begin_inset Quotes erd
-\end_inset
-
-.
- There can be at most 
-\begin_inset Formula $2\varepsilon'n/\left(4\varepsilon'/\a'\right)=\a'n/2$
-\end_inset
-
- vertices in full clusters.
- Now suppose there is some 
+ neighbours of 
 \begin_inset Formula $v$
 \end_inset
 
- not in any 
-\begin_inset Formula $V_{i}^{\h}$
-\end_inset
-
 .
- That 
-\begin_inset Formula $v$
-\end_inset
-
- has 
-\begin_inset Formula $\a'n/2$
-\end_inset
-
- neighbours in non-full clusters, so some non-full cluster 
-\begin_inset Formula $V_{i}^{\h}$
-\end_inset
-
- has 
-\begin_inset Formula $\a'\left|V_{i}^{\h}\right|/2\ge\delta'\left|S_{i}^{\h}\right|/2$
-\end_inset
-
- of these neighbours.
- But this is a contradiction, because we could add 
-\begin_inset Formula $v$
-\end_inset
-
- to 
-\begin_inset Formula $V_{i}^{\bar{\h}}$
-\end_inset
-
- and it would still satisfy all the required properties, contradicting maximalit
-y.
-\end_layout
-
-\begin_layout Proof
-We conclude that the 
-\begin_inset Formula $V_{i}^{\h}$
-\end_inset
-
- partition the vertex set.
- If 
-\begin_inset Formula $a=s\left(1-\varepsilon'\right)$
+ More generally, for small 
+\begin_inset Formula $\delta''$
 \end_inset
 
  and 
-\begin_inset Formula $b=s/\left(\a'\left(1-4\varepsilon'/\a'\right)\right)$
+\begin_inset Formula $\varepsilon'$
 \end_inset
 
-, then each 
-\begin_inset Formula $an\le\left|V_{i}^{\h}\right|\le bn$
-\end_inset
-
-.
- For each 
-\begin_inset Formula $i$
-\end_inset
-
-, if 
-\begin_inset Formula $U^{\h}\subseteq V_{i}^{\h}$
-\end_inset
-
- with 
-\begin_inset Formula $\left|U^{\h}\right|\ge\left(4/\a'+1\right)\varepsilon'\left|V_{i}^{\h}\right|$
-\end_inset
-
-, then 
-\begin_inset Formula $\left|U^{\h}\cap W_{i}^{\h}\right|\ge\varepsilon'\left|W_{i}^{\h}\right|$
-\end_inset
-
- so
+ there are at least 
 \begin_inset Formula 
 \[
-d\left(U^{1},U^{2}\right)\ge d\left(U^{1}\cap W_{i}^{1},U^{2}\cap W_{i}^{2}\right)/\left(4/\a'+1\right)^{2}\ge\delta'/\left(4/\a'+1\right)^{2}.
+\frac{\left(\a-2\varepsilon'-\delta''\right)}{\left(1-\delta''\right)s\left(1-\varepsilon'\right)}\ge\a/\left(2s\right)
 \]
 
 \end_inset
 
-That is, each pair 
-\begin_inset Formula $\left(V_{i}^{1},V_{i}^{2}\right)$
+clusters which have at least 
+\begin_inset Formula $\delta''s\left(1-\varepsilon'\right)$
 \end_inset
 
- is 
-\begin_inset Formula $\left(\left(4/\a'+1\right)\varepsilon',\delta\right)$
-\end_inset
-
--semi-super-regular, for 
-\begin_inset Formula $\delta=\delta'/\left(4/\a'+1\right)^{2}$
+ neighbours of 
+\begin_inset Formula $v$
 \end_inset
 
 .
- Finally, each 
-\begin_inset Formula $v\in V_{i}^{\h}$
+ Put 
+\begin_inset Formula $v$
 \end_inset
 
- has at least 
-\begin_inset Formula $\delta'\left|S_{i}^{\bar{\h}}\right|/2\ge\delta'\left|V_{i}^{\bar{\h}}\right|/\left(2\left(4\varepsilon'/\a'+1\right)\right)\ge\delta\left|V_{i}^{\bar{\h}}\right|$
+ in one of these clusters uniformly at random (do this independently for
+ each bad 
+\begin_inset Formula $v$
 \end_inset
 
- neighbours in its partner cluster 
-\begin_inset Formula $V_{i}^{\bar{\h}}$
+).
+ By a concentration inequality, after this procedure a.a.s.
+ at most 
+\begin_inset Formula $2\left(2\varepsilon'n\right)\left(2s/\a\right)$
 \end_inset
 
-, so in fact each pair 
-\begin_inset Formula $\left(V_{i}^{1},V_{i}^{2}\right)$
+ bad vertices have been added to each 
+\begin_inset Formula $V_{i}^{\h}$
 \end_inset
 
- is 
-\begin_inset Formula $\left(\left(4/\a'+1\right)\varepsilon',\delta\right)$
+.
+ By 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:robust-regular"
+
 \end_inset
 
--super-regular.
- With 
+, for small 
 \begin_inset Formula $\varepsilon'$
 \end_inset
 
- small enough so that 
-\begin_inset Formula $\left(4/\a'+1\right)\varepsilon'\le\varepsilon$
+ each 
+\begin_inset Formula $\left(V_{i}^{1},V_{i}^{2}\right)$
+\end_inset
+
+ is now 
+\begin_inset Formula $\left(\varepsilon''f,\delta''/2\right)$
+\end_inset
+
+-super-regular, for some 
+\begin_inset Formula $f=f\left(\a\right)$
+\end_inset
+
+.
+ With 
+\begin_inset Formula $\varepsilon''$
+\end_inset
+
+ small relative to 
+\begin_inset Formula $\varepsilon$
 \end_inset
 
 , we are done.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{comment}
-\end_layout
-
-\end_inset
-
-
-\series bold
-You mentioned the preceding arguments are quite standard and there might
- be something I can cite.
- But I haven't been able to find anything yet.
-\end_layout
-
-\begin_layout Proof
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{comment}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2891,7 +3024,7 @@ reference "lem:partition-into-blobs"
 \end_inset
 
 , and let 
-\begin_inset Formula $\left|V_{\bi}\right|=s_{\bi}n=s_{i}^{\h}n$
+\begin_inset Formula $\left|V_{\bi}\right|=s_{\bi}n$
 \end_inset
 
 .
@@ -3006,16 +3139,12 @@ In our case
 \end_inset
 
 .
- For any 
-\begin_inset Formula $\phi=\phi\left(\a\right)>0$
-\end_inset
-
- (which we will determine later), if we choose 
-\begin_inset Formula $k=k\left(\phi,\a\right)$
+ If we choose 
+\begin_inset Formula $k$
 \end_inset
 
  large enough and 
-\begin_inset Formula $\lambda=\lambda\left(k\right)$
+\begin_inset Formula $\lambda$
 \end_inset
 
  small enough, then 
@@ -3023,7 +3152,7 @@ In our case
 \end_inset
 
  contains a collection of 
-\begin_inset Formula $\psi n:=\left(1-\phi\right)n/\left(k-1\right)$
+\begin_inset Formula $\psi n:=n/\left(2\left(k-1\right)\right)$
 \end_inset
 
  disjoint bare 
@@ -3042,7 +3171,7 @@ In our case
 \end_inset
 
  on 
-\begin_inset Formula $\phi n$
+\begin_inset Formula $n/2$
 \end_inset
 
  vertices.
@@ -3151,14 +3280,14 @@ is a uniformly random partition of
 \end_inset
 
 , 
-\begin_inset Formula $\left(\phi-2\psi\right)n$
+\begin_inset Formula $n/2-2\psi n$
 \end_inset
 
 , 
-\begin_inset Formula $\left(1-\phi\right)n$
+\begin_inset Formula $n/2$
 \end_inset
 
-, and the special pairs correspond to a random bijection between 
+, and that the special pairs correspond to a random bijection between 
 \begin_inset Formula $X$
 \end_inset
 
@@ -3167,16 +3296,12 @@ is a uniformly random partition of
 \end_inset
 
 .
- For 
-\begin_inset Formula $\bi=\left(i,\h\right)$
-\end_inset
-
-, let 
-\begin_inset Formula $X_{\bi}=X_{i}^{\h}=V_{\bi}\cap X$
+ Let 
+\begin_inset Formula $X_{\bi}=V_{\bi}\cap X$
 \end_inset
 
  and 
-\begin_inset Formula $Y_{\bi}=Y_{i}^{\h}=V_{\bi}\cap Y$
+\begin_inset Formula $Y_{\bi}=V_{\bi}\cap Y$
 \end_inset
 
 , and let 
@@ -3191,15 +3316,15 @@ is a uniformly random partition of
  By a concentration inequality for the hypergeometric distribution and the
  union bound, a.a.s.
  each 
-\begin_inset Formula $\left|V_{\bi}\backslash\left(\F\backslash\left(X\cup Y\right)\right)\right|\sim\left(1-\phi+2\psi\right)s_{\bi}n$
+\begin_inset Formula $\left|V_{\bi}\backslash\left(\F\backslash\left(X\cup Y\right)\right)\right|\sim\left(1/2+2\psi\right)s_{\bi}n$
 \end_inset
 
 .
- Each 
-\begin_inset Formula $\left|X_{\bi}\right|\sim\psi s_{\bi}n$
+ Similarly each 
+\begin_inset Formula $\left|X_{\bi}\right|\sim\left|Y_{\bi}\right|\sim\psi s_{\bi}n$
 \end_inset
 
-, and therefore each 
+, and each 
 \begin_inset Formula $\left|Z_{\bi,\bj}\right|\sim\psi s_{\bi}s_{\bj}n$
 \end_inset
 
@@ -3207,7 +3332,7 @@ is a uniformly random partition of
 \end_layout
 
 \begin_layout Standard
-Now we have embedded 
+Now that we have embedded 
 \begin_inset Formula $\F$
 \end_inset
 
@@ -3238,6 +3363,10 @@ removing
 \begin_inset Formula $V_{\bi}$
 \end_inset
 
+ and 
+\begin_inset Formula $Z_{\bi,\bj}$
+\end_inset
+
  all vertices used in 
 \begin_inset Formula $\F\backslash\left(X\cup Y\right)$
 \end_inset
@@ -3252,7 +3381,7 @@ removing
 \end_inset
 
  (previously 
-\begin_inset Formula $\left(1-\phi+2\psi\right)n$
+\begin_inset Formula $\left(1/2+2\psi\right)n$
 \end_inset
 
 ), and update each 
@@ -3271,25 +3400,21 @@ removing
  We now have 
 \begin_inset Formula 
 \[
-\left|Z_{\bi,\bj}\right|\sim\psi\left(1-\phi\right)/\left(1-\phi+2\psi\right)s_{\bi}s_{\bj}n=s_{\bi}s_{\bj}n/\left(k+1\right).
+\left|Z_{\bi,\bj}\right|\sim\psi s_{\bi}s_{\bj}n/\left(2\left(1/2+2\psi\right)\right)=s_{\bi}s_{\bj}n/\left(k+1\right).
 \]
 
 \end_inset
 
-For 
-\begin_inset Formula $\bi=\left(i,\h\right)$
-\end_inset
-
-, also let 
-\begin_inset Formula $W_{i}^{\h}=W_{\bi}=V_{\bi}\backslash\left(X\cup Y\right)$
+Also let 
+\begin_inset Formula $W_{\bi}=V_{\bi}\backslash\left(X\cup Y\right)$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-Here and in future phases, it is critical that after removing vertices from
- the 
+Here and in future parts of the proof, it is critical that after removing
+ vertices from the 
 \begin_inset Formula $V_{\bi}$
 \end_inset
 
@@ -3311,7 +3436,7 @@ Fix any
 
 .
  Let 
-\begin_inset Formula $\left(V_{1},V_{2}\right)$
+\begin_inset Formula $\left(V^{1},V^{2}\right)$
 \end_inset
 
  be an 
@@ -3323,7 +3448,7 @@ Fix any
 \end_inset
 
 , where each 
-\begin_inset Formula $\left|V_{\h}\right|\ge n$
+\begin_inset Formula $\left|V^{\h}\right|\ge n$
 \end_inset
 
 .
@@ -3332,7 +3457,7 @@ Fix any
 \end_inset
 
 , let 
-\begin_inset Formula $W_{\h}$
+\begin_inset Formula $W^{\h}$
 \end_inset
 
  be a uniformly random 
@@ -3340,12 +3465,12 @@ Fix any
 \end_inset
 
 -vertex subset of 
-\begin_inset Formula $V_{\h}$
+\begin_inset Formula $V^{\h}$
 \end_inset
 
 .
  Then 
-\begin_inset Formula $\left(W_{1},W_{2}\right)$
+\begin_inset Formula $\left(W^{1},W^{2}\right)$
 \end_inset
 
  is a.a.s.
@@ -3358,11 +3483,11 @@ Fix any
 
 \begin_layout Proof
 Since 
-\begin_inset Formula $W_{\h}\subseteq V_{\h}$
+\begin_inset Formula $W^{\h}\subseteq V^{\h}$
 \end_inset
 
 , by definition 
-\begin_inset Formula $\left(W_{1},W_{2}\right)$
+\begin_inset Formula $\left(W^{1},W^{2}\right)$
 \end_inset
 
  is 
@@ -3371,24 +3496,24 @@ Since
 
 -dense.
  Each vertex in 
-\begin_inset Formula $W_{\h}$
+\begin_inset Formula $W^{\h}$
 \end_inset
 
  has at least 
-\begin_inset Formula $\delta\left|V_{\bar{\h}}\right|$
+\begin_inset Formula $\delta\left|V^{\flip{\h}}\right|$
 \end_inset
 
- vertices in 
-\begin_inset Formula $V_{\bar{\h}}$
+ neighbours in 
+\begin_inset Formula $V^{\flip{\h}}$
 \end_inset
 
 ; by a concentration inequality for the hypergeometric distribution and
  the union bound, at least 
-\begin_inset Formula $\delta\left|W_{\bar{\h}}\right|/2$
+\begin_inset Formula $\delta\left|W^{\flip{\h}}\right|/2$
 \end_inset
 
  of those remain in 
-\begin_inset Formula $W_{\bar{\h}}$
+\begin_inset Formula $W^{\flip{\h}}$
 \end_inset
 
 .
@@ -3415,8 +3540,20 @@ Let
 \begin_inset Formula $Z_{\bi,\bj}$
 \end_inset
 
-, respectively.
- An immediate consequence of 
+, respectively, so that the clusters 
+\begin_inset Formula $X_{\bi,\bj},Y_{\bi,\bj},W_{\bi}$
+\end_inset
+
+ (each of size 
+\begin_inset Formula $\Omega\left(n\right)$
+\end_inset
+
+) partition the vertex set.
+ Let 
+\begin_inset Formula $\flip{\left(i,\h\right)}=\left(i,\flip{\h}\right)$
+\end_inset
+
+; an immediate consequence of 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:random-preserves-superregular"
@@ -3424,15 +3561,15 @@ reference "lem:random-preserves-superregular"
 \end_inset
 
  is that each 
-\begin_inset Formula $\left(X_{\left(i,\h\right),\bj},W_{i}^{\bar{\h}}\right)$
+\begin_inset Formula $\left(X_{\bi,\bj},W_{\flip{\bi}}\right)$
 \end_inset
 
 , 
-\begin_inset Formula $\left(W_{i}^{1},W_{i}^{2}\right)$
+\begin_inset Formula $\left(W_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
  and 
-\begin_inset Formula $\left(W_{i}^{\h},Y_{\bj,\left(i,\bar{\h}\right)}\right)$
+\begin_inset Formula $\left(W_{\bi},Y_{\bj,\flip{\bi}}\right)$
 \end_inset
 
  are 
@@ -3748,16 +3885,7 @@ It suffices to show that we can a.a.s.
 \end_layout
 
 \begin_layout Proof
-We proceed with this plan, for 
-\begin_inset Formula $\varepsilon=\delta^{3}/\left(2\sqrt{2}\right)$
-\end_inset
-
-.
- For any 
-\begin_inset Formula $\gamma=\gamma\left(\delta\right)>0$
-\end_inset
-
-, by 
+By 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:bipartite-matching"
@@ -3765,7 +3893,7 @@ reference "lem:bipartite-matching"
 \end_inset
 
  we can find a matching of 
-\begin_inset Formula $\left(1-\left(1-\gamma\right)/\left(k-2\right)\right)n$
+\begin_inset Formula $\left(1-1/\left(2\left(k-2\right)\right)\right)n$
 \end_inset
 
  edges between each 
@@ -3782,7 +3910,7 @@ reference "lem:bipartite-matching"
 
 ).
  This gives us a disjoint union of 
-\begin_inset Formula $\gamma n$
+\begin_inset Formula $n/2$
 \end_inset
 
  paths 
@@ -3807,15 +3935,19 @@ reference "lem:bipartite-matching"
 \end_inset
 
 , we can assume that 
-\begin_inset Formula $v_{j}^{1},\dots,v_{j}^{\gamma n}$
+\begin_inset Formula $v_{j}^{1},\dots,v_{j}^{n/2}$
 \end_inset
 
  is a uniformly random ordering of a uniformly random set of 
-\begin_inset Formula $\gamma n$
+\begin_inset Formula $n/2$
 \end_inset
 
  elements of 
-\begin_inset Formula $V_{j}$
+\begin_inset Formula $V_{j},$
+\end_inset
+
+which we can complete into a uniformly random ordering 
+\begin_inset Formula $v_{j}^{1},\dots,v_{j}^{n}$
 \end_inset
 
  (independently for 
@@ -3831,34 +3963,91 @@ Now, let the special pairs be
 \end_inset
 
 .
- Note that 
-\begin_inset Formula $\Pr\left(v_{1}^{1}\sim\x^{1},v_{k-1}^{1}\sim\y^{1}\right)\ge\delta^{2}$
+ Let 
+\begin_inset Formula $S_{X}$
 \end_inset
 
- and more generally, 
-\begin_inset Formula 
-\[
-\Pr\left(v_{1}^{i}\sim\x^{i},v_{k-1}^{i}\sim\y^{i}\mid v_{1}^{1},v_{k-1}^{1},\dots,v_{1}^{\gamma n},v_{k-1}^{\gamma n}\right)\ge\left(\left(\delta n\right)^{2}-i^{2}\right)/n^{2}\ge\delta^{2}/2
-\]
-
+ (respectively 
+\begin_inset Formula $S_{Y}$
 \end_inset
 
-for all 
-\begin_inset Formula $i\le\gamma n$
+) be the set of indices 
+\begin_inset Formula $i\le n/2$
 \end_inset
 
-, with 
-\begin_inset Formula $\gamma=\delta n/\sqrt{2}$
+ such that 
+\begin_inset Formula $v_{1}^{i}$
+\end_inset
+
+ is adjacent to 
+\begin_inset Formula $\x^{i}$
+\end_inset
+
+ (respectively, 
+\begin_inset Formula $v_{k-1}^{i}$
+\end_inset
+
+ is adjacent to 
+\begin_inset Formula $\y^{i}$
+\end_inset
+
+).
+ By linearity of expectation, 
+\begin_inset Formula $\E\left|S_{X}\right|,\E\left|S_{Y}\right|\ge\delta n/2$
 \end_inset
 
 .
- By the Chernoff bound, there are a.a.s.
+ If we vary the ordering 
+\begin_inset Formula $v_{j}^{1},\dots,v_{j}^{n}$
+\end_inset
+
+ by a transposition, this changes 
+\begin_inset Formula $\left|S_{X}\right|$
+\end_inset
+
+ by at most 2, so by a bounded differences inequality (for example 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Lemma~B.1"
+key "FP04"
+
+\end_inset
+
+), a.a.s.
  
-\begin_inset Formula $\delta^{3}n/\left(2\sqrt{2}\right)$
+\begin_inset Formula $\left|S_{X}\right|,\left|S_{Y}\right|\le\delta n/3$
+\end_inset
+
+.
+ Conditioning on 
+\begin_inset Formula $S_{X}$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|S_{Y}\right|$
+\end_inset
+
+, a concentration inequality for the hypergeometric distribution shows that
+ a.a.s.
+ 
+\begin_inset Formula $\left|S_{X}\cap S_{Y}\right|\ge\delta^{2}n/10$
+\end_inset
+
+.
+ The indices in 
+\begin_inset Formula $S_{X}\cap S_{Y}$
+\end_inset
+
+ correspond to 
+\begin_inset Formula $\varepsilon n$
 \end_inset
 
  special paths 
 \begin_inset Formula $\x_{i},v_{1}^{i},\dots,v_{k-1}^{i},\y_{i}$
+\end_inset
+
+, where 
+\begin_inset Formula $\varepsilon=\delta^{2}/10$
 \end_inset
 
 .
@@ -3933,15 +4122,15 @@ Let
 \end_inset
 
  clusters as 
-\begin_inset Formula $U_{1},\dots,U_{k-1}$
+\begin_inset Formula $W_{1},\dots,W_{k-1}$
 \end_inset
 
- such that 
-\begin_inset Formula $U_{1}\subseteq V_{1}$
+ in such a way that 
+\begin_inset Formula $W_{1}\subseteq V_{1}$
 \end_inset
 
  and 
-\begin_inset Formula $U_{k-1}\subseteq V_{r}$
+\begin_inset Formula $W_{k-1}\subseteq V_{r}$
 \end_inset
 
 .
@@ -3953,11 +4142,11 @@ reference "lem:random-preserves-superregular"
 \end_inset
 
 , 
-\begin_inset Formula $\left(X,U_{1}\right)$
+\begin_inset Formula $\left(X,W_{1}\right)$
 \end_inset
 
  and 
-\begin_inset Formula $\left(U_{k-1},Y\right)$
+\begin_inset Formula $\left(W_{k-1},Y\right)$
 \end_inset
 
  are 
@@ -3966,7 +4155,7 @@ reference "lem:random-preserves-superregular"
 
 -super-regular.
  Each 
-\begin_inset Formula $\left|U_{i}\right|\ge n/\left(2\left(k-1\right)\right)$
+\begin_inset Formula $\left|W_{i}\right|\ge n/\left(2\left(k-1\right)\right)$
 \end_inset
 
  and also note 
@@ -3981,11 +4170,11 @@ m & \le f\left|V_{i}\right|/t_{i}\\
 \end_inset
 
 Let 
-\begin_inset Formula $f'=2f/\left(1+f\right)$
+\begin_inset Formula $g=2f/\left(1+f\right)$
 \end_inset
 
  so each 
-\begin_inset Formula $f'\left|U_{i}\right|\ge m$
+\begin_inset Formula $g\left|W_{i}\right|\ge m$
 \end_inset
 
 .
@@ -4018,51 +4207,61 @@ reference "lem:easy-adjusting-paths"
 \end_inset
 
 .
- For each 
-\begin_inset Formula $\left(\varepsilon,\delta\right)$
-\end_inset
-
--super-regular pair 
-\begin_inset Formula $\left(V_{i},V_{j}\right)$
-\end_inset
-
- (respectively 
+ If 
 \begin_inset Formula $\left(V_{i},W\right)$
 \end_inset
 
-) in the original graph, by 
+ was 
+\begin_inset Formula $\left(\varepsilon,\delta/2\right)$
+\end_inset
+
+-super-regular before the deletions (where 
+\begin_inset Formula $W$
+\end_inset
+
+ does not participate in our special paths), it is trivially still 
+\begin_inset Formula $\left(\varepsilon,\delta\right)$
+\end_inset
+
+-dense after the deletions.
+ Moreover,  by 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:random-preserves-superregular"
 
 \end_inset
 
- 
-\begin_inset Formula $\left(D_{i},D_{j}\right)$
-\end_inset
-
- (respectively 
+, 
 \begin_inset Formula $\left(D_{i},W\right)$
 \end_inset
 
-) is a.a.s.
+ is a.a.s.
  
 \begin_inset Formula $\left(\varepsilon,\delta/2\right)$
 \end_inset
 
--super-regular, so that 
-\begin_inset Formula $\left(V_{i}\backslash P,V_{j}\backslash P\right)$
+-super-regular, so that that 
+\begin_inset Formula $\left(V_{i},W\right)$
 \end_inset
 
- (respectively 
-\begin_inset Formula $\left(V_{i}\backslash P,W\right)$
-\end_inset
-
-) is 
+ is now 
 \begin_inset Formula $\left(\varepsilon,\delta/4\right)$
 \end_inset
 
 -super-regular, as required.
+ By a similar argument, each 
+\begin_inset Formula $\left(V_{i},V_{j}\right)$
+\end_inset
+
+ that was 
+\begin_inset Formula $\left(\varepsilon,\delta/2\right)$
+\end_inset
+
+-super-regular before the deletions is now 
+\begin_inset Formula $\left(\varepsilon,\delta/4\right)$
+\end_inset
+
+-super-regular after the deletions.
 \end_layout
 
 \begin_layout Standard
@@ -4075,14 +4274,14 @@ reference "thm:main-theorem"
 
 .
  For each 
-\begin_inset Formula $\bi=\left(i,\h\right)$
+\begin_inset Formula $\bi,\bj$
 \end_inset
 
- and each 
-\begin_inset Formula $\bj=\left(j,g\right)\ne\left(i,\bar{\h}\right)$
+ with 
+\begin_inset Formula $\bi\ne\bj$
 \end_inset
 
- and some very small 
+, and some very small 
 \begin_inset Formula $\xi=\xi\left(a,\delta\right)>0$
 \end_inset
 
@@ -4091,15 +4290,16 @@ reference "thm:main-theorem"
 \end_inset
 
  special paths connecting special pairs in 
-\begin_inset Formula $V_{\bi,\bj}$
+\begin_inset Formula $Z_{\bi,\bj}$
 \end_inset
 
-, where each of these special paths has one interior vertex from 
-\begin_inset Formula $W_{i}^{\bar{\h}}$
+, in such a way that each of these special paths has one interior vertex
+ from 
+\begin_inset Formula $W_{\flip{\bi}}$
 \end_inset
 
 , one interior vertex from 
-\begin_inset Formula $W_{j}^{g}$
+\begin_inset Formula $W_{\flip{\bj}}$
 \end_inset
 
  and the other 
@@ -4107,7 +4307,7 @@ reference "thm:main-theorem"
 \end_inset
 
  interior vertices from 
-\begin_inset Formula $W_{i}^{\h}$
+\begin_inset Formula $W_{\bi}$
 \end_inset
 
 .
@@ -4153,15 +4353,15 @@ Remove these paths, and update each
 
 ).
  Each 
-\begin_inset Formula $\left(X_{\left(i,\h\right),\bj},W_{i}^{\bar{\h}}\right)$
+\begin_inset Formula $\left(X_{\bi,\bj},W_{\flip{\bi}}\right)$
 \end_inset
 
 , 
-\begin_inset Formula $\left(W_{i}^{1},W_{i}^{2}\right)$
+\begin_inset Formula $\left(W_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
  and 
-\begin_inset Formula $\left(W_{i}^{\h},Y_{\bj,\left(i,\bar{\h}\right)}\right)$
+\begin_inset Formula $\left(W_{\bi},Y_{\bj,\flip{\bi}}\right)$
 \end_inset
 
  are 
@@ -4177,11 +4377,7 @@ Remove these paths, and update each
 \begin_inset Formula $a'=a'\left(a\right)$
 \end_inset
 
- give a lower bound on the sizes of the 
-\begin_inset Formula $W_{\bi}$
-\end_inset
-
-: 
+ satisfy 
 \begin_inset Formula $\left|W_{\bi}\right|\ge a'n$
 \end_inset
 
@@ -4199,14 +4395,14 @@ Remove these paths, and update each
 
 \begin_layout Standard
 Now, for every 
-\begin_inset Formula $\bi=\left(i,\h\right)$
+\begin_inset Formula $\bi,\bj$
 \end_inset
 
- and 
-\begin_inset Formula $\bj=\left(j,g\right)\ne\left(i,\bar{\h}\right)$
+ with 
+\begin_inset Formula $\bi\ne\bj$
 \end_inset
 
-, 
+, we have 
 \begin_inset Formula $\left|Z_{\bi,\bj}\right|=\xi s_{\bi}s_{\bj}n/\left(k+1\right)$
 \end_inset
 
@@ -4217,6 +4413,14 @@ Now, for every
 
  comprise a total of at most 
 \begin_inset Formula $\xi n/\left(k+1\right)$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
 \end_inset
 
  special pairs.
@@ -4234,7 +4438,11 @@ Now, for every
 \end_inset
 
  with 
-\begin_inset Formula $\x\in X_{i}^{\h}$
+\begin_inset Formula $\x\in X_{\bi}$
+\end_inset
+
+ and 
+\begin_inset Formula $\y\in Y_{\bj}$
 \end_inset
 
 , choose a length-
@@ -4250,15 +4458,15 @@ Now, for every
 \end_inset
 
  alternate between 
-\begin_inset Formula $W_{i}^{\h}$
+\begin_inset Formula $W_{\bi}$
 \end_inset
 
  and 
-\begin_inset Formula $W_{i}^{\bar{\h}}$
+\begin_inset Formula $W_{\flip{\bi}}$
 \end_inset
 
  with 
-\begin_inset Formula $w_{k-3}\in W_{i}^{\h}$
+\begin_inset Formula $w_{k-3}\in W_{\bi}$
 \end_inset
 
  (recall, 
@@ -4267,7 +4475,7 @@ Now, for every
 
  is odd).
  Then choose a set 
-\begin_inset Formula $U_{x}\subseteq W_{i}^{\bar{\h}}$
+\begin_inset Formula $U_{x}\subseteq W_{\flip{\bi}}$
 \end_inset
 
  of 
@@ -4279,7 +4487,7 @@ Now, for every
 \end_inset
 
  and a disjoint set 
-\begin_inset Formula $U_{y}\subseteq W_{j}^{\bar{g}}$
+\begin_inset Formula $U_{y}\subseteq W_{\flip{\bj}}$
 \end_inset
 
  of 
@@ -4288,10 +4496,6 @@ Now, for every
 
  neighbours of 
 \begin_inset Formula $\y$
-\end_inset
-
-, where 
-\begin_inset Formula $\y\in V_{j}^{g}$
 \end_inset
 
 .
@@ -4316,11 +4520,7 @@ reference "lem:bipartite-matching"
 \end_inset
 
 ).
- Such an edge allows us to complete a 
-\begin_inset Formula $k$
-\end_inset
-
--path from 
+ Such an edge allows us to complete a special path from 
 \begin_inset Formula $\x$
 \end_inset
 
@@ -4329,17 +4529,13 @@ reference "lem:bipartite-matching"
 \end_inset
 
 , which we remove.
- We can repeat this for each unconnected special pair in 
-\begin_inset Formula $Z_{\bi,\bj}$
-\end_inset
-
-.
+ We can repeat this for each unconnected bad special pair.
  Note that these special paths comprise less than 
 \begin_inset Formula $\delta'a'n/2$
 \end_inset
 
  vertices total, which is so few that each 
-\begin_inset Formula $\left(W_{i}^{1},W_{i}^{2}\right)$
+\begin_inset Formula $\left(W_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
  is 
@@ -4347,11 +4543,11 @@ reference "lem:bipartite-matching"
 \end_inset
 
 -super-regular, and each 
-\begin_inset Formula $\x\in X_{i}^{\h}$
+\begin_inset Formula $\x\in X_{\bi}$
 \end_inset
 
  (respectively 
-\begin_inset Formula $\y\in Y_{i}^{\h}$
+\begin_inset Formula $\y\in Y_{\bi}$
 \end_inset
 
 ) has at least 
@@ -4359,7 +4555,7 @@ reference "lem:bipartite-matching"
 \end_inset
 
  neighbours in 
-\begin_inset Formula $W_{i}^{\bar{\h}}$
+\begin_inset Formula $W_{\flip{\bi}}$
 \end_inset
 
 , throughout the whole process.
@@ -4376,15 +4572,15 @@ Now, update all the relevant variables.
 \end_inset
 
 , such that each 
-\begin_inset Formula $\left(X_{i}^{\h},W_{i}^{\bar{\h}}\right)$
+\begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
 , 
-\begin_inset Formula $\left(W_{i}^{1},W_{i}^{2}\right)$
+\begin_inset Formula $\left(W_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
  and 
-\begin_inset Formula $\left(W_{i}^{\h},Y_{i}^{\bar{\h}}\right)$
+\begin_inset Formula $\left(W_{\bi},Y_{\flip{\bi}}\right)$
 \end_inset
 
  is 
@@ -4392,7 +4588,7 @@ Now, update all the relevant variables.
 \end_inset
 
 -regular, and each special pair is in some 
-\begin_inset Formula $X_{i}^{\h}\times Y_{i}^{\bar{\h}}$
+\begin_inset Formula $X_{\bi}\times Y_{\flip{\bi}}$
 \end_inset
 
 .
@@ -4482,15 +4678,6 @@ Suppose
 \end_inset
 
 , where one of these inequalities is an equality.
- Let 
-\begin_inset Formula $\bi=\left(i,\h\right)$
-\end_inset
-
- and 
-\begin_inset Formula $\bj=\left(j,g\right)$
-\end_inset
-
-.
  Use 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4507,7 +4694,7 @@ reference "lem:adjusting-paths"
 \end_inset
 
  special paths connecting special pairs in 
-\begin_inset Formula $X_{i}^{\h}\times Y_{i}^{\bar{\h}}$
+\begin_inset Formula $X_{\bi}\times Y_{\flip{\bi}}$
 \end_inset
 
 , each with 
@@ -4515,11 +4702,11 @@ reference "lem:adjusting-paths"
 \end_inset
 
  interior vertices in 
-\begin_inset Formula $W_{i}^{\bar{\h}}$
+\begin_inset Formula $W_{\flip{\bi}}$
 \end_inset
 
 , one interior vertex in 
-\begin_inset Formula $W_{i}^{\h}$
+\begin_inset Formula $W_{\bi}$
 \end_inset
 
 , and the remaining 
@@ -4527,7 +4714,7 @@ reference "lem:adjusting-paths"
 \end_inset
 
  interior vertices in 
-\begin_inset Formula $W_{j}^{g}$
+\begin_inset Formula $W_{\bj}$
 \end_inset
 
 .
@@ -4535,10 +4722,14 @@ reference "lem:adjusting-paths"
 
 \begin_layout Standard
 Then, let 
-\begin_inset Formula $r=\left(\left(k-1\right)/2-1\right)\left\langle m/\left(\left(k-1\right)/2-1\right)\right\rangle $
+\begin_inset Formula 
+\[
+r=\left(\left(k-1\right)/2-1\right)\left\langle \frac{m}{\left(k-1\right)/2-1}\right\rangle ,
+\]
+
 \end_inset
 
-, where 
+where 
 \begin_inset Formula $\left\langle \cdot\right\rangle $
 \end_inset
 
@@ -4550,20 +4741,32 @@ reference "lem:adjusting-paths"
 
 \end_inset
 
-, find a single special path of the same type, except it has 
+, find a single special path connecting a special pair in 
+\begin_inset Formula $X_{\bi}\times Y_{\flip{\bi}}$
+\end_inset
+
+, which has 
+\begin_inset Formula $\left(k-1\right)/2$
+\end_inset
+
+ interior vertices in 
+\begin_inset Formula $W_{\flip{\bi}}$
+\end_inset
+
+, has 
 \begin_inset Formula $\left(k-1\right)/2-1-r$
 \end_inset
 
  interior vertices in 
-\begin_inset Formula $W_{i}^{\h}$
+\begin_inset Formula $W_{\bi}$
 \end_inset
 
- and 
+, and has 
 \begin_inset Formula $r$
 \end_inset
 
  interior vertices in 
-\begin_inset Formula $W_{j}^{g}$
+\begin_inset Formula $W_{\bj}$
 \end_inset
 
 .
@@ -4586,15 +4789,15 @@ reference "lem:adjusting-paths"
 
  as desired.
  Each 
-\begin_inset Formula $\left(X_{i}^{\h},W_{i}^{\bar{\h}}\right)$
+\begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
 , 
-\begin_inset Formula $\left(W_{i}^{1},W_{i}^{2}\right)$
+\begin_inset Formula $\left(W_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
  and 
-\begin_inset Formula $\left(W_{i}^{\h},Y_{i}^{\bar{\h}}\right)$
+\begin_inset Formula $\left(W_{\bi},Y_{\flip{\bi}}\right)$
 \end_inset
 
  is now 
@@ -4620,7 +4823,7 @@ name "sub:blow-up"
 \end_layout
 
 \begin_layout Standard
-We have now finished with 
+We have now finished with the edges in 
 \begin_inset Formula $\R$
 \end_inset
 
@@ -4638,71 +4841,7 @@ reference "fig:cluster-paths"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Uniformly at random divide each 
-\begin_inset Formula $W_{i}^{\h}$
-\end_inset
-
- into sets 
-\begin_inset Formula $A_{i}^{\h}$
-\end_inset
-
- and 
-\begin_inset Formula $B_{i}^{\h}$
-\end_inset
-
- of size 
-\begin_inset Formula $\left(k-1\right)\left|X_{i}^{\h}\right|/2$
-\end_inset
-
- and 
-\begin_inset Formula $\left(k-1\right)\left|Y_{i}^{\h}\right|/2$
-\end_inset
-
- respectively.
- For 
-\begin_inset Formula $\bi=\left(i,\h\right)$
-\end_inset
-
-, let 
-\begin_inset Formula $S_{\bi}^{0}=X_{i}^{\h}$
-\end_inset
-
-, 
-\begin_inset Formula $S_{\bi}^{1}=B_{i}^{\bar{\h}}$
-\end_inset
-
-, 
-\begin_inset Formula $S_{\bi}^{2}=A_{i}^{\h}$
-\end_inset
-
- and 
-\begin_inset Formula $S_{\bi}^{3}=Y_{i}^{\bar{\h}}$
-\end_inset
-
-, so that each 
-\begin_inset Formula $\left(S_{\bi}^{0},S_{\bi}^{2},S_{\bi}^{3},S_{\bi}^{3}\right)$
-\end_inset
-
- is a sequence of clusters of sizes 
-\begin_inset Formula $n_{\bi},\left(k-1\right)n_{\bi}/2,\left(k-1\right)n_{\bi}/2,n_{\bi}$
-\end_inset
-
- for some 
-\begin_inset Formula $n_{\bi}$
-\end_inset
-
-, and each 
-\begin_inset Formula $\left(S_{\bi}^{\ell},S_{\bi}^{\ell+1}\right)$
-\end_inset
-
- is 
-\begin_inset Formula $\left(\varepsilon,\delta''/2\right)$
-\end_inset
-
--super-regular.
+ We first give a statement of the blow-up lemma.
 \end_layout
 
 \begin_layout Lemma
@@ -4841,6 +4980,72 @@ super-regular blow-up
 \end_layout
 
 \begin_layout Standard
+Now we describe the setup to apply the blow-up lemma.
+ Uniformly at random divide each 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ into sets 
+\begin_inset Formula $A_{\bi}$
+\end_inset
+
+ and 
+\begin_inset Formula $B_{\bi}$
+\end_inset
+
+ of size 
+\begin_inset Formula $\left(k-1\right)\left|X_{\bi}\right|/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(k-1\right)\left|Y_{\bi}\right|/2$
+\end_inset
+
+ respectively.
+ For 
+\begin_inset Formula $\bi=\left(i,\h\right)$
+\end_inset
+
+, let 
+\begin_inset Formula $S_{\bi}^{0}=X_{\bi}$
+\end_inset
+
+, 
+\begin_inset Formula $S_{\bi}^{1}=B_{\flip{\bi}}$
+\end_inset
+
+, 
+\begin_inset Formula $S_{\bi}^{2}=A_{\bi}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{\bi}^{3}=Y_{\flip{\bi}}$
+\end_inset
+
+, so that each 
+\begin_inset Formula $\left(S_{\bi}^{0},S_{\bi}^{2},S_{\bi}^{3},S_{\bi}^{3}\right)$
+\end_inset
+
+ is a sequence of clusters of sizes 
+\begin_inset Formula $n_{\bi},\left(k-1\right)n_{\bi}/2,\left(k-1\right)n_{\bi}/2,n_{\bi}$
+\end_inset
+
+ for some 
+\begin_inset Formula $n_{\bi}$
+\end_inset
+
+, and each 
+\begin_inset Formula $\left(S_{\bi}^{\ell},S_{\bi}^{\ell+1}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon,\delta''/2\right)$
+\end_inset
+
+-super-regular.
+\end_layout
+
+\begin_layout Standard
 For each 
 \begin_inset Formula $\bi$
 \end_inset
@@ -4850,7 +5055,7 @@ For each
 \end_inset
 
  as follows.
- Start with the 4-partite subgraph of 
+ Start with the subgraph of 
 \begin_inset Formula $\G$
 \end_inset
 
@@ -4960,7 +5165,7 @@ The complete blow-up
 \end_inset
 
 , but since 
-\begin_inset Formula $\left|S_{\bi}^{*}\right|=n_{0}$
+\begin_inset Formula $\left|S_{\bi}^{*}\right|=n_{\bi}$
 \end_inset
 
 , each cycle must then use exactly one vertex from 
