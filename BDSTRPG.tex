@@ -43,6 +43,8 @@
   \newtheorem{claim}[thm]{\protect\claimname}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{}
+
 % cleveref allows \ref{thm:asdf} instead of Theorem~\ref{thm:asdf}
 \usepackage[nameinlink,capitalise,noabbrev]{cleveref}
 \AtBeginDocument{\renewcommand{\ref}[1]{\cref{#1}}}
@@ -286,7 +288,7 @@
 \global\long\def\R{R}
 
 
-\global\long\def\B#1{G_{A,B}\left(#1\right)}
+\global\long\def\B#1{\Gamma_{A,B}\left(#1\right)}
 
 \begin{abstract}
 We show that for any bounded-degree spanning tree $T$ and any fixed
@@ -343,7 +345,7 @@ spanning subgraphs than spanning trees; see \cite{KSS01,BST09}).
 
 The constant ``$1/2$'' in these Dirac-type theorems is tight: in
 order to guarantee the existence of these spanning subgraphs we require
-very strong density conditions. But the picture is very different
+very strong density conditions. But the situation is very different
 for a ``typical'' large graph. If we fix an arbitrarily small $\alpha>0$
 and select a graph uniformly at random among the (labelled) graphs
 with $n$ vertices and $\alpha{n \choose 2}$ edges, then the degrees
@@ -365,21 +367,21 @@ graph model that starts with a dense graph and adds $m$ random edges.
 This model is a natural generalization of the ordinary random graph
 model where we start with nothing, and offers a ``hybrid'' perspective
 combining the extremal and probabilistic settings of the last two
-paragraphs. It has since been studied in a number of other contexts;
-see for example \cite{BHM04,KST06,KKS15}. One particularly important
-motivation for the model is the notion of \emph{smoothed analysis}
-of algorithms introduced in \cite{ST04}. This is is a hybrid of worst-case
-and average-case analysis, studying the performance of algorithms
-in the more realistic setting of inputs that are ``noisy'' but not
-completely random. A property that holds a.a.s. with small $m$ in
-our random graph model can be said to hold not just for a ``globally''
-typical graph but for the typical graph in every small ``neighbourhood''
-of our space of graphs. This tells us that the graphs which fail to
-satisfy our property are in some sense ``fragile''. We highlight
-that it is generally very easy to transfer results from our model
-of random perturbation to other natural models, including those that
-delete as well as add edges. This can be accomplished with standard
-coupling and conditioning arguments.
+paragraphs. The model has since been studied in a number of other
+contexts; see for example \cite{BHM04,KST06,KKS15}. A property that
+holds a.a.s. with small $m$ in our random graph model can be said
+to hold not just for a ``globally'' typical graph but for the typical
+graph in every small ``neighbourhood'' of our space of graphs. This
+tells us that the graphs which fail to satisfy our property are in
+some sense ``fragile''. We highlight that it is generally very easy
+to transfer results from our model of random perturbation to other
+natural models, including those that delete as well as add edges (this
+can be accomplished with standard coupling and conditioning arguments).
+We also note that a particularly important motivation is the notion
+of \emph{smoothed analysis} of algorithms introduced in \cite{ST04}.
+This is is a hybrid of worst-case and average-case analysis, studying
+the performance of algorithms in the more realistic setting of inputs
+that are ``noisy'' but not completely random.
 
 The statement of \cite[Theorem~1]{BFM03} is that for every $\alpha>0$
 there is $c=c\left(\alpha\right)$ such that if we start with a graph
@@ -389,10 +391,7 @@ logarithmic factor over the usual model where we start with nothing.
 Note that some dense graphs require a linear number of extra edges
 to become Hamiltonian (consider the complete bipartite graph with
 partition sizes $n/3$ and $2n/3$), so the order of magnitude of
-this result is tight. We can interpret this theorem as quantifying
-the ``fragility'' of the few dense graphs that are not Hamiltonian,
-by determining the amount of random perturbation that is necessary
-to make a dense graph Hamiltonian.
+this result is tight.
 
 Let $\GG\left(n,p\right)$ be the Erd\H{o}s-R\'enyi random graph
 model with vertex set $\range n=\left\{ 1,\dots,n\right\} $, where
@@ -408,9 +407,11 @@ degree at least $\a n$, and $\T$ is an $n$-vertex tree with maximum
 degree at most $\D$, and $\R\in\GG\left(n,\c/n\right)$, then a.a.s.
 $\T\subseteq\G\cup\R$.
 \end{thm}
-A key ingredient of the proof is the following lemma: with the random
-edges in $\R$ alone, we can embed trees that are not too big.
-\begin{lem}[{\cite[Theorem~1.1]{AKS07}}]
+One of the ingredients of the proof is the following lemma, due to
+Alon and two of the authors (\cite[Theorem~1.1]{AKS07}). It shows
+that the random edges in $\R$ are already enough to embed almost-spanning
+trees.
+\begin{lem}
 \label{lem:almost-spanning}There is $\c=\c\left(\varepsilon,\D\right)$
 such that $\G\in\GG\left(n,\c/n\right)$ a.a.s. contains every tree
 of maximum degree at most $\D$ on $\left(1-\varepsilon\right)n$
@@ -454,34 +455,35 @@ paths using a tool called the ``blow-up lemma'' (\ref{sub:blow-up}).
 We split the random edges into multiple independent ``phases'':
 say $\R\supseteq\R_{1}\cup\R_{2}\cup\R_{3}\cup\R_{4}$, where $\R_{i}\in\GG\left(n,\c_{i}/n\right)$
 for some large $\c_{i}=\c_{i}\left(\a,\D\right)$ to be determined
-(these $\c_{i}$ will in turn determine $\c$).
+later (these $\c_{i}$ will in turn determine $\c$).
 
 
 \subsection{Case 1: $\protect\T$ has many leaves\label{sub:many-leaves}}
 
 For our first case suppose there are at least $\lambda n$ leaves
-in $\T$ (for some $\lambda=\lambda\left(\a\right)>0$ to be determined
-in the second case). Then consider the tree $\T'$ with some $\lambda n$
-leaves removed. By \ref{lem:almost-spanning} we can embed $\T'$
-into $\R_{1}$. Let $A'$ be the set of vertices of $\T'$ which had
-a leaf deleted from them, and let $B$ be the set of $\lambda n$
-vertices not part of $\T'$. We can assume $A'$ and $B$ are uniformly
-random disjoint sets of the appropriate size (note $\left|A'\right|\ge\lambda n/\D$
-and $\left|B\right|=\lambda n$). For each $b\in B$, the number of
-neighbours in $A'$ is hypergeometrically distributed with expected
-value at least $\lambda\a n/\D$. Let $\beta=\lambda\a/\left(2\D\right)$;
+in $\T$ (for some fixed $\lambda=\lambda\left(\a\right)>0$ to be
+determined in the second case). Then consider the tree $\T'$ with
+some $\lambda n$ leaves removed. By \ref{lem:almost-spanning} we
+can embed $\T'$ into $\R_{1}$. Let $A'$ be the set of vertices
+of $\T'$ which had a leaf deleted from them, and let $B$ be the
+set of $\lambda n$ vertices not part of $\T'$. We can assume $A'$
+and $B$ are uniformly random disjoint sets of the appropriate size
+(note $\left|A'\right|\ge\lambda n/\D$ and $\left|B\right|=\lambda n$).
+For each $b\in B$, note that $N_{\G}\left(b\right)\cap A'$ is hypergeometrically
+distributed with expected value at least $\lambda\a n/\D$. Let $\beta=\lambda\a/\left(2\D\right)$;
 by a concentration inequality (for example, see \cite[Theorem 2.10]{JLR00})
-and the union bound, a.a.s. each $a'\in A'$ has at least $\beta n$
-neighbours in $B$. Similarly each $b\in B$ a.a.s. has at least $\beta n$
-neighbours in $A'$. From now on we treat $A'$ and $B$ as fixed
-sets satisfying these properties.
+and the union bound, in $\G$ each $a'\in A'$ a.a.s. has at least
+$\beta n$ neighbours in $B$. Similarly each $b\in B$ a.a.s. has
+at least $\beta n$ neighbours in $A'$. From now on we treat $A'$
+and $B$ as fixed sets satisfying these properties.
 
 Let $A$ be a set consisting of $\ell$ copies of each vertex $a'\in A'$
 which needs $\ell$ extra leaves (so $\left|A\right|=\lambda n$).
-For any graph $H$ on $\range n$, we define a bipartite graph $\B H$
-on the vertex set $A\cup B$, with an edge between $a\in A$ (a copy
-of $a'\in A'$) and $b\in B$ if there is an edge between $a'$ and
-$b$ in $H$. If we can find a perfect matching in $\B{\G}\cup\B{\R_{2}}\subseteq\B{\G\cup\R}$,
+Define a bipartite graph $\B{\G}$ on the vertex set $A\cup B$, with
+an edge between $a\in A$ (a copy of $a'\in A'$) and $b\in B$, if
+there is an edge between $a'$ and $b$ in $\G$. Similarly define
+$\B{\R_{2}}$ and $\B{\G\cup\R}$ with edges deriving from $\R_{2}$
+and $\G\cup\R$. If we can find a perfect matching in $\B{\G}\cup\B{\R_{2}}\subseteq\B{\G\cup\R}$,
 this gives us a way to extend our embedding of $\T'$ to an embedding
 of $\T$, as desired.
 
@@ -508,7 +510,7 @@ such that $\R\in\BB_{A,B}\left(\c/n\right)$ has a matching of size
 $\left(1-\varepsilon\right)n$.\end{lem}
 \begin{proof}
 For any subsets $A'$ and $B'$ of size $\varepsilon n$, the probability
-there is no edge between $A'$ and $B'$ is $\left(1-p\right)^{\left(\varepsilon n\right)^{2}}\le e^{-\c\varepsilon^{2}n}$.
+there is no edge between $A'$ and $B'$ is $\left(1-\c/n\right)^{\left(\varepsilon n\right)^{2}}\le e^{-\c\varepsilon^{2}n}$.
 There are at most $2^{2n}$ choices of such $A',B'$, so for large
 $\c$, by the union bound there is a.a.s. an edge between any such
 pair of sets. It follows that a maximum-size matching a.a.s. has at
@@ -526,20 +528,20 @@ Split $\R$ into phases $\R\supseteq\R_{1}\cup\dots\cup\R_{r}$, with
 $\R_{i}\in\BB_{A,B}\left(\c'/n\right)$, for some $\c'=\c'\left(\a\right)$
 and $r=r\left(\a\right)$ to be determined. By \ref{lem:bipartite-matching},
 if $\c'$ is large we can find a $\left(1-\a/3\right)n$-edge matching
-$M_{i}$ in each $\R_{i}$. Let $N_{i}=N_{M_{i}}\left(W\right)$ be
-the set of vertices matched with $W$ in each $M_{i}$, and note that
-each $\left|W\right|-\a n/3\le\left|N_{i}\right|\le\left|W\right|$.
+$M_{i}$ in each $\R_{i}$. Let the random sets $N_{i}=N_{M_{i}}\left(W\right)$
+contain the vertices matched with $W$ in each $M_{i}$, and note
+that each $\left|W\right|-\a n/3\le\left|N_{i}\right|\le\left|W\right|$.
 Condition on $N_{1}$, and condition on the number of vertices $\left|N_{i}\right|$
 matched by $W$ in each $M_{i}$. Now, for each $i>1$, note that
 $N_{i}\cap N_{1}$ is hypergeometrically distributed with mean $\left|N_{i}\right|\left|N_{1}\right|/n$.
 Note that 
 \[
-\left|N_{i}\right|\left|N_{1}\right|/n\le\left|W\right|^{2}/n\le\left|W\right|\left(1-\a\right)\le2\left(\left|W\right|-\a/3\right)-\a/3\le\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|,
+\left|N_{i}\right|\left|N_{1}\right|/n\le\left|W\right|^{2}/n\le\left|W\right|\left(1-\a\right)=2\left(\left|W\right|-\a n/3\right)-\left|W\right|-\a n/3\le\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|-\a n/3,
 \]
 so by a concentration inequality for the hypergeometric distribution,
-\begin{align*}
-\Pr\left(\left|N_{\R}\left(W\right)\right|<\left|W\right|\right) & \le\prod_{i=2}^{r}\Pr\left(\left|N_{i}\cap N_{1}\right|>\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|\right)=e^{-\Omega\left(r\a^{2}n\right)}.
-\end{align*}
+\[
+\Pr\left(\left|N_{\R}\left(W\right)\right|\hspace{-1bp}<\hspace{-1bp}\left|W\right|\right)\le\prod_{i=2}^{r}\hspace{-1bp}\Pr\left(\left|N_{i}\cup N_{1}\right|\hspace{-1bp}<\hspace{-1bp}\left|W\right|\right)=\prod_{i=2}^{r}\hspace{-1bp}\Pr\left(\left|N_{i}\cap N_{1}\right|\hspace{-1bp}>\hspace{-1bp}\left|N_{i}\right|\hspace{-1bp}+\hspace{-1bp}\left|N_{1}\right|\hspace{-1bp}-\hspace{-1bp}\left|W\right|\right)=e^{-\Omega\left(r\a^{2}n\right)}.
+\]
 If $r$ is large this probability is $o\left(2^{-n}\right)$, and
 since there are at most $2^{n}$ choices for $W$, the union bound
 gives $\left|N_{\R}\left(W\right)\right|\ge\left|W\right|$ for all
@@ -1169,23 +1171,23 @@ An example special path is shown, for $k=7$.}
 
 We have proved that any given bounded-degree spanning tree typically
 appears when a linear number of random edges are added to a dense
-graph. In the process, we have proved a general lemma concerning the
-partition of an arbitrary dense graph into uneven superregular pairs.
+graph. There are a few interesting questions that remain open. Most
+prominent is the question of embedding more general kinds of spanning
+subgraphs into randomly perturbed graphs. It would be particularly
+interesting if the general result of \cite{BST09} (concerning arbitrary
+spanning graphs with bounded degree and low bandwidth) could be adapted
+to this setting. It is also possible that our use of Szemer\'edi's
+regularity lemma could be avoided, thus drastically improving the
+constants $\c\left(\a\right)$ and perhaps allowing us to say something
+about random perturbations of graphs which have slightly sublinear
+minimum degree.
 
-There are a few interesting questions that remain open. Most prominent
-is the question of embedding more general kinds of spanning subgraphs
-into randomly perturbed graphs. It would be particularly interesting
-if the general result of \cite{BST09} (concerning arbitrary spanning
-graphs with bounded degree and low bandwidth) could be adapted to
-this setting.
-
-It is also possible that our use of Szemer\'edi's regularity lemma
-could be avoided, thus drastically improving the constants $\c\left(\a\right)$
-and perhaps allowing us to say something about random perturbations
-of graphs which have slightly sublinear minimum degree.
-
-\textbf{Acknowledgements:} similar stuff (concerning Tel Aviv and
-ETH) to the last paper?
+\noindent \textbf{Acknowledgement.} Parts of this work were carried
+out when the first author visited the Institute for Mathematical Research
+(FIM) of ETH Zurich, and also when the third author visited the School
+of Mathematical Sciences of Tel Aviv University, Israel. We would
+like to thank both institutions for their hospitality and for creating
+a stimulating research environment.
 
 \bibliographystyle{amsplain_initials}
 \bibliography{references}

@@ -4,6 +4,8 @@
 \begin_header
 \textclass article
 \begin_preamble
+\date{}
+
 % cleveref allows \ref{thm:asdf} instead of Theorem~\ref{thm:asdf}
 \usepackage[nameinlink,capitalise,noabbrev]{cleveref}
 \AtBeginDocument{\renewcommand{\ref}[1]{\cref{#1}}}
@@ -582,8 +584,8 @@ Michael Krivelevich, Matthew Kwan, Benny Sudakov
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\B}[1]{G_{A,B}\left(#1\right)}
-{\boldsymbol{G_{A,B}\left(#1\right)}}
+\newcommand{\B}[1]{\Gamma_{A,B}\left(#1\right)}
+{\boldsymbol{\Gamma_{A,B}\left(#1\right)}}
 \end_inset
 
 
@@ -837,7 +839,7 @@ The constant
 
  in these Dirac-type theorems is tight: in order to guarantee the existence
  of these spanning subgraphs we require very strong density conditions.
- But the picture is very different for a 
+ But the situation is very different for a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -973,8 +975,8 @@ hybrid
 
  perspective combining the extremal and probabilistic settings of the last
  two paragraphs.
- It has since been studied in a number of other contexts; see for example
- 
+ The model has since been studied in a number of other contexts; see for
+ example 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "BHM04,KST06,KKS15"
@@ -982,29 +984,6 @@ key "BHM04,KST06,KKS15"
 \end_inset
 
 .
- One particularly important motivation for the model is the notion of 
-\emph on
-smoothed analysis
-\emph default
- of algorithms introduced in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "ST04"
-
-\end_inset
-
-.
- This is is a hybrid of worst-case and average-case analysis, studying the
- performance of algorithms in the more realistic setting of inputs that
- are 
-\begin_inset Quotes eld
-\end_inset
-
-noisy
-\begin_inset Quotes erd
-\end_inset
-
- but not completely random.
  A property that holds a.a.s.
  with small 
 \begin_inset Formula $m$
@@ -1039,8 +1018,32 @@ fragile
 .
  We highlight that it is generally very easy to transfer results from our
  model of random perturbation to other natural models, including those that
- delete as well as add edges.
- This can be accomplished with standard coupling and conditioning arguments.
+ delete as well as add edges (this can be accomplished with standard coupling
+ and conditioning arguments).
+ We also note that a particularly important motivation is the notion of
+ 
+\emph on
+smoothed analysis
+\emph default
+ of algorithms introduced in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ST04"
+
+\end_inset
+
+.
+ This is is a hybrid of worst-case and average-case analysis, studying the
+ performance of algorithms in the more realistic setting of inputs that
+ are 
+\begin_inset Quotes eld
+\end_inset
+
+noisy
+\begin_inset Quotes erd
+\end_inset
+
+ but not completely random.
 \end_layout
 
 \begin_layout Standard
@@ -1083,16 +1086,6 @@ key "BFM03"
 \end_inset
 
 ), so the order of magnitude of this result is tight.
- We can interpret this theorem as quantifying the 
-\begin_inset Quotes eld
-\end_inset
-
-fragility
-\begin_inset Quotes erd
-\end_inset
-
- of the few dense graphs that are not Hamiltonian, by determining the amount
- of random perturbation that is necessary to make a dense graph Hamiltonian.
 \end_layout
 
 \begin_layout Standard
@@ -1197,19 +1190,8 @@ There is
 \end_layout
 
 \begin_layout Standard
-A key ingredient of the proof is the following lemma: with the random edges
- in 
-\begin_inset Formula $\R$
-\end_inset
-
- alone, we can embed trees that are not too big.
-\end_layout
-
-\begin_layout Lemma
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
+One of the ingredients of the proof is the following lemma, due to Alon
+ and two of the authors (
 \begin_inset CommandInset citation
 LatexCommand cite
 after "Theorem~1.1"
@@ -1217,12 +1199,15 @@ key "AKS07"
 
 \end_inset
 
-
-\end_layout
-
+).
+ It shows that the random edges in 
+\begin_inset Formula $\R$
 \end_inset
 
+ are already enough to embed almost-spanning trees.
+\end_layout
 
+\begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
 name "lem:almost-spanning"
@@ -1492,7 +1477,7 @@ phases
 \begin_inset Formula $\c_{i}=\c_{i}\left(\a,\D\right)$
 \end_inset
 
- to be determined (these 
+ to be determined later (these 
 \begin_inset Formula $\c_{i}$
 \end_inset
 
@@ -1527,7 +1512,7 @@ For our first case suppose there are at least
 \begin_inset Formula $\T$
 \end_inset
 
- (for some 
+ (for some fixed 
 \begin_inset Formula $\lambda=\lambda\left(\a\right)>0$
 \end_inset
 
@@ -1599,8 +1584,8 @@ reference "lem:almost-spanning"
 \begin_inset Formula $b\in B$
 \end_inset
 
-, the number of neighbours in 
-\begin_inset Formula $A'$
+, note that 
+\begin_inset Formula $N_{\G}\left(b\right)\cap A'$
 \end_inset
 
  is hypergeometrically distributed with expected value at least 
@@ -1620,11 +1605,15 @@ key "JLR00"
 
 \end_inset
 
-) and the union bound, a.a.s.
+) and the union bound, in 
+\begin_inset Formula $\G$
+\end_inset
+
  each 
 \begin_inset Formula $a'\in A'$
 \end_inset
 
+ a.a.s.
  has at least 
 \begin_inset Formula $\beta n$
 \end_inset
@@ -1681,16 +1670,8 @@ Let
 \end_inset
 
 ).
- For any graph 
-\begin_inset Formula $H$
-\end_inset
-
- on 
-\begin_inset Formula $\range n$
-\end_inset
-
-, we define a bipartite graph 
-\begin_inset Formula $\B H$
+ Define a bipartite graph 
+\begin_inset Formula $\B{\G}$
 \end_inset
 
  on the vertex set 
@@ -1709,7 +1690,7 @@ Let
 \begin_inset Formula $b\in B$
 \end_inset
 
- if there is an edge between 
+, if there is an edge between 
 \begin_inset Formula $a'$
 \end_inset
 
@@ -1718,7 +1699,24 @@ Let
 \end_inset
 
  in 
-\begin_inset Formula $H$
+\begin_inset Formula $\G$
+\end_inset
+
+.
+ Similarly define 
+\begin_inset Formula $\B{\R_{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\B{\G\cup\R}$
+\end_inset
+
+ with edges deriving from 
+\begin_inset Formula $\R_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\G\cup\R$
 \end_inset
 
 .
@@ -1907,7 +1905,7 @@ For any subsets
 \end_inset
 
  is 
-\begin_inset Formula $\left(1-p\right)^{\left(\varepsilon n\right)^{2}}\le e^{-\c\varepsilon^{2}n}$
+\begin_inset Formula $\left(1-\c/n\right)^{\left(\varepsilon n\right)^{2}}\le e^{-\c\varepsilon^{2}n}$
 \end_inset
 
 .
@@ -2056,11 +2054,11 @@ reference "lem:bipartite-matching"
 \end_inset
 
 .
- Let 
+ Let the random sets 
 \begin_inset Formula $N_{i}=N_{M_{i}}\left(W\right)$
 \end_inset
 
- be the set of vertices matched with 
+ contain the vertices matched with 
 \begin_inset Formula $W$
 \end_inset
 
@@ -2106,16 +2104,16 @@ reference "lem:bipartite-matching"
  Note that 
 \begin_inset Formula 
 \[
-\left|N_{i}\right|\left|N_{1}\right|/n\le\left|W\right|^{2}/n\le\left|W\right|\left(1-\a\right)\le2\left(\left|W\right|-\a/3\right)-\a/3\le\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|,
+\left|N_{i}\right|\left|N_{1}\right|/n\le\left|W\right|^{2}/n\le\left|W\right|\left(1-\a\right)=2\left(\left|W\right|-\a n/3\right)-\left|W\right|-\a n/3\le\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|-\a n/3,
 \]
 
 \end_inset
 
 so by a concentration inequality for the hypergeometric distribution,
 \begin_inset Formula 
-\begin{align*}
-\Pr\left(\left|N_{\R}\left(W\right)\right|<\left|W\right|\right) & \le\prod_{i=2}^{r}\Pr\left(\left|N_{i}\cap N_{1}\right|>\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|\right)=e^{-\Omega\left(r\a^{2}n\right)}.
-\end{align*}
+\[
+\Pr\left(\left|N_{\R}\left(W\right)\right|\hspace{-1bp}<\hspace{-1bp}\left|W\right|\right)\le\prod_{i=2}^{r}\hspace{-1bp}\Pr\left(\left|N_{i}\cup N_{1}\right|\hspace{-1bp}<\hspace{-1bp}\left|W\right|\right)=\prod_{i=2}^{r}\hspace{-1bp}\Pr\left(\left|N_{i}\cap N_{1}\right|\hspace{-1bp}>\hspace{-1bp}\left|N_{i}\right|\hspace{-1bp}+\hspace{-1bp}\left|N_{1}\right|\hspace{-1bp}-\hspace{-1bp}\left|W\right|\right)=e^{-\Omega\left(r\a^{2}n\right)}.
+\]
 
 \end_inset
 
@@ -6727,12 +6725,7 @@ Concluding Remarks
 \begin_layout Standard
 We have proved that any given bounded-degree spanning tree typically appears
  when a linear number of random edges are added to a dense graph.
- In the process, we have proved a general lemma concerning the partition
- of an arbitrary dense graph into uneven superregular pairs.
-\end_layout
-
-\begin_layout Standard
-There are a few interesting questions that remain open.
+ There are a few interesting questions that remain open.
  Most prominent is the question of embedding more general kinds of spanning
  subgraphs into randomly perturbed graphs.
  It would be particularly interesting if the general result of 
@@ -6744,10 +6737,7 @@ key "BST09"
 
  (concerning arbitrary spanning graphs with bounded degree and low bandwidth)
  could be adapted to this setting.
-\end_layout
-
-\begin_layout Standard
-It is also possible that our use of Szemer
+ It is also possible that our use of Szemer
 \begin_inset ERT
 status open
 
@@ -6770,11 +6760,18 @@ edi's regularity lemma could be avoided, thus drastically improving the
 \end_layout
 
 \begin_layout Standard
+\noindent
 
 \series bold
-Acknowledgements:
+Acknowledgement.
+
 \series default
- similar stuff (concerning Tel Aviv and ETH) to the last paper?
+ Parts of this work were carried out when the first author visited the Institute
+ for Mathematical Research (FIM) of ETH Zurich, and also when the third
+ author visited the School of Mathematical Sciences of Tel Aviv University,
+ Israel.
+ We would like to thank both institutions for their hospitality and for
+ creating a stimulating research environment.
 \end_layout
 
 \begin_layout Standard
