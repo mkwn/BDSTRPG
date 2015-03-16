@@ -517,8 +517,150 @@ Michael Krivelevich, Matthew Kwan, Benny Sudakov
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\a}{\alpha}
+{\boldsymbol{\alpha}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\c}{c}
+{\boldsymbol{c}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\D}{\Delta}
+{\boldsymbol{\Delta}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\G}{G}
+{\boldsymbol{G}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\F}{F}
+{\boldsymbol{F}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\T}{T}
+{\boldsymbol{T}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\R}{R}
+{\boldsymbol{R}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\B}[1]{G_{A,B}\left(#1\right)}
+{\boldsymbol{G_{A,B}\left(#1\right)}}
+\end_inset
+
+
+\end_layout
+
 \begin_layout Abstract
-abstract
+We show that for any bounded-degree spanning tree 
+\begin_inset Formula $T$
+\end_inset
+
+ and any fixed dense graph 
+\begin_inset Formula $G$
+\end_inset
+
+, a modest random perturbation of 
+\begin_inset Formula $G$
+\end_inset
+
+ will typically contain a copy of 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ This combines the viewpoints of the well-studied problems of embedding
+ trees into fixed dense graphs and into random graphs, and extends a sizeable
+ body of existing research on randomly perturbed graphs.
+ Specifically, we show that there is 
+\begin_inset Formula $\c=\c\left(\a,\D\right)$
+\end_inset
+
+ such that if 
+\begin_inset Formula $\G$
+\end_inset
+
+ is a graph on the vertex set 
+\begin_inset Formula $\range n$
+\end_inset
+
+ with minimum degree at least 
+\begin_inset Formula $\a n$
+\end_inset
+
+, and 
+\begin_inset Formula $\T$
+\end_inset
+
+ is an 
+\begin_inset Formula $n$
+\end_inset
+
+-vertex tree with maximum degree at most 
+\begin_inset Formula $\D$
+\end_inset
+
+, and 
+\begin_inset Formula $\R$
+\end_inset
+
+ is a uniformly random graph on 
+\begin_inset Formula $\range n$
+\end_inset
+
+ with 
+\begin_inset Formula $\c n$
+\end_inset
+
+ edges, then 
+\begin_inset Formula $\T\subseteq\G\cup\R$
+\end_inset
+
+ asymptotically almost surely as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ Our proof depends on a lemma concerning the decomposition of a dense graph
+ into super-regular pairs of uneven sizes, which may be of independent interest.
 \end_layout
 
 \begin_layout Standard
@@ -598,84 +740,413 @@ end{comment}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\a}{\alpha}
-{\boldsymbol{\alpha}}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\c}{c}
-{\boldsymbol{c}}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\D}{\Delta}
-{\boldsymbol{\Delta}}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\G}{G}
-{\boldsymbol{G}}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\F}{F}
-{\boldsymbol{F}}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\T}{T}
-{\boldsymbol{T}}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\R}{R}
-{\boldsymbol{R}}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\B}[1]{G_{A,B}\left(#1\right)}
-{\boldsymbol{G_{A,B}\left(#1\right)}}
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Introduction
 \end_layout
 
 \begin_layout Standard
-We will prove the following theorem.
+A classical theorem of Dirac 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Dir52"
+
+\end_inset
+
+ states that any 
+\begin_inset Formula $n$
+\end_inset
+
+-vertex graph (
+\begin_inset Formula $n\ge3$
+\end_inset
+
+) with minimum degree at least 
+\begin_inset Formula $n/2$
+\end_inset
+
+ has a Hamilton cycle: a cycle that passes through all the vertices of the
+ graph.
+ More recently, there have been many results showing that this kind of minimum
+ degree condition is sufficient to guarantee the existence of different
+ kinds of spanning graphs.
+ For example, 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem~1$'$"
+key "KSS95"
+
+\end_inset
+
+ says that for any 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma>0$
+\end_inset
+
+, any 
+\begin_inset Formula $n$
+\end_inset
+
+-vertex graph (
+\begin_inset Formula $n$
+\end_inset
+
+ sufficiently large) with minimum degree 
+\begin_inset Formula $\left(1/2+\gamma\right)n$
+\end_inset
+
+ contains every spanning tree which has maximum degree at most 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+ (This has been also been generalized further in two directions: to allow
+ 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ to grow with 
+\begin_inset Formula $n$
+\end_inset
+
+ and to allow for much more general spanning subgraphs than spanning trees;
+ see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KSS01,BST09"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The constant 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $1/2$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in these Dirac-type theorems is tight: in order to guarantee the existence
+ of these spanning subgraphs we require very strong density conditions.
+ But the picture is very different for a 
+\begin_inset Quotes eld
+\end_inset
+
+typical
+\begin_inset Quotes erd
+\end_inset
+
+ large graph.
+ If we fix an arbitrarily small 
+\begin_inset Formula $\alpha>0$
+\end_inset
+
+ and select a graph uniformly at random among the (labelled) graphs with
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ vertices and 
+\begin_inset Formula $\alpha{n \choose 2}$
+\end_inset
+
+ edges, then the degrees will probably each be about 
+\begin_inset Formula $\alpha n$
+\end_inset
+
+.
+ Such a random graph is Hamiltonian with probability 
+\begin_inset Formula $1-o\left(1\right)$
+\end_inset
+
+ (we say it is Hamiltonian 
+\emph on
+asymptotically almost surely
+\emph default
+, or 
+\emph on
+a.a.s.
+\emph default
+).
+ This follows from a stronger result 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pos76"
+
+\end_inset
+
+ that gives a 
+\emph on
+threshold
+\emph default
+ for Hamiltonicity: a random 
+\begin_inset Formula $n$
+\end_inset
+
+-vertex, 
+\begin_inset Formula $m$
+\end_inset
+
+-edge graph is Hamiltonian a.a.s.
+ if 
+\begin_inset Formula $m\gg n\log n$
+\end_inset
+
+, and fails to be Hamiltonian a.a.s.
+ if 
+\begin_inset Formula $m\ll n\log n$
+\end_inset
+
+.
+ Although the exact threshold for bounded-degree spanning trees is not known,
+ it was proved in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mon14"
+
+\end_inset
+
+ that for any 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ and any tree 
+\begin_inset Formula $T$
+\end_inset
+
+ with maximum degree at most 
+\begin_inset Formula $\Delta$
+\end_inset
+
+, a random 
+\begin_inset Formula $n$
+\end_inset
+
+-vertex graph with 
+\begin_inset Formula $\Delta n\left(\log n\right)^{5}$
+\end_inset
+
+ edges a.a.s.
+ contains 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ Here and from now on, all asymptotics are as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+, and we implicitly round large quantities to integers.
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BFM03"
+
+\end_inset
+
+, the authors studied Hamiltonicity in the random graph model that starts
+ with a dense graph and adds 
+\begin_inset Formula $m$
+\end_inset
+
+ random edges.
+ This model is a natural generalization of the ordinary random graph model
+ where we start with nothing, and offers a 
+\begin_inset Quotes eld
+\end_inset
+
+hybrid
+\begin_inset Quotes erd
+\end_inset
+
+ perspective combining the extremal and probabilistic settings of the last
+ two paragraphs.
+ It has since been studied in a number of other contexts; see for example
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BHM04,KST06,KKS15"
+
+\end_inset
+
+.
+ One particularly important motivation for the model is the notion of 
+\emph on
+smoothed analysis
+\emph default
+ of algorithms introduced in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ST04"
+
+\end_inset
+
+.
+ This is is a hybrid of worst-case and average-case analysis, studying the
+ performance of algorithms in the more realistic setting of inputs that
+ are 
+\begin_inset Quotes eld
+\end_inset
+
+noisy
+\begin_inset Quotes erd
+\end_inset
+
+ but not completely random.
+ A property that holds a.a.s.
+ with small 
+\begin_inset Formula $m$
+\end_inset
+
+ in our random graph model can be said to hold not just for a 
+\begin_inset Quotes eld
+\end_inset
+
+globally
+\begin_inset Quotes erd
+\end_inset
+
+ typical graph but for the typical graph in every small 
+\begin_inset Quotes eld
+\end_inset
+
+neighbourhood
+\begin_inset Quotes erd
+\end_inset
+
+ of our space of graphs.
+ This tells us that the graphs which fail to satisfy our property are in
+ some sense 
+\begin_inset Quotes eld
+\end_inset
+
+fragile
+\begin_inset Quotes erd
+\end_inset
+
+.
+ We highlight that it is generally very easy to transfer results from our
+ model of random perturbation to other natural models, including those that
+ delete as well as add edges.
+ This can be accomplished with standard coupling and conditioning arguments.
+\end_layout
+
+\begin_layout Standard
+The statement of 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem~1"
+key "BFM03"
+
+\end_inset
+
+ is that for every 
+\begin_inset Formula $\alpha>0$
+\end_inset
+
+ there is 
+\begin_inset Formula $c=c\left(\alpha\right)$
+\end_inset
+
+ such that if we start with a graph with minimum degree at least 
+\begin_inset Formula $\alpha n$
+\end_inset
+
+ and add 
+\begin_inset Formula $cn$
+\end_inset
+
+ random edges, then the resulting graph will a.a.s.
+ be Hamiltonian.
+ This saves a logarithmic factor over the usual model where we start with
+ nothing.
+ Note that some dense graphs require a linear number of extra edges to become
+ Hamiltonian (consider the complete bipartite graph with partition sizes
+ 
+\begin_inset Formula $n/3$
+\end_inset
+
+ and 
+\begin_inset Formula $2n/3$
+\end_inset
+
+), so the order of magnitude of this result is tight.
+ We can interpret this theorem as quantifying the 
+\begin_inset Quotes eld
+\end_inset
+
+fragility
+\begin_inset Quotes erd
+\end_inset
+
+ of the few dense graphs that are not Hamiltonian, by determining the amount
+ of random perturbation that is necessary to make a dense graph Hamiltonian.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\GG\left(n,p\right)$
+\end_inset
+
+ be the Erd
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+H{o}
+\end_layout
+
+\end_inset
+
+s-R
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+enyi random graph model with vertex set 
+\begin_inset Formula $\range n=\left\{ 1,\dots,n\right\} $
+\end_inset
+
+, where each edge is independently present with probability 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ (For our purposes this is equivalent to the model that uniformly at random
+ selects a 
+\begin_inset Formula $p{n \choose 2}$
+\end_inset
+
+-edge graph on the vertex set 
+\begin_inset Formula $\range n$
+\end_inset
+
+).
+ In this paper we prove the following theorem, extending the aforementioned
+ result to bounded-degree spanning trees.
 \end_layout
 
 \begin_layout Theorem
@@ -701,15 +1172,15 @@ There is
 \begin_inset Formula $\a n$
 \end_inset
 
-, 
+, and 
 \begin_inset Formula $\T$
 \end_inset
 
- is a tree on 
-\begin_inset Formula $\range n$
+ is an 
+\begin_inset Formula $n$
 \end_inset
 
- with maximum degree at most 
+-vertex tree with maximum degree at most 
 \begin_inset Formula $\D$
 \end_inset
 
@@ -1001,16 +1472,7 @@ reference "thm:main-theorem"
 \end_layout
 
 \begin_layout Standard
-It is convenient to work in the model where 
-\begin_inset Formula $\R$
-\end_inset
-
- contains each edge with probability 
-\begin_inset Formula $\c n/{n \choose 2}$
-\end_inset
-
- independently.
- We split the random edges into multiple independent 
+We split the random edges into multiple independent 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6256,6 +6718,63 @@ From super-regular pairs to cluster-cycles.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Concluding Remarks
+\end_layout
+
+\begin_layout Standard
+We have proved that any given bounded-degree spanning tree typically appears
+ when a linear number of random edges are added to a dense graph.
+ In the process, we have proved a general lemma concerning the partition
+ of an arbitrary dense graph into uneven superregular pairs.
+\end_layout
+
+\begin_layout Standard
+There are a few interesting questions that remain open.
+ Most prominent is the question of embedding more general kinds of spanning
+ subgraphs into randomly perturbed graphs.
+ It would be particularly interesting if the general result of 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BST09"
+
+\end_inset
+
+ (concerning arbitrary spanning graphs with bounded degree and low bandwidth)
+ could be adapted to this setting.
+\end_layout
+
+\begin_layout Standard
+It is also possible that our use of Szemer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+edi's regularity lemma could be avoided, thus drastically improving the
+ constants 
+\begin_inset Formula $\c\left(\a\right)$
+\end_inset
+
+ and perhaps allowing us to say something about random perturbations of
+ graphs which have slightly sublinear minimum degree.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Acknowledgements:
+\series default
+ similar stuff (concerning Tel Aviv and ETH) to the last paper?
 \end_layout
 
 \begin_layout Standard

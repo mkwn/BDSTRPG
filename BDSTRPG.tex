@@ -264,30 +264,6 @@
 
 \global\long\def\flip#1{\overline{#1}}
 
-\begin{abstract}
-abstract
-\end{abstract}
-\begin{comment}
-\begin{thm}
-t\end{thm}
-\begin{cor}
-c\end{cor}
-\begin{lem}
-l\end{lem}
-\begin{prop}
-p\end{prop}
-\begin{conjecture}
-c\end{conjecture}
-\begin{defn}
-d\end{defn}
-\begin{example}
-e\end{example}
-\begin{rem}
-r\end{rem}
-\begin{claim}
-c
-\end{claim}
-\end{comment}
 
 \global\long\def\a{\alpha}
 
@@ -312,15 +288,123 @@ c
 
 \global\long\def\B#1{G_{A,B}\left(#1\right)}
 
+\begin{abstract}
+We show that for any bounded-degree spanning tree $T$ and any fixed
+dense graph $G$, a modest random perturbation of $G$ will typically
+contain a copy of $T$. This combines the viewpoints of the well-studied
+problems of embedding trees into fixed dense graphs and into random
+graphs, and extends a sizeable body of existing research on randomly
+perturbed graphs. Specifically, we show that there is $\c=\c\left(\a,\D\right)$
+such that if $\G$ is a graph on the vertex set $\range n$ with minimum
+degree at least $\a n$, and $\T$ is an $n$-vertex tree with maximum
+degree at most $\D$, and $\R$ is a uniformly random graph on $\range n$
+with $\c n$ edges, then $\T\subseteq\G\cup\R$ asymptotically almost
+surely as $n\to\infty$. Our proof depends on a lemma concerning the
+decomposition of a dense graph into super-regular pairs of uneven
+sizes, which may be of independent interest.
+\end{abstract}
+\begin{comment}
+\begin{thm}
+t\end{thm}
+\begin{cor}
+c\end{cor}
+\begin{lem}
+l\end{lem}
+\begin{prop}
+p\end{prop}
+\begin{conjecture}
+c\end{conjecture}
+\begin{defn}
+d\end{defn}
+\begin{example}
+e\end{example}
+\begin{rem}
+r\end{rem}
+\begin{claim}
+c
+\end{claim}
+\end{comment}
 
 
 \section{Introduction}
 
-We will prove the following theorem.
+A classical theorem of Dirac \cite{Dir52} states that any $n$-vertex
+graph ($n\ge3$) with minimum degree at least $n/2$ has a Hamilton
+cycle: a cycle that passes through all the vertices of the graph.
+More recently, there have been many results showing that this kind
+of minimum degree condition is sufficient to guarantee the existence
+of different kinds of spanning graphs. For example, \cite[Theorem~1$'$]{KSS95}
+says that for any $\Delta$ and $\gamma>0$, any $n$-vertex graph
+($n$ sufficiently large) with minimum degree $\left(1/2+\gamma\right)n$
+contains every spanning tree which has maximum degree at most $\Delta$.
+(This has been also been generalized further in two directions: to
+allow $\Delta$ to grow with $n$ and to allow for much more general
+spanning subgraphs than spanning trees; see \cite{KSS01,BST09}).
+
+The constant ``$1/2$'' in these Dirac-type theorems is tight: in
+order to guarantee the existence of these spanning subgraphs we require
+very strong density conditions. But the picture is very different
+for a ``typical'' large graph. If we fix an arbitrarily small $\alpha>0$
+and select a graph uniformly at random among the (labelled) graphs
+with $n$ vertices and $\alpha{n \choose 2}$ edges, then the degrees
+will probably each be about $\alpha n$. Such a random graph is Hamiltonian
+with probability $1-o\left(1\right)$ (we say it is Hamiltonian \emph{asymptotically
+almost surely}, or \emph{a.a.s.}). This follows from a stronger result
+\cite{Pos76} that gives a \emph{threshold} for Hamiltonicity: a random
+$n$-vertex, $m$-edge graph is Hamiltonian a.a.s. if $m\gg n\log n$,
+and fails to be Hamiltonian a.a.s. if $m\ll n\log n$. Although the
+exact threshold for bounded-degree spanning trees is not known, it
+was proved in \cite{Mon14} that for any $\Delta$ and any tree $T$
+with maximum degree at most $\Delta$, a random $n$-vertex graph
+with $\Delta n\left(\log n\right)^{5}$ edges a.a.s. contains $T$.
+Here and from now on, all asymptotics are as $n\to\infty$, and we
+implicitly round large quantities to integers.
+
+In \cite{BFM03}, the authors studied Hamiltonicity in the random
+graph model that starts with a dense graph and adds $m$ random edges.
+This model is a natural generalization of the ordinary random graph
+model where we start with nothing, and offers a ``hybrid'' perspective
+combining the extremal and probabilistic settings of the last two
+paragraphs. It has since been studied in a number of other contexts;
+see for example \cite{BHM04,KST06,KKS15}. One particularly important
+motivation for the model is the notion of \emph{smoothed analysis}
+of algorithms introduced in \cite{ST04}. This is is a hybrid of worst-case
+and average-case analysis, studying the performance of algorithms
+in the more realistic setting of inputs that are ``noisy'' but not
+completely random. A property that holds a.a.s. with small $m$ in
+our random graph model can be said to hold not just for a ``globally''
+typical graph but for the typical graph in every small ``neighbourhood''
+of our space of graphs. This tells us that the graphs which fail to
+satisfy our property are in some sense ``fragile''. We highlight
+that it is generally very easy to transfer results from our model
+of random perturbation to other natural models, including those that
+delete as well as add edges. This can be accomplished with standard
+coupling and conditioning arguments.
+
+The statement of \cite[Theorem~1]{BFM03} is that for every $\alpha>0$
+there is $c=c\left(\alpha\right)$ such that if we start with a graph
+with minimum degree at least $\alpha n$ and add $cn$ random edges,
+then the resulting graph will a.a.s. be Hamiltonian. This saves a
+logarithmic factor over the usual model where we start with nothing.
+Note that some dense graphs require a linear number of extra edges
+to become Hamiltonian (consider the complete bipartite graph with
+partition sizes $n/3$ and $2n/3$), so the order of magnitude of
+this result is tight. We can interpret this theorem as quantifying
+the ``fragility'' of the few dense graphs that are not Hamiltonian,
+by determining the amount of random perturbation that is necessary
+to make a dense graph Hamiltonian.
+
+Let $\GG\left(n,p\right)$ be the Erd\H{o}s-R\'enyi random graph
+model with vertex set $\range n=\left\{ 1,\dots,n\right\} $, where
+each edge is independently present with probability $p$. (For our
+purposes this is equivalent to the model that uniformly at random
+selects a $p{n \choose 2}$-edge graph on the vertex set $\range n$).
+In this paper we prove the following theorem, extending the aforementioned
+result to bounded-degree spanning trees.
 \begin{thm}
 \label{thm:main-theorem}There is $\c=\c\left(\a,\D\right)$ such
 that if $\G$ is a graph on the vertex set $\range n$ with minimum
-degree at least $\a n$, $\T$ is a tree on $\range n$ with maximum
+degree at least $\a n$, and $\T$ is an $n$-vertex tree with maximum
 degree at most $\D$, and $\R\in\GG\left(n,\c/n\right)$, then a.a.s.
 $\T\subseteq\G\cup\R$.
 \end{thm}
@@ -367,11 +451,10 @@ paths using a tool called the ``blow-up lemma'' (\ref{sub:blow-up}).
 
 \section{Proof of \texorpdfstring{}{Theorem~}\ref{thm:main-theorem}}
 
-It is convenient to work in the model where $\R$ contains each edge
-with probability $\c n/{n \choose 2}$ independently. We split the
-random edges into multiple independent ``phases'': say $\R\supseteq\R_{1}\cup\R_{2}\cup\R_{3}\cup\R_{4}$,
-where $\R_{i}\in\GG\left(n,\c_{i}/n\right)$ for some large $\c_{i}=\c_{i}\left(\a,\D\right)$
-to be determined (these $\c_{i}$ will in turn determine $\c$).
+We split the random edges into multiple independent ``phases'':
+say $\R\supseteq\R_{1}\cup\R_{2}\cup\R_{3}\cup\R_{4}$, where $\R_{i}\in\GG\left(n,\c_{i}/n\right)$
+for some large $\c_{i}=\c_{i}\left(\a,\D\right)$ to be determined
+(these $\c_{i}$ will in turn determine $\c$).
 
 
 \subsection{Case 1: $\protect\T$ has many leaves\label{sub:many-leaves}}
@@ -1080,6 +1163,29 @@ and these special paths complete our embedding of $\T$.
 An example special path is shown, for $k=7$.}
 \end{figure}
 
+
+
+\section{Concluding Remarks}
+
+We have proved that any given bounded-degree spanning tree typically
+appears when a linear number of random edges are added to a dense
+graph. In the process, we have proved a general lemma concerning the
+partition of an arbitrary dense graph into uneven superregular pairs.
+
+There are a few interesting questions that remain open. Most prominent
+is the question of embedding more general kinds of spanning subgraphs
+into randomly perturbed graphs. It would be particularly interesting
+if the general result of \cite{BST09} (concerning arbitrary spanning
+graphs with bounded degree and low bandwidth) could be adapted to
+this setting.
+
+It is also possible that our use of Szemer\'edi's regularity lemma
+could be avoided, thus drastically improving the constants $\c\left(\a\right)$
+and perhaps allowing us to say something about random perturbations
+of graphs which have slightly sublinear minimum degree.
+
+\textbf{Acknowledgements:} similar stuff (concerning Tel Aviv and
+ETH) to the last paper?
 
 \bibliographystyle{amsplain_initials}
 \bibliography{references}
