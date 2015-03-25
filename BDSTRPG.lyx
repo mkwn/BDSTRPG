@@ -620,11 +620,11 @@ We show that for any bounded-degree spanning tree
 \begin_inset Formula $\G$
 \end_inset
 
- is a graph on the vertex set 
-\begin_inset Formula $\range n$
+ is an 
+\begin_inset Formula $n$
 \end_inset
 
- with minimum degree at least 
+-vertex graph with minimum degree at least 
 \begin_inset Formula $\a n$
 \end_inset
 
@@ -640,27 +640,23 @@ We show that for any bounded-degree spanning tree
 \begin_inset Formula $\D$
 \end_inset
 
-, and 
-\begin_inset Formula $\R$
-\end_inset
-
- is a uniformly random graph on 
-\begin_inset Formula $\range n$
-\end_inset
-
- with 
+, then if we add 
 \begin_inset Formula $\c n$
 \end_inset
 
- edges, then 
-\begin_inset Formula $\T\subseteq\G\cup\R$
+ uniformly random edges to 
+\begin_inset Formula $\G$
 \end_inset
 
- asymptotically almost surely as 
+, the resulting graph will contain 
+\begin_inset Formula $\T$
+\end_inset
+
+ asymptotically almost surely (as 
 \begin_inset Formula $n\to\infty$
 \end_inset
 
-.
+).
  Our proof depends on a lemma concerning the decomposition of a dense graph
  into super-regular pairs of uneven sizes, which may be of independent interest.
 \end_layout
@@ -1543,7 +1539,7 @@ reference "lem:almost-spanning"
 
 .
  Let 
-\begin_inset Formula $A'$
+\begin_inset Formula $A'\subseteq V\left(\G\cup\R\right)$
 \end_inset
 
  be the set of vertices of 
@@ -1551,7 +1547,7 @@ reference "lem:almost-spanning"
 \end_inset
 
  which had a leaf deleted from them, and let 
-\begin_inset Formula $B$
+\begin_inset Formula $B\subseteq V\left(\G\cup\R\right)$
 \end_inset
 
  be the set of 
@@ -1581,14 +1577,26 @@ reference "lem:almost-spanning"
 
 ).
  For each 
+\begin_inset Formula $a\in A'$
+\end_inset
+
+, the random variable 
+\begin_inset Formula $\left|N_{\G}\left(a\right)\cap B\right|$
+\end_inset
+
+ is hypergeometrically distributed with expected value 
+\begin_inset Formula $\lambda\a n$
+\end_inset
+
+, and similarly each 
+\begin_inset Formula $\left|N_{\G}\left(b\right)\cap A'\right|$
+\end_inset
+
+ (
 \begin_inset Formula $b\in B$
 \end_inset
 
-, note that 
-\begin_inset Formula $N_{\G}\left(b\right)\cap A'$
-\end_inset
-
- is hypergeometrically distributed with expected value at least 
+) is hypergeometric with expectation at least 
 \begin_inset Formula $\lambda\a n/\D$
 \end_inset
 
@@ -1622,8 +1630,7 @@ key "JLR00"
 \begin_inset Formula $B$
 \end_inset
 
-.
- Similarly each 
+, and each 
 \begin_inset Formula $b\in B$
 \end_inset
 
@@ -1740,7 +1747,7 @@ Let
 \begin_inset Formula $\BB_{A,B}\left(p\right)$
 \end_inset
 
- be the random binomial graph where each of the 
+ be the random bipartite graph distribution where each of the 
 \begin_inset Formula $\left|A\right|\left|B\right|$
 \end_inset
 
@@ -1765,24 +1772,53 @@ Let
 \begin_inset Formula $\c_{2}$
 \end_inset
 
- such that 
-\begin_inset Formula $1-\c_{2}/n\le\left(1-\c_{\BB}/n\right)^{\Delta}$
+ such that for any 
+\begin_inset Formula $a'\in A$
 \end_inset
 
- for large 
+ and 
+\begin_inset Formula $b\in B$
+\end_inset
+
+, and for large 
 \begin_inset Formula $n$
 \end_inset
 
-.
- This means 
+, 
+\begin_inset Formula 
+\begin{align*}
+ & \Pr\left(\mbox{all copies of }a'\mbox{ are adjacent to }b\mbox{ in }\B{\R_{2}}\right)=\c_{2}/n\\
+ & \quad\ge1-\left(1-\c_{\BB}/n\right)^{\Delta}=\Pr\left(\mbox{some copy of }a'\mbox{ is adjacent to }b\mbox{ in }\BB_{A,B}\left(\c_{\BB}/n\right)\right).
+\end{align*}
+
+\end_inset
+
+This means we can couple 
 \begin_inset Formula $\B{\R_{2}}$
 \end_inset
 
- stochastically dominates 
+ and 
+\begin_inset Formula $G_{\BB}\in\BB_{A,B}\left(\c_{\BB}/n\right)$
+\end_inset
+
+ in such a way that 
+\begin_inset Formula $\B{\R_{2}}\supseteq G_{\BB}$
+\end_inset
+
+ (the distribution of 
+\begin_inset Formula $\B{\R_{2}}$
+\end_inset
+
+ 
+\emph on
+stochastically dominates
+\emph default
+ 
 \begin_inset Formula $\BB_{A,B}\left(\c_{\BB}/n\right)$
 \end_inset
 
-, so the following lemma provides the desired perfect matching.
+).
+ The following lemma then provides the desired perfect matching.
 \end_layout
 
 \begin_layout Lemma
@@ -2008,7 +2044,11 @@ We apply Hall's marriage theorem.
 \begin_inset Formula $\a n\le\left|W\right|\le\left(1-\a\right)n$
 \end_inset
 
-.
+ (in which case we must have 
+\begin_inset Formula $\a\le1/2$
+\end_inset
+
+).
  Split 
 \begin_inset Formula $\R$
 \end_inset
@@ -2030,7 +2070,10 @@ We apply Hall's marriage theorem.
 \end_inset
 
  to be determined.
- By 
+\end_layout
+
+\begin_layout Proof
+By 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:bipartite-matching"
@@ -2042,7 +2085,7 @@ reference "lem:bipartite-matching"
 \end_inset
 
  is large we can find a 
-\begin_inset Formula $\left(1-\a/3\right)n$
+\begin_inset Formula $\left(1-\a/8\right)n$
 \end_inset
 
 -edge matching 
@@ -2054,7 +2097,7 @@ reference "lem:bipartite-matching"
 \end_inset
 
 .
- Let the random sets 
+ Let 
 \begin_inset Formula $N_{i}=N_{M_{i}}\left(W\right)$
 \end_inset
 
@@ -2067,7 +2110,11 @@ reference "lem:bipartite-matching"
 \end_inset
 
 , and note that each 
-\begin_inset Formula $\left|W\right|-\a n/3\le\left|N_{i}\right|\le\left|W\right|$
+\begin_inset Formula $N_{i}$
+\end_inset
+
+ is a random set satisfying 
+\begin_inset Formula $\left|W\right|-\a n/8\le\left|N_{i}\right|\le\left|W\right|$
 \end_inset
 
 .
@@ -2093,7 +2140,7 @@ reference "lem:bipartite-matching"
 \end_inset
 
 , note that 
-\begin_inset Formula $N_{i}\cap N_{1}$
+\begin_inset Formula $\left|N_{i}\cap N_{1}\right|$
 \end_inset
 
  is hypergeometrically distributed with mean 
@@ -2101,15 +2148,23 @@ reference "lem:bipartite-matching"
 \end_inset
 
 .
- Note that 
+ Since 
+\begin_inset Formula $\left|W\right|\left(n-\left|W\right|\right)\ge\a n\left(1-\a\right)n\ge\a n^{2}/2$
+\end_inset
+
+, we have 
+\begin_inset Formula $\left|W\right|^{2}\le\left|W\right|n-\a n^{2}/2$
+\end_inset
+
+ and 
 \begin_inset Formula 
 \[
-\left|N_{i}\right|\left|N_{1}\right|/n\le\left|W\right|^{2}/n\le\left|W\right|\left(1-\a\right)=2\left(\left|W\right|-\a n/3\right)-\left|W\right|-\a n/3\le\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|-\a n/3,
+\left|N_{i}\right|\left|N_{1}\right|/n\le\left|W\right|^{2}/n\le\left|W\right|-\a n/2=2\left(\left|W\right|-\a/8\right)-\left|W\right|-\a/4\le\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|-\a n/4.
 \]
 
 \end_inset
 
-so by a concentration inequality for the hypergeometric distribution,
+So, by a concentration inequality for the hypergeometric distribution,
 \begin_inset Formula 
 \[
 \Pr\left(\left|N_{\R}\left(W\right)\right|\hspace{-1bp}<\hspace{-1bp}\left|W\right|\right)\le\prod_{i=2}^{r}\hspace{-1bp}\Pr\left(\left|N_{i}\cup N_{1}\right|\hspace{-1bp}<\hspace{-1bp}\left|W\right|\right)=\prod_{i=2}^{r}\hspace{-1bp}\Pr\left(\left|N_{i}\cap N_{1}\right|\hspace{-1bp}>\hspace{-1bp}\left|N_{i}\right|\hspace{-1bp}+\hspace{-1bp}\left|N_{1}\right|\hspace{-1bp}-\hspace{-1bp}\left|W\right|\right)=e^{-\Omega\left(r\a^{2}n\right)}.
@@ -2439,7 +2494,7 @@ cluster graph
 \end_inset
 
 , the centre cluster will correspond to 
-\begin_inset Formula $V_{i}^{2}$
+\begin_inset Formula $V_{i}^{1}$
 \end_inset
 
  and the leaf clusters will be combined to form 
@@ -3064,12 +3119,12 @@ Let
 \begin_inset Formula $Q$
 \end_inset
 
- which is a disjoint union of vertex-disjoint stars, each with at least
- two vertices and at most 
-\begin_inset Formula $1/\a$
+ which is a union of vertex-disjoint stars, each with at least two and at
+ most 
+\begin_inset Formula $1+1/\a$
 \end_inset
 
- leaves.
+ vertices.
 \end_layout
 
 \begin_layout Proof
@@ -3096,14 +3151,23 @@ Let
 \end_inset
 
 , and that star has fewer than 
-\begin_inset Formula $1/\a$
+\begin_inset Formula $1+1/\a$
 \end_inset
 
- leaves, then we could add 
+ vertices, then we could add 
 \begin_inset Formula $v$
 \end_inset
 
  to that star, contradicting maximality.
+ (Here we allow either vertex of a 2-vertex star to be considered the 
+\begin_inset Quotes eld
+\end_inset
+
+centre
+\begin_inset Quotes erd
+\end_inset
+
+).
  Otherwise, if 
 \begin_inset Formula $v$
 \end_inset
@@ -3131,10 +3195,10 @@ Let
 \end_inset
 
  is a centre of a star with 
-\begin_inset Formula $1/\a$
+\begin_inset Formula $1+\floor{1/\a}>1/\a$
 \end_inset
 
- leaves.
+ vertices.
  But these stars would comprise more than 
 \begin_inset Formula $n$
 \end_inset
@@ -3198,7 +3262,7 @@ edi's regularity lemma, with some
 \begin_inset Formula $\varepsilon'$
 \end_inset
 
- to be determined.
+ to be determined (which we will repeatedly assume is sufficiently small).
  Let 
 \begin_inset Formula $Q$
 \end_inset
@@ -3291,7 +3355,7 @@ reference "lem:regular-contains-superregular"
 \end_inset
 
  such that 
-\begin_inset Formula $\left|V_{i}^{\h}\right|=\left(1-\varepsilon\right)\left|W_{i}^{\h}\right|$
+\begin_inset Formula $\left|V_{i}^{\h}\right|=\left(1-\varepsilon'\right)\left|W_{i}^{\h}\right|$
 \end_inset
 
  and each 
@@ -3299,15 +3363,11 @@ reference "lem:regular-contains-superregular"
 \end_inset
 
  is 
-\begin_inset Formula $\left(\varepsilon'',\delta''\right)$
+\begin_inset Formula $\left(2\varepsilon',\delta''\right)$
 \end_inset
 
--super-regular, for some 
-\begin_inset Formula $\varepsilon''=\varepsilon''\left(\varepsilon'\right)>0$
-\end_inset
-
- and 
-\begin_inset Formula $\delta''=\delta''\left(\delta\right)>0$
+-super-regular, for 
+\begin_inset Formula $\delta''=\delta/2$
 \end_inset
 
 .
@@ -3352,7 +3412,7 @@ Each bad vertex
 \end_inset
 
  then some cluster must have 
-\begin_inset Formula $\delta''s\left(1-\varepsilon'\right)$
+\begin_inset Formula $\delta''s\left(1-\varepsilon'\right)n$
 \end_inset
 
  neighbours of 
@@ -3377,7 +3437,7 @@ Each bad vertex
 \end_inset
 
 clusters which have at least 
-\begin_inset Formula $\delta''s\left(1-\varepsilon'\right)$
+\begin_inset Formula $\delta''s\left(1-\varepsilon'\right)n$
 \end_inset
 
  neighbours of 
@@ -3397,7 +3457,7 @@ clusters which have at least
 ).
  By a concentration inequality, after this procedure a.a.s.
  at most 
-\begin_inset Formula $2\left(2\varepsilon'n\right)\left(2s/\a\right)$
+\begin_inset Formula $2\left(2\varepsilon'n\right)/\left(\a/\left(2s\right)\right)\le\left(8\varepsilon'/\a\right)\left|W_{i}^{\h}\right|\le\left(9\varepsilon'/\a\right)\left|V_{i}^{\h}\right|$
 \end_inset
 
  bad vertices have been added to each 
@@ -3421,16 +3481,12 @@ reference "lem:robust-regular"
 \end_inset
 
  is now 
-\begin_inset Formula $\left(\varepsilon''f,\delta''/2\right)$
+\begin_inset Formula $\left(O\left(\sqrt{\varepsilon'}\right),\delta''/2\right)$
 \end_inset
 
--super-regular, for some 
-\begin_inset Formula $f=f\left(\a\right)$
-\end_inset
-
-.
+-super-regular.
  With 
-\begin_inset Formula $\varepsilon''$
+\begin_inset Formula $\varepsilon'$
 \end_inset
 
  small relative to 
@@ -3506,7 +3562,28 @@ name "sub:embed-forest"
 \end_layout
 
 \begin_layout Standard
-Proceeding with the proof outline, we need the fact that 
+Recall that a 
+\emph on
+bare path
+\emph default
+ in 
+\begin_inset Formula $\T$
+\end_inset
+
+ is a path 
+\begin_inset Formula $P$
+\end_inset
+
+ such that every vertex of 
+\begin_inset Formula $P$
+\end_inset
+
+ has degree exactly two in 
+\begin_inset Formula $\T$
+\end_inset
+
+.
+ Proceeding with the proof outline, we need the fact that 
 \begin_inset Formula $\T$
 \end_inset
 
@@ -3747,7 +3824,8 @@ is a uniformly random partition of
 \begin_inset Formula $n/2$
 \end_inset
 
-, and that the special pairs correspond to a random bijection between 
+, and that the special pairs correspond to a uniformly random bijection
+ between 
 \begin_inset Formula $X$
 \end_inset
 
@@ -3823,10 +3901,6 @@ removing
 \begin_inset Formula $V_{\bi}$
 \end_inset
 
- and 
-\begin_inset Formula $Z_{\bi,\bj}$
-\end_inset
-
  all vertices used in 
 \begin_inset Formula $\F\backslash\left(X\cup Y\right)$
 \end_inset
@@ -3894,6 +3968,10 @@ Fix any
 \begin_inset Formula $a>0$
 \end_inset
 
+ and any 
+\begin_inset Formula $\rho<1$
+\end_inset
+
 .
  Let 
 \begin_inset Formula $\left(V^{1},V^{2}\right)$
@@ -3935,7 +4013,7 @@ Fix any
 
  is a.a.s.
  
-\begin_inset Formula $\left(\varepsilon,\delta/2\right)$
+\begin_inset Formula $\left(\varepsilon,\delta\rho\right)$
 \end_inset
 
 -super-regular.
@@ -3951,7 +4029,7 @@ Since
 \end_inset
 
  is 
-\begin_inset Formula $\left(\varepsilon,\delta/2\right)$
+\begin_inset Formula $\left(\varepsilon,\delta\rho\right)$
 \end_inset
 
 -dense.
@@ -3969,7 +4047,7 @@ Since
 
 ; by a concentration inequality for the hypergeometric distribution and
  the union bound, at least 
-\begin_inset Formula $\delta\left|W^{\flip{\h}}\right|/2$
+\begin_inset Formula $\delta\left|W^{\flip{\h}}\right|\rho$
 \end_inset
 
  of those remain in 
@@ -4071,6 +4149,10 @@ For any
 \begin_inset Formula $f<1$
 \end_inset
 
+, 
+\begin_inset Formula $\rho<1$
+\end_inset
+
 , and any integer 
 \begin_inset Formula $k>2$
 \end_inset
@@ -4137,7 +4219,11 @@ Let
 \begin_inset Formula $\left(\varepsilon,\delta\right)$
 \end_inset
 
--super-regular pairs, and suppose further that each 
+-super-regular pairs in 
+\begin_inset Formula $\G$
+\end_inset
+
+, and suppose further that each 
 \begin_inset Formula $\x\in X$
 \end_inset
 
@@ -4188,7 +4274,7 @@ Then, for any
 \end_inset
 
 -super-regular is now 
-\begin_inset Formula $\left(\varepsilon,\delta/4\right)$
+\begin_inset Formula $\left(\varepsilon,\delta\rho^{2}\right)$
 \end_inset
 
 -super-regular.
@@ -4246,7 +4332,11 @@ For any
 \begin_inset Formula $\left|V_{i}\right|=n$
 \end_inset
 
-, and each 
+, and suppose that in 
+\begin_inset Formula $\G$
+\end_inset
+
+, each 
 \begin_inset Formula $v\in V_{0}$
 \end_inset
 
@@ -4352,6 +4442,10 @@ reference "lem:bipartite-matching"
 
 \end_inset
 
+, in 
+\begin_inset Formula $\R$
+\end_inset
+
  we can find a matching of 
 \begin_inset Formula $\left(1-1/\left(2\left(k-2\right)\right)\right)n$
 \end_inset
@@ -4374,22 +4468,18 @@ reference "lem:bipartite-matching"
 \end_inset
 
  paths 
-\begin_inset Formula $P_{1},\dots,P_{\gamma n}$
+\begin_inset Formula $P_{1},\dots,P_{n/2}$
 \end_inset
 
- in 
-\begin_inset Formula $\G\cup\R$
-\end_inset
-
-, where 
+; we write 
 \begin_inset Formula $P_{i}=v_{1}^{i}\dots v_{k-1}^{i}$
 \end_inset
 
- (with 
+ with 
 \begin_inset Formula $v_{j}^{i}\in V_{j}$
 \end_inset
 
-).
+.
  For each 
 \begin_inset Formula $j$
 \end_inset
@@ -4411,7 +4501,7 @@ which we can complete into a uniformly random ordering
 \end_inset
 
  (independently for 
-\begin_inset Formula $2\le j\le k-1$
+\begin_inset Formula $1\le j\le k-1$
 \end_inset
 
 ).
@@ -4458,14 +4548,23 @@ Now, let the special pairs be
 
 .
  If we vary the ordering 
-\begin_inset Formula $v_{j}^{1},\dots,v_{j}^{n}$
+\begin_inset Formula $v_{1}^{1},\dots,v_{1}^{n}$
 \end_inset
 
- by a transposition, this changes 
+ (respectively 
+\begin_inset Formula $v_{k-1}^{1},\dots,v_{k-1}^{n}$
+\end_inset
+
+) by a transposition, this changes 
 \begin_inset Formula $\left|S_{X}\right|$
 \end_inset
 
- by at most 2, so by a bounded differences inequality (for example 
+ (respectively 
+\begin_inset Formula $\left|S_{Y}\right|$
+\end_inset
+
+) by at most 2.
+ So, by a bounded-differences concentration inequality (for example 
 \begin_inset CommandInset citation
 LatexCommand cite
 after "Lemma~B.1"
@@ -4474,8 +4573,8 @@ key "FP04"
 \end_inset
 
 ), a.a.s.
- 
-\begin_inset Formula $\left|S_{X}\right|,\left|S_{Y}\right|\le\delta n/3$
+ we have 
+\begin_inset Formula $\left|S_{X}\right|,\left|S_{Y}\right|\ge\delta n/3$
 \end_inset
 
 .
@@ -4503,7 +4602,7 @@ key "FP04"
 \end_inset
 
  special paths 
-\begin_inset Formula $\x_{i},v_{1}^{i},\dots,v_{k-1}^{i},\y_{i}$
+\begin_inset Formula $\x^{i},v_{1}^{i},\dots,v_{k-1}^{i},\y^{i}$
 \end_inset
 
 , where 
@@ -4543,16 +4642,7 @@ reference "lem:adjusting-paths"
 
 \end_inset
 
-Let 
-\begin_inset Formula $V_{0}=X$
-\end_inset
-
- and 
-\begin_inset Formula $V_{k}=Y$
-\end_inset
-
-.
- For each 
+For each 
 \begin_inset Formula $V_{i}$
 \end_inset
 
@@ -4561,7 +4651,7 @@ Let
 \end_inset
 
  of size 
-\begin_inset Formula $\left(\left|V_{i}\right|-t_{i}m\right)/2$
+\begin_inset Formula $\rho\left(\left|V_{i}\right|-t_{i}m\right)$
 \end_inset
 
 .
@@ -4615,22 +4705,24 @@ reference "lem:random-preserves-superregular"
 
 -super-regular.
  Each 
-\begin_inset Formula $\left|W_{i}\right|\ge n/\left(2\left(k-1\right)\right)$
+\begin_inset Formula $\left|V_{i}\backslash D_{i}\right|=\left(1-\rho\right)\left|V_{i}\right|+\rho t_{i}m,$
 \end_inset
 
- and also note 
+ so each 
+\begin_inset Formula $\left|W_{i}\right|=\Omega\left(n\right)$
+\end_inset
+
+ and also 
 \begin_inset Formula 
 \begin{align*}
-\left|V_{i}\backslash D_{i}\right| & =\left|V_{i}\right|/2+t_{i}m/2,\\
-m & \le f\left|V_{i}\right|/t_{i}\\
- & \le2f\left|V_{i}\backslash D_{i}\right|/t_{i}-fm,\\
-\left(1+f\right)m & \le2f\left|V_{i}\backslash D_{i}\right|/t_{i}.
+m & \le f\left|V_{i}\right|/t_{i}\le\left(f/\left(1-\rho\right)\right)\left|V_{i}\backslash D_{i}\right|/t_{i}-\left(\rho f/\left(1-\rho\right)\right)m,\\
+\left(1+\rho f/\left(1-\rho\right)\right)m & \le\left(f/\left(1-\rho\right)\right)\left|V_{i}\backslash D_{i}\right|/t_{i}.
 \end{align*}
 
 \end_inset
 
 Let 
-\begin_inset Formula $g=2f/\left(1+f\right)$
+\begin_inset Formula $g=f/\left(\left(1-\rho\right)+\rho f\right)$
 \end_inset
 
  so each 
@@ -4659,7 +4751,7 @@ reference "lem:easy-adjusting-paths"
 
 .
  After removing these paths, there are 
-\begin_inset Formula $2\left|D_{i}\right|$
+\begin_inset Formula $\left|D_{i}\right|/\rho$
 \end_inset
 
  vertices left in each 
@@ -4672,7 +4764,7 @@ reference "lem:easy-adjusting-paths"
 \end_inset
 
  was 
-\begin_inset Formula $\left(\varepsilon,\delta/2\right)$
+\begin_inset Formula $\left(\varepsilon,\delta\right)$
 \end_inset
 
 -super-regular before the deletions (where 
@@ -4697,15 +4789,16 @@ reference "lem:random-preserves-superregular"
 
  is a.a.s.
  
-\begin_inset Formula $\left(\varepsilon,\delta/2\right)$
+\begin_inset Formula $\left(\varepsilon,\delta\rho\right)$
 \end_inset
 
--super-regular, so that that 
+-super-regular.
+ So, 
 \begin_inset Formula $\left(V_{i},W\right)$
 \end_inset
 
  is now 
-\begin_inset Formula $\left(\varepsilon,\delta/4\right)$
+\begin_inset Formula $\left(\varepsilon,\delta\rho^{2}\right)$
 \end_inset
 
 -super-regular, as required.
@@ -4714,11 +4807,11 @@ reference "lem:random-preserves-superregular"
 \end_inset
 
  that was 
-\begin_inset Formula $\left(\varepsilon,\delta/2\right)$
+\begin_inset Formula $\left(\varepsilon,\delta\right)$
 \end_inset
 
 -super-regular before the deletions is now 
-\begin_inset Formula $\left(\varepsilon,\delta/4\right)$
+\begin_inset Formula $\left(\varepsilon,\delta\rho^{2}\right)$
 \end_inset
 
 -super-regular after the deletions.
@@ -4738,7 +4831,7 @@ reference "thm:main-theorem"
 \end_inset
 
  with 
-\begin_inset Formula $\bi\ne\bj$
+\begin_inset Formula $\bj\ne\flip{\bi}$
 \end_inset
 
 , and some very small 
@@ -4803,7 +4896,7 @@ Remove these paths, and update each
 \end_inset
 
  accordingly.
- (but we do not update 
+ (But we do not update 
 \begin_inset Formula $n$
 \end_inset
 
@@ -4829,10 +4922,14 @@ Remove these paths, and update each
 \end_inset
 
 -regular, where 
-\begin_inset Formula $\delta'=\left(\delta/2\right)/4^{\left(2q\right)^{2}}$
+\begin_inset Formula $\delta'=\left(\delta/2\right)\rho^{2\left(2q\right)^{2}}=\delta/4$
 \end_inset
 
-.
+ (for suitable choice of 
+\begin_inset Formula $\rho$
+\end_inset
+
+).
  Let 
 \begin_inset Formula $a'=a'\left(a\right)$
 \end_inset
@@ -4841,7 +4938,6 @@ Remove these paths, and update each
 \begin_inset Formula $\left|W_{\bi}\right|\ge a'n$
 \end_inset
 
-.
  (for large 
 \begin_inset Formula $k$
 \end_inset
@@ -4859,7 +4955,7 @@ Now, for every
 \end_inset
 
  with 
-\begin_inset Formula $\bi\ne\bj$
+\begin_inset Formula $\bj\ne\flip{\bi}$
 \end_inset
 
 , we have 
@@ -4889,7 +4985,7 @@ bad
 \end_inset
 
  this is less than  
-\begin_inset Formula $\delta'a'n/\left(2\left(k-1\right)\right)$
+\begin_inset Formula $\delta'a'n/\left(2\left(k+1\right)\right)$
 \end_inset
 
  special pairs, which we deal with greedily, as follows.
@@ -4911,6 +5007,10 @@ bad
 
  path 
 \begin_inset Formula $\x w_{1},\dots,w_{k-3}$
+\end_inset
+
+ in 
+\begin_inset Formula $\G$
 \end_inset
 
 , where the 
@@ -5082,11 +5182,11 @@ Now, update all the relevant variables.
 \end_inset
 
  each 
-\begin_inset Formula $an\le\left|X_{\bi}\right|,\left|Y_{\bi}\right|,\left|W_{\bi}\right|\le bn$
+\begin_inset Formula $a''n\le\left|X_{\bi}\right|,\left|Y_{\bi}\right|,\left|W_{\bi}\right|\le b''n$
 \end_inset
 
  for some 
-\begin_inset Formula $a,b$
+\begin_inset Formula $a'',b''>0$
 \end_inset
 
 , and each 
@@ -5135,6 +5235,10 @@ Suppose
 
  and 
 \begin_inset Formula $\left(k-1\right)\left|X_{\bj}\cup Y_{\bj}\right|/2+m\le\left|W_{\bj}\right|$
+\end_inset
+
+ for some 
+\begin_inset Formula $m>0$
 \end_inset
 
 , where one of these inequalities is an equality.
@@ -5214,7 +5318,7 @@ reference "lem:adjusting-paths"
 \end_inset
 
 , has 
-\begin_inset Formula $\left(k-1\right)/2-1-r$
+\begin_inset Formula $\left(k-1\right)/2-r$
 \end_inset
 
  interior vertices in 
@@ -5235,7 +5339,7 @@ reference "lem:adjusting-paths"
 \end_inset
 
  or 
-\begin_inset Formula $\left(k-1\right)\left|X_{\bj}\cup Y_{\bj}\right|/2\le\left|W_{\bj}\right|$
+\begin_inset Formula $\left(k-1\right)\left|X_{\bj}\cup Y_{\bj}\right|/2=\left|W_{\bj}\right|$
 \end_inset
 
 .
@@ -5265,10 +5369,14 @@ reference "lem:adjusting-paths"
 \end_inset
 
 -super-regular, where 
-\begin_inset Formula $\delta''=\delta/4^{2q}$
+\begin_inset Formula $\delta''=\delta'\rho^{2\left(2q\right)}=\delta'/2$
 \end_inset
 
-.
+ (for suitable 
+\begin_inset Formula $\rho$
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsubsection
