@@ -339,28 +339,28 @@ of different kinds of spanning graphs. For example, \cite[Theorem~1$'$]{KSS95}
 says that for any $\Delta$ and $\gamma>0$, any $n$-vertex graph
 ($n$ sufficiently large) with minimum degree $\left(1/2+\gamma\right)n$
 contains every spanning tree which has maximum degree at most $\Delta$.
-(This has been also been generalized further in two directions: to
-allow $\Delta$ to grow with $n$ and to allow for much more general
-spanning subgraphs than spanning trees; see \cite{KSS01,BST09}).
+(This has also been generalized further in two directions: to allow
+$\Delta$ to grow with $n$ and to allow for much more general spanning
+subgraphs than spanning trees; see \cite{KSS01,BST09}).
 
-The constant ``$1/2$'' in these Dirac-type theorems is tight: in
-order to guarantee the existence of these spanning subgraphs we require
-very strong density conditions. But the situation is very different
-for a ``typical'' large graph. If we fix an arbitrarily small $\alpha>0$
-and select a graph uniformly at random among the (labelled) graphs
-with $n$ vertices and $\alpha{n \choose 2}$ edges, then the degrees
-will probably each be about $\alpha n$. Such a random graph is Hamiltonian
-with probability $1-o\left(1\right)$ (we say it is Hamiltonian \emph{asymptotically
-almost surely}, or \emph{a.a.s.}). This follows from a stronger result
-\cite{Pos76} that gives a \emph{threshold} for Hamiltonicity: a random
-$n$-vertex, $m$-edge graph is Hamiltonian a.a.s. if $m\gg n\log n$,
-and fails to be Hamiltonian a.a.s. if $m\ll n\log n$. Although the
-exact threshold for bounded-degree spanning trees is not known, it
-was proved in \cite{Mon14} that for any $\Delta$ and any tree $T$
-with maximum degree at most $\Delta$, a random $n$-vertex graph
-with $\Delta n\left(\log n\right)^{5}$ edges a.a.s. contains $T$.
-Here and from now on, all asymptotics are as $n\to\infty$, and we
-implicitly round large quantities to integers.
+The constant ``$1/2$'' in the above Dirac-type theorems is tight:
+in order to guarantee the existence of these spanning subgraphs we
+require very strong density conditions. But the situation is very
+different for a ``typical'' large graph. If we fix an arbitrarily
+small $\alpha>0$ and select a graph uniformly at random among the
+(labelled) graphs with $n$ vertices and $\alpha{n \choose 2}$ edges,
+then the degrees will probably each be about $\alpha n$. Such a random
+graph is Hamiltonian with probability $1-o\left(1\right)$ (we say
+it is Hamiltonian \emph{asymptotically almost surely}, or \emph{a.a.s.}).
+This follows from a stronger result \cite{Pos76} that gives a \emph{threshold}
+for Hamiltonicity: a random $n$-vertex, $m$-edge graph is Hamiltonian
+a.a.s. if $m\gg n\log n$, and fails to be Hamiltonian a.a.s. if $m\ll n\log n$.
+Although the exact threshold for bounded-degree spanning trees is
+not known, it was proved in \cite{Mon14} that for any $\Delta$ and
+any tree $T$ with maximum degree at most $\Delta$, a random $n$-vertex
+graph with $\Delta n\left(\log n\right)^{5}$ edges a.a.s. contains
+$T$. Here and from now on, all asymptotics are as $n\to\infty$,
+and we implicitly round large quantities to integers.
 
 In \cite{BFM03}, the authors studied Hamiltonicity in the random
 graph model that starts with a dense graph and adds $m$ random edges.
@@ -389,9 +389,9 @@ with minimum degree at least $\alpha n$ and add $cn$ random edges,
 then the resulting graph will a.a.s. be Hamiltonian. This saves a
 logarithmic factor over the usual model where we start with nothing.
 Note that some dense graphs require a linear number of extra edges
-to become Hamiltonian (consider the complete bipartite graph with
-partition sizes $n/3$ and $2n/3$), so the order of magnitude of
-this result is tight.
+to become Hamiltonian (consider for example the complete bipartite
+graph with partition sizes $n/3$ and $2n/3$), so the order of magnitude
+of this result is tight.
 
 Let $\GG\left(n,p\right)$ be the Erd\H{o}s-R\'enyi random graph
 model with vertex set $\range n=\left\{ 1,\dots,n\right\} $, where
@@ -455,7 +455,8 @@ paths using a tool called the ``blow-up lemma'' (\ref{sub:blow-up}).
 We split the random edges into multiple independent ``phases'':
 say $\R\supseteq\R_{1}\cup\R_{2}\cup\R_{3}\cup\R_{4}$, where $\R_{i}\in\GG\left(n,\c_{i}/n\right)$
 for some large $\c_{i}=\c_{i}\left(\a,\D\right)$ to be determined
-later (these $\c_{i}$ will in turn determine $\c$).
+later (these $\c_{i}$ will in turn determine $\c$). Let $V=\range n$
+be the common vertex set of $\G$, $\R$ and the $\R_{i}$.
 
 
 \subsection{Case 1: $\protect\T$ has many leaves\label{sub:many-leaves}}
@@ -464,11 +465,11 @@ For our first case suppose there are at least $\lambda n$ leaves
 in $\T$ (for some fixed $\lambda=\lambda\left(\a\right)>0$ to be
 determined in the second case). Then consider the tree $\T'$ with
 some $\lambda n$ leaves removed. By \ref{lem:almost-spanning} we
-can embed $\T'$ into $\R_{1}$. Let $A'\subseteq V\left(\G\cup\R\right)$
-be the set of vertices of $\T'$ which had a leaf deleted from them,
-and let $B\subseteq V\left(\G\cup\R\right)$ be the set of $\lambda n$
-vertices not part of $\T'$. We can assume $A'$ and $B$ are uniformly
-random disjoint sets of the appropriate size (note $\left|A'\right|\ge\lambda n/\D$
+can a.a.s. embed $\T'$ into $\R_{1}$. Let $A'\subseteq V$ be the
+set of vertices of $\T'$ which had a leaf deleted from them, and
+let $B\subseteq V$ be the set of $\lambda n$ vertices not part of
+$\T'$. We can assume $A'$ and $B$ are uniformly random disjoint
+sets of the appropriate size (note $\left|A'\right|\ge\lambda n/\D$
 and $\left|B\right|=\lambda n$). For each $a\in A'$, the random
 variable $\left|N_{\G}\left(a\right)\cap B\right|$ is hypergeometrically
 distributed with expected value $\lambda\a n$, and similarly each
@@ -551,9 +552,13 @@ we have $\left|W\right|^{2}\le\left|W\right|n-\a n^{2}/2$ and
 \[
 \left|N_{i}\right|\left|N_{1}\right|/n\le\left|W\right|^{2}/n\le\left|W\right|-\a n/2=2\left(\left|W\right|-\a/8\right)-\left|W\right|-\a/4\le\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|-\a n/4.
 \]
-So, by a concentration inequality for the hypergeometric distribution,
+So, by a concentration inequality,
 \[
-\Pr\left(\left|N_{\R}\left(W\right)\right|\hspace{-1bp}<\hspace{-1bp}\left|W\right|\right)\le\prod_{i=2}^{r}\hspace{-1bp}\Pr\left(\left|N_{i}\cup N_{1}\right|\hspace{-1bp}<\hspace{-1bp}\left|W\right|\right)=\prod_{i=2}^{r}\hspace{-1bp}\Pr\left(\left|N_{i}\cap N_{1}\right|\hspace{-1bp}>\hspace{-1bp}\left|N_{i}\right|\hspace{-1bp}+\hspace{-1bp}\left|N_{1}\right|\hspace{-1bp}-\hspace{-1bp}\left|W\right|\right)=e^{-\Omega\left(r\a^{2}n\right)}.
+\Pr\left(\left|N_{i}\cup N_{1}\right|<\left|W\right|\right)=\Pr\left(\left|N_{i}\cap N_{1}\right|>\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|\right)=e^{-\Omega\left(\a^{2}n\right)}
+\]
+and therefore
+\[
+\Pr\left(\left|N_{\R}\left(W\right)\right|<\left|W\right|\right)\le\prod_{i=2}^{r}\Pr\left(\left|N_{i}\cup N_{1}\right|<\left|W\right|\right)=e^{-\Omega\left(r\a^{2}n\right)}.
 \]
 If $r$ is large this probability is $o\left(2^{-n}\right)$, and
 since there are at most $2^{n}$ choices for $W$, the union bound
@@ -627,42 +632,24 @@ density in $\G'$. The minimum degree of $C$ is at least $\a'k$.
 This version of Szemeredi's regularity lemma follows directly from
 \cite[Proposition~9]{KOT05}.
 
-\begin{comment}It will be convenient to make a further assumption:
-\begin{lem}
-In \ref{lem:szemeredi-regularity}, we can in fact assume the between-cluster
-densities in \ref{lem:szemeredi-regularity} are zero or differ from
-$\a'$ by at most $\varepsilon$.\end{lem}
-\begin{proof}
-Apply \ref{lem:szemeredi-regularity} with regularity parameter $\varepsilon/2$.
-For each $\left(V_{i},V_{j}\right)$ with density $d>\a'$, there
-are $d\left(sn\right)^{2}$ edges between $V_{i}$ and $V_{j}$. Uniformly
-at random delete $\left(d-\a'\right)\left(sn\right)^{2}$ of these
-edges. Consider any $U_{i}\subseteq V_{i}$, $U_{j}\subseteq V_{j}$
-with $\left|U_{\ell}\right|\ge\varepsilon\left|V_{\ell}\right|$.
-By a Chernoff bound and $\varepsilon/2$-regularity, the number of
-edges that remain between $U_{i}$ and $U_{j}$ is in the range 
-\[
-\left(\left(1-\frac{\varepsilon}{2}\right)\frac{\a'}{d}\left(d-\frac{\varepsilon}{2}\right)\left|U_{i}\right|\left|U_{j}\right|,\;\left(1+\frac{\varepsilon}{2}\right)\frac{\a'}{d}\left(d+\frac{\varepsilon}{2}\right)\left|U_{i}\right|\left|U_{j}\right|\right)\subseteq\left(\left(\a'-\varepsilon\right)\left|U_{i}\right|\left|U_{j}\right|,\;\left(\a'+\varepsilon\right)\left|U_{i}\right|\left|U_{j}\right|\right)
-\]
-with probability $e^{-\Omega\left(n^{2}\right)}$ uniformly over $U_{i},U_{j}$.
-There are less than $2^{2n}$ choices of $U_{i},U_{j}$ so by a union
-bound, with positive probability our deletions have resulted in a
-spanning subgraph $\G''$ with the desired property.
-\end{proof}
-\end{comment}
-
-We now give some simple lemmas about regularity, which we will use
-in the proof of \ref{thm:main-theorem}.
+Before we proceed to the proof of \ref{lem:partition-into-blobs},
+we give some simple lemmas about $\left(\varepsilon,\delta\right)$-denseness.
+Note that $\left(\varepsilon,\delta\right)$-denseness is basically
+a one-sided version of $\varepsilon$-regularity that is more convenient
+in proofs about super-regularity. Here and in later sections, most
+of the theorems about $\left(\varepsilon,\delta\right)$-dense pairs
+correspond to analogous theorems for $\varepsilon$-regular pairs
+with density about $\delta$.
 \begin{lem}
 \label{lem:combine-clusters}Suppose $V_{1},\dots,V_{r}$ are clusters
 of the same sizes such that each $\left(V^{1},V_{i}^{2}\right)$ is
 $\left(\varepsilon,\delta\right)$-dense. Let $V^{2}=\bigcup_{i=1}^{r}V_{i}^{2}$;
-then $\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\left(\delta-\varepsilon\right)/r\right)$-dense.\end{lem}
+then $\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\delta/r\right)$-dense.\end{lem}
 \begin{proof}
 Let $U^{\h}\subseteq V^{\h}$ with $\left|U^{\h}\right|\ge\varepsilon\left|V^{\h}\right|$.
 Let $V_{i}^{2}$ be the cluster which has the largest intersection
 with $U^{2}$, so we have $\left|U^{2}\cap V_{i}^{2}\right|\ge\varepsilon\left|V^{2}\right|/r=\varepsilon\left|V_{i}^{2}\right|$,
-and there are therefore at least $\left(\delta-\varepsilon\right)\left|U^{1}\right|\left|U^{2}\cap V_{i}^{2}\right|\ge\left(\left(\delta-\varepsilon\right)/r\right)\left|U^{1}\right|\left|U^{2}\right|$
+and there are therefore at least $\delta\left|U^{1}\right|\left|U^{2}\cap V_{i}^{2}\right|\ge\left(\delta/r\right)\left|U^{1}\right|\left|U^{2}\right|$
 edges between $U^{1}$ and $U^{2}$.\end{proof}
 \begin{lem}
 \label{lem:robust-regular}Let $\left(V^{1},V^{2}\right)$ be an $\left(\varepsilon,\delta\right)$-dense
@@ -682,8 +669,8 @@ is almost the same as \cite[Proposition~8]{BST08}, and has exactly
 the same proof.
 \begin{lem}
 \label{lem:regular-contains-superregular}Every $\left(\varepsilon,\delta\right)$-dense
-pair $\left(V^{1},V^{2}\right)$ contains a $\left(2\varepsilon,\delta-2\varepsilon\right)$-super-regular
-sub-pair $\left(W^{1},W^{2}\right)$, where $\left|W^{\h}\right|\le\left(1-\varepsilon\right)\left|V^{\h}\right|$.
+pair $\left(V^{1},V^{2}\right)$ contains a $\left(\varepsilon/\left(1-\varepsilon\right),\delta-\varepsilon\right)$-super-regular
+sub-pair $\left(W^{1},W^{2}\right)$, where $\left|W^{\h}\right|\ge\left(1-\varepsilon\right)\left|V^{\h}\right|$.
 \end{lem}
 \ref{lem:regular-contains-superregular} follows easily from the same
 proof as \cite[Proposition~6]{BST08}.
@@ -720,31 +707,34 @@ Let $W_{i}^{1}$ be the centre cluster of $T_{i}$, and let $W_{i}^{2}$
 be the union of the leaf clusters of $T_{i}$ (for two-vertex stars,
 arbitrarily choose one vertex as the ``leaf'' and one as the ``centre'').
 By \ref{lem:combine-clusters}, with $\delta'=\left(\a'\right)^{2}/2$
-each pair $\left(W_{i}^{1},W_{i}^{2}\right)$ is $\left(\varepsilon',\delta'\right)$-dense.
+each pair $\left(W_{i}^{1},W_{i}^{2}\right)$ is $\left(\varepsilon',\delta'\right)$-dense
+in $\G'$ (therefore $\G$).
 
 Apply \ref{lem:regular-contains-superregular} to obtain sets $V_{i}^{\h}\subseteq W_{i}^{\h}$
 such that $\left|V_{i}^{\h}\right|=\left(1-\varepsilon'\right)\left|W_{i}^{\h}\right|$
 and each $\left(V_{i}^{1},V_{i}^{2}\right)$ is $\left(2\varepsilon',\delta''\right)$-super-regular,
-for $\delta''=\delta/2$. Combining the exceptional set $V_{0}$ and
-all the $V_{i}^{\h}\backslash W_{i}^{\h}$, there are at most $2\varepsilon'n$
-``bad'' vertices not part of a super-regular pair.
+for $\delta''=\delta'/2$. Combining the exceptional cluster $V_{0}$
+and all the $W_{i}^{\h}\backslash V_{i}^{\h}$, there are at most
+$2\varepsilon'n$ ``bad'' vertices not part of a super-regular pair.
 
-Each bad vertex $v$ has at least $\left(\a-2\varepsilon'\right)n$
-neighbours to the clusters $V_{i}^{\h}$, and if $\delta''<\a-2\varepsilon'$
-then some cluster must have $\delta''s\left(1-\varepsilon'\right)n$
-neighbours of $v$. More generally, for small $\delta''$ and $\varepsilon'$
-there are at least 
+Each bad vertex $v$ has at least $\a'n-2\varepsilon'n$ neighbours
+to the clusters $V_{i}^{\h}$. The clusters $V_{i}^{\h}$ which have
+fewer than $\delta''\left|V_{i}^{\h}\right|$ such neighbours contain
+at most $\delta''n$ of these neighbours. Each $V_{i}^{\h}$ has size
+at most $sn/\a'$, so for small $\varepsilon'$ there are at least
+
 \[
-\frac{\left(\a-2\varepsilon'-\delta''\right)}{\left(1-\delta''\right)s\left(1-\varepsilon'\right)}\ge\a/\left(2s\right)
+\frac{\a'n-2\varepsilon'n-\delta''n}{sn/\a'}\ge\left(\a'\right)^{2}/\left(2s\right)
 \]
-clusters which have at least $\delta''s\left(1-\varepsilon'\right)n$
+clusters $V_{i}^{\h}$ which have at least $\delta''s\left(1-\varepsilon'\right)n$
 neighbours of $v$. Put $v$ in one of these clusters uniformly at
 random (do this independently for each bad $v$). By a concentration
-inequality, after this procedure a.a.s. at most $2\left(2\varepsilon'n\right)/\left(\a/\left(2s\right)\right)\le\left(8\varepsilon'/\a\right)\left|W_{i}^{\h}\right|\le\left(9\varepsilon'/\a\right)\left|V_{i}^{\h}\right|$
+inequality, after this procedure a.a.s. at most $2\left(2\varepsilon'n\right)/\left(\left(\a'\right)^{2}/\left(2s\right)\right)\le\left(8\varepsilon'/\left(\a'\right)^{2}\right)\left|W_{i}^{\h}\right|\le\left(9\varepsilon'/\left(\a'\right)^{2}\right)\left|V_{i}^{\h}\right|$
 bad vertices have been added to each $V_{i}^{\h}$. By \ref{lem:robust-regular},
 for small $\varepsilon'$ each $\left(V_{i}^{1},V_{i}^{2}\right)$
 is now $\left(O\left(\sqrt{\varepsilon'}\right),\delta''/2\right)$-super-regular.
-With $\varepsilon'$ small relative to $\varepsilon$, we are done.
+With $\delta=\delta''/2$, $a=s/2$ and $b=2s/\a'$, and $\varepsilon'$
+small relative to $\varepsilon$, we are done.
 \end{proof}
 \global\long\def\bi{\mathbf{i}}
 
@@ -798,11 +788,119 @@ is a uniformly random partition of $V$ into parts of sizes $\psi n$,
 $\psi n$, $n/2-2\psi n$, $n/2$, and that the special pairs correspond
 to a uniformly random bijection between $X$ and $Y$. Let $X_{\bi}=V_{\bi}\cap X$
 and $Y_{\bi}=V_{\bi}\cap Y$, and let $Z_{\bi,\bj}$ be the set of
-special pairs in $X_{\bi}\times Y_{\bj}$. By a concentration inequality
-for the hypergeometric distribution and the union bound, a.a.s. each
-$\left|V_{\bi}\backslash\left(\F\backslash\left(X\cup Y\right)\right)\right|\sim\left(1/2+2\psi\right)s_{\bi}n$.
+special pairs in $X_{\bi}\times Y_{\bj}$. Let $X_{\bi,\bj}\subseteq X_{\bi}$
+and $Y_{\bi,\bj}\subseteq Y_{\bj}$ be the set of $\x$-type and $\y$-type
+vertices in pairs in $Z_{\bi,\bj}$, respectively. Also let $W_{\bi}=V_{\bi}\backslash F$
+be the set of ``free'' vertices remaining in $V_{\bi}$.
+
+By a concentration inequality for the hypergeometric distribution
+and the union bound, a.a.s. each $\left|W_{\bi}\right|\sim s_{\bi}n/2$.
 Similarly each $\left|X_{\bi}\right|\sim\left|Y_{\bi}\right|\sim\psi s_{\bi}n$,
-and each $\left|Z_{\bi,\bj}\right|\sim\psi s_{\bi}s_{\bj}n$.
+and each $\left|X_{\bi,\bj}\right|=\left|Y_{\bi,\bj}\right|=\left|Z_{\bi,\bj}\right|\sim\psi s_{\bi}s_{\bj}n$.
+If we condition on the sizes of each $W_{\bi}$, $X_{\bi,\bj}$, $Y_{\bj,\bi}$,
+each is a uniformly random subset of $V_{\bi}$ of its size.
+
+Here and in future parts of the proof, it is critical that these kinds
+of random subsets of our super-regular pairs maintain super-regularity
+(albeit with slightly weaker $\varepsilon$ and $\delta$). We will
+ensure this by appealing to the following lemma.
+\begin{lem}
+\label{lem:random-preserves-superregular}Fix $\delta,\varepsilon>0$.
+Suppose $\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\delta\right)$-super-regular,
+let $n_{\h}$ satisfy $\left|V^{\h}\right|\ge n_{\h}=\Omega$$\left(n\right)$
+(the implied constant can depend on $\varepsilon$ and $\delta$)
+and for each $\h$ let $W^{\h}\subseteq V^{\h}$ be a uniformly random
+subset of size $n_{\h}$. Then $\left(W^{1},W^{2}\right)$ is a.a.s.
+$\left(2\sqrt{\varepsilon},\delta/2\right)$-super-regular.
+\end{lem}
+To prove \ref{lem:random-preserves-superregular} we will apply a
+bipartite version of Szemer\'edi's regularity lemma on the edges
+between $V^{1}$ and $V^{2}$. The following formulation can be found
+in \cite{Tao05}.
+\begin{lem}[Szemer\'edi's regularity lemma, bipartite version]
+\label{lem:szemeredi-regularity-bipartite}For any $\varepsilon>0$,
+there is $K=K\left(\varepsilon\right)$ such that the following holds.
+For any bipartite graph $\G$ with bipartition $V^{1}\cup V^{2}$,
+there are partitions of each $V^{\h}$ into clusters $V_{0}^{\h},V_{1}^{\h},\dots,V_{k}^{\h}$
+($k\le K$), such that the ``exceptional clusters'' $V_{0}^{\h}$
+has size at most $\varepsilon\left|V^{\h}\right|$, the other clusters
+$V_{i}^{\h}$ in each part have equal size $s_{\h}\left|V^{\h}\right|$,
+and all but $\varepsilon k_{1}k_{2}$ of the pairs of non-exceptional
+clusters are $\varepsilon$-regular.
+\end{lem}
+
+
+We will also need a linear relaxation of the notion of an $\left(\varepsilon,\delta\right)$-dense
+pair.
+\begin{lem}
+\label{lem:density-relaxation}If $\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\delta\right)$-dense
+then for any functions $\pi^{\h}:V^{\h}\to\left[0,1\right]$, we have
+\[
+\sum_{v\in V^{1}}\sum_{u\in V^{2}}\pi^{1}\left(v\right)\pi^{2}\left(u\right)\one_{v\sim u}\ge\delta\sum_{v\in V^{1}}\pi^{1}\left(v\right)\sum_{u\in V^{2}}\pi^{2}\left(u\right)-\varepsilon\delta\left|V^{1}\right|\left|V^{2}\right|.
+\]
+\end{lem}
+\begin{proof}
+Let $f:\left[0,1\right]^{V^{1}\times V^{2}}\to\RR$ be defined by
+\[
+f\left(\pi\right)=\sum_{v\in V^{1}}\sum_{u\in V^{2}}\pi^{1}\left(v\right)\pi^{2}\left(u\right)\one_{v\sim u}-\delta\sum_{v\in V^{1}}\pi^{1}\left(v\right)\sum_{u\in V^{2}}\pi^{2}\left(u\right)
+\]
+Note that $f$ is linear in each $\pi^{\h}$ so it attains its extrema
+at vertices of the hypercube $\left[0,1\right]^{V^{1}\times V^{2}}$.
+But if each $\pi^{\h}\left(v\right)\in\left[0,1\right]$ then $\pi^{1}$
+and $\pi^{2}$ just correspond to subsets $U^{\h}\subseteq V^{\h}$.
+We just need to show that $f\left(\pi\right)\ge-\varepsilon\delta\left|V^{1}\right|\left|V^{2}\right|$
+for each such $\pi$. If each $\left|U^{\h}\right|\ge\varepsilon\left|V^{\h}\right|$
+then $\left(\varepsilon,\delta\right)$-density implies $f\left(\pi\right)=\varepsilon\left|U^{1}\right|\left|U^{2}\right|-\delta\left|U^{1}\right|\left|U^{2}\right|\ge0$.
+Otherwise $\left|U^{1}\right|\left|U^{2}\right|\le\varepsilon\left|V^{1}\right|\left|V^{2}\right|$
+so trivially $f\left(\pi\right)\ge-\varepsilon\delta\left|V^{1}\right|\left|V^{2}\right|$.
+\end{proof}
+
+\begin{proof}[Proof of \ref{lem:random-preserves-superregular}]
+First, note that for each $v\in W^{\h}$, the number of neighbours
+of $v\in W^{\flip{\h}}$ is hypergeometrically distributed, with expected
+value at least $\delta n_{\flip{\h}}$. Since $n_{\flip h}=\Omega\left(n\right)$,
+a concentration inequality and the union bound immediately tells us
+that a.a.s. each such $v$ has $\delta n_{\flip h}/2$ such neighbours.
+
+It remains to show that $\left(W^{1},W^{2}\right)$ is a.a.s. $\left(2\sqrt{\varepsilon},\delta/2\right)$-dense.
+Apply \ref{lem:szemeredi-regularity-bipartite} to the bipartite graph
+between $V^{1}$ and $V^{2}$, with some regularity parameter $\varepsilon'$
+to be determined. By a concentration inequality, a.a.s. for all $i\ge1$
+we have $\left|W^{\h}\cap V_{i}^{\h}\right|\le\left(1+\gamma\right)s_{\h}n_{\h}$
+for some $\gamma\to0$. Now, consider any $U^{\h}\subseteq W^{\h}$
+with $\left|U^{\h}\right|\ge2\sqrt{\varepsilon}n_{\h}$, and let $U_{i}^{\h}=U^{\h}\cap V_{i}^{\h}$.
+Let $I^{\h}=\left\{ i\ge1:\left|U_{i}^{\h}\right|\ge\varepsilon'\left|V_{i}^{\h}\right|\right\} $
+be the set of cluster indices with non-negligible intersection with
+$U^{\h}$. We have
+\begin{align*}
+e\left(U^{1},U^{2}\right) & \ge\sum_{i\in I^{1}}\sum_{j\in I^{2}}d\left(U_{i}^{1},U_{j}^{2}\right)\left|U_{i}^{1}\right|\left|U_{j}^{2}\right|\\
+ & \ge\sum_{i\in I^{1}}\sum_{j\in I^{2}}\left(d\left(V_{i}^{1},V_{j}^{2}\right)-\varepsilon'\right)\left|U_{i}^{1}\right|\left|U_{j}^{2}\right|-k^{2}\varepsilon'\left(\left(1+\gamma\right)s_{1}n_{1}\right)\left(\left(1+\gamma\right)s_{2}n_{2}\right)\\
+ & \ge\sum_{i\in I^{1}}\sum_{j\in I^{2}}d\left(V_{i}^{1},V_{j}^{2}\right)\left|U^{1}\right|\left|U^{2}\right|-\varepsilon'\left|U^{1}\right|\left|U^{2}\right|-\varepsilon'n_{1}n_{2}-o\left(n^{2}\right)\\
+ & \ge\sum_{i=1}^{k}\sum_{j=1}^{k}d\left(V_{i}^{1},V_{j}^{2}\right)\left|U_{i}^{1}\right|\left|U_{j}^{2}\right|-\varepsilon'\left|V^{1}\right|\left|V^{2}\right|-\varepsilon'\left|U^{1}\right|\left|U^{2}\right|-\varepsilon'n_{1}n_{2}-o\left(n^{2}\right).
+\end{align*}
+Now, we define $\pi^{1},\pi^{2}$ as follows. If $v$ is in some exceptional
+cluster $V_{0}^{\h}$ then let $\pi^{\h}\left(v\right)=0$. Otherwise
+if $v\in V_{i}^{\h}$ let $\pi^{\h}\left(v\right)=\left|U_{i}^{\h}\right|/\left(\left(1+\gamma\right)s_{1}n_{1}\right)\in\left[0,1\right]$.
+By \ref{lem:density-relaxation}, 
+\begin{align*}
+\sum_{i=1}^{k}\sum_{j=1}^{k}d\left(V_{i}^{1},V_{j}^{2}\right)\left|U_{i}^{1}\right|\left|U_{j}^{2}\right| & \ge\left(\frac{\left(1+\gamma\right)n_{1}}{\left|V^{1}\right|}\right)\left(\frac{\left(1+\gamma\right)n_{2}}{\left|V^{2}\right|}\right)\sum_{v\in V^{1}}\sum_{u\in V^{2}}\pi^{1}\left(v\right)\pi^{2}\left(u\right)\one_{v\sim u}\\
+ & \ge\left(\frac{\left(1+\gamma\right)n_{1}}{\left|V^{1}\right|}\right)\left(\frac{\left(1+\gamma\right)n_{2}}{\left|V^{2}\right|}\right)\left(\delta\sum_{v\in V^{1}}\pi^{1}\left(v\right)\sum_{u\in V^{2}}\pi^{2}\left(u\right)-\varepsilon\delta\left|V^{1}\right|\left|V^{2}\right|\right)\\
+ & \ge\delta\left(\left|U^{1}\right|-\varepsilon'\left|V^{1}\right|\right)\left(\left|U^{2}\right|-\varepsilon'\left|V^{2}\right|\right)-\left(1+\gamma\right)^{2}n_{1}n_{2}\varepsilon\delta\\
+ & \ge\delta\left|U^{1}\right|\left|U^{2}\right|-3\varepsilon'\left|V^{1}\right|\left|V^{2}\right|-\varepsilon\delta n_{1}n_{2}-o\left(n^{2}\right).
+\end{align*}
+It follows that 
+\[
+e\left(U^{1},U^{2}\right)\ge\delta\left|U^{1}\right|\left|U^{2}\right|-6\varepsilon'\left|V^{1}\right|\left|V^{2}\right|-\left(\delta/4\right)\left|U^{1}\right|\left|U^{2}\right|-o\left(n^{2}\right).
+\]
+Let $\varepsilon'=\varepsilon\delta n_{1}n_{2}/\left(6\left|V^{1}\right|\left|V^{2}\right|\right)$,
+so that $e\left(U^{1},U^{2}\right)\ge\left(\delta/2\right)\left|U^{1}\right|\left|U^{2}\right|$
+as required.
+\end{proof}
+Let $\flip{\left(i,\h\right)}=\left(i,\flip{\h}\right)$. It is an
+immediate consequence of \ref{lem:random-preserves-superregular}
+that each of $\left(X_{\bi,\bj},W_{\flip{\bi}}\right)$, $\left(W_{\bi},W_{\flip{\bi}}\right)$
+and $\left(W_{\bi},Y_{\bj,\flip{\bi}}\right)$ are $\left(\varepsilon',\delta'\right)$-super-regular,
+where $\varepsilon'=2\sqrt{\varepsilon}$ and $\delta'=\delta/2$.
 
 Now that we have embedded $\F$, we no longer care about the vertices
 used to embed $\F\backslash\left(X\cup Y\right)$; they will never
@@ -816,35 +914,9 @@ of vertices not used to embed $\F\backslash\left(X\cup Y\right)$
 to still satisfy $s_{\bi}n=\left|V_{\bi}\right|$ (this does not change
 $s_{\bi}$ asymptotically). We now have 
 \[
-\left|Z_{\bi,\bj}\right|\sim\psi s_{\bi}s_{\bj}n/\left(2\left(1/2+2\psi\right)\right)=s_{\bi}s_{\bj}n/\left(k+1\right).
+\left|Z_{\bi,\bj}\right|\sim\psi s_{\bi}s_{\bj}n/\left(1/2+2\psi\right)=s_{\bi}s_{\bj}n/\left(k+1\right).
 \]
-Also let $W_{\bi}=V_{\bi}\backslash\left(X\cup Y\right)$.
 
-Here and in future parts of the proof, it is critical that after removing
-vertices from the $V_{\bi}$ we do not destroy super-regularity. This
-will mostly be guaranteed by making choices randomly and applying
-the following lemma.
-\begin{lem}
-\label{lem:random-preserves-superregular}Fix any $a>0$ and any $\rho<1$.
-Let $\left(V^{1},V^{2}\right)$ be an $\left(\varepsilon,\delta\right)$
-super-regular pair in a graph $\G$, where each $\left|V^{\h}\right|\ge n$.
-For any $n_{\h}\ge an$, let $W^{\h}$ be a uniformly random $n_{\h}$-vertex
-subset of $V^{\h}$. Then $\left(W^{1},W^{2}\right)$ is a.a.s. $\left(\varepsilon,\delta\rho\right)$-super-regular.\end{lem}
-\begin{proof}
-Since $W^{\h}\subseteq V^{\h}$, by definition $\left(W^{1},W^{2}\right)$
-is $\left(\varepsilon,\delta\rho\right)$-dense. Each vertex in $W^{\h}$
-has at least $\delta\left|V^{\flip{\h}}\right|$ neighbours in $V^{\flip{\h}}$;
-by a concentration inequality for the hypergeometric distribution
-and the union bound, at least $\delta\left|W^{\flip{\h}}\right|\rho$
-of those remain in $W^{\flip{\h}}$.
-\end{proof}
-Let $X_{\bi,\bj}$ and $Y_{\bi,\bj}$ be the set of $\x$-type and
-$\y$-type vertices in pairs in $Z_{\bi,\bj}$, respectively, so that
-the clusters $X_{\bi,\bj},Y_{\bi,\bj},W_{\bi}$ (each of size $\Omega\left(n\right)$)
-partition the vertex set. Let $\flip{\left(i,\h\right)}=\left(i,\flip{\h}\right)$;
-an immediate consequence of \ref{lem:random-preserves-superregular}
-is that each $\left(X_{\bi,\bj},W_{\flip{\bi}}\right)$, $\left(W_{\bi},W_{\flip{\bi}}\right)$
-and $\left(W_{\bi},Y_{\bj,\flip{\bi}}\right)$ are $\left(\varepsilon,\delta/2\right)$-super-regular.
 
 
 \subsubsection{Embedding special paths not compatible with the super-regular partition\label{sub:embed-paths-between}}
@@ -853,103 +925,75 @@ Next, we want to eliminate almost all special pairs which are not
 between clusters of a super-regular pair. This is achieved using the
 following lemma (which will be used again later).
 \begin{lem}
-\label{lem:adjusting-paths}For any $\delta>0$, $f<1$, $\rho<1$,
-and any integer $k>2$ there is $\c=\c\left(\delta,f,k\right)$ such
-that the following holds.
+\label{lem:adjusting-paths}For any $\delta>0$, $f<1$, $\xi>0$,
+and any integer $k>2$ there is $\c=\c\left(\delta,\xi,k\right)$
+such that the following holds.
 
 Let $\G$ be a graph on some vertex set $\range N$, together with
-a vertex partition into $O\left(1\right)$ clusters, such that some
-of the pairs of clusters $\left(U,W\right)$ are $\left(\varepsilon,\delta\right)$-super-regular.
-Consider any sequence of clusters $X,V_{1},\dots,V_{r},Y$, and any
-partition $t_{1}+\dots+t_{r}=k-1$ (with each $t_{i}\in\NN$), such
-that $\left|V_{i}\right|\ge t_{i}n$ and $\left|X\right|,\left|Y\right|\ge n$.
-Suppose that $\left(X,V_{1}\right)$ and $\left(V_{r},Y\right)$ are
-$\left(\varepsilon,\delta\right)$-super-regular pairs in $\G$, and
-suppose further that each $\x\in X$ is bijectively paired with a
+a vertex partition into clusters. Consider any sequence of clusters
+$X,V_{1},\dots,V_{r},Y$, and any integer partition $t_{1}+\dots+t_{r}=k-1$
+(each $t_{i}\in\NN^{+}$), such that $\left|V_{i}\right|\ge t_{i}n$
+and $\left|X\right|,\left|Y\right|=n$. Suppose that each $x\in X$
+(respectively, $y\in Y$) has at least $\delta\left|V_{1}\right|$
+neighbours in $V_{1}$ (respectively, $\delta\left|V_{r}\right|$
+neighbours in $V_{r}$).
+
+Suppose further that each $\x\in X$ is bijectively paired with a
 vertex $\y\in Y$, comprising a special pair $\left(\x,\y\right)$.
-Let $\R\in\GG\left(N,\c/N\right)$.
-
-Then, for any $m\le fn$, in $\G\cup\R$ there are $m$ vertex-disjoint
-special paths, each with $t_{i}$ vertices in each $V_{i}$. These
-paths can be chosen such that after their removal, each $\left(U,W\right)$
-that was previously $\left(\varepsilon,\delta\right)$-super-regular
-is now $\left(\varepsilon,\delta\rho^{2}\right)$-super-regular.
-\end{lem}
-It is convenient to prove \ref{lem:adjusting-paths} using a similar,
-but simpler, version of the lemma.
-\begin{lem}
-\label{lem:easy-adjusting-paths}For any $\delta>0$, $g<1$ and $k\in\NN$,
-there is $\c=\c\left(\delta,p,k\right)$ such that the following holds.
-Let $\G$ be a graph on the vertex set $\range{\left(k+1\right)n}$,
-together with a vertex partition $\range{\left(k+1\right)n}=X\cup V_{1}\dots\cup V_{k-1}\cup Y$.
-Suppose that each $\left|V_{i}\right|=n$, and suppose that in $\G$,
-each $v\in V_{0}$ (respectively, $v\in V_{k}$) has at least $\delta n$
-neighbours in $V_{2}$ (respectively, in $V_{k-1}$). Suppose further
-that each $\x\in X$ is bijectively paired with a vertex $\y\in Y$,
-comprising a special pair $\left(\x,\y\right)$. Let $\R\in\GG\left(n,\c/n\right)$.
-Then there are a.a.s. $gn$ vertex-disjoint special paths of the form
-$xv_{1}\dots v_{k-1}y$ ($v_{i}\in V_{i}$) in $\G\cup\R$.\end{lem}
+Let $\R\in\GG\left(N,\c/N\right)$. Then, in $\G\cup\R$ we can find
+$\left(1-\xi\right)n$ vertex-disjoint special paths, each with $t_{i}$
+vertices in each $V_{i}$. These paths depend on $\R$ so are random;
+in fact we can assume that the vertices used in each $V_{i}$, $X$
+and $Y$ are independently uniformly random subsets of their respective
+sizes.\end{lem}
 \begin{proof}
-It suffices to show that we can a.a.s. find $\varepsilon n$ such
-disjoint paths, for any small $\varepsilon=\varepsilon\left(\delta\right)>0$.
-This is because we can break $\R$ into phases $\R\supseteq\R_{1}\cup\dots\cup\R_{r}$,
-where $r$ is chosen so that $\left(1-\varepsilon\right)^{r}\le\left(1-g\right)$.
-Each phase we can cover an $\varepsilon$-fraction of the vertices
-with suitable $k$-paths; discard these paths for the next phase and
-repeat.
+Uniformly at random choose $t_{i}$ disjoint $n$-vertex subsets of
+each $V_{i}$. This gives a total of $k-1$ such subsets; arrange
+these into a sequence $W_{1},\dots,W_{k-1}$ in such a way that $W_{1}\subseteq V_{1}$
+and $W_{k-1}\subseteq V_{r}$. By concentration and the union bound,
+for $\delta_{1}=\delta/2$ each $x\in X$ (respectively, $y\in Y$)
+has at least $\delta_{1}\left|W_{1}\right|$ neighbours in $W_{1}$
+(respectively, $\delta_{1}\left|V_{k-1}\right|$ neighbours in $W_{k-1}$).
+To summarize these minimum degree conditions, we say that the situation
+is ``$\delta_{1}$-good''.
 
-By \ref{lem:bipartite-matching}, in $\R$ we can find a matching
-of $\left(1-1/\left(2\left(k-2\right)\right)\right)n$ edges between
-each $V_{i}$ and $V_{i+1}$ ($1\le i<k-1$). This gives us a disjoint
-union of $n/2$ paths $P_{1},\dots,P_{n/2}$; we write $P_{i}=v_{1}^{i}\dots v_{k-1}^{i}$
-with $v_{j}^{i}\in V_{j}$. For each $j$, we can assume that $v_{j}^{1},\dots,v_{j}^{n/2}$
-is a uniformly random ordering of a uniformly random set of $n/2$
-elements of $V_{j},$which we can complete into a uniformly random
-ordering $v_{j}^{1},\dots,v_{j}^{n}$ (independently for $1\le j\le k-1$).
-
+Now, break $\R$ into phases $\R\supseteq\R_{1}\cup\dots\cup\R_{r}$,
+for some large $r=r\left(\delta\right)$ to be determined. By \ref{lem:bipartite-matching},
+in $\R_{1}$ we can find a matching of $\left(1-1/\left(2\left(k-2\right)\right)\right)n$
+edges between each $W_{i}$ and $W_{i+1}$ ($1\le i<k-1$). This gives
+us a disjoint union of $n/2$ length-$\left(k-2\right)$ paths $P_{1},\dots,P_{n/2}$;
+we write $P_{i}=v_{1}^{i}\dots v_{k-1}^{i}$ with $v_{j}^{i}\in V_{j}$.
+For each $j$, we can assume that $v_{j}^{1},\dots,v_{j}^{n/2}$ is
+a uniformly random ordering of a uniformly random set of $n/2$ elements
+of $W_{j},$which we can complete into a uniformly random ordering
+$v_{j}^{1},\dots,v_{j}^{n}$ (independently for $1\le j\le k-1$).
 Now, let the special pairs be $\left(\x^{1},\y^{1}\right),\dots,\left(\x^{n},\y^{n}\right)$.
-Let $S_{X}$ (respectively $S_{Y}$) be the set of indices $i\le n/2$
+Let $I_{X}$ (respectively $I_{Y}$) be the set of indices $i\le n/2$
 such that $v_{1}^{i}$ is adjacent to $\x^{i}$ (respectively, $v_{k-1}^{i}$
-is adjacent to $\y^{i}$). By linearity of expectation, $\E\left|S_{X}\right|,\E\left|S_{Y}\right|\ge\delta n/2$.
+is adjacent to $\y^{i}$). By linearity of expectation, $\E\left|I_{X}\right|,\E\left|I_{Y}\right|\ge\left(\delta_{1}/2\right)n$.
 If we vary the ordering $v_{1}^{1},\dots,v_{1}^{n}$ (respectively
 $v_{k-1}^{1},\dots,v_{k-1}^{n}$) by a transposition, this changes
-$\left|S_{X}\right|$ (respectively $\left|S_{Y}\right|$) by at most
+$\left|I_{X}\right|$ (respectively $\left|I_{Y}\right|$) by at most
 2. So, by a bounded-differences concentration inequality (for example
-\cite[Lemma~B.1]{FP04}), a.a.s. we have $\left|S_{X}\right|,\left|S_{Y}\right|\ge\delta n/3$.
-Conditioning on $S_{X}$ and $\left|S_{Y}\right|$, a concentration
-inequality for the hypergeometric distribution shows that a.a.s. $\left|S_{X}\cap S_{Y}\right|\ge\delta^{2}n/10$.
-The indices in $S_{X}\cap S_{Y}$ correspond to $\varepsilon n$ special
-paths $\x^{i},v_{1}^{i},\dots,v_{k-1}^{i},\y^{i}$, where $\varepsilon=\delta^{2}/10$.
-\end{proof}
+\cite[Lemma~B.1]{FP04}), a.a.s. we have $\left|I_{X}\right|,\left|I_{Y}\right|\ge\left(\delta_{1}/3\right)n$.
+Conditioning on $I_{X}$ and $\left|I_{Y}\right|$, a concentration
+inequality for the hypergeometric distribution shows that a.a.s. $\left|I_{X}\cap I_{Y}\right|\ge\gamma\left(\delta_{1}\right)n$,
+where $\gamma\left(\delta_{1}\right)=\delta_{1}^{2}/10$. The indices
+in $I_{X}\cap I_{Y}$ correspond to $\gamma\left(\delta_{1}\right)n$
+special paths $\x^{i},v_{1}^{i},\dots,v_{k-1}^{i},\y^{i}$.
 
-\begin{proof}[Proof of \ref{lem:adjusting-paths}]
-For each $V_{i}$, set aside a uniformly random subset $D_{i}$ of
-size $\rho\left(\left|V_{i}\right|-t_{i}m\right)$. Divide each $V_{i}\backslash D_{i}$
-($1\le i\le k-1$) randomly into $t_{i}$ equal-sized pieces and order
-the resulting $k-1$ clusters as $W_{1},\dots,W_{k-1}$ in such a
-way that $W_{1}\subseteq V_{1}$ and $W_{k-1}\subseteq V_{r}$. By
-\ref{lem:random-preserves-superregular}, $\left(X,W_{1}\right)$
-and $\left(W_{k-1},Y\right)$ are $\left(\varepsilon,\delta/2\right)$-super-regular.
-Each $\left|V_{i}\backslash D_{i}\right|=\left(1-\rho\right)\left|V_{i}\right|+\rho t_{i}m,$
-so each $\left|W_{i}\right|=\Omega\left(n\right)$ and also 
-\begin{align*}
-m & \le f\left|V_{i}\right|/t_{i}\le\left(f/\left(1-\rho\right)\right)\left|V_{i}\backslash D_{i}\right|/t_{i}-\left(\rho f/\left(1-\rho\right)\right)m,\\
-\left(1+\rho f/\left(1-\rho\right)\right)m & \le\left(f/\left(1-\rho\right)\right)\left|V_{i}\backslash D_{i}\right|/t_{i}.
-\end{align*}
-Let $g=f/\left(\left(1-\rho\right)+\rho f\right)$ so each $g\left|W_{i}\right|\ge m$.
-Apply \ref{lem:easy-adjusting-paths} to find $m$ special paths in
-$\G\cup\R$ with the required intersection with each $V_{i}$. After
-removing these paths, there are $\left|D_{i}\right|/\rho$ vertices
-left in each $V_{i}$. If $\left(V_{i},W\right)$ was $\left(\varepsilon,\delta\right)$-super-regular
-before the deletions (where $W$ does not participate in our special
-paths), it is trivially still $\left(\varepsilon,\delta\right)$-dense
-after the deletions. Moreover,  by \ref{lem:random-preserves-superregular},
-$\left(D_{i},W\right)$ is a.a.s. $\left(\varepsilon,\delta\rho\right)$-super-regular.
-So, $\left(V_{i},W\right)$ is now $\left(\varepsilon,\delta\rho^{2}\right)$-super-regular,
-as required. By a similar argument, each $\left(V_{i},V_{j}\right)$
-that was $\left(\varepsilon,\delta\right)$-super-regular before the
-deletions is now $\left(\varepsilon,\delta\rho^{2}\right)$-super-regular
-after the deletions.
+Remove these special paths and and their vertices in $W_{i}$. Let
+$\delta_{i}=\delta_{1}/\left(1+\left(i-1\right)/r\right)$; by concentration
+and the union bound the situation is still a.a.s. $\delta_{2}$-good
+after these removals. We can therefore repeat the previous argument
+using $\R_{2}$ to find more special paths. After repeating the argument
+all $r$ times (before iteration $i$ we are $\delta_{i}$-good),
+there are at most 
+\[
+n\prod_{i=0}^{r-1}\left(1-\gamma\left(\delta_{i}\right)\right)\le\left(1-\gamma\left(\delta/4\right)\right)^{r}n
+\]
+vertices remaining in $X$ and in $Y$. If we choose large enough
+$r$ this is fewer than $\xi n$ remaining vertices, as required.
 \end{proof}
 Now we return to the proof of \ref{thm:main-theorem}. For each $\bi,\bj$
 with $\bj\ne\flip{\bi}$, and some very small $\xi=\xi\left(a,\delta\right)>0$,
@@ -959,16 +1003,22 @@ a way that each of these special paths has one interior vertex from
 $W_{\flip{\bi}}$, one interior vertex from $W_{\flip{\bj}}$ and
 the other $k-3$ interior vertices from $W_{\bi}$. Provided $k$
 is large we can find our desired paths with at most $\left(2q\right)^{2}$
-applications of \ref{lem:adjusting-paths} (splitting $\R_{2}$ into
-$\left(2q\right)^{2}$ phases).
+applications of \ref{lem:adjusting-paths}. To be precise, as in the
+proof of \ref{lem:adjusting-paths}, we split $\R_{2}$ into $\left(2q\right)^{2}$
+phases and use \ref{lem:adjusting-paths} to remove paths in each
+phase sequentially. By concentration and the union bound, after each
+phase we still have a suitable minimum degree condition for this to
+be possible.
 
-Remove these paths, and update each $V_{\bi},W_{\bi},X_{\bi},Y_{\bi}X_{\bi,\bj},Y_{\bi,\bj},Z_{\bi,\bj}$
-accordingly. (But we do not update $n$ or the $s_{\bi}$). Each $\left(X_{\bi,\bj},W_{\flip{\bi}}\right)$,
-$\left(W_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},Y_{\bj,\flip{\bi}}\right)$
-are $\left(\varepsilon,\delta'\right)$-regular, where $\delta'=\left(\delta/2\right)\rho^{2\left(2q\right)^{2}}=\delta/4$
-(for suitable choice of $\rho$). Let $a'=a'\left(a\right)$ satisfy
-$\left|W_{\bi}\right|\ge a'n$ (for large $k$, $a'=a^{2}/2$ will
-do).
+As well as removing these paths, remove their corresponding vertices
+from $V_{\bi},W_{\bi},X_{\bi},Y_{\bi}X_{\bi,\bj},Y_{\bi,\bj},Z_{\bi,\bj}$.
+We have removed a uniformly random subset of a certain size from each
+$V_{\bi},W_{\bi},X_{\bi,\bj},Y_{\bi,\bj}$. By \ref{lem:random-preserves-superregular},
+each $\left(X_{\bi,\bj},W_{\flip{\bi}}\right)$, $\left(W_{\bi},W_{\flip{\bi}}\right)$
+and $\left(W_{\bi},Y_{\bj,\flip{\bi}}\right)$ are $\left(\varepsilon'',\delta''\right)$-super-regular,
+where $\varepsilon''=2\sqrt{\varepsilon'}$ and $\delta''=\delta'/2$.
+Let $a'=a'\left(a\right)$ satisfy $\left|W_{\bi}\right|\ge a'n$
+(for large $k$, $a'=a^{2}/2$ will do).
 
 Now, for every $\bi,\bj$ with $\bj\ne\flip{\bi}$, we have $\left|Z_{\bi,\bj}\right|=\xi s_{\bi}s_{\bj}n/\left(k+1\right)$.
 The special pairs in all such $Z_{\bi,\bj}$ comprise a total of at
@@ -1035,9 +1085,8 @@ or $\left(k-1\right)\left|X_{\bj}\cup Y_{\bj}\right|/2=\left|W_{\bj}\right|$.
 After at most $2q$ iterations of this argument, we will have each
 $\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2=\left|W_{\bi}\right|$
 as desired. Each $\left(X_{\bi},W_{\flip{\bi}}\right)$, $\left(W_{\bi},W_{\flip{\bi}}\right)$
-and $\left(W_{\bi},Y_{\flip{\bi}}\right)$ is now $\left(\varepsilon,\delta''\right)$-super-regular,
-where $\delta''=\delta'\rho^{2\left(2q\right)}=\delta'/2$ (for suitable
-$\rho$).
+and $\left(W_{\bi},Y_{\flip{\bi}}\right)$ is now $\left(\varepsilon''',\delta'''\right)$-super-regular,
+where $\varepsilon'''=2\sqrt{\varepsilon''}$ and $\delta'''=\delta''/4$.
 
 
 \subsubsection{Completing the embedding with the blow-up lemma\label{sub:blow-up}}
