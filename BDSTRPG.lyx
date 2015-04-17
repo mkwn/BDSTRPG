@@ -2474,7 +2474,7 @@ For
 \end_inset
 
 ) such that each 
-\begin_inset Formula $an\le\left|V_{i}^{\h}\right|\le bn$
+\begin_inset Formula $\left|V_{i}^{\h}\right|=\Theta\left(n\right)$
 \end_inset
 
  and each pair 
@@ -2843,16 +2843,16 @@ Let
 \begin_inset Formula $\left(\varepsilon,\delta\right)$
 \end_inset
 
--dense pair, let 
-\begin_inset Formula $0\le\gamma\le1$
+-dense pair with 
+\begin_inset Formula $\varepsilon$
 \end_inset
 
-, and let 
-\begin_inset Formula $\left(W^{1},W^{2}\right)$
+ sufficiently small , and suppose we have 
+\begin_inset Formula $W^{\h}\supseteq V^{\h}$
 \end_inset
 
- be a pair such that each 
-\begin_inset Formula $\left|V^{\h}\triangle W^{\h}\right|\le\gamma\left|V^{\h}\right|$
+ with 
+\begin_inset Formula $\left|W^{\h}\right|\le\left(1+f\varepsilon\right)\left|V^{\h}\right|$
 \end_inset
 
 .
@@ -2865,13 +2865,14 @@ Let
 \end_inset
 
 -dense pair, with 
-\begin_inset Formula $\varepsilon'=\varepsilon+6\sqrt{\gamma/\left(1+\gamma\right)}$
+\begin_inset Formula $\varepsilon'=\max\left\{ 2f,1+f\right\} \varepsilon$
 \end_inset
 
  and 
-\begin_inset Formula $\delta'=\delta-4\sqrt{\gamma/\left(1+\gamma\right)}$
+\begin_inset Formula $\delta'=\min\left\{ 1/4,1/\left(1+f\varepsilon\right)\right\} \delta$
 \end_inset
 
+.
  If moreover 
 \begin_inset Formula $\left(V^{1},V^{2}\right)$
 \end_inset
@@ -2881,15 +2882,15 @@ Let
 \end_inset
 
 -super-regular and each vertex in 
-\begin_inset Formula $W^{\h}$
+\begin_inset Formula $W^{\h}\backslash V^{\h}$
 \end_inset
 
  has at least 
-\begin_inset Formula $\delta\left|W^{\flip{\h}}\right|$
+\begin_inset Formula $\delta'\left|V^{\flip{\h}}\right|$
 \end_inset
 
  neighbours in 
-\begin_inset Formula $W^{\flip{\h}}$
+\begin_inset Formula $V^{\flip{\h}}$
 \end_inset
 
 , then 
@@ -2903,31 +2904,83 @@ Let
 -super-regular pair.
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:robust-regular"
-
+\begin_layout Proof
+Suppose 
+\begin_inset Formula $U^{\h}\subseteq W^{\h}$
 \end_inset
 
- says that regularity-type properties are 
-\begin_inset Quotes eld
+ with 
+\begin_inset Formula $\left|U^{\h}\right|\ge\varepsilon'\left|W^{\h}\right|$
 \end_inset
 
-robust
-\begin_inset Quotes erd
+.
+ Then 
+\begin_inset Formula $\left|U^{\h}\cap V^{\h}\right|\ge\varepsilon'\left|W^{\h}\right|-f\varepsilon\left|V^{\h}\right|\ge\varepsilon\left|V^{\h}\right|$
 \end_inset
 
- with respect to small alterations of the clusters.
- It is almost the same as 
-\begin_inset CommandInset citation
-LatexCommand cite
-after "Proposition~8"
-key "BST08"
-
+ so there are at least 
+\begin_inset Formula $\delta\left|U^{1}\cap V^{1}\right|\left|U^{2}\cap V^{2}\right|$
 \end_inset
 
-, and has exactly the same proof.
+ edges between 
+\begin_inset Formula $U^{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $U^{2}$
+\end_inset
+
+.
+ But note that 
+\begin_inset Formula $\left|U^{\h}\cap V^{\h}\right|\ge\left|U^{\h}\right|-f\varepsilon\left|W^{\h}\right|\ge\left(1-\left(f\varepsilon\right)/\varepsilon'\right)\left|U^{\h}\right|\ge\left(1/2\right)\left|U^{\h}\right|$
+\end_inset
+
+, so 
+\begin_inset Formula $d\left(U^{1},U^{2}\right)\ge\delta/4$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(W^{1},W^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon',\delta'\right)$
+\end_inset
+
+-dense.
+\end_layout
+
+\begin_layout Proof
+Now consider the second part of the lemma where 
+\begin_inset Formula $\left(V^{1},V^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon,\delta\right)$
+\end_inset
+
+-super-regular.
+ By super-regularity and the assumption in the lemma, each 
+\begin_inset Formula $v\in W^{\h}$
+\end_inset
+
+ has 
+\begin_inset Formula $\delta\left|V^{\flip{\h}}\right|\ge\delta'\left|W^{\flip{\h}}\right|$
+\end_inset
+
+ neighbours in 
+\begin_inset Formula $W^{\flip{\h}}$
+\end_inset
+
+, proving that 
+\begin_inset Formula $\left(W^{1},W^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon',\delta'\right)$
+\end_inset
+
+-super-regular.
 \end_layout
 
 \begin_layout Lemma
@@ -3337,9 +3390,6 @@ Each bad vertex
 \end_inset
 
  there are at least
-\end_layout
-
-\begin_layout Proof
 \begin_inset Formula 
 \[
 \frac{\a'n-2\varepsilon'n-\delta''n}{sn/\a'}\ge\left(\a'\right)^{2}/\left(2s\right)
@@ -3352,7 +3402,7 @@ clusters
 \end_inset
 
  which have at least 
-\begin_inset Formula $\delta''s\left(1-\varepsilon'\right)n$
+\begin_inset Formula $\delta''\left|V_{i}^{\h}\right|$
 \end_inset
 
  neighbours of 
@@ -3360,12 +3410,19 @@ clusters
 \end_inset
 
 .
- Put 
+ Pick one such 
+\begin_inset Formula $V_{i}^{\h}$
+\end_inset
+
+ uniformly at random, and put 
 \begin_inset Formula $v$
 \end_inset
 
- in one of these clusters uniformly at random (do this independently for
- each bad 
+ in 
+\begin_inset Formula $V_{i}^{\flip{\h}}$
+\end_inset
+
+ (do this independently for each bad 
 \begin_inset Formula $v$
 \end_inset
 
@@ -3396,23 +3453,15 @@ reference "lem:robust-regular"
 \end_inset
 
  is now 
-\begin_inset Formula $\left(O\left(\sqrt{\varepsilon'}\right),\delta''/2\right)$
+\begin_inset Formula $\left(O\left(\varepsilon'\right),\delta''/4\right)$
 \end_inset
 
 -super-regular.
  With 
-\begin_inset Formula $\delta=\delta''/2$
-\end_inset
-
-, 
-\begin_inset Formula $a=s/2$
+\begin_inset Formula $\delta=\delta''/4$
 \end_inset
 
  and 
-\begin_inset Formula $b=2s/\a'$
-\end_inset
-
-, and 
 \begin_inset Formula $\varepsilon'$
 \end_inset
 
@@ -3454,7 +3503,7 @@ reference "lem:partition-into-blobs"
 \end_inset
 
 , with 
-\begin_inset Formula $\varepsilon=\varepsilon\left(\delta\right)$
+\begin_inset Formula $\varepsilon_{1}=\varepsilon_{1}\left(\delta\right)$
 \end_inset
 
  to be determined.
@@ -3877,10 +3926,15 @@ name "lem:random-preserves-superregular"
 \end_inset
 
 Fix 
-\begin_inset Formula $\delta,\varepsilon>0$
+\begin_inset Formula $\delta,\varepsilon'>0$
 \end_inset
 
 .
+ There is 
+\begin_inset Formula $\varepsilon=\varepsilon\left(\varepsilon'\right)>0$
+\end_inset
+
+ such that the following holds.
  Suppose 
 \begin_inset Formula $\left(V^{1},V^{2}\right)$
 \end_inset
@@ -3901,7 +3955,7 @@ Fix
 \begin_inset Formula $\left(n\right)$
 \end_inset
 
- (the implied constant can depend on 
+ (not necessarily uniformly over 
 \begin_inset Formula $\varepsilon$
 \end_inset
 
@@ -3928,304 +3982,52 @@ Fix
 
  is a.a.s.
  
-\begin_inset Formula $\left(2\sqrt{\varepsilon},\delta/2\right)$
+\begin_inset Formula $\left(\varepsilon',\delta/2\right)$
 \end_inset
 
 -super-regular.
 \end_layout
 
-\begin_layout Standard
-To prove 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:random-preserves-superregular"
-
+\begin_layout Proof
+The fact that 
+\begin_inset Formula $\left(W^{1},W^{2}\right)$
 \end_inset
 
- we will apply a bipartite version of Szemer
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-'
-\end_layout
-
-\end_inset
-
-edi's regularity lemma on the edges between 
-\begin_inset Formula $V^{1}$
-\end_inset
-
- and 
-\begin_inset Formula $V^{2}$
-\end_inset
-
-.
- The following formulation can be found in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Tao05"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Lemma
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Szemer
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-'
-\end_layout
-
-\end_inset
-
-edi's regularity lemma, bipartite version
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:szemeredi-regularity-bipartite"
-
-\end_inset
-
-For any 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, there is 
-\begin_inset Formula $K=K\left(\varepsilon\right)$
-\end_inset
-
- such that the following holds.
- For any bipartite graph 
-\begin_inset Formula $\G$
-\end_inset
-
- with bipartition 
-\begin_inset Formula $V^{1}\cup V^{2}$
-\end_inset
-
-, there are partitions of each 
-\begin_inset Formula $V^{\h}$
-\end_inset
-
- into clusters 
-\begin_inset Formula $V_{0}^{\h},V_{1}^{\h},\dots,V_{k}^{\h}$
-\end_inset
-
- (
-\begin_inset Formula $k\le K$
-\end_inset
-
-), such that the 
-\begin_inset Quotes eld
-\end_inset
-
-exceptional clusters
-\begin_inset Quotes erd
-\end_inset
-
+ is a.a.s.
  
-\begin_inset Formula $V_{0}^{\h}$
+\begin_inset Formula $\left(\varepsilon',\delta/2\right)$
 \end_inset
 
- has size at most 
-\begin_inset Formula $\varepsilon\left|V^{\h}\right|$
-\end_inset
-
-, the other clusters 
-\begin_inset Formula $V_{i}^{\h}$
-\end_inset
-
- in each part have equal size 
-\begin_inset Formula $s_{\h}\left|V^{\h}\right|$
-\end_inset
-
-, and all but 
-\begin_inset Formula $\varepsilon k_{1}k_{2}$
-\end_inset
-
- of the pairs of non-exceptional clusters are 
+-dense for suitable 
 \begin_inset Formula $\varepsilon$
 \end_inset
 
--regular.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
+, follows from two applications of 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem~3.6"
+key "GKRS07"
 
 \end_inset
 
+.
+ (The notion of 
+\begin_inset Quotes eld
+\end_inset
 
-\end_layout
+lower regularity
+\begin_inset Quotes erd
+\end_inset
 
-\begin_layout Standard
-We will also need a linear relaxation of the notion of an 
+ in that paper essentially corresponds to our notion of 
 \begin_inset Formula $\left(\varepsilon,\delta\right)$
 \end_inset
 
--dense pair.
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:density-relaxation"
-
-\end_inset
-
-If 
-\begin_inset Formula $\left(V^{1},V^{2}\right)$
-\end_inset
-
- is 
-\begin_inset Formula $\left(\varepsilon,\delta\right)$
-\end_inset
-
--dense then for any functions 
-\begin_inset Formula $\pi^{\h}:V^{\h}\to\left[0,1\right]$
-\end_inset
-
-, we have 
-\begin_inset Formula 
-\[
-\sum_{v\in V^{1}}\sum_{u\in V^{2}}\pi^{1}\left(v\right)\pi^{2}\left(u\right)\one_{v\sim u}\ge\delta\sum_{v\in V^{1}}\pi^{1}\left(v\right)\sum_{u\in V^{2}}\pi^{2}\left(u\right)-\varepsilon\delta\left|V^{1}\right|\left|V^{2}\right|.
-\]
-
-\end_inset
-
-
+-density).
 \end_layout
 
 \begin_layout Proof
-Let 
-\begin_inset Formula $f:\left[0,1\right]^{V^{1}\times V^{2}}\to\RR$
-\end_inset
-
- be defined by
-\begin_inset Formula 
-\[
-f\left(\pi\right)=\sum_{v\in V^{1}}\sum_{u\in V^{2}}\pi^{1}\left(v\right)\pi^{2}\left(u\right)\one_{v\sim u}-\delta\sum_{v\in V^{1}}\pi^{1}\left(v\right)\sum_{u\in V^{2}}\pi^{2}\left(u\right)
-\]
-
-\end_inset
-
-Note that 
-\begin_inset Formula $f$
-\end_inset
-
- is linear in each 
-\begin_inset Formula $\pi^{\h}$
-\end_inset
-
- so it attains its extrema at vertices of the hypercube 
-\begin_inset Formula $\left[0,1\right]^{V^{1}\times V^{2}}$
-\end_inset
-
-.
- But if each 
-\begin_inset Formula $\pi^{\h}\left(v\right)\in\left[0,1\right]$
-\end_inset
-
- then 
-\begin_inset Formula $\pi^{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\pi^{2}$
-\end_inset
-
- just correspond to subsets 
-\begin_inset Formula $U^{\h}\subseteq V^{\h}$
-\end_inset
-
-.
- We just need to show that 
-\begin_inset Formula $f\left(\pi\right)\ge-\varepsilon\delta\left|V^{1}\right|\left|V^{2}\right|$
-\end_inset
-
- for each such 
-\begin_inset Formula $\pi$
-\end_inset
-
-.
- If each 
-\begin_inset Formula $\left|U^{\h}\right|\ge\varepsilon\left|V^{\h}\right|$
-\end_inset
-
- then 
-\begin_inset Formula $\left(\varepsilon,\delta\right)$
-\end_inset
-
--density implies 
-\begin_inset Formula $f\left(\pi\right)=\varepsilon\left|U^{1}\right|\left|U^{2}\right|-\delta\left|U^{1}\right|\left|U^{2}\right|\ge0$
-\end_inset
-
-.
- Otherwise 
-\begin_inset Formula $\left|U^{1}\right|\left|U^{2}\right|\le\varepsilon\left|V^{1}\right|\left|V^{2}\right|$
-\end_inset
-
- so trivially 
-\begin_inset Formula $f\left(\pi\right)\ge-\varepsilon\delta\left|V^{1}\right|\left|V^{2}\right|$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Proof of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:random-preserves-superregular"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-First, note that for each 
+For each 
 \begin_inset Formula $v\in W^{\h}$
 \end_inset
 
@@ -4253,148 +4055,16 @@ First, note that for each
 \end_inset
 
  such neighbours.
-\end_layout
-
-\begin_layout Proof
-It remains to show that 
+ This proves that 
 \begin_inset Formula $\left(W^{1},W^{2}\right)$
 \end_inset
 
  is a.a.s.
  
-\begin_inset Formula $\left(2\sqrt{\varepsilon},\delta/2\right)$
+\begin_inset Formula $\left(\varepsilon',\delta/2\right)$
 \end_inset
 
--dense.
- Apply 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:szemeredi-regularity-bipartite"
-
-\end_inset
-
- to the bipartite graph between 
-\begin_inset Formula $V^{1}$
-\end_inset
-
- and 
-\begin_inset Formula $V^{2}$
-\end_inset
-
-, with some regularity parameter 
-\begin_inset Formula $\varepsilon'$
-\end_inset
-
- to be determined.
- By a concentration inequality, a.a.s.
- for all 
-\begin_inset Formula $i\ge1$
-\end_inset
-
- we have 
-\begin_inset Formula $\left|W^{\h}\cap V_{i}^{\h}\right|\le\left(1+\gamma\right)s_{\h}n_{\h}$
-\end_inset
-
- for some 
-\begin_inset Formula $\gamma\to0$
-\end_inset
-
-.
- Now, consider any 
-\begin_inset Formula $U^{\h}\subseteq W^{\h}$
-\end_inset
-
- with 
-\begin_inset Formula $\left|U^{\h}\right|\ge2\sqrt{\varepsilon}n_{\h}$
-\end_inset
-
-, and let 
-\begin_inset Formula $U_{i}^{\h}=U^{\h}\cap V_{i}^{\h}$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $I^{\h}=\left\{ i\ge1:\left|U_{i}^{\h}\right|\ge\varepsilon'\left|V_{i}^{\h}\right|\right\} $
-\end_inset
-
- be the set of cluster indices with non-negligible intersection with 
-\begin_inset Formula $U^{\h}$
-\end_inset
-
-.
- We have
-\begin_inset Formula 
-\begin{align*}
-e\left(U^{1},U^{2}\right) & \ge\sum_{i\in I^{1}}\sum_{j\in I^{2}}d\left(U_{i}^{1},U_{j}^{2}\right)\left|U_{i}^{1}\right|\left|U_{j}^{2}\right|\\
- & \ge\sum_{i\in I^{1}}\sum_{j\in I^{2}}\left(d\left(V_{i}^{1},V_{j}^{2}\right)-\varepsilon'\right)\left|U_{i}^{1}\right|\left|U_{j}^{2}\right|-k^{2}\varepsilon'\left(\left(1+\gamma\right)s_{1}n_{1}\right)\left(\left(1+\gamma\right)s_{2}n_{2}\right)\\
- & \ge\sum_{i\in I^{1}}\sum_{j\in I^{2}}d\left(V_{i}^{1},V_{j}^{2}\right)\left|U^{1}\right|\left|U^{2}\right|-\varepsilon'\left|U^{1}\right|\left|U^{2}\right|-\varepsilon'n_{1}n_{2}-o\left(n^{2}\right)\\
- & \ge\sum_{i=1}^{k}\sum_{j=1}^{k}d\left(V_{i}^{1},V_{j}^{2}\right)\left|U_{i}^{1}\right|\left|U_{j}^{2}\right|-\varepsilon'\left|V^{1}\right|\left|V^{2}\right|-\varepsilon'\left|U^{1}\right|\left|U^{2}\right|-\varepsilon'n_{1}n_{2}-o\left(n^{2}\right).
-\end{align*}
-
-\end_inset
-
-Now, we define 
-\begin_inset Formula $\pi^{1},\pi^{2}$
-\end_inset
-
- as follows.
- If 
-\begin_inset Formula $v$
-\end_inset
-
- is in some exceptional cluster 
-\begin_inset Formula $V_{0}^{\h}$
-\end_inset
-
- then let 
-\begin_inset Formula $\pi^{\h}\left(v\right)=0$
-\end_inset
-
-.
- Otherwise if 
-\begin_inset Formula $v\in V_{i}^{\h}$
-\end_inset
-
- let 
-\begin_inset Formula $\pi^{\h}\left(v\right)=\left|U_{i}^{\h}\right|/\left(\left(1+\gamma\right)s_{1}n_{1}\right)\in\left[0,1\right]$
-\end_inset
-
-.
- By 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:density-relaxation"
-
-\end_inset
-
-, 
-\begin_inset Formula 
-\begin{align*}
-\sum_{i=1}^{k}\sum_{j=1}^{k}d\left(V_{i}^{1},V_{j}^{2}\right)\left|U_{i}^{1}\right|\left|U_{j}^{2}\right| & \ge\left(\frac{\left(1+\gamma\right)n_{1}}{\left|V^{1}\right|}\right)\left(\frac{\left(1+\gamma\right)n_{2}}{\left|V^{2}\right|}\right)\sum_{v\in V^{1}}\sum_{u\in V^{2}}\pi^{1}\left(v\right)\pi^{2}\left(u\right)\one_{v\sim u}\\
- & \ge\left(\frac{\left(1+\gamma\right)n_{1}}{\left|V^{1}\right|}\right)\left(\frac{\left(1+\gamma\right)n_{2}}{\left|V^{2}\right|}\right)\left(\delta\sum_{v\in V^{1}}\pi^{1}\left(v\right)\sum_{u\in V^{2}}\pi^{2}\left(u\right)-\varepsilon\delta\left|V^{1}\right|\left|V^{2}\right|\right)\\
- & \ge\delta\left(\left|U^{1}\right|-\varepsilon'\left|V^{1}\right|\right)\left(\left|U^{2}\right|-\varepsilon'\left|V^{2}\right|\right)-\left(1+\gamma\right)^{2}n_{1}n_{2}\varepsilon\delta\\
- & \ge\delta\left|U^{1}\right|\left|U^{2}\right|-3\varepsilon'\left|V^{1}\right|\left|V^{2}\right|-\varepsilon\delta n_{1}n_{2}-o\left(n^{2}\right).
-\end{align*}
-
-\end_inset
-
-It follows that 
-\begin_inset Formula 
-\[
-e\left(U^{1},U^{2}\right)\ge\delta\left|U^{1}\right|\left|U^{2}\right|-6\varepsilon'\left|V^{1}\right|\left|V^{2}\right|-\left(\delta/4\right)\left|U^{1}\right|\left|U^{2}\right|-o\left(n^{2}\right).
-\]
-
-\end_inset
-
-Let 
-\begin_inset Formula $\varepsilon'=\varepsilon\delta n_{1}n_{2}/\left(6\left|V^{1}\right|\left|V^{2}\right|\right)$
-\end_inset
-
-, so that 
-\begin_inset Formula $e\left(U^{1},U^{2}\right)\ge\left(\delta/2\right)\left|U^{1}\right|\left|U^{2}\right|$
-\end_inset
-
- as required.
+-super-regular.
 \end_layout
 
 \begin_layout Standard
@@ -4423,15 +4093,19 @@ reference "lem:random-preserves-superregular"
 \end_inset
 
  are 
-\begin_inset Formula $\left(\varepsilon',\delta'\right)$
+\begin_inset Formula $\left(\varepsilon_{2},\delta_{2}\right)$
 \end_inset
 
 -super-regular, where 
-\begin_inset Formula $\varepsilon'=2\sqrt{\varepsilon}$
+\begin_inset Formula $\delta_{2}=\delta_{1}/2$
 \end_inset
 
  and 
-\begin_inset Formula $\delta'=\delta/2$
+\begin_inset Formula $\varepsilon_{2}$
+\end_inset
+
+ can be made arbitrarily small by choice of 
+\begin_inset Formula $\varepsilon_{1}$
 \end_inset
 
 .
@@ -4535,22 +4209,14 @@ name "lem:adjusting-paths"
 \end_inset
 
 For any 
-\begin_inset Formula $\delta>0$
+\begin_inset Formula $\delta,\xi>0$
 \end_inset
 
-, 
-\begin_inset Formula $f<1$
-\end_inset
-
-, 
-\begin_inset Formula $\xi>0$
-\end_inset
-
-, and any integer 
+ and any integer 
 \begin_inset Formula $k>2$
 \end_inset
 
- there is 
+, there is 
 \begin_inset Formula $\c=\c\left(\delta,\xi,k\right)$
 \end_inset
 
@@ -5096,7 +4762,11 @@ As well as removing these paths, remove their corresponding vertices from
 \end_inset
 
 .
- We have removed a uniformly random subset of a certain size from each 
+ We have removed a uniformly random subset of a certain size (leaving 
+\begin_inset Formula $\Theta\left(n\right)$
+\end_inset
+
+ vertices) from each 
 \begin_inset Formula $V_{\bi},W_{\bi},X_{\bi,\bj},Y_{\bi,\bj}$
 \end_inset
 
@@ -5121,35 +4791,35 @@ reference "lem:random-preserves-superregular"
 \end_inset
 
  are 
-\begin_inset Formula $\left(\varepsilon'',\delta''\right)$
+\begin_inset Formula $\left(\varepsilon_{3},\delta_{3}\right)$
 \end_inset
 
 -super-regular, where 
-\begin_inset Formula $\varepsilon''=2\sqrt{\varepsilon'}$
+\begin_inset Formula $\delta_{3}=\delta_{2}/2$
 \end_inset
 
  and 
-\begin_inset Formula $\delta''=\delta'/2$
+\begin_inset Formula $\varepsilon_{3}$
+\end_inset
+
+ can be arbitrarily small respective to 
+\begin_inset Formula $\delta_{3}$
 \end_inset
 
 .
  Let 
-\begin_inset Formula $a'=a'\left(a\right)$
+\begin_inset Formula $a>0$
 \end_inset
 
  satisfy 
-\begin_inset Formula $\left|W_{\bi}\right|\ge a'n$
+\begin_inset Formula $\left|W_{\bi}\right|\ge an$
 \end_inset
 
- (for large 
-\begin_inset Formula $k$
+ for all 
+\begin_inset Formula $\bi$
 \end_inset
 
-, 
-\begin_inset Formula $a'=a^{2}/2$
-\end_inset
-
- will do).
+.
 \end_layout
 
 \begin_layout Standard
@@ -5183,16 +4853,14 @@ bad
 \end_inset
 
  special pairs.
- For small 
-\begin_inset Formula $\xi$
+ Let 
+\begin_inset Formula $\xi=\delta_{3}\varepsilon_{3}a/2$
 \end_inset
 
- this is less than  
-\begin_inset Formula $\delta'a'n/\left(2\left(k+1\right)\right)$
-\end_inset
-
- special pairs, which we deal with greedily, as follows.
- For some such special pair 
+; this will mean there are so few bad special pairs that we can greedily
+ remove corresponding special paths without destroying super-regularity,
+ as follows.
+ For some bad special pair 
 \begin_inset Formula $\left(\x,\y\right)$
 \end_inset
 
@@ -5204,7 +4872,7 @@ bad
 \begin_inset Formula $\y\in Y_{\bj}$
 \end_inset
 
-, choose a length-
+, greedily build a length-
 \begin_inset Formula $\left(k-3\right)$
 \end_inset
 
@@ -5242,7 +4910,7 @@ bad
 \end_inset
 
  of 
-\begin_inset Formula $\delta'a'n/4$
+\begin_inset Formula $\delta_{3}an/2$
 \end_inset
 
  neighbours of 
@@ -5254,7 +4922,7 @@ bad
 \end_inset
 
  of 
-\begin_inset Formula $\delta'a'n/4$
+\begin_inset Formula $\delta_{3}an/2$
 \end_inset
 
  neighbours of 
@@ -5272,7 +4940,7 @@ bad
 \end_inset
 
  between any pair of disjoint sets of size 
-\begin_inset Formula $\delta'a'n/4$
+\begin_inset Formula $\delta_{3}an/2$
 \end_inset
 
  (the proof of this is basically identical to the proof of 
@@ -5292,9 +4960,9 @@ reference "lem:bipartite-matching"
 \end_inset
 
 , which we remove.
- We can repeat this for each unconnected bad special pair.
- Note that these special paths comprise less than 
-\begin_inset Formula $\delta'a'n/2$
+ We can repeat this for each bad special pair.
+ Note that these special paths comprise fewer than 
+\begin_inset Formula $\delta_{3}an/2$
 \end_inset
 
  vertices total, which is so few that each 
@@ -5302,7 +4970,7 @@ reference "lem:bipartite-matching"
 \end_inset
 
  is 
-\begin_inset Formula $\left(\varepsilon,\delta'/2\right)$
+\begin_inset Formula $\left(2\varepsilon_{3},\delta_{3}/2\right)$
 \end_inset
 
 -super-regular, and each 
@@ -5314,7 +4982,7 @@ reference "lem:bipartite-matching"
 \end_inset
 
 ) has at least 
-\begin_inset Formula $\delta a'n/2$
+\begin_inset Formula $\delta_{3}an/2$
 \end_inset
 
  neighbours in 
@@ -5347,7 +5015,7 @@ Now, update all the relevant variables.
 \end_inset
 
  is 
-\begin_inset Formula $\left(\varepsilon,\delta'/2\right)$
+\begin_inset Formula $\left(2\varepsilon_{3},\delta_{3}/2\right)$
 \end_inset
 
 -regular, and each special pair is in some 
@@ -5385,11 +5053,7 @@ Now, update all the relevant variables.
 \end_inset
 
  each 
-\begin_inset Formula $a''n\le\left|X_{\bi}\right|,\left|Y_{\bi}\right|,\left|W_{\bi}\right|\le b''n$
-\end_inset
-
- for some 
-\begin_inset Formula $a'',b''>0$
+\begin_inset Formula $\left|X_{\bi}\right|,\left|Y_{\bi}\right|,\left|W_{\bi}\right|=\Theta\left(n\right)$
 \end_inset
 
 , and each 
@@ -5555,7 +5219,27 @@ reference "lem:adjusting-paths"
 \end_inset
 
  as desired.
- Each 
+ During these iterations we have removed uniformly random subsets of certain
+ sizes from each 
+\begin_inset Formula $X_{\bi}$
+\end_inset
+
+, 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{\bi}$
+\end_inset
+
+, so by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:random-preserves-superregular"
+
+\end_inset
+
+ each 
 \begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
@@ -5568,15 +5252,19 @@ reference "lem:adjusting-paths"
 \end_inset
 
  is now 
-\begin_inset Formula $\left(\varepsilon''',\delta'''\right)$
+\begin_inset Formula $\left(\varepsilon_{4},\delta_{4}\right)$
 \end_inset
 
 -super-regular, where 
-\begin_inset Formula $\varepsilon'''=2\sqrt{\varepsilon''}$
+\begin_inset Formula $\delta_{4}=\delta_{3}/4$
 \end_inset
 
  and 
-\begin_inset Formula $\delta'''=\delta''/4$
+\begin_inset Formula $\varepsilon_{4}$
+\end_inset
+
+ can be arbitrarily small compared to 
+\begin_inset Formula $\delta_{4}$
 \end_inset
 
 .
@@ -5646,7 +5334,10 @@ Let
 \end_inset
 
  such that the following holds.
- Let 
+\end_layout
+
+\begin_layout Lemma
+Let 
 \begin_inset Formula $C$
 \end_inset
 
@@ -5655,10 +5346,10 @@ Let
 \end_inset
 
 , and let 
-\begin_inset Formula $n_{1},\dots,n_{r}$
+\begin_inset Formula $n_{1},\dots,n_{r}\in\NN^{+}$
 \end_inset
 
- be arbitrary positive integers.
+.
  Let 
 \begin_inset Formula $V_{1},\dots,V_{r}$
 \end_inset
@@ -5731,7 +5422,10 @@ super-regular blow-up
 \end_inset
 
 -super-regular pair.
- If a graph 
+\end_layout
+
+\begin_layout Lemma
+Now, if a graph 
 \begin_inset Formula $H$
 \end_inset
 
@@ -5810,10 +5504,22 @@ Now we describe the setup to apply the blow-up lemma.
 \end_inset
 
  is 
-\begin_inset Formula $\left(\varepsilon,\delta''/2\right)$
+\begin_inset Formula $\left(\varepsilon_{5},\delta_{5}\right)$
 \end_inset
 
--super-regular.
+-super-regular, for 
+\begin_inset Formula $\delta_{5}=\delta_{4}/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\varepsilon_{5}$
+\end_inset
+
+ arbitrarily small respective to 
+\begin_inset Formula $\delta_{5}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5853,16 +5559,32 @@ cluster-cycle
 \end_inset
 
  with 3 clusters 
-\begin_inset Formula $S_{\bi}^{*},S_{\bi}^{1},S_{\bi}^{2}$
+\begin_inset Formula $S_{\bi}^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $S_{\bi}^{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{\bi}^{2}$
 \end_inset
 
  of sizes 
-\begin_inset Formula $n_{\bi},\left(k-1\right)n_{\bi}/2,\left(k-1\right)n_{\bi}/2$
+\begin_inset Formula $n_{\bi}$
+\end_inset
+
+, 
+\begin_inset Formula $\left(k-1\right)n_{\bi}/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(k-1\right)n_{\bi}/2$
 \end_inset
 
 .
  This is a 
-\begin_inset Formula $\left(\varepsilon,\delta''\right)$
+\begin_inset Formula $\left(\varepsilon_{5},\delta_{5}\right)$
 \end_inset
 
 -super-regular blow-up of a 3-cycle 
@@ -5945,7 +5667,7 @@ The complete blow-up
 
 .
  Each of these cycles corresponds to a special path running through 
-\begin_inset Formula $S_{\bi}^{0},S_{\bi}^{2},S_{\bi}^{3},S_{\bi}^{3}$
+\begin_inset Formula $S_{\bi}^{0},\;S_{\bi}^{2},\;S_{\bi}^{3},\;S_{\bi}^{3}$
 \end_inset
 
 , and these special paths complete our embedding of 

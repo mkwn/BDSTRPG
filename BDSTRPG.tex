@@ -600,7 +600,7 @@ $M=M\left(\a,\varepsilon\right)$, $a=a\left(\a,\varepsilon\right)>0$
 and $b=b\left(\a,\varepsilon\right)>0$ such that the following holds.
 Let $\G$ be a graph on $\range n$ with minimum degree at least $\a n$.
 We can choose $q\le M$ and partition $\range n$ into sets $V_{i}^{\h}$
-($1\le i\le q$, $\h=1,2$) such that each $an\le\left|V_{i}^{\h}\right|\le bn$
+($1\le i\le q$, $\h=1,2$) such that each $\left|V_{i}^{\h}\right|=\Theta\left(n\right)$
 and each pair $\left(V_{i}^{1},V_{i}^{2}\right)$ is $\left(\varepsilon,\delta\right)$-super-regular.
 \end{lem}
 To prove \ref{lem:partition-into-blobs}, we will apply Szemer\'edi's
@@ -653,20 +653,28 @@ and there are therefore at least $\delta\left|U^{1}\right|\left|U^{2}\cap V_{i}^
 edges between $U^{1}$ and $U^{2}$.\end{proof}
 \begin{lem}
 \label{lem:robust-regular}Let $\left(V^{1},V^{2}\right)$ be an $\left(\varepsilon,\delta\right)$-dense
-pair, let $0\le\gamma\le1$, and let $\left(W^{1},W^{2}\right)$ be
-a pair such that each $\left|V^{\h}\triangle W^{\h}\right|\le\gamma\left|V^{\h}\right|$.
+pair with $\varepsilon$ sufficiently small , and suppose we have
+$W^{\h}\supseteq V^{\h}$ with $\left|W^{\h}\right|\le\left(1+f\varepsilon\right)\left|V^{\h}\right|$.
 Then $\left(W^{1},W^{2}\right)$ is an $\left(\varepsilon',\delta'\right)$-dense
-pair, with $\varepsilon'=\varepsilon+6\sqrt{\gamma/\left(1+\gamma\right)}$
-and $\delta'=\delta-4\sqrt{\gamma/\left(1+\gamma\right)}$ If moreover
-$\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\delta\right)$-super-regular
-and each vertex in $W^{\h}$ has at least $\delta\left|W^{\flip{\h}}\right|$
-neighbours in $W^{\flip{\h}}$, then $\left(W^{1},W^{2}\right)$ is
-an $\left(\varepsilon',\delta'\right)$-super-regular pair.
-\end{lem}
-\ref{lem:robust-regular} says that regularity-type properties are
-``robust'' with respect to small alterations of the clusters. It
-is almost the same as \cite[Proposition~8]{BST08}, and has exactly
-the same proof.
+pair, with $\varepsilon'=\max\left\{ 2f,1+f\right\} \varepsilon$
+and $\delta'=\min\left\{ 1/4,1/\left(1+f\varepsilon\right)\right\} \delta$.
+If moreover $\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\delta\right)$-super-regular
+and each vertex in $W^{\h}\backslash V^{\h}$ has at least $\delta'\left|V^{\flip{\h}}\right|$
+neighbours in $V^{\flip{\h}}$, then $\left(W^{1},W^{2}\right)$ is
+an $\left(\varepsilon',\delta'\right)$-super-regular pair.\end{lem}
+\begin{proof}
+Suppose $U^{\h}\subseteq W^{\h}$ with $\left|U^{\h}\right|\ge\varepsilon'\left|W^{\h}\right|$.
+Then $\left|U^{\h}\cap V^{\h}\right|\ge\varepsilon'\left|W^{\h}\right|-f\varepsilon\left|V^{\h}\right|\ge\varepsilon\left|V^{\h}\right|$
+so there are at least $\delta\left|U^{1}\cap V^{1}\right|\left|U^{2}\cap V^{2}\right|$
+edges between $U^{1}$ and $U^{2}$. But note that $\left|U^{\h}\cap V^{\h}\right|\ge\left|U^{\h}\right|-f\varepsilon\left|W^{\h}\right|\ge\left(1-\left(f\varepsilon\right)/\varepsilon'\right)\left|U^{\h}\right|\ge\left(1/2\right)\left|U^{\h}\right|$,
+so $d\left(U^{1},U^{2}\right)\ge\delta/4$ and $\left(W^{1},W^{2}\right)$
+is $\left(\varepsilon',\delta'\right)$-dense.
+
+Now consider the second part of the lemma where $\left(V^{1},V^{2}\right)$
+is $\left(\varepsilon,\delta\right)$-super-regular. By super-regularity
+and the assumption in the lemma, each $v\in W^{\h}$ has $\delta\left|V^{\flip{\h}}\right|\ge\delta'\left|W^{\flip{\h}}\right|$
+neighbours in $W^{\flip{\h}}$, proving that $\left(W^{1},W^{2}\right)$
+is $\left(\varepsilon',\delta'\right)$-super-regular.\end{proof}
 \begin{lem}
 \label{lem:regular-contains-superregular}Every $\left(\varepsilon,\delta\right)$-dense
 pair $\left(V^{1},V^{2}\right)$ contains a $\left(\varepsilon/\left(1-\varepsilon\right),\delta-\varepsilon\right)$-super-regular
@@ -722,19 +730,19 @@ to the clusters $V_{i}^{\h}$. The clusters $V_{i}^{\h}$ which have
 fewer than $\delta''\left|V_{i}^{\h}\right|$ such neighbours contain
 at most $\delta''n$ of these neighbours. Each $V_{i}^{\h}$ has size
 at most $sn/\a'$, so for small $\varepsilon'$ there are at least
-
 \[
 \frac{\a'n-2\varepsilon'n-\delta''n}{sn/\a'}\ge\left(\a'\right)^{2}/\left(2s\right)
 \]
-clusters $V_{i}^{\h}$ which have at least $\delta''s\left(1-\varepsilon'\right)n$
-neighbours of $v$. Put $v$ in one of these clusters uniformly at
-random (do this independently for each bad $v$). By a concentration
-inequality, after this procedure a.a.s. at most $2\left(2\varepsilon'n\right)/\left(\left(\a'\right)^{2}/\left(2s\right)\right)\le\left(8\varepsilon'/\left(\a'\right)^{2}\right)\left|W_{i}^{\h}\right|\le\left(9\varepsilon'/\left(\a'\right)^{2}\right)\left|V_{i}^{\h}\right|$
+clusters $V_{i}^{\h}$ which have at least $\delta''\left|V_{i}^{\h}\right|$
+neighbours of $v$. Pick one such $V_{i}^{\h}$ uniformly at random,
+and put $v$ in $V_{i}^{\flip{\h}}$ (do this independently for each
+bad $v$). By a concentration inequality, after this procedure a.a.s.
+at most $2\left(2\varepsilon'n\right)/\left(\left(\a'\right)^{2}/\left(2s\right)\right)\le\left(8\varepsilon'/\left(\a'\right)^{2}\right)\left|W_{i}^{\h}\right|\le\left(9\varepsilon'/\left(\a'\right)^{2}\right)\left|V_{i}^{\h}\right|$
 bad vertices have been added to each $V_{i}^{\h}$. By \ref{lem:robust-regular},
 for small $\varepsilon'$ each $\left(V_{i}^{1},V_{i}^{2}\right)$
-is now $\left(O\left(\sqrt{\varepsilon'}\right),\delta''/2\right)$-super-regular.
-With $\delta=\delta''/2$, $a=s/2$ and $b=2s/\a'$, and $\varepsilon'$
-small relative to $\varepsilon$, we are done.
+is now $\left(O\left(\varepsilon'\right),\delta''/4\right)$-super-regular.
+With $\delta=\delta''/4$ and $\varepsilon'$ small relative to $\varepsilon$,
+we are done.
 \end{proof}
 \global\long\def\bi{\mathbf{i}}
 
@@ -743,8 +751,8 @@ small relative to $\varepsilon$, we are done.
 
 
 We apply \ref{lem:partition-into-blobs} to our graph $\G$, with
-$\varepsilon=\varepsilon\left(\delta\right)$ to be determined. For
-$\bi=\left(i,\h\right)$, let $V_{\bi}=V_{i}^{\h}$, and let $\left|V_{\bi}\right|=s_{\bi}n$.
+$\varepsilon_{1}=\varepsilon_{1}\left(\delta\right)$ to be determined.
+For $\bi=\left(i,\h\right)$, let $V_{\bi}=V_{i}^{\h}$, and let $\left|V_{\bi}\right|=s_{\bi}n$.
 
 
 \subsubsection{Embedding a small subforest of $\protect\T$\label{sub:embed-forest}}
@@ -805,102 +813,33 @@ of random subsets of our super-regular pairs maintain super-regularity
 (albeit with slightly weaker $\varepsilon$ and $\delta$). We will
 ensure this by appealing to the following lemma.
 \begin{lem}
-\label{lem:random-preserves-superregular}Fix $\delta,\varepsilon>0$.
-Suppose $\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\delta\right)$-super-regular,
+\label{lem:random-preserves-superregular}Fix $\delta,\varepsilon'>0$.
+There is $\varepsilon=\varepsilon\left(\varepsilon'\right)>0$ such
+that the following holds. Suppose $\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\delta\right)$-super-regular,
 let $n_{\h}$ satisfy $\left|V^{\h}\right|\ge n_{\h}=\Omega$$\left(n\right)$
-(the implied constant can depend on $\varepsilon$ and $\delta$)
-and for each $\h$ let $W^{\h}\subseteq V^{\h}$ be a uniformly random
+(not necessarily uniformly over $\varepsilon$ and $\delta$) and
+for each $\h$ let $W^{\h}\subseteq V^{\h}$ be a uniformly random
 subset of size $n_{\h}$. Then $\left(W^{1},W^{2}\right)$ is a.a.s.
-$\left(2\sqrt{\varepsilon},\delta/2\right)$-super-regular.
-\end{lem}
-To prove \ref{lem:random-preserves-superregular} we will apply a
-bipartite version of Szemer\'edi's regularity lemma on the edges
-between $V^{1}$ and $V^{2}$. The following formulation can be found
-in \cite{Tao05}.
-\begin{lem}[Szemer\'edi's regularity lemma, bipartite version]
-\label{lem:szemeredi-regularity-bipartite}For any $\varepsilon>0$,
-there is $K=K\left(\varepsilon\right)$ such that the following holds.
-For any bipartite graph $\G$ with bipartition $V^{1}\cup V^{2}$,
-there are partitions of each $V^{\h}$ into clusters $V_{0}^{\h},V_{1}^{\h},\dots,V_{k}^{\h}$
-($k\le K$), such that the ``exceptional clusters'' $V_{0}^{\h}$
-has size at most $\varepsilon\left|V^{\h}\right|$, the other clusters
-$V_{i}^{\h}$ in each part have equal size $s_{\h}\left|V^{\h}\right|$,
-and all but $\varepsilon k_{1}k_{2}$ of the pairs of non-exceptional
-clusters are $\varepsilon$-regular.
-\end{lem}
-
-
-We will also need a linear relaxation of the notion of an $\left(\varepsilon,\delta\right)$-dense
-pair.
-\begin{lem}
-\label{lem:density-relaxation}If $\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\delta\right)$-dense
-then for any functions $\pi^{\h}:V^{\h}\to\left[0,1\right]$, we have
-\[
-\sum_{v\in V^{1}}\sum_{u\in V^{2}}\pi^{1}\left(v\right)\pi^{2}\left(u\right)\one_{v\sim u}\ge\delta\sum_{v\in V^{1}}\pi^{1}\left(v\right)\sum_{u\in V^{2}}\pi^{2}\left(u\right)-\varepsilon\delta\left|V^{1}\right|\left|V^{2}\right|.
-\]
-\end{lem}
+$\left(\varepsilon',\delta/2\right)$-super-regular.\end{lem}
 \begin{proof}
-Let $f:\left[0,1\right]^{V^{1}\times V^{2}}\to\RR$ be defined by
-\[
-f\left(\pi\right)=\sum_{v\in V^{1}}\sum_{u\in V^{2}}\pi^{1}\left(v\right)\pi^{2}\left(u\right)\one_{v\sim u}-\delta\sum_{v\in V^{1}}\pi^{1}\left(v\right)\sum_{u\in V^{2}}\pi^{2}\left(u\right)
-\]
-Note that $f$ is linear in each $\pi^{\h}$ so it attains its extrema
-at vertices of the hypercube $\left[0,1\right]^{V^{1}\times V^{2}}$.
-But if each $\pi^{\h}\left(v\right)\in\left[0,1\right]$ then $\pi^{1}$
-and $\pi^{2}$ just correspond to subsets $U^{\h}\subseteq V^{\h}$.
-We just need to show that $f\left(\pi\right)\ge-\varepsilon\delta\left|V^{1}\right|\left|V^{2}\right|$
-for each such $\pi$. If each $\left|U^{\h}\right|\ge\varepsilon\left|V^{\h}\right|$
-then $\left(\varepsilon,\delta\right)$-density implies $f\left(\pi\right)=\varepsilon\left|U^{1}\right|\left|U^{2}\right|-\delta\left|U^{1}\right|\left|U^{2}\right|\ge0$.
-Otherwise $\left|U^{1}\right|\left|U^{2}\right|\le\varepsilon\left|V^{1}\right|\left|V^{2}\right|$
-so trivially $f\left(\pi\right)\ge-\varepsilon\delta\left|V^{1}\right|\left|V^{2}\right|$.
-\end{proof}
+The fact that $\left(W^{1},W^{2}\right)$ is a.a.s. $\left(\varepsilon',\delta/2\right)$-dense
+for suitable $\varepsilon$, follows from two applications of \cite[Theorem~3.6]{GKRS07}.
+(The notion of ``lower regularity'' in that paper essentially corresponds
+to our notion of $\left(\varepsilon,\delta\right)$-density).
 
-\begin{proof}[Proof of \ref{lem:random-preserves-superregular}]
-First, note that for each $v\in W^{\h}$, the number of neighbours
-of $v\in W^{\flip{\h}}$ is hypergeometrically distributed, with expected
-value at least $\delta n_{\flip{\h}}$. Since $n_{\flip h}=\Omega\left(n\right)$,
-a concentration inequality and the union bound immediately tells us
-that a.a.s. each such $v$ has $\delta n_{\flip h}/2$ such neighbours.
-
-It remains to show that $\left(W^{1},W^{2}\right)$ is a.a.s. $\left(2\sqrt{\varepsilon},\delta/2\right)$-dense.
-Apply \ref{lem:szemeredi-regularity-bipartite} to the bipartite graph
-between $V^{1}$ and $V^{2}$, with some regularity parameter $\varepsilon'$
-to be determined. By a concentration inequality, a.a.s. for all $i\ge1$
-we have $\left|W^{\h}\cap V_{i}^{\h}\right|\le\left(1+\gamma\right)s_{\h}n_{\h}$
-for some $\gamma\to0$. Now, consider any $U^{\h}\subseteq W^{\h}$
-with $\left|U^{\h}\right|\ge2\sqrt{\varepsilon}n_{\h}$, and let $U_{i}^{\h}=U^{\h}\cap V_{i}^{\h}$.
-Let $I^{\h}=\left\{ i\ge1:\left|U_{i}^{\h}\right|\ge\varepsilon'\left|V_{i}^{\h}\right|\right\} $
-be the set of cluster indices with non-negligible intersection with
-$U^{\h}$. We have
-\begin{align*}
-e\left(U^{1},U^{2}\right) & \ge\sum_{i\in I^{1}}\sum_{j\in I^{2}}d\left(U_{i}^{1},U_{j}^{2}\right)\left|U_{i}^{1}\right|\left|U_{j}^{2}\right|\\
- & \ge\sum_{i\in I^{1}}\sum_{j\in I^{2}}\left(d\left(V_{i}^{1},V_{j}^{2}\right)-\varepsilon'\right)\left|U_{i}^{1}\right|\left|U_{j}^{2}\right|-k^{2}\varepsilon'\left(\left(1+\gamma\right)s_{1}n_{1}\right)\left(\left(1+\gamma\right)s_{2}n_{2}\right)\\
- & \ge\sum_{i\in I^{1}}\sum_{j\in I^{2}}d\left(V_{i}^{1},V_{j}^{2}\right)\left|U^{1}\right|\left|U^{2}\right|-\varepsilon'\left|U^{1}\right|\left|U^{2}\right|-\varepsilon'n_{1}n_{2}-o\left(n^{2}\right)\\
- & \ge\sum_{i=1}^{k}\sum_{j=1}^{k}d\left(V_{i}^{1},V_{j}^{2}\right)\left|U_{i}^{1}\right|\left|U_{j}^{2}\right|-\varepsilon'\left|V^{1}\right|\left|V^{2}\right|-\varepsilon'\left|U^{1}\right|\left|U^{2}\right|-\varepsilon'n_{1}n_{2}-o\left(n^{2}\right).
-\end{align*}
-Now, we define $\pi^{1},\pi^{2}$ as follows. If $v$ is in some exceptional
-cluster $V_{0}^{\h}$ then let $\pi^{\h}\left(v\right)=0$. Otherwise
-if $v\in V_{i}^{\h}$ let $\pi^{\h}\left(v\right)=\left|U_{i}^{\h}\right|/\left(\left(1+\gamma\right)s_{1}n_{1}\right)\in\left[0,1\right]$.
-By \ref{lem:density-relaxation}, 
-\begin{align*}
-\sum_{i=1}^{k}\sum_{j=1}^{k}d\left(V_{i}^{1},V_{j}^{2}\right)\left|U_{i}^{1}\right|\left|U_{j}^{2}\right| & \ge\left(\frac{\left(1+\gamma\right)n_{1}}{\left|V^{1}\right|}\right)\left(\frac{\left(1+\gamma\right)n_{2}}{\left|V^{2}\right|}\right)\sum_{v\in V^{1}}\sum_{u\in V^{2}}\pi^{1}\left(v\right)\pi^{2}\left(u\right)\one_{v\sim u}\\
- & \ge\left(\frac{\left(1+\gamma\right)n_{1}}{\left|V^{1}\right|}\right)\left(\frac{\left(1+\gamma\right)n_{2}}{\left|V^{2}\right|}\right)\left(\delta\sum_{v\in V^{1}}\pi^{1}\left(v\right)\sum_{u\in V^{2}}\pi^{2}\left(u\right)-\varepsilon\delta\left|V^{1}\right|\left|V^{2}\right|\right)\\
- & \ge\delta\left(\left|U^{1}\right|-\varepsilon'\left|V^{1}\right|\right)\left(\left|U^{2}\right|-\varepsilon'\left|V^{2}\right|\right)-\left(1+\gamma\right)^{2}n_{1}n_{2}\varepsilon\delta\\
- & \ge\delta\left|U^{1}\right|\left|U^{2}\right|-3\varepsilon'\left|V^{1}\right|\left|V^{2}\right|-\varepsilon\delta n_{1}n_{2}-o\left(n^{2}\right).
-\end{align*}
-It follows that 
-\[
-e\left(U^{1},U^{2}\right)\ge\delta\left|U^{1}\right|\left|U^{2}\right|-6\varepsilon'\left|V^{1}\right|\left|V^{2}\right|-\left(\delta/4\right)\left|U^{1}\right|\left|U^{2}\right|-o\left(n^{2}\right).
-\]
-Let $\varepsilon'=\varepsilon\delta n_{1}n_{2}/\left(6\left|V^{1}\right|\left|V^{2}\right|\right)$,
-so that $e\left(U^{1},U^{2}\right)\ge\left(\delta/2\right)\left|U^{1}\right|\left|U^{2}\right|$
-as required.
+For each $v\in W^{\h}$, the number of neighbours of $v\in W^{\flip{\h}}$
+is hypergeometrically distributed, with expected value at least $\delta n_{\flip{\h}}$.
+Since $n_{\flip h}=\Omega\left(n\right)$, a concentration inequality
+and the union bound immediately tells us that a.a.s. each such $v$
+has $\delta n_{\flip h}/2$ such neighbours. This proves that $\left(W^{1},W^{2}\right)$
+is a.a.s. $\left(\varepsilon',\delta/2\right)$-super-regular.
 \end{proof}
 Let $\flip{\left(i,\h\right)}=\left(i,\flip{\h}\right)$. It is an
 immediate consequence of \ref{lem:random-preserves-superregular}
 that each of $\left(X_{\bi,\bj},W_{\flip{\bi}}\right)$, $\left(W_{\bi},W_{\flip{\bi}}\right)$
-and $\left(W_{\bi},Y_{\bj,\flip{\bi}}\right)$ are $\left(\varepsilon',\delta'\right)$-super-regular,
-where $\varepsilon'=2\sqrt{\varepsilon}$ and $\delta'=\delta/2$.
+and $\left(W_{\bi},Y_{\bj,\flip{\bi}}\right)$ are $\left(\varepsilon_{2},\delta_{2}\right)$-super-regular,
+where $\delta_{2}=\delta_{1}/2$ and $\varepsilon_{2}$ can be made
+arbitrarily small by choice of $\varepsilon_{1}$.
 
 Now that we have embedded $\F$, we no longer care about the vertices
 used to embed $\F\backslash\left(X\cup Y\right)$; they will never
@@ -925,9 +864,9 @@ Next, we want to eliminate almost all special pairs which are not
 between clusters of a super-regular pair. This is achieved using the
 following lemma (which will be used again later).
 \begin{lem}
-\label{lem:adjusting-paths}For any $\delta>0$, $f<1$, $\xi>0$,
-and any integer $k>2$ there is $\c=\c\left(\delta,\xi,k\right)$
-such that the following holds.
+\label{lem:adjusting-paths}For any $\delta,\xi>0$ and any integer
+$k>2$, there is $\c=\c\left(\delta,\xi,k\right)$ such that the following
+holds.
 
 Let $\G$ be a graph on some vertex set $\range N$, together with
 a vertex partition into clusters. Consider any sequence of clusters
@@ -1012,47 +951,49 @@ be possible.
 
 As well as removing these paths, remove their corresponding vertices
 from $V_{\bi},W_{\bi},X_{\bi},Y_{\bi}X_{\bi,\bj},Y_{\bi,\bj},Z_{\bi,\bj}$.
-We have removed a uniformly random subset of a certain size from each
-$V_{\bi},W_{\bi},X_{\bi,\bj},Y_{\bi,\bj}$. By \ref{lem:random-preserves-superregular},
-each $\left(X_{\bi,\bj},W_{\flip{\bi}}\right)$, $\left(W_{\bi},W_{\flip{\bi}}\right)$
-and $\left(W_{\bi},Y_{\bj,\flip{\bi}}\right)$ are $\left(\varepsilon'',\delta''\right)$-super-regular,
-where $\varepsilon''=2\sqrt{\varepsilon'}$ and $\delta''=\delta'/2$.
-Let $a'=a'\left(a\right)$ satisfy $\left|W_{\bi}\right|\ge a'n$
-(for large $k$, $a'=a^{2}/2$ will do).
+We have removed a uniformly random subset of a certain size (leaving
+$\Theta\left(n\right)$ vertices) from each $V_{\bi},W_{\bi},X_{\bi,\bj},Y_{\bi,\bj}$.
+By \ref{lem:random-preserves-superregular}, each $\left(X_{\bi,\bj},W_{\flip{\bi}}\right)$,
+$\left(W_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},Y_{\bj,\flip{\bi}}\right)$
+are $\left(\varepsilon_{3},\delta_{3}\right)$-super-regular, where
+$\delta_{3}=\delta_{2}/2$ and $\varepsilon_{3}$ can be arbitrarily
+small respective to $\delta_{3}$. Let $a>0$ satisfy $\left|W_{\bi}\right|\ge an$
+for all $\bi$.
 
 Now, for every $\bi,\bj$ with $\bj\ne\flip{\bi}$, we have $\left|Z_{\bi,\bj}\right|=\xi s_{\bi}s_{\bj}n/\left(k+1\right)$.
 The special pairs in all such $Z_{\bi,\bj}$ comprise a total of at
-most $\xi n/\left(k+1\right)$ ``bad'' special pairs. For small
-$\xi$ this is less than  $\delta'a'n/\left(2\left(k+1\right)\right)$
-special pairs, which we deal with greedily, as follows. For some such
-special pair $\left(\x,\y\right)$ with $\x\in X_{\bi}$ and $\y\in Y_{\bj}$,
-choose a length-$\left(k-3\right)$ path $\x w_{1},\dots,w_{k-3}$
-in $\G$, where the $w_{\ell}$ alternate between $W_{\bi}$ and $W_{\flip{\bi}}$
-with $w_{k-3}\in W_{\bi}$ (recall, $k$ is odd). Then choose a set
-$U_{x}\subseteq W_{\flip{\bi}}$ of $\delta'a'n/4$ neighbours of
-$w_{k-3}$ and a disjoint set $U_{y}\subseteq W_{\flip{\bj}}$ of
-$\delta'a'n/4$ neighbours of $\y$. Now, note that (if $\c_{3}$
+most $\xi n/\left(k+1\right)$ ``bad'' special pairs. Let $\xi=\delta_{3}\varepsilon_{3}a/2$;
+this will mean there are so few bad special pairs that we can greedily
+remove corresponding special paths without destroying super-regularity,
+as follows. For some bad special pair $\left(\x,\y\right)$ with $\x\in X_{\bi}$
+and $\y\in Y_{\bj}$, greedily build a length-$\left(k-3\right)$
+path $\x w_{1},\dots,w_{k-3}$ in $\G$, where the $w_{\ell}$ alternate
+between $W_{\bi}$ and $W_{\flip{\bi}}$ with $w_{k-3}\in W_{\bi}$
+(recall, $k$ is odd). Then choose a set $U_{x}\subseteq W_{\flip{\bi}}$
+of $\delta_{3}an/2$ neighbours of $w_{k-3}$ and a disjoint set $U_{y}\subseteq W_{\flip{\bj}}$
+of $\delta_{3}an/2$ neighbours of $\y$. Now, note that (if $\c_{3}$
 is large), there is a.a.s. an edge in $\R_{3}$ between any pair of
-disjoint sets of size $\delta'a'n/4$ (the proof of this is basically
+disjoint sets of size $\delta_{3}an/2$ (the proof of this is basically
 identical to the proof of \ref{lem:bipartite-matching}). Such an
 edge allows us to complete a special path from $\x$ to $\y$, which
-we remove. We can repeat this for each unconnected bad special pair.
-Note that these special paths comprise less than $\delta'a'n/2$ vertices
+we remove. We can repeat this for each bad special pair. Note that
+these special paths comprise fewer than $\delta_{3}an/2$ vertices
 total, which is so few that each $\left(W_{\bi},W_{\flip{\bi}}\right)$
-is $\left(\varepsilon,\delta'/2\right)$-super-regular, and each $\x\in X_{\bi}$
-(respectively $\y\in Y_{\bi}$) has at least $\delta a'n/2$ neighbours
-in $W_{\flip{\bi}}$, throughout the whole process.
+is $\left(2\varepsilon_{3},\delta_{3}/2\right)$-super-regular, and
+each $\x\in X_{\bi}$ (respectively $\y\in Y_{\bi}$) has at least
+$\delta_{3}an/2$ neighbours in $W_{\flip{\bi}}$, throughout the
+whole process.
 
 Now, update all the relevant variables. We are left with a set of
 clusters $X_{\bi},W_{\bi},Y_{\bi}$ partitioning the vertices of $\G\cup\R$,
 such that each $\left(X_{\bi},W_{\flip{\bi}}\right)$, $\left(W_{\bi},W_{\flip{\bi}}\right)$
-and $\left(W_{\bi},Y_{\flip{\bi}}\right)$ is $\left(\varepsilon,\delta'/2\right)$-regular,
+and $\left(W_{\bi},Y_{\flip{\bi}}\right)$ is $\left(2\varepsilon_{3},\delta_{3}/2\right)$-regular,
 and each special pair is in some $X_{\bi}\times Y_{\flip{\bi}}$.
 Moreover, with $X$ (respectively $Y$) being the set of $\x$-type
 (respectively $\y$-type) vertices remaining, and $W$ being the set
 of non-special vertices remaining, we have $\left(k-1\right)\left|X\right|=\left(k-1\right)\left|Y\right|=\left|W\right|$.
-For large $k$ each $a''n\le\left|X_{\bi}\right|,\left|Y_{\bi}\right|,\left|W_{\bi}\right|\le b''n$
-for some $a'',b''>0$, and each $\left|X_{\bi}\right|,\left|Y_{\bi}\right|\le\left|W_{\bj}\right|$.
+For large $k$ each $\left|X_{\bi}\right|,\left|Y_{\bi}\right|,\left|W_{\bi}\right|=\Theta\left(n\right)$,
+and each $\left|X_{\bi}\right|,\left|Y_{\bi}\right|\le\left|W_{\bj}\right|$.
 
 
 \subsubsection{Adjusting the relative sizes of the clusters\label{sub:embed-relative-sizes}}
@@ -1084,9 +1025,13 @@ $r$ interior vertices in $W_{\bj}$. We now have either $\left(k-1\right)\left|X_
 or $\left(k-1\right)\left|X_{\bj}\cup Y_{\bj}\right|/2=\left|W_{\bj}\right|$.
 After at most $2q$ iterations of this argument, we will have each
 $\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2=\left|W_{\bi}\right|$
-as desired. Each $\left(X_{\bi},W_{\flip{\bi}}\right)$, $\left(W_{\bi},W_{\flip{\bi}}\right)$
-and $\left(W_{\bi},Y_{\flip{\bi}}\right)$ is now $\left(\varepsilon''',\delta'''\right)$-super-regular,
-where $\varepsilon'''=2\sqrt{\varepsilon''}$ and $\delta'''=\delta''/4$.
+as desired. During these iterations we have removed uniformly random
+subsets of certain sizes from each $X_{\bi}$, $W_{\bi}$ and $Y_{\bi}$,
+so by \ref{lem:random-preserves-superregular} each $\left(X_{\bi},W_{\flip{\bi}}\right)$,
+$\left(W_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},Y_{\flip{\bi}}\right)$
+is now $\left(\varepsilon_{4},\delta_{4}\right)$-super-regular, where
+$\delta_{4}=\delta_{3}/4$ and $\varepsilon_{4}$ can be arbitrarily
+small compared to $\delta_{4}$.
 
 
 \subsubsection{Completing the embedding with the blow-up lemma\label{sub:blow-up}}
@@ -1098,8 +1043,9 @@ lemma and the super-regularity in $\G$. The idea is illustrated in
 lemma.
 \begin{lem}[Blow-up Lemma \cite{KSS97}]
 Let $\delta,\Delta>0$ and $r\in\NN$. There is $\varepsilon=\varepsilon\left(r,\delta,\Delta\right)$
-such that the following holds. Let $C$ be a graph on the vertex set
-$\range r$, and let $n_{1},\dots,n_{r}$ be arbitrary positive integers.
+such that the following holds.
+
+Let $C$ be a graph on the vertex set $\range r$, and let $n_{1},\dots,n_{r}\in\NN^{+}$.
 Let $V_{1},\dots,V_{r}$ be pairwise disjoint sets of sizes $n_{1},\dots,n_{r}$.
 We construct two graphs on the vertex set $V=\bigcup_{i=1}^{r}V_{i}$
 as follows. The first graph $b\left(C\right)$ (the ``complete blow-up'')
@@ -1108,7 +1054,9 @@ and $V_{j}$ whenever $\left\{ i,j\right\} $ is an edge in $C$.
 The second graph $b_{\varepsilon,\delta}\left(C\right)$ (a ``super-regular
 blow-up'') is obtained by putting edges between each such $V_{i}$
 and $V_{j}$ such that $\left(V_{i},V_{j}\right)$ is an $\left(\varepsilon,\delta\right)$-super-regular
-pair. If a graph $H$ with maximum degree bounded by $\Delta$ can
+pair.
+
+Now, if a graph $H$ with maximum degree bounded by $\Delta$ can
 be embedded into $b\left(C\right)$, then it can be embedded into
 $b_{\varepsilon,\delta}\left(C\right)$.
 \end{lem}
@@ -1120,16 +1068,17 @@ $S_{\bi}^{1}=B_{\flip{\bi}}$, $S_{\bi}^{2}=A_{\bi}$ and $S_{\bi}^{3}=Y_{\flip{\b
 so that each $\left(S_{\bi}^{0},S_{\bi}^{2},S_{\bi}^{3},S_{\bi}^{3}\right)$
 is a sequence of clusters of sizes $n_{\bi},\left(k-1\right)n_{\bi}/2,\left(k-1\right)n_{\bi}/2,n_{\bi}$
 for some $n_{\bi}$, and each $\left(S_{\bi}^{\ell},S_{\bi}^{\ell+1}\right)$
-is $\left(\varepsilon,\delta''/2\right)$-super-regular.
+is $\left(\varepsilon_{5},\delta_{5}\right)$-super-regular, for $\delta_{5}=\delta_{4}/2$
+and $\varepsilon_{5}$ arbitrarily small respective to $\delta_{5}$.
 
 For each $\bi$, we construct an auxiliary graph $G_{\bi}$ as follows.
 Start with the subgraph of $\G$ induced by $S_{\bi}^{0}\cup S_{\bi}^{2}\cup S_{\bi}^{3}\cup S_{\bi}^{3}$,
 and remove every edge not between some $S_{\bi}^{\ell}$ and $S_{\bi}^{\ell+1}$.
 Contract each special pair to a single vertex, to obtain a super-regular
-``cluster-cycle'' with 3 clusters $S_{\bi}^{*},S_{\bi}^{1},S_{\bi}^{2}$
-of sizes $n_{\bi},\left(k-1\right)n_{\bi}/2,\left(k-1\right)n_{\bi}/2$.
-This is a $\left(\varepsilon,\delta''\right)$-super-regular blow-up
-of a 3-cycle $C_{3}$.
+``cluster-cycle'' with 3 clusters $S_{\bi}^{*}$, $S_{\bi}^{1}$
+and $S_{\bi}^{2}$ of sizes $n_{\bi}$, $\left(k-1\right)n_{\bi}/2$
+and $\left(k-1\right)n_{\bi}/2$. This is a $\left(\varepsilon_{5},\delta_{5}\right)$-super-regular
+blow-up of a 3-cycle $C_{3}$.
 
 The complete blow-up $b\left(C_{3}\right)$ contains $n_{\bi}$ disjoint
 $k$-cycles (each has a vertex in $S_{\bi}^{*}$ and its other $k-1$
@@ -1139,7 +1088,7 @@ blow-up $G_{\bi}$ of $C_{3}$ also contains $n_{\bi}$ disjoint $k$-cycles.
 Since $k$ is odd, each of these must use at least one vertex from
 $S_{\bi}^{*}$, but since $\left|S_{\bi}^{*}\right|=n_{\bi}$, each
 cycle must then use exactly one vertex from $S_{\bi}^{*}$. Each of
-these cycles corresponds to a special path running through $S_{\bi}^{0},S_{\bi}^{2},S_{\bi}^{3},S_{\bi}^{3}$,
+these cycles corresponds to a special path running through $S_{\bi}^{0},\;S_{\bi}^{2},\;S_{\bi}^{3},\;S_{\bi}^{3}$,
 and these special paths complete our embedding of $\T$.
 
 \begin{figure}[h]
