@@ -889,24 +889,24 @@ $\F\backslash\left(X\cup Y\right)$. Update $n$ to be the number
 of vertices not used to embed $\F\backslash\left(X\cup Y\right)$
 (previously $\left(1/2+1/\left(k-1\right)\right)n$). We now have
 \[
-\left|V_{\bi}\right|\sim s_{\bi}n,\;\,\left|W_{\bi}\right|\sim\frac{k-1}{k+1}s_{\bi}n,\;\,,\left|X_{\bi}\right|,\left|Y_{\bi}\right|\sim\frac{1}{k+1}s_{\bi}n\;\,\left|Z_{\bi,\bj}\right|\sim\frac{1}{k+1}s_{\bi}s_{\bj}n
+\left|V_{\bi}\right|\sim s_{\bi}n,\;\,\left|W_{\bi}\right|\sim\frac{k-1}{k+1}s_{\bi}n,\;\,\left|X_{\bi}\right|,\left|Y_{\bi}\right|\sim\frac{1}{k+1}s_{\bi}n,\;\,\left|Z_{\bi,\bj}\right|\sim\frac{1}{k+1}s_{\bi}s_{\bj}n
 \]
 for each $\bi,\bj$.
 
 
 \subsubsection{Embedding special paths not compatible with the super-regular partition\label{sub:embed-paths-between}}
 
-Next, we want to eliminate almost all special pairs which are not
-between clusters of a super-regular pair. This is achieved using the
-following lemma (which will be used again later).
+Next, we want to eliminate special pairs which are not between clusters
+of a super-regular pair. We first eliminate almost all such pairs
+using the following lemma (which will be used again later).
 \begin{lem}
-\label{lem:adjusting-paths}For any $\delta,\xi>0$ and any integer
-$k>2$, there is $\c=\c\left(\delta,\xi,k\right)$ such that the following
-holds.
+\label{lem:adjusting-paths}For any $\delta,\xi,\gamma>0$ and any
+integer $k>2$, there is $\c=\c\left(\delta,\xi,\gamma,k\right)$
+such that the following holds.
 
-Let $\G$ be a graph on some vertex set $\range N$, together with
-a vertex partition into clusters. Consider any sequence of clusters
-$X,V_{1},\dots,V_{r},Y$, and any integer partition $t_{1}+\dots+t_{r}=k-1$
+Let $\G$ be a graph on some vertex set $\range N$ ($n\ge\gamma N$),
+together with a vertex partition into clusters. Consider any sequence
+of clusters $X,V_{1},\dots,V_{r},Y$, and any integer partition $t_{1}+\dots+t_{r}=k-1$
 (each $t_{i}\in\NN^{+}$), such that $\left|V_{i}\right|\ge t_{i}n$
 and $\left|X\right|,\left|Y\right|=n$. Suppose that each $x\in X$
 (respectively, $y\in Y$) has at least $\delta\left|V_{1}\right|$
@@ -976,9 +976,18 @@ vertices remaining in $X$ and in $Y$ after all the $r$ iterations.
 If we choose large enough $r$ this is fewer than $\xi n$ remaining
 vertices, as required.
 \end{proof}
-Now we return to the proof of \ref{thm:main-theorem}. For each $\bi,\bj$
-with $\bj\ne\flip{\bi}$, and some very small $\xi=\xi\left(\varepsilon,\delta\right)>0$,
-we want to find $\left(1-\xi\right)s_{\bi}s_{\bj}n/\left(k+1\right)$
+Now we return to the proof of \ref{thm:main-theorem}. Recall that
+we have partitioned the vertex set $V$ into sets of non-special vertices
+$W_{\bi}$ and sets of special vertices $X_{\bi},Y_{\bi}$. We denoted
+the set of special pairs in $X_{\bi}\times Y_{\bi}$ by $Z_{\bi,\bj}$,
+and we had 
+\[
+\left|W_{\bi}\right|\sim\frac{k-1}{k+1}s_{\bi}n,\;\,\left|X_{\bi}\right|,\left|Y_{\bi}\right|\sim\frac{1}{k+1}s_{\bi}n,\;\,\left|Z_{\bi,\bj}\right|\sim\frac{1}{k+1}s_{\bi}s_{\bj}n.
+\]
+
+
+For each $\bi,\bj$ with $\bj\ne\flip{\bi}$, and some very small
+$\xi=\xi\left(\varepsilon,\delta\right)>0$, we want to find $\left(1-\xi\right)s_{\bi}s_{\bj}n/\left(k+1\right)$
 special paths connecting special pairs in $Z_{\bi,\bj}$. It is convenient
 to do this in such a way that each path connecting a special pair
 in $Z_{\bi,\bj}$ contains mostly vertices from $W_{\bi}$. In particular
@@ -990,17 +999,16 @@ a total of
 \left(1-\xi\right)\left(2\left(1-s_{\bi}\right)s_{\flip{\bi}}+\left(k-3\right)s_{\bi}\left(1-s_{\flip{\bi}}\right)\right)n/\left(k+1\right)
 \]
 vertices from each $W_{\bi}$. For large $k$ this expression is less
-than $s_{\bi}\left(1-s_{\flip{\bi}}/2\right)n$. Recall that $\left|W_{\bi}\right|\sim\left(\left(k-1\right)/\left(k+1\right)\right)s_{\bi}n$,
-so if $k$ is large enough then at least $\left(s_{\bi}s_{\flip{\bi}}/3\right)n$
-vertices would remain in each $W_{\bi}$. We can therefore find our
-desired paths with at most $\left(2q\right)^{2}$ applications of
-\ref{lem:adjusting-paths} (recall that $q$ is the number of cluster-pairs
-in \ref{lem:partition-into-blobs}). To be precise, as in the proof
-of \ref{lem:adjusting-paths}, we split $\R_{2}$ into $\left(2q\right)^{2}$
-phases and use \ref{lem:adjusting-paths} to remove paths in each
-phase sequentially. By concentration and the union bound, after each
-phase we still have a suitable minimum degree condition for this to
-be possible.
+than $s_{\bi}\left(1-s_{\flip{\bi}}/2\right)n$, so if $k$ is large
+enough then at least $\left(s_{\bi}s_{\flip{\bi}}/3\right)n$ vertices
+would remain in each $W_{\bi}$. We can therefore find our desired
+paths with at most $\left(2q\right)^{2}$ applications of \ref{lem:adjusting-paths}
+(recall that $q$ is the number of cluster-pairs in \ref{lem:partition-into-blobs}).
+To be precise, as in the proof of \ref{lem:adjusting-paths}, we split
+$\R_{2}$ into $\left(2q\right)^{2}$ phases and use \ref{lem:adjusting-paths}
+to remove paths in each phase sequentially. By concentration and the
+union bound, after each phase we still have a suitable minimum degree
+condition for this to be possible.
 
 As well as removing these paths, remove their corresponding vertices
 from $V_{\bi},W_{\bi},X_{\bi},Y_{\bi}X_{\bi,\bj},Y_{\bi,\bj},Z_{\bi,\bj}$.
@@ -1048,12 +1056,12 @@ of size $\Theta\left(n\right)$ partitioning the vertex set $V$,
 such that each $\left(Z_{\bi},W_{\flip{\bi}}\right)$, and $\left(W_{\bi},W_{\flip{\bi}}\right)$
 is $\left(2\varepsilon_{3},\delta_{3}/5\right)$-regular, and each
 special pair has one element each from $Z_{\bi}$ and $Z_{\flip{\bi}}$.
- Moreover, with $Z$ and $W$ being the sets of special and non-special
+Moreover, with $Z$ and $W$ being the sets of special and non-special
 vertices remaining, we have $\left(k-1\right)\left|Z\right|=2\left|W\right|$
 (this is invariant through removals of special paths). Finally, for
 large $k$ each $\left|W_{\bi}\right|\ge\left|Z_{\bi}\right|+\Theta\left(n\right)$
-(recall that $\left|W_{\bi}\right|$ is of order $s_{\bi}s_{\flip{\bi}}n$,
-and $\left|Z_{\bi}\right|$ is of order $\left(s_{\bi}/k\right)n$).
+(recall that $\left|W_{\bi}\right|$ about $s_{\bi}s_{\flip{\bi}}n$,
+and $\left|Z_{\bi}\right|$ is about $\left(s_{\bi}/k\right)n$).
 
 
 \subsubsection{Adjusting the relative sizes of the clusters\label{sub:embed-relative-sizes}}

@@ -4348,7 +4348,7 @@ removing
  We now have 
 \begin_inset Formula 
 \[
-\left|V_{\bi}\right|\sim s_{\bi}n,\;\,\left|W_{\bi}\right|\sim\frac{k-1}{k+1}s_{\bi}n,\;\,,\left|X_{\bi}\right|,\left|Y_{\bi}\right|\sim\frac{1}{k+1}s_{\bi}n\;\,\left|Z_{\bi,\bj}\right|\sim\frac{1}{k+1}s_{\bi}s_{\bj}n
+\left|V_{\bi}\right|\sim s_{\bi}n,\;\,\left|W_{\bi}\right|\sim\frac{k-1}{k+1}s_{\bi}n,\;\,\left|X_{\bi}\right|,\left|Y_{\bi}\right|\sim\frac{1}{k+1}s_{\bi}n,\;\,\left|Z_{\bi,\bj}\right|\sim\frac{1}{k+1}s_{\bi}s_{\bj}n
 \]
 
 \end_inset
@@ -4372,9 +4372,10 @@ name "sub:embed-paths-between"
 \end_layout
 
 \begin_layout Standard
-Next, we want to eliminate almost all special pairs which are not between
- clusters of a super-regular pair.
- This is achieved using the following lemma (which will be used again later).
+Next, we want to eliminate special pairs which are not between clusters
+ of a super-regular pair.
+ We first eliminate almost all such pairs using the following lemma (which
+ will be used again later).
 \end_layout
 
 \begin_layout Lemma
@@ -4385,7 +4386,7 @@ name "lem:adjusting-paths"
 \end_inset
 
 For any 
-\begin_inset Formula $\delta,\xi>0$
+\begin_inset Formula $\delta,\xi,\gamma>0$
 \end_inset
 
  and any integer 
@@ -4393,7 +4394,7 @@ For any
 \end_inset
 
 , there is 
-\begin_inset Formula $\c=\c\left(\delta,\xi,k\right)$
+\begin_inset Formula $\c=\c\left(\delta,\xi,\gamma,k\right)$
 \end_inset
 
  such that the following holds.
@@ -4408,7 +4409,11 @@ Let
 \begin_inset Formula $\range N$
 \end_inset
 
-, together with a vertex partition into clusters.
+ (
+\begin_inset Formula $n\ge\gamma N$
+\end_inset
+
+), together with a vertex partition into clusters.
  Consider any sequence of clusters 
 \begin_inset Formula $X,V_{1},\dots,V_{r},Y$
 \end_inset
@@ -4885,7 +4890,40 @@ reference "thm:main-theorem"
 \end_inset
 
 .
- For each 
+ Recall that we have partitioned the vertex set 
+\begin_inset Formula $V$
+\end_inset
+
+ into sets of non-special vertices 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ and sets of special vertices 
+\begin_inset Formula $X_{\bi},Y_{\bi}$
+\end_inset
+
+.
+ We denoted the set of special pairs in 
+\begin_inset Formula $X_{\bi}\times Y_{\bi}$
+\end_inset
+
+ by 
+\begin_inset Formula $Z_{\bi,\bj}$
+\end_inset
+
+, and we had 
+\begin_inset Formula 
+\[
+\left|W_{\bi}\right|\sim\frac{k-1}{k+1}s_{\bi}n,\;\,\left|X_{\bi}\right|,\left|Y_{\bi}\right|\sim\frac{1}{k+1}s_{\bi}n,\;\,\left|Z_{\bi,\bj}\right|\sim\frac{1}{k+1}s_{\bi}s_{\bj}n.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For each 
 \begin_inset Formula $\bi,\bj$
 \end_inset
 
@@ -4953,11 +4991,6 @@ vertices from each
 
  this expression is less than 
 \begin_inset Formula $s_{\bi}\left(1-s_{\flip{\bi}}/2\right)n$
-\end_inset
-
-.
- Recall that 
-\begin_inset Formula $\left|W_{\bi}\right|\sim\left(\left(k-1\right)/\left(k+1\right)\right)s_{\bi}n$
 \end_inset
 
 , so if 
@@ -5337,7 +5370,7 @@ In summary, the situation now is that we have a set of clusters
 \end_inset
 
 .
-  Moreover, with 
+ Moreover, with 
 \begin_inset Formula $Z$
 \end_inset
 
@@ -5362,7 +5395,7 @@ In summary, the situation now is that we have a set of clusters
 \begin_inset Formula $\left|W_{\bi}\right|$
 \end_inset
 
- is of order 
+ about 
 \begin_inset Formula $s_{\bi}s_{\flip{\bi}}n$
 \end_inset
 
@@ -5370,7 +5403,7 @@ In summary, the situation now is that we have a set of clusters
 \begin_inset Formula $\left|Z_{\bi}\right|$
 \end_inset
 
- is of order 
+ is about 
 \begin_inset Formula $\left(s_{\bi}/k\right)n$
 \end_inset
 
