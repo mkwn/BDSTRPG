@@ -1500,6 +1500,28 @@ phases
 .
 \end_layout
 
+\begin_layout Standard
+At several points in the proof we will prove that (with high probability)
+ there exist certain substructures in the random edges 
+\begin_inset Formula $\R$
+\end_inset
+
+, and we will assume that these substructures (or some corresponding vertex
+ sets) are themselves uniformly random.
+ A simple way to see why this kind of reasoning is valid, is to notice that
+ if we apply a uniformly random vertex permutation to a random graph 
+\begin_inset Formula $\R\in\GG\left(n,p\right)$
+\end_inset
+
+, then by symmetry the resulting distribution is still 
+\begin_inset Formula $\GG\left(n,p\right)$
+\end_inset
+
+.
+ So we can imagine that we are finding substructures in an auxiliary random
+ graph, then randomly mapping these structures to our vertex set.
+\end_layout
+
 \begin_layout Subsection
 Case 1: 
 \begin_inset Formula $\T$
@@ -2427,19 +2449,11 @@ For
 \begin_inset Formula $\delta=\delta\left(\a\right)>0$
 \end_inset
 
-, 
+ and 
 \begin_inset Formula $M=M\left(\a,\varepsilon\right)$
 \end_inset
 
-, 
-\begin_inset Formula $a=a\left(\a,\varepsilon\right)>0$
-\end_inset
-
- and 
-\begin_inset Formula $b=b\left(\a,\varepsilon\right)>0$
-\end_inset
-
- such that the following holds.
+, such that the following holds.
  Let 
 \begin_inset Formula $\G$
 \end_inset
@@ -2486,6 +2500,40 @@ For
 \end_inset
 
 -super-regular.
+\end_layout
+
+\begin_layout Standard
+We emphasize that in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:partition-into-blobs"
+
+\end_inset
+
+ we do 
+\emph on
+not 
+\emph default
+guarantee that the sets 
+\begin_inset Formula $V_{i}^{\h}$
+\end_inset
+
+ are the same size.
+ We will however see in the proof that the variation in the sizes of the
+ clusters only depends on 
+\begin_inset Formula $\a$
+\end_inset
+
+ and not 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ (that is, the ratio between the largest and smallest cluster is bounded
+ by a function of 
+\begin_inset Formula $\a$
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -2764,10 +2812,10 @@ name "lem:combine-clusters"
 \end_inset
 
 Suppose 
-\begin_inset Formula $V_{1},\dots,V_{r}$
+\begin_inset Formula $V_{1}^{2},\dots,V_{r}^{2}$
 \end_inset
 
- are clusters of the same sizes such that each 
+ are clusters such that each 
 \begin_inset Formula $\left(V^{1},V_{i}^{2}\right)$
 \end_inset
 
@@ -2785,10 +2833,40 @@ Suppose
 \end_inset
 
  is 
-\begin_inset Formula $\left(\varepsilon,\delta/r\right)$
+\begin_inset Formula $\left(\varepsilon,\delta'\right)$
 \end_inset
 
--dense.
+-dense, where 
+\begin_inset Formula $\delta'=\delta\min_{i}\left|V_{i}^{2}\right|/\left|V^{2}\right|$
+\end_inset
+
+.
+ In particular if each 
+\begin_inset Formula $V_{i}^{2}$
+\end_inset
+
+ has the same size then 
+\begin_inset Formula $\delta'=\delta/r$
+\end_inset
+
+.
+ If moreover each each 
+\begin_inset Formula $\left(V^{1},V_{i}^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon,\delta\right)$
+\end_inset
+
+-super-regular, then 
+\begin_inset Formula $\left(V^{1},V^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon,\delta'\right)$
+\end_inset
+
+-super-regular.
 \end_layout
 
 \begin_layout Proof
@@ -2801,20 +2879,38 @@ Let
 \end_inset
 
 .
- Let 
-\begin_inset Formula $V_{i}^{2}$
+ Choose 
+\begin_inset Formula $i$
 \end_inset
 
- be the cluster which has the largest intersection with 
-\begin_inset Formula $U^{2}$
+ so that 
+\begin_inset Formula $\left|U^{2}\cap V_{i}^{2}\right|/\left|V_{i}^{2}\right|$
 \end_inset
 
-, so we have 
-\begin_inset Formula $\left|U^{2}\cap V_{i}^{2}\right|\ge\varepsilon\left|V^{2}\right|/r=\varepsilon\left|V_{i}^{2}\right|$
+ is maximized, so that 
+\begin_inset Formula $\left|U^{2}\cap V_{i}^{2}\right|\ge\varepsilon\left|V_{i}^{2}\right|$
 \end_inset
 
-, and there are therefore at least 
-\begin_inset Formula $\delta\left|U^{1}\right|\left|U^{2}\cap V_{i}^{2}\right|\ge\left(\delta/r\right)\left|U^{1}\right|\left|U^{2}\right|$
+.
+ By our choice of 
+\begin_inset Formula $i$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\left|U^{2}\right|=\sum_{j=1}^{r}\frac{\left|U^{2}\cap V_{j}^{2}\right|}{\left|V_{j}^{2}\right|}\left|V_{j}^{2}\right|\le\frac{\left|U^{2}\cap V_{i}^{2}\right|}{\left|V_{i}^{2}\right|}\sum_{j=1}^{r}\left|V_{j}^{2}\right|=\frac{\left|U^{2}\cap V_{i}^{2}\right|}{\left|V_{i}^{2}\right|}\left|V^{2}\right|,
+\]
+
+\end_inset
+
+so 
+\begin_inset Formula $\left|U^{2}\cap V_{i}^{2}\right|\ge\left|U^{2}\right|\min_{j}\left|V_{j}^{2}\right|/\left|V^{2}\right|$
+\end_inset
+
+.
+ It follows that there are at least 
+\begin_inset Formula $\delta\left|U^{1}\right|\left|U^{2}\cap V_{i}^{2}\right|\ge\delta'\left|U^{1}\right|\left|U^{2}\right|$
 \end_inset
 
  edges between 
@@ -2823,6 +2919,56 @@ Let
 
  and 
 \begin_inset Formula $U^{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $\left(V^{1},V^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon,\delta'\right)$
+\end_inset
+
+-dense.
+\end_layout
+
+\begin_layout Proof
+The claim about super-regularity is straightforward.
+ Note that each 
+\begin_inset Formula $v\in V^{2}$
+\end_inset
+
+ has 
+\begin_inset Formula $\delta\left|V^{1}\right|\ge\delta'\left|V^{1}\right|$
+\end_inset
+
+ neighbours in 
+\begin_inset Formula $V^{1}$
+\end_inset
+
+ by the super-regularity of each 
+\begin_inset Formula $\left(V^{1},V_{i}^{2}\right)$
+\end_inset
+
+.
+ Each 
+\begin_inset Formula $v\in V^{1}$
+\end_inset
+
+ has 
+\begin_inset Formula $\delta\left|V_{i}^{2}\right|$
+\end_inset
+
+ neighbours in each 
+\begin_inset Formula $V_{i}^{1}$
+\end_inset
+
+, for a total of 
+\begin_inset Formula $\delta\left|V^{2}\right|\ge\delta'\left|V^{2}\right|$
+\end_inset
+
+ neighbours in 
+\begin_inset Formula $V^{2}$
 \end_inset
 
 .
@@ -3099,7 +3245,7 @@ Let
 \end_inset
 
 , and that star has fewer than 
-\begin_inset Formula $1+1/\a$
+\begin_inset Formula $1+\floor{1/\a}$
 \end_inset
 
  vertices, then we could add 
@@ -3224,7 +3370,7 @@ edi's regularity lemma, with some
 \end_inset
 
  of size at most 
-\begin_inset Formula $1/\a'$
+\begin_inset Formula $1+1/\a'$
 \end_inset
 
 , as guaranteed by 
@@ -3268,6 +3414,27 @@ centre
 \end_inset
 
 ).
+ Each edge of the cluster graph 
+\begin_inset Formula $C$
+\end_inset
+
+ corresponds to an 
+\begin_inset Formula $\left(\varepsilon',\a'/2\right)$
+\end_inset
+
+-dense pair, and each 
+\begin_inset Formula $W_{i}^{\h}$
+\end_inset
+
+ is the union of at most 
+\begin_inset Formula $1/\a'$
+\end_inset
+
+ clusters 
+\begin_inset Formula $V_{i}$
+\end_inset
+
+.
  By 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3665,7 +3832,7 @@ In our case
 \end_inset
 
  contains a collection of 
-\begin_inset Formula $\psi n:=n/\left(2\left(k-1\right)\right)$
+\begin_inset Formula $n/\left(2\left(k-1\right)\right)$
 \end_inset
 
  disjoint bare 
@@ -3673,11 +3840,19 @@ In our case
 \end_inset
 
 -paths.
- (We also impose that 
+ (The definite value of 
 \begin_inset Formula $k$
 \end_inset
 
- is odd, for reasons that will become clear later).
+ will be determined later, and will depend on 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ through the 
+\begin_inset Formula $s_{\bi}$
+\end_inset
+
+).
  If we delete the interior vertices of these paths, then we are left with
  a forest 
 \begin_inset Formula $\F$
@@ -3701,7 +3876,7 @@ Now, embed
 
 .
  There are 
-\begin_inset Formula $\psi n$
+\begin_inset Formula $n/\left(2\left(k-1\right)\right)$
 \end_inset
 
  
@@ -3712,7 +3887,15 @@ special pairs
 \begin_inset Quotes erd
 \end_inset
 
- of vertices of 
+ of 
+\begin_inset Quotes eld
+\end_inset
+
+special vertices
+\begin_inset Quotes erd
+\end_inset
+
+ of 
 \begin_inset Formula $\F\subseteq\R_{1}$
 \end_inset
 
@@ -3785,23 +3968,24 @@ is a uniformly random partition of
 \end_inset
 
  into parts of sizes 
-\begin_inset Formula $\psi n$
+\begin_inset Formula $n/\left(2\left(k-1\right)\right)$
 \end_inset
 
 , 
-\begin_inset Formula $\psi n$
+\begin_inset Formula $n/\left(2\left(k-1\right)\right)$
 \end_inset
 
 , 
-\begin_inset Formula $n/2-2\psi n$
+\begin_inset Formula $n/2-2n/\left(2\left(k-1\right)\right)$
 \end_inset
 
-, 
+ and 
 \begin_inset Formula $n/2$
 \end_inset
 
-, and that the special pairs correspond to a uniformly random bijection
- between 
+ respectively.
+ We can also assume that the special pairs correspond to a uniformly random
+ bijection between 
 \begin_inset Formula $X$
 \end_inset
 
@@ -3876,11 +4060,11 @@ By a concentration inequality for the hypergeometric distribution and the
 
 .
  Similarly each 
-\begin_inset Formula $\left|X_{\bi}\right|\sim\left|Y_{\bi}\right|\sim\psi s_{\bi}n$
+\begin_inset Formula $\left|X_{\bi}\right|\sim\left|Y_{\bi}\right|\sim s_{\bi}n/\left(2\left(k-1\right)\right)$
 \end_inset
 
 , and each 
-\begin_inset Formula $\left|X_{\bi,\bj}\right|=\left|Y_{\bi,\bj}\right|=\left|Z_{\bi,\bj}\right|\sim\psi s_{\bi}s_{\bj}n$
+\begin_inset Formula $\left|X_{\bi,\bj}\right|=\left|Y_{\bi,\bj}\right|=\left|Z_{\bi,\bj}\right|\sim s_{\bi}s_{\bj}n/\left(2\left(k-1\right)\right)$
 \end_inset
 
 .
@@ -4157,31 +4341,23 @@ removing
 \end_inset
 
  (previously 
-\begin_inset Formula $\left(1/2+2\psi\right)n$
+\begin_inset Formula $\left(1/2+1/\left(k-1\right)\right)n$
 \end_inset
 
-), and update each 
-\begin_inset Formula $s_{\bi}$
-\end_inset
-
- to still satisfy 
-\begin_inset Formula $s_{\bi}n=\left|V_{\bi}\right|$
-\end_inset
-
- (this does not change 
-\begin_inset Formula $s_{\bi}$
-\end_inset
-
- asymptotically).
+).
  We now have 
 \begin_inset Formula 
 \[
-\left|Z_{\bi,\bj}\right|\sim\psi s_{\bi}s_{\bj}n/\left(1/2+2\psi\right)=s_{\bi}s_{\bj}n/\left(k+1\right).
+\left|V_{\bi}\right|\sim s_{\bi}n,\;\,\left|W_{\bi}\right|\sim\frac{k-1}{k+1}s_{\bi}n,\;\,,\left|X_{\bi}\right|,\left|Y_{\bi}\right|\sim\frac{1}{k+1}s_{\bi}n\;\,\left|Z_{\bi,\bj}\right|\sim\frac{1}{k+1}s_{\bi}s_{\bj}n
 \]
 
 \end_inset
 
+for each 
+\begin_inset Formula $\bi,\bj$
+\end_inset
 
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4368,7 +4544,7 @@ Uniformly at random choose
 
 .
  By concentration and the union bound, for 
-\begin_inset Formula $\delta_{1}=\delta/2$
+\begin_inset Formula $\delta_{1}<\delta$
 \end_inset
 
  each 
@@ -4388,7 +4564,7 @@ Uniformly at random choose
 \end_inset
 
  (respectively, 
-\begin_inset Formula $\delta_{1}\left|V_{k-1}\right|$
+\begin_inset Formula $\delta_{1}\left|W_{k-1}\right|$
 \end_inset
 
  neighbours in 
@@ -4534,11 +4710,15 @@ which we can complete into a uniformly random ordering
 \end_inset
 
 ).
- By linearity of expectation, 
-\begin_inset Formula $\E\left|I_{X}\right|,\E\left|I_{Y}\right|\ge\left(\delta_{1}/2\right)n$
+ Since the situation is 
+\begin_inset Formula $\delta_{1}$
 \end_inset
 
-.
+-good, 
+\begin_inset Formula $\E\left|I_{X}\right|,\E\left|I_{Y}\right|\ge\delta'n/2$
+\end_inset
+
+ by linearity of expectation.
  If we vary the ordering 
 \begin_inset Formula $v_{1}^{1},\dots,v_{1}^{n}$
 \end_inset
@@ -4556,11 +4736,12 @@ which we can complete into a uniformly random ordering
 \end_inset
 
 ) by at most 2.
- So, by a bounded-differences concentration inequality (for example 
+ So, by a bounded-differences concentration inequality (see for example
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
-after "Lemma~B.1"
-key "FP04"
+after "Section~16.2 (McDiarmid's Inequality)"
+key "MR02"
 
 \end_inset
 
@@ -4585,7 +4766,7 @@ key "FP04"
 \end_inset
 
 , where 
-\begin_inset Formula $\gamma\left(\delta_{1}\right)=\delta_{1}^{2}/10$
+\begin_inset Formula $\gamma\left(\delta_{1}\right)=\delta_{1}^{2}/10<\left(\delta_{1}/3\right)^{2}$
 \end_inset
 
 .
@@ -4605,31 +4786,48 @@ key "FP04"
 \end_layout
 
 \begin_layout Proof
-Remove these special paths and and their vertices in 
-\begin_inset Formula $W_{i}$
+Remove these special paths and and their vertices.
+ The vertices removed in 
+\begin_inset Formula $W_{1}$
 \end_inset
 
-.
- Let 
-\begin_inset Formula $\delta_{i}=\delta_{1}/\left(1+\left(i-1\right)/r\right)$
+ and 
+\begin_inset Formula $W_{k-1}$
 \end_inset
 
-; by concentration and the union bound the situation is still a.a.s.
+ comprise uniformly random subsets of their size, so again we can use concentrat
+ion and the union bound to see that the situation is still a.a.s.
  
 \begin_inset Formula $\delta_{2}$
 \end_inset
 
--good after these removals.
+-good (for any 
+\begin_inset Formula $\delta_{2}<\delta_{1}$
+\end_inset
+
+) after these removals.
  We can therefore repeat the previous argument using 
 \begin_inset Formula $\R_{2}$
 \end_inset
 
- to find more special paths.
- After repeating the argument all 
+ (and a slightly lower 
+\begin_inset Quotes eld
+\end_inset
+
+goodness parameter
+\begin_inset Quotes erd
+\end_inset
+
+), to find more special paths.
+ In fact for any sequence 
+\begin_inset Formula $\delta_{1}>\delta_{2}>\dots>\delta_{r}$
+\end_inset
+
+, we can repeat the argument 
 \begin_inset Formula $r$
 \end_inset
 
- times (before iteration 
+ times, where before iteration 
 \begin_inset Formula $i$
 \end_inset
 
@@ -4637,10 +4835,19 @@ Remove these special paths and and their vertices in
 \begin_inset Formula $\delta_{i}$
 \end_inset
 
--good), there are at most 
+-good.
+ Let 
+\begin_inset Formula $\delta_{r}=\delta/2$
+\end_inset
+
+ (say 
+\begin_inset Formula $\delta_{i}=\delta\left(1-i/\left(2r\right)\right)$
+\end_inset
+
+), so there are at most 
 \begin_inset Formula 
 \[
-n\prod_{i=0}^{r-1}\left(1-\gamma\left(\delta_{i}\right)\right)\le\left(1-\gamma\left(\delta/4\right)\right)^{r}n
+n\prod_{i=1}^{r}\left(1-\gamma\left(\delta_{i}\right)\right)\le\left(1-\gamma\left(\delta/2\right)\right)^{r}n
 \]
 
 \end_inset
@@ -4653,7 +4860,11 @@ vertices remaining in
 \begin_inset Formula $Y$
 \end_inset
 
-.
+ after all the 
+\begin_inset Formula $r$
+\end_inset
+
+ iterations.
  If we choose large enough 
 \begin_inset Formula $r$
 \end_inset
@@ -4683,7 +4894,7 @@ reference "thm:main-theorem"
 \end_inset
 
 , and some very small 
-\begin_inset Formula $\xi=\xi\left(a,\delta\right)>0$
+\begin_inset Formula $\xi=\xi\left(\varepsilon,\delta\right)>0$
 \end_inset
 
 , we want to find 
@@ -4694,8 +4905,19 @@ reference "thm:main-theorem"
 \begin_inset Formula $Z_{\bi,\bj}$
 \end_inset
 
-, in such a way that each of these special paths has one interior vertex
- from 
+.
+ It is convenient to do this in such a way that each path connecting a special
+ pair in 
+\begin_inset Formula $Z_{\bi,\bj}$
+\end_inset
+
+ contains mostly vertices from 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+.
+ In particular we would like each such special path to have one interior
+ vertex from 
 \begin_inset Formula $W_{\flip{\bi}}$
 \end_inset
 
@@ -4712,11 +4934,46 @@ reference "thm:main-theorem"
 \end_inset
 
 .
- Provided 
+ This would remove a total of 
+\begin_inset Formula 
+\[
+\left(1-\xi\right)\left(2\left(1-s_{\bi}\right)s_{\flip{\bi}}+\left(k-3\right)s_{\bi}\left(1-s_{\flip{\bi}}\right)\right)n/\left(k+1\right)
+\]
+
+\end_inset
+
+vertices from each 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+.
+ For large 
 \begin_inset Formula $k$
 \end_inset
 
- is large we can find our desired paths with at most 
+ this expression is less than 
+\begin_inset Formula $s_{\bi}\left(1-s_{\flip{\bi}}/2\right)n$
+\end_inset
+
+.
+ Recall that 
+\begin_inset Formula $\left|W_{\bi}\right|\sim\left(\left(k-1\right)/\left(k+1\right)\right)s_{\bi}n$
+\end_inset
+
+, so if 
+\begin_inset Formula $k$
+\end_inset
+
+ is large enough then at least 
+\begin_inset Formula $\left(s_{\bi}s_{\flip{\bi}}/3\right)n$
+\end_inset
+
+ vertices would remain in each 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+.
+ We can therefore find our desired paths with at most 
 \begin_inset Formula $\left(2q\right)^{2}$
 \end_inset
 
@@ -4727,7 +4984,18 @@ reference "lem:adjusting-paths"
 
 \end_inset
 
-.
+ (recall that 
+\begin_inset Formula $q$
+\end_inset
+
+ is the number of cluster-pairs in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:partition-into-blobs"
+
+\end_inset
+
+).
  To be precise, as in the proof of 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4808,10 +5076,10 @@ reference "lem:random-preserves-superregular"
 
 .
  Let 
-\begin_inset Formula $a>0$
+\begin_inset Formula $a=\min_{\bi}s_{\bi}s_{\flip{\bi}}/3$
 \end_inset
 
- satisfy 
+, so 
 \begin_inset Formula $\left|W_{\bi}\right|\ge an$
 \end_inset
 
@@ -4896,21 +5164,13 @@ bad
 \begin_inset Formula $W_{\flip{\bi}}$
 \end_inset
 
- with 
-\begin_inset Formula $w_{k-3}\in W_{\bi}$
-\end_inset
-
- (recall, 
-\begin_inset Formula $k$
-\end_inset
-
- is odd).
+.
  Then choose a set 
 \begin_inset Formula $U_{x}\subseteq W_{\flip{\bi}}$
 \end_inset
 
  of 
-\begin_inset Formula $\delta_{3}an/2$
+\begin_inset Formula $\delta_{3}an/4$
 \end_inset
 
  neighbours of 
@@ -4922,7 +5182,7 @@ bad
 \end_inset
 
  of 
-\begin_inset Formula $\delta_{3}an/2$
+\begin_inset Formula $\delta_{3}an/4$
 \end_inset
 
  neighbours of 
@@ -4940,7 +5200,7 @@ bad
 \end_inset
 
  between any pair of disjoint sets of size 
-\begin_inset Formula $\delta_{3}an/2$
+\begin_inset Formula $\delta_{3}an/4$
 \end_inset
 
  (the proof of this is basically identical to the proof of 
@@ -4965,23 +5225,11 @@ reference "lem:bipartite-matching"
 \begin_inset Formula $\delta_{3}an/2$
 \end_inset
 
- vertices total, which is so few that each 
-\begin_inset Formula $\left(W_{\bi},W_{\flip{\bi}}\right)$
+ vertices total, which means that each vertex in 
+\begin_inset Formula $X_{\bi},Y_{\bi},W_{\bi}$
 \end_inset
 
- is 
-\begin_inset Formula $\left(2\varepsilon_{3},\delta_{3}/2\right)$
-\end_inset
-
--super-regular, and each 
-\begin_inset Formula $\x\in X_{\bi}$
-\end_inset
-
- (respectively 
-\begin_inset Formula $\y\in Y_{\bi}$
-\end_inset
-
-) has at least 
+ has at least 
 \begin_inset Formula $\delta_{3}an/2$
 \end_inset
 
@@ -4989,20 +5237,8 @@ reference "lem:bipartite-matching"
 \begin_inset Formula $W_{\flip{\bi}}$
 \end_inset
 
-, throughout the whole process.
-\end_layout
-
-\begin_layout Standard
-Now, update all the relevant variables.
- We are left with a set of clusters 
-\begin_inset Formula $X_{\bi},W_{\bi},Y_{\bi}$
-\end_inset
-
- partitioning the vertices of 
-\begin_inset Formula $\G\cup\R$
-\end_inset
-
-, such that each 
+ throughout the whole process.
+ Also, after this process each 
 \begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
@@ -5018,49 +5254,127 @@ Now, update all the relevant variables.
 \begin_inset Formula $\left(2\varepsilon_{3},\delta_{3}/2\right)$
 \end_inset
 
--regular, and each special pair is in some 
-\begin_inset Formula $X_{\bi}\times Y_{\flip{\bi}}$
-\end_inset
+-regular.
+\end_layout
 
-.
- Moreover, with 
-\begin_inset Formula $X$
-\end_inset
-
- (respectively 
-\begin_inset Formula $Y$
-\end_inset
-
-) being the set of 
+\begin_layout Standard
+Now, it is convenient to drop the distinction between 
 \begin_inset Formula $\x$
 \end_inset
 
--type (respectively 
+-type and 
 \begin_inset Formula $\y$
 \end_inset
 
--type) vertices remaining, and 
-\begin_inset Formula $W$
-\end_inset
-
- being the set of non-special vertices remaining, we have 
-\begin_inset Formula $\left(k-1\right)\left|X\right|=\left(k-1\right)\left|Y\right|=\left|W\right|$
+-type vertices: let 
+\begin_inset Formula $Z_{\bi}=X_{\bi}\cup Y_{\bi}$
 \end_inset
 
 .
- For large 
+ At the beginning of this section we had 
+\begin_inset Formula $\left|X_{\bi}\right|\sim\left|Y_{\bi}\right|$
+\end_inset
+
+, and this is still true since we have deleted asymptotically equally many
+ vertices from 
+\begin_inset Formula $X_{\bi}$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{\bi}$
+\end_inset
+
+.
+ So, by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:combine-clusters"
+
+\end_inset
+
+, each 
+\begin_inset Formula $\left(Z_{\bi},W_{\flip{\bi}}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(2\varepsilon_{3},\delta_{3}/5\right)$
+\end_inset
+
+-regular.
+\end_layout
+
+\begin_layout Standard
+In summary, the situation now is that we have a set of clusters 
+\begin_inset Formula $Z_{\bi},W_{\bi}$
+\end_inset
+
+ of size 
+\begin_inset Formula $\Theta\left(n\right)$
+\end_inset
+
+ partitioning the vertex set 
+\begin_inset Formula $V$
+\end_inset
+
+, such that each 
+\begin_inset Formula $\left(Z_{\bi},W_{\flip{\bi}}\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $\left(W_{\bi},W_{\flip{\bi}}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(2\varepsilon_{3},\delta_{3}/5\right)$
+\end_inset
+
+-regular, and each special pair has one element each from 
+\begin_inset Formula $Z_{\bi}$
+\end_inset
+
+ and 
+\begin_inset Formula $Z_{\flip{\bi}}$
+\end_inset
+
+.
+  Moreover, with 
+\begin_inset Formula $Z$
+\end_inset
+
+ and 
+\begin_inset Formula $W$
+\end_inset
+
+ being the sets of special and non-special vertices remaining, we have 
+\begin_inset Formula $\left(k-1\right)\left|Z\right|=2\left|W\right|$
+\end_inset
+
+ (this is invariant through removals of special paths).
+ Finally, for large 
 \begin_inset Formula $k$
 \end_inset
 
  each 
-\begin_inset Formula $\left|X_{\bi}\right|,\left|Y_{\bi}\right|,\left|W_{\bi}\right|=\Theta\left(n\right)$
+\begin_inset Formula $\left|W_{\bi}\right|\ge\left|Z_{\bi}\right|+\Theta\left(n\right)$
 \end_inset
 
-, and each 
-\begin_inset Formula $\left|X_{\bi}\right|,\left|Y_{\bi}\right|\le\left|W_{\bj}\right|$
+ (recall that 
+\begin_inset Formula $\left|W_{\bi}\right|$
 \end_inset
 
-.
+ is of order 
+\begin_inset Formula $s_{\bi}s_{\flip{\bi}}n$
+\end_inset
+
+, and 
+\begin_inset Formula $\left|Z_{\bi}\right|$
+\end_inset
+
+ is of order 
+\begin_inset Formula $\left(s_{\bi}/k\right)n$
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsubsection
@@ -5077,7 +5391,7 @@ name "sub:embed-relative-sizes"
 \begin_layout Standard
 The next step is to remove paths such that in the graph that remains, we
  have 
-\begin_inset Formula $\left|W_{\bi}\right|=\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2$
+\begin_inset Formula $2\left|W_{\bi}\right|=\left(k-1\right)\left|Z_{\bi}\right|$
 \end_inset
 
  for each 
@@ -5093,120 +5407,60 @@ reference "lem:adjusting-paths"
 \end_inset
 
 , but is a bit fiddly to explain.
+ From now on we impose that 
+\begin_inset Formula $k$
+\end_inset
+
+ is odd.
 \end_layout
 
 \begin_layout Standard
-Suppose 
-\begin_inset Formula $\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2+m\ge\left|W_{\bi}\right|$
+Let 
+\begin_inset Formula $D_{\bi}=\left(k-1\right)\left|Z_{\bi}\right|-2\left|W_{\bi}\right|$
 \end_inset
 
- and 
-\begin_inset Formula $\left(k-1\right)\left|X_{\bj}\cup Y_{\bj}\right|/2+m\le\left|W_{\bj}\right|$
+ be the 
+\begin_inset Quotes eld
 \end_inset
 
- for some 
-\begin_inset Formula $m>0$
+deficit
+\begin_inset Quotes erd
 \end_inset
 
-, where one of these inequalities is an equality.
- Use 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:adjusting-paths"
-
-\end_inset
-
- and 
-\begin_inset Formula $\R_{4}$
-\end_inset
-
- to find 
-\begin_inset Formula $\floor{m/\left(\left(k-1\right)/2-1\right)}$
-\end_inset
-
- special paths connecting special pairs in 
-\begin_inset Formula $X_{\bi}\times Y_{\flip{\bi}}$
-\end_inset
-
-, each with 
-\begin_inset Formula $\left(k-1\right)/2$
-\end_inset
-
- interior vertices in 
-\begin_inset Formula $W_{\flip{\bi}}$
-\end_inset
-
-, one interior vertex in 
-\begin_inset Formula $W_{\bi}$
-\end_inset
-
-, and the remaining 
-\begin_inset Formula $\left(k-1\right)/2-1$
-\end_inset
-
- interior vertices in 
-\begin_inset Formula $W_{\bj}$
+ for 
+\begin_inset Formula $\bi$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Then, let 
-\begin_inset Formula 
-\[
-r=\left(\left(k-1\right)/2-1\right)\left\langle \frac{m}{\left(k-1\right)/2-1}\right\rangle ,
-\]
-
+ Since 
+\begin_inset Formula $\left(k-1\right)\left|Z\right|=2\left|W\right|$
 \end_inset
 
-where 
-\begin_inset Formula $\left\langle \cdot\right\rangle $
-\end_inset
-
- denotes the fractional part of a real number.
- With another application of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:adjusting-paths"
-
-\end_inset
-
-, find a single special path connecting a special pair in 
-\begin_inset Formula $X_{\bi}\times Y_{\flip{\bi}}$
-\end_inset
-
-, which has 
-\begin_inset Formula $\left(k-1\right)/2$
-\end_inset
-
- interior vertices in 
-\begin_inset Formula $W_{\flip{\bi}}$
-\end_inset
-
-, has 
-\begin_inset Formula $\left(k-1\right)/2-r$
-\end_inset
-
- interior vertices in 
-\begin_inset Formula $W_{\bi}$
-\end_inset
-
-, and has 
-\begin_inset Formula $r$
-\end_inset
-
- interior vertices in 
-\begin_inset Formula $W_{\bj}$
+, we have 
+\begin_inset Formula $\sum_{\bi}D_{\bi}=0$
 \end_inset
 
 .
- We now have either 
-\begin_inset Formula $\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2=\left|W_{\bi}\right|$
+ If all the deficits are not already zero, then let 
+\begin_inset Formula $D_{\bi}$
 \end_inset
 
- or 
-\begin_inset Formula $\left(k-1\right)\left|X_{\bj}\cup Y_{\bj}\right|/2=\left|W_{\bj}\right|$
+ be the maximum positive deficit.
+ We will remove special paths between 
+\begin_inset Formula $Z_{\bi}$
+\end_inset
+
+ and 
+\begin_inset Formula $Z_{\bar{\bi}}$
+\end_inset
+
+ in such a way that 
+\begin_inset Formula $D_{\bi}$
+\end_inset
+
+ becomes zero, no nonpositive deficit becomes positive, and such that we
+ still have each 
+\begin_inset Formula $\left|W_{\bi}\right|\ge\left|Z_{\bi}\right|+\Theta\left(n\right)$
 \end_inset
 
 .
@@ -5214,25 +5468,212 @@ reference "lem:adjusting-paths"
 \begin_inset Formula $2q$
 \end_inset
 
- iterations of this argument, we will have each 
-\begin_inset Formula $\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2=\left|W_{\bi}\right|$
+ iterations of this argument, all the deficits will be zero, as desired.
+\end_layout
+
+\begin_layout Standard
+In each iteration we will remove a total of 
+\begin_inset Formula $\floor{D_{\bi}/\left(k-3\right)}+1$
 \end_inset
 
- as desired.
- During these iterations we have removed uniformly random subsets of certain
- sizes from each 
-\begin_inset Formula $X_{\bi}$
+ special paths.
+ Each of the first 
+\begin_inset Formula $\floor{D_{\bi}/\left(k-3\right)}$
 \end_inset
 
-, 
+ paths will have one interior vertex in 
 \begin_inset Formula $W_{\bi}$
 \end_inset
 
- and 
-\begin_inset Formula $Y_{\bi}$
+ and in 
+\begin_inset Formula $W_{\flip{\bi}}$
 \end_inset
 
-, so by 
+, and the other 
+\begin_inset Formula $k-3$
+\end_inset
+
+ interior vertices coming from 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ with 
+\begin_inset Formula $\bi\ne\flip{\bi}$
+\end_inset
+
+ (we will explain how to choose these 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ shortly).
+ Next, let 
+\begin_inset Formula $r$
+\end_inset
+
+ be the remainder after dividing 
+\begin_inset Formula $D_{\bi}$
+\end_inset
+
+ by 
+\begin_inset Formula $k-3$
+\end_inset
+
+.
+ Our final special path will have 
+\begin_inset Formula $\left(k-1\right)/2-r/2$
+\end_inset
+
+ interior vertices in 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ and in 
+\begin_inset Formula $W_{\flip{\bi}}$
+\end_inset
+
+ (recall 
+\begin_inset Formula $k$
+\end_inset
+
+ is odd), and the other 
+\begin_inset Formula $r$
+\end_inset
+
+ interior vertices coming from some 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ with 
+\begin_inset Formula $\bi\ne\flip{\bi}$
+\end_inset
+
+.
+ In all these special paths, we choose the as-yet undetermined 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ arbitrarily, so long as this includes no more than 
+\begin_inset Formula $-\left(D_{\flip{\bi}}-D_{\bi}\right)/2$
+\end_inset
+
+ (
+\begin_inset Formula $\ge0$
+\end_inset
+
+) vertices from 
+\begin_inset Formula $W_{\flip{\bi}}$
+\end_inset
+
+, and no more than 
+\begin_inset Formula $-D_{\bi}/2$
+\end_inset
+
+ vertices from each of the other 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ which have negative deficit.
+ It is easy to see that removing all these paths will have the desired effects
+ on the deficits.
+\end_layout
+
+\begin_layout Standard
+We find all our special paths with 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ applications of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:adjusting-paths"
+
+\end_inset
+
+, using the random edges in 
+\begin_inset Formula $\R_{4}$
+\end_inset
+
+.
+ We make a few observations to show why this is valid.
+ First, note that we need 
+\begin_inset Formula $\left|Z_{\bi}\right|,\left|Z_{\flip{\bi}}\right|=\floor{D_{\bi}/\left(k-3\right)}+1+\Theta\left(n\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|W_{\bi}\right|,\left|W_{\flip{\bi}}\right|=\floor{D_{\bi}/\left(k-3\right)}+\left(k-1\right)/2-r/2+\Theta\left(n\right)$
+\end_inset
+
+.
+ But this holds for large 
+\begin_inset Formula $n$
+\end_inset
+
+ because 
+\begin_inset Formula $\left|W_{\bi}\right|,\left|W_{\flip{\bi}}\right|\ge\left|Z_{\bi}\right|=\left|Z_{\flip{\bi}}\right|$
+\end_inset
+
+ and
+\begin_inset Formula 
+\[
+\left(\left(k-1\right)-2\right)\left|Z_{\bi}\right|\ge\left(k-1\right)\left|Z_{\bi}\right|-2\left|W_{\bi}\right|+\Theta\left(n\right)=D_{\bi}+\Theta\left(n\right).
+\]
+
+\end_inset
+
+We also need there to be enough vertices in the appropriate 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ to fill the undetermined vertices in the special paths (we need 
+\begin_inset Formula $\left(k-3\right)\floor{D_{\bi}/\left(k-3\right)}+r=D_{\bi}$
+\end_inset
+
+ such).
+ But this is a consequence of the fact that 
+\begin_inset Formula $\sum_{\bj}D_{\bj}=0$
+\end_inset
+
+.
+ To be precise, the sum of the negative deficits is at least as negative
+ as 
+\begin_inset Formula $-D_{\bi}$
+\end_inset
+
+, so our number of available vertices is
+\begin_inset Formula 
+\[
+\sum_{\bj}\left(-D_{\bj}/2\right)-\left(D_{\flip{\bi}}-D_{\bi}\right)/2\ge D_{\bi},
+\]
+
+\end_inset
+
+where the sum is over all 
+\begin_inset Formula $\bj\ne\bi,\flip{\bi}$
+\end_inset
+
+ with 
+\begin_inset Formula $D_{\bj}$
+\end_inset
+
+ negative.
+\end_layout
+
+\begin_layout Standard
+After we choose the number of vertices to take from each 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+, the removed vertices comprise uniformly random subsets of certain sizes
+ from each 
+\begin_inset Formula $Z_{\bi}$
+\end_inset
+
+ and 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+.
+ By 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:random-preserves-superregular"
@@ -5240,15 +5681,11 @@ reference "lem:random-preserves-superregular"
 \end_inset
 
  each 
-\begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
-\end_inset
-
-, 
-\begin_inset Formula $\left(W_{\bi},W_{\flip{\bi}}\right)$
+\begin_inset Formula $\left(Z_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
  and 
-\begin_inset Formula $\left(W_{\bi},Y_{\flip{\bi}}\right)$
+\begin_inset Formula $\left(W_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
  is now 
@@ -5256,7 +5693,7 @@ reference "lem:random-preserves-superregular"
 \end_inset
 
 -super-regular, where 
-\begin_inset Formula $\delta_{4}=\delta_{3}/4$
+\begin_inset Formula $\delta_{4}=\delta_{3}/10$
 \end_inset
 
  and 
@@ -5446,89 +5883,34 @@ Now, if a graph
 
 \begin_layout Standard
 Now we describe the setup to apply the blow-up lemma.
- Uniformly at random divide each 
-\begin_inset Formula $W_{\bi}$
-\end_inset
-
- into sets 
-\begin_inset Formula $A_{\bi}$
-\end_inset
-
- and 
-\begin_inset Formula $B_{\bi}$
-\end_inset
-
- of size 
-\begin_inset Formula $\left(k-1\right)\left|X_{\bi}\right|/2$
-\end_inset
-
- and 
-\begin_inset Formula $\left(k-1\right)\left|Y_{\bi}\right|/2$
-\end_inset
-
- respectively.
- For 
-\begin_inset Formula $\bi=\left(i,\h\right)$
+ For each 
+\begin_inset Formula $i\in\range q$
 \end_inset
 
 , let 
-\begin_inset Formula $S_{\bi}^{0}=X_{\bi}$
+\begin_inset Formula $S_{i}^{0}=Z_{\left(i,1\right)}$
 \end_inset
 
 , 
-\begin_inset Formula $S_{\bi}^{1}=B_{\flip{\bi}}$
+\begin_inset Formula $S_{i}^{1}=W_{\left(i,2\right)}$
 \end_inset
 
 , 
-\begin_inset Formula $S_{\bi}^{2}=A_{\bi}$
+\begin_inset Formula $S_{i}^{2}=W_{\left(i,1\right)}$
 \end_inset
 
  and 
-\begin_inset Formula $S_{\bi}^{3}=Y_{\flip{\bi}}$
-\end_inset
-
-, so that each 
-\begin_inset Formula $\left(S_{\bi}^{0},S_{\bi}^{2},S_{\bi}^{3},S_{\bi}^{3}\right)$
-\end_inset
-
- is a sequence of clusters of sizes 
-\begin_inset Formula $n_{\bi},\left(k-1\right)n_{\bi}/2,\left(k-1\right)n_{\bi}/2,n_{\bi}$
-\end_inset
-
- for some 
-\begin_inset Formula $n_{\bi}$
-\end_inset
-
-, and each 
-\begin_inset Formula $\left(S_{\bi}^{\ell},S_{\bi}^{\ell+1}\right)$
-\end_inset
-
- is 
-\begin_inset Formula $\left(\varepsilon_{5},\delta_{5}\right)$
-\end_inset
-
--super-regular, for 
-\begin_inset Formula $\delta_{5}=\delta_{4}/2$
-\end_inset
-
- and 
-\begin_inset Formula $\varepsilon_{5}$
-\end_inset
-
- arbitrarily small respective to 
-\begin_inset Formula $\delta_{5}$
+\begin_inset Formula $S_{i}^{3}=Z_{\left(i,2\right)}$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-For each 
-\begin_inset Formula $\bi$
+ Let 
+\begin_inset Formula $n_{i}=\left|Z_{\left(i,1\right)}\right|=\left|Z_{\left(i,2\right)}\right|$
 \end_inset
 
-, we construct an auxiliary graph 
-\begin_inset Formula $G_{\bi}$
+.
+ We construct an auxiliary graph 
+\begin_inset Formula $G_{i}$
 \end_inset
 
  as follows.
@@ -5537,20 +5919,28 @@ For each
 \end_inset
 
  induced by 
-\begin_inset Formula $S_{\bi}^{0}\cup S_{\bi}^{2}\cup S_{\bi}^{3}\cup S_{\bi}^{3}$
+\begin_inset Formula $S_{i}^{0}\cup S_{i}^{2}\cup S_{i}^{3}\cup S_{i}^{3}$
 \end_inset
 
 , and remove every edge not between some 
-\begin_inset Formula $S_{\bi}^{\ell}$
+\begin_inset Formula $S_{i}^{\ell}$
 \end_inset
 
  and 
-\begin_inset Formula $S_{\bi}^{\ell+1}$
+\begin_inset Formula $S_{i}^{\ell+1}$
 \end_inset
 
 .
- Contract each special pair to a single vertex, to obtain a super-regular
- 
+ Contract each special pair (consisting of a vertex in 
+\begin_inset Formula $S_{i}^{0}$
+\end_inset
+
+ and in 
+\begin_inset Formula $S_{i}^{3}$
+\end_inset
+
+) to a single vertex.
+ This yields a super-regular 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5559,11 +5949,11 @@ cluster-cycle
 \end_inset
 
  with 3 clusters 
-\begin_inset Formula $S_{\bi}^{*}$
+\begin_inset Formula $S_{i}^{*}$
 \end_inset
 
 , 
-\begin_inset Formula $S_{\bi}^{1}$
+\begin_inset Formula $S_{i}^{1}$
 \end_inset
 
  and 
@@ -5571,15 +5961,15 @@ cluster-cycle
 \end_inset
 
  of sizes 
-\begin_inset Formula $n_{\bi}$
+\begin_inset Formula $n_{i}$
 \end_inset
 
 , 
-\begin_inset Formula $\left(k-1\right)n_{\bi}/2$
+\begin_inset Formula $\left(k-1\right)n_{i}/2$
 \end_inset
 
  and 
-\begin_inset Formula $\left(k-1\right)n_{\bi}/2$
+\begin_inset Formula $\left(k-1\right)n_{i}/2$
 \end_inset
 
 .
@@ -5595,12 +5985,12 @@ cluster-cycle
 \end_layout
 
 \begin_layout Standard
-The complete blow-up 
+The corresponding complete blow-up 
 \begin_inset Formula $b\left(C_{3}\right)$
 \end_inset
 
  contains 
-\begin_inset Formula $n_{\bi}$
+\begin_inset Formula $n_{i}$
 \end_inset
 
  disjoint 
@@ -5608,7 +5998,7 @@ The complete blow-up
 \end_inset
 
 -cycles (each has a vertex in 
-\begin_inset Formula $S_{\bi}^{*}$
+\begin_inset Formula $S_{i}^{*}$
 \end_inset
 
  and its other 
@@ -5616,11 +6006,11 @@ The complete blow-up
 \end_inset
 
  vertices alternate between 
-\begin_inset Formula $S_{\bi}^{1}$
+\begin_inset Formula $S_{i}^{1}$
 \end_inset
 
  and 
-\begin_inset Formula $S_{\bi}^{2}$
+\begin_inset Formula $S_{i}^{2}$
 \end_inset
 
 ).
@@ -5633,7 +6023,7 @@ The complete blow-up
 \end_inset
 
 -super-regular blow-up 
-\begin_inset Formula $G_{\bi}$
+\begin_inset Formula $G_{i}$
 \end_inset
 
  of 
@@ -5641,7 +6031,7 @@ The complete blow-up
 \end_inset
 
  also contains 
-\begin_inset Formula $n_{\bi}$
+\begin_inset Formula $n_{i}$
 \end_inset
 
  disjoint 
@@ -5654,20 +6044,20 @@ The complete blow-up
 \end_inset
 
  is odd, each of these must use at least one vertex from 
-\begin_inset Formula $S_{\bi}^{*}$
+\begin_inset Formula $S_{i}^{*}$
 \end_inset
 
 , but since 
-\begin_inset Formula $\left|S_{\bi}^{*}\right|=n_{\bi}$
+\begin_inset Formula $\left|S_{i}^{*}\right|=n_{i}$
 \end_inset
 
 , each cycle must then use exactly one vertex from 
-\begin_inset Formula $S_{\bi}^{*}$
+\begin_inset Formula $S_{i}^{*}$
 \end_inset
 
 .
  Each of these cycles corresponds to a special path running through 
-\begin_inset Formula $S_{\bi}^{0},\;S_{\bi}^{2},\;S_{\bi}^{3},\;S_{\bi}^{3}$
+\begin_inset Formula $S_{i}^{0},\;S_{i}^{2},\;S_{i}^{3},\;S_{i}^{3}$
 \end_inset
 
 , and these special paths complete our embedding of 
@@ -5675,6 +6065,10 @@ The complete blow-up
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+THE FOLLOWING PICTURE NEEDS TO BE UPDATED
 \end_layout
 
 \begin_layout Standard

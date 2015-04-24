@@ -458,6 +458,17 @@ for some large $\c_{i}=\c_{i}\left(\a,\D\right)$ to be determined
 later (these $\c_{i}$ will in turn determine $\c$). Let $V=\range n$
 be the common vertex set of $\G$, $\R$ and the $\R_{i}$.
 
+At several points in the proof we will prove that (with high probability)
+there exist certain substructures in the random edges $\R$, and we
+will assume that these substructures (or some corresponding vertex
+sets) are themselves uniformly random. A simple way to see why this
+kind of reasoning is valid, is to notice that if we apply a uniformly
+random vertex permutation to a random graph $\R\in\GG\left(n,p\right)$,
+then by symmetry the resulting distribution is still $\GG\left(n,p\right)$.
+So we can imagine that we are finding substructures in an auxiliary
+random graph, then randomly mapping these structures to our vertex
+set.
+
 
 \subsection{Case 1: $\protect\T$ has many leaves\label{sub:many-leaves}}
 
@@ -595,14 +606,19 @@ neighbours in $V_{\flip{\h}}$, then we say $\left(V_{1},V_{2}\right)$
 is \emph{$\left(\varepsilon,\delta\right)$-super-regular}.\end{defn}
 \begin{lem}
 \label{lem:partition-into-blobs}For $\a,\varepsilon>0$ with $\varepsilon$
-sufficiently small relative to $\a$, there are $\delta=\delta\left(\a\right)>0$,
-$M=M\left(\a,\varepsilon\right)$, $a=a\left(\a,\varepsilon\right)>0$
-and $b=b\left(\a,\varepsilon\right)>0$ such that the following holds.
+sufficiently small relative to $\a$, there are $\delta=\delta\left(\a\right)>0$
+and $M=M\left(\a,\varepsilon\right)$, such that the following holds.
 Let $\G$ be a graph on $\range n$ with minimum degree at least $\a n$.
 We can choose $q\le M$ and partition $\range n$ into sets $V_{i}^{\h}$
 ($1\le i\le q$, $\h=1,2$) such that each $\left|V_{i}^{\h}\right|=\Theta\left(n\right)$
 and each pair $\left(V_{i}^{1},V_{i}^{2}\right)$ is $\left(\varepsilon,\delta\right)$-super-regular.
 \end{lem}
+We emphasize that in \ref{lem:partition-into-blobs} we do \emph{not
+}guarantee that the sets $V_{i}^{\h}$ are the same size. We will
+however see in the proof that the variation in the sizes of the clusters
+only depends on $\a$ and not $\varepsilon$ (that is, the ratio between
+the largest and smallest cluster is bounded by a function of $\a$).
+
 To prove \ref{lem:partition-into-blobs}, we will apply Szemer\'edi's
 regularity lemma to obtain a reduced \emph{cluster graph}, then decompose
 this cluster graph into small stars. In each star $T_{i}$, the centre
@@ -641,16 +657,32 @@ of the theorems about $\left(\varepsilon,\delta\right)$-dense pairs
 correspond to analogous theorems for $\varepsilon$-regular pairs
 with density about $\delta$.
 \begin{lem}
-\label{lem:combine-clusters}Suppose $V_{1},\dots,V_{r}$ are clusters
-of the same sizes such that each $\left(V^{1},V_{i}^{2}\right)$ is
-$\left(\varepsilon,\delta\right)$-dense. Let $V^{2}=\bigcup_{i=1}^{r}V_{i}^{2}$;
-then $\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\delta/r\right)$-dense.\end{lem}
+\label{lem:combine-clusters}Suppose $V_{1}^{2},\dots,V_{r}^{2}$
+are clusters such that each $\left(V^{1},V_{i}^{2}\right)$ is $\left(\varepsilon,\delta\right)$-dense.
+Let $V^{2}=\bigcup_{i=1}^{r}V_{i}^{2}$; then $\left(V^{1},V^{2}\right)$
+is $\left(\varepsilon,\delta'\right)$-dense, where $\delta'=\delta\min_{i}\left|V_{i}^{2}\right|/\left|V^{2}\right|$.
+In particular if each $V_{i}^{2}$ has the same size then $\delta'=\delta/r$.
+If moreover each each $\left(V^{1},V_{i}^{2}\right)$ is $\left(\varepsilon,\delta\right)$-super-regular,
+then $\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\delta'\right)$-super-regular.\end{lem}
 \begin{proof}
 Let $U^{\h}\subseteq V^{\h}$ with $\left|U^{\h}\right|\ge\varepsilon\left|V^{\h}\right|$.
-Let $V_{i}^{2}$ be the cluster which has the largest intersection
-with $U^{2}$, so we have $\left|U^{2}\cap V_{i}^{2}\right|\ge\varepsilon\left|V^{2}\right|/r=\varepsilon\left|V_{i}^{2}\right|$,
-and there are therefore at least $\delta\left|U^{1}\right|\left|U^{2}\cap V_{i}^{2}\right|\ge\left(\delta/r\right)\left|U^{1}\right|\left|U^{2}\right|$
-edges between $U^{1}$ and $U^{2}$.\end{proof}
+Choose $i$ so that $\left|U^{2}\cap V_{i}^{2}\right|/\left|V_{i}^{2}\right|$
+is maximized, so that $\left|U^{2}\cap V_{i}^{2}\right|\ge\varepsilon\left|V_{i}^{2}\right|$.
+By our choice of $i$, 
+\[
+\left|U^{2}\right|=\sum_{j=1}^{r}\frac{\left|U^{2}\cap V_{j}^{2}\right|}{\left|V_{j}^{2}\right|}\left|V_{j}^{2}\right|\le\frac{\left|U^{2}\cap V_{i}^{2}\right|}{\left|V_{i}^{2}\right|}\sum_{j=1}^{r}\left|V_{j}^{2}\right|=\frac{\left|U^{2}\cap V_{i}^{2}\right|}{\left|V_{i}^{2}\right|}\left|V^{2}\right|,
+\]
+so $\left|U^{2}\cap V_{i}^{2}\right|\ge\left|U^{2}\right|\min_{j}\left|V_{j}^{2}\right|/\left|V^{2}\right|$.
+It follows that there are at least $\delta\left|U^{1}\right|\left|U^{2}\cap V_{i}^{2}\right|\ge\delta'\left|U^{1}\right|\left|U^{2}\right|$
+edges between $U^{1}$ and $U^{2}$, and $\left(V^{1},V^{2}\right)$
+is $\left(\varepsilon,\delta'\right)$-dense.
+
+The claim about super-regularity is straightforward. Note that each
+$v\in V^{2}$ has $\delta\left|V^{1}\right|\ge\delta'\left|V^{1}\right|$
+neighbours in $V^{1}$ by the super-regularity of each $\left(V^{1},V_{i}^{2}\right)$.
+Each $v\in V^{1}$ has $\delta\left|V_{i}^{2}\right|$ neighbours
+in each $V_{i}^{1}$, for a total of $\delta\left|V^{2}\right|\ge\delta'\left|V^{2}\right|$
+neighbours in $V^{2}$.\end{proof}
 \begin{lem}
 \label{lem:robust-regular}Let $\left(V^{1},V^{2}\right)$ be an $\left(\varepsilon,\delta\right)$-dense
 pair with $\varepsilon$ sufficiently small , and suppose we have
@@ -694,26 +726,29 @@ most $1+1/\a$ vertices.\end{lem}
 Let $Q$ be a union of such stars with the maximum number of vertices.
 Suppose there is a vertex $v$ uncovered by $Q$. If $v$ has a neighbour
 which is a centre of one of the stars in $Q$, and that star has fewer
-than $1+1/\a$ vertices, then we could add $v$ to that star, contradicting
-maximality. (Here we allow either vertex of a 2-vertex star to be
-considered the ``centre''). Otherwise, if $v$ has a neighbour $w$
-which is a leaf of one of the stars in $Q$, then we could remove
-that leaf from its star and create a new 2-vertex star with edge $vw$,
-again contradicting maximality. The remaining case is where each of
-the (at least $\a n$) neighbours of $v$ is a centre of a star with
-$1+\floor{1/\a}>1/\a$ vertices. But these stars would comprise more
-than $n$ vertices, which is again a contradiction. We conclude that
-$Q$ covers $G$, as desired.
+than $1+\floor{1/\a}$ vertices, then we could add $v$ to that star,
+contradicting maximality. (Here we allow either vertex of a 2-vertex
+star to be considered the ``centre''). Otherwise, if $v$ has a
+neighbour $w$ which is a leaf of one of the stars in $Q$, then we
+could remove that leaf from its star and create a new 2-vertex star
+with edge $vw$, again contradicting maximality. The remaining case
+is where each of the (at least $\a n$) neighbours of $v$ is a centre
+of a star with $1+\floor{1/\a}>1/\a$ vertices. But these stars would
+comprise more than $n$ vertices, which is again a contradiction.
+We conclude that $Q$ covers $G$, as desired.
 \end{proof}
 
 \begin{proof}[Proof of \ref{lem:partition-into-blobs}]
 Apply our minimum degree form of Szemer\'edi's regularity lemma,
 with some $\varepsilon'$ to be determined (which we will repeatedly
 assume is sufficiently small). Let $Q$ be a cover of $C$ by stars
-$T_{1},\dots,T_{q}$ of size at most $1/\a'$, as guaranteed by \ref{lem:star-cover}.
-Let $W_{i}^{1}$ be the centre cluster of $T_{i}$, and let $W_{i}^{2}$
-be the union of the leaf clusters of $T_{i}$ (for two-vertex stars,
-arbitrarily choose one vertex as the ``leaf'' and one as the ``centre'').
+$T_{1},\dots,T_{q}$ of size at most $1+1/\a'$, as guaranteed by
+\ref{lem:star-cover}. Let $W_{i}^{1}$ be the centre cluster of $T_{i}$,
+and let $W_{i}^{2}$ be the union of the leaf clusters of $T_{i}$
+(for two-vertex stars, arbitrarily choose one vertex as the ``leaf''
+and one as the ``centre''). Each edge of the cluster graph $C$
+corresponds to an $\left(\varepsilon',\a'/2\right)$-dense pair, and
+each $W_{i}^{\h}$ is the union of at most $1/\a'$ clusters $V_{i}$.
 By \ref{lem:combine-clusters}, with $\delta'=\left(\a'\right)^{2}/2$
 each pair $\left(W_{i}^{1},W_{i}^{2}\right)$ is $\left(\varepsilon',\delta'\right)$-dense
 in $\G'$ (therefore $\G$).
@@ -777,34 +812,37 @@ vertex-disjoint bare paths of length $k$ each.
 
 
 In our case $\ell=\lambda n$. If we choose $k$ large enough and
-$\lambda$ small enough, then $\T$ contains a collection of $\psi n:=n/\left(2\left(k-1\right)\right)$
-disjoint bare $k$-paths. (We also impose that $k$ is odd, for reasons
-that will become clear later). If we delete the interior vertices
-of these paths, then we are left with a forest $\F$ on $n/2$ vertices.
+$\lambda$ small enough, then $\T$ contains a collection of $n/\left(2\left(k-1\right)\right)$
+disjoint bare $k$-paths. (The definite value of $k$ will be determined
+later, and will depend on $\varepsilon$ through the $s_{\bi}$).
+If we delete the interior vertices of these paths, then we are left
+with a forest $\F$ on $n/2$ vertices.
 
-Now, embed $\F$ into $\R_{1}$. There are $\psi n$ ``special pairs''
-of vertices of $\F\subseteq\R_{1}$ that need to be connected with
-$k$-paths. We call such connecting paths ``special paths''. For
-each special pair, arbitrarily choose one vertex to be ``$\x$-type''
-and the other to be ``$\y$-type''. Let $X$ and $Y$ be the set
-of $\x$-type and $\y$-type vertices, respectively. By symmetry we
-can assume 
+Now, embed $\F$ into $\R_{1}$. There are $n/\left(2\left(k-1\right)\right)$
+``special pairs'' of ``special vertices'' of $\F\subseteq\R_{1}$
+that need to be connected with $k$-paths. We call such connecting
+paths ``special paths''. For each special pair, arbitrarily choose
+one vertex to be ``$\x$-type'' and the other to be ``$\y$-type''.
+Let $X$ and $Y$ be the set of $\x$-type and $\y$-type vertices,
+respectively. By symmetry we can assume 
 \[
 X\,\cup\,Y\,\cup\,\F\backslash\left(X\cup Y\right)\,\cup\,V\backslash\F
 \]
-is a uniformly random partition of $V$ into parts of sizes $\psi n$,
-$\psi n$, $n/2-2\psi n$, $n/2$, and that the special pairs correspond
-to a uniformly random bijection between $X$ and $Y$. Let $X_{\bi}=V_{\bi}\cap X$
-and $Y_{\bi}=V_{\bi}\cap Y$, and let $Z_{\bi,\bj}$ be the set of
-special pairs in $X_{\bi}\times Y_{\bj}$. Let $X_{\bi,\bj}\subseteq X_{\bi}$
-and $Y_{\bi,\bj}\subseteq Y_{\bj}$ be the set of $\x$-type and $\y$-type
-vertices in pairs in $Z_{\bi,\bj}$, respectively. Also let $W_{\bi}=V_{\bi}\backslash F$
-be the set of ``free'' vertices remaining in $V_{\bi}$.
+is a uniformly random partition of $V$ into parts of sizes $n/\left(2\left(k-1\right)\right)$,
+$n/\left(2\left(k-1\right)\right)$, $n/2-2n/\left(2\left(k-1\right)\right)$
+and $n/2$ respectively. We can also assume that the special pairs
+correspond to a uniformly random bijection between $X$ and $Y$.
+Let $X_{\bi}=V_{\bi}\cap X$ and $Y_{\bi}=V_{\bi}\cap Y$, and let
+$Z_{\bi,\bj}$ be the set of special pairs in $X_{\bi}\times Y_{\bj}$.
+Let $X_{\bi,\bj}\subseteq X_{\bi}$ and $Y_{\bi,\bj}\subseteq Y_{\bj}$
+be the set of $\x$-type and $\y$-type vertices in pairs in $Z_{\bi,\bj}$,
+respectively. Also let $W_{\bi}=V_{\bi}\backslash F$ be the set of
+``free'' vertices remaining in $V_{\bi}$.
 
 By a concentration inequality for the hypergeometric distribution
 and the union bound, a.a.s. each $\left|W_{\bi}\right|\sim s_{\bi}n/2$.
-Similarly each $\left|X_{\bi}\right|\sim\left|Y_{\bi}\right|\sim\psi s_{\bi}n$,
-and each $\left|X_{\bi,\bj}\right|=\left|Y_{\bi,\bj}\right|=\left|Z_{\bi,\bj}\right|\sim\psi s_{\bi}s_{\bj}n$.
+Similarly each $\left|X_{\bi}\right|\sim\left|Y_{\bi}\right|\sim s_{\bi}n/\left(2\left(k-1\right)\right)$,
+and each $\left|X_{\bi,\bj}\right|=\left|Y_{\bi,\bj}\right|=\left|Z_{\bi,\bj}\right|\sim s_{\bi}s_{\bj}n/\left(2\left(k-1\right)\right)$.
 If we condition on the sizes of each $W_{\bi}$, $X_{\bi,\bj}$, $Y_{\bj,\bi}$,
 each is a uniformly random subset of $V_{\bi}$ of its size.
 
@@ -849,13 +887,11 @@ vertices from $\G\cup\R$, gradually making the remaining graph easier
 to deal with. So, remove from each $V_{\bi}$ all vertices used in
 $\F\backslash\left(X\cup Y\right)$. Update $n$ to be the number
 of vertices not used to embed $\F\backslash\left(X\cup Y\right)$
-(previously $\left(1/2+2\psi\right)n$), and update each $s_{\bi}$
-to still satisfy $s_{\bi}n=\left|V_{\bi}\right|$ (this does not change
-$s_{\bi}$ asymptotically). We now have 
+(previously $\left(1/2+1/\left(k-1\right)\right)n$). We now have
 \[
-\left|Z_{\bi,\bj}\right|\sim\psi s_{\bi}s_{\bj}n/\left(1/2+2\psi\right)=s_{\bi}s_{\bj}n/\left(k+1\right).
+\left|V_{\bi}\right|\sim s_{\bi}n,\;\,\left|W_{\bi}\right|\sim\frac{k-1}{k+1}s_{\bi}n,\;\,,\left|X_{\bi}\right|,\left|Y_{\bi}\right|\sim\frac{1}{k+1}s_{\bi}n\;\,\left|Z_{\bi,\bj}\right|\sim\frac{1}{k+1}s_{\bi}s_{\bj}n
 \]
-
+for each $\bi,\bj$.
 
 
 \subsubsection{Embedding special paths not compatible with the super-regular partition\label{sub:embed-paths-between}}
@@ -890,9 +926,9 @@ Uniformly at random choose $t_{i}$ disjoint $n$-vertex subsets of
 each $V_{i}$. This gives a total of $k-1$ such subsets; arrange
 these into a sequence $W_{1},\dots,W_{k-1}$ in such a way that $W_{1}\subseteq V_{1}$
 and $W_{k-1}\subseteq V_{r}$. By concentration and the union bound,
-for $\delta_{1}=\delta/2$ each $x\in X$ (respectively, $y\in Y$)
+for $\delta_{1}<\delta$ each $x\in X$ (respectively, $y\in Y$)
 has at least $\delta_{1}\left|W_{1}\right|$ neighbours in $W_{1}$
-(respectively, $\delta_{1}\left|V_{k-1}\right|$ neighbours in $W_{k-1}$).
+(respectively, $\delta_{1}\left|W_{k-1}\right|$ neighbours in $W_{k-1}$).
 To summarize these minimum degree conditions, we say that the situation
 is ``$\delta_{1}$-good''.
 
@@ -909,41 +945,58 @@ $v_{j}^{1},\dots,v_{j}^{n}$ (independently for $1\le j\le k-1$).
 Now, let the special pairs be $\left(\x^{1},\y^{1}\right),\dots,\left(\x^{n},\y^{n}\right)$.
 Let $I_{X}$ (respectively $I_{Y}$) be the set of indices $i\le n/2$
 such that $v_{1}^{i}$ is adjacent to $\x^{i}$ (respectively, $v_{k-1}^{i}$
-is adjacent to $\y^{i}$). By linearity of expectation, $\E\left|I_{X}\right|,\E\left|I_{Y}\right|\ge\left(\delta_{1}/2\right)n$.
-If we vary the ordering $v_{1}^{1},\dots,v_{1}^{n}$ (respectively
-$v_{k-1}^{1},\dots,v_{k-1}^{n}$) by a transposition, this changes
-$\left|I_{X}\right|$ (respectively $\left|I_{Y}\right|$) by at most
-2. So, by a bounded-differences concentration inequality (for example
-\cite[Lemma~B.1]{FP04}), a.a.s. we have $\left|I_{X}\right|,\left|I_{Y}\right|\ge\left(\delta_{1}/3\right)n$.
+is adjacent to $\y^{i}$). Since the situation is $\delta_{1}$-good,
+$\E\left|I_{X}\right|,\E\left|I_{Y}\right|\ge\delta'n/2$ by linearity
+of expectation. If we vary the ordering $v_{1}^{1},\dots,v_{1}^{n}$
+(respectively $v_{k-1}^{1},\dots,v_{k-1}^{n}$) by a transposition,
+this changes $\left|I_{X}\right|$ (respectively $\left|I_{Y}\right|$)
+by at most 2. So, by a bounded-differences concentration inequality
+(see for example \cite[Section~16.2 (McDiarmid's Inequality)]{MR02}),
+a.a.s. we have $\left|I_{X}\right|,\left|I_{Y}\right|\ge\left(\delta_{1}/3\right)n$.
 Conditioning on $I_{X}$ and $\left|I_{Y}\right|$, a concentration
 inequality for the hypergeometric distribution shows that a.a.s. $\left|I_{X}\cap I_{Y}\right|\ge\gamma\left(\delta_{1}\right)n$,
-where $\gamma\left(\delta_{1}\right)=\delta_{1}^{2}/10$. The indices
-in $I_{X}\cap I_{Y}$ correspond to $\gamma\left(\delta_{1}\right)n$
+where $\gamma\left(\delta_{1}\right)=\delta_{1}^{2}/10<\left(\delta_{1}/3\right)^{2}$.
+The indices in $I_{X}\cap I_{Y}$ correspond to $\gamma\left(\delta_{1}\right)n$
 special paths $\x^{i},v_{1}^{i},\dots,v_{k-1}^{i},\y^{i}$.
 
-Remove these special paths and and their vertices in $W_{i}$. Let
-$\delta_{i}=\delta_{1}/\left(1+\left(i-1\right)/r\right)$; by concentration
-and the union bound the situation is still a.a.s. $\delta_{2}$-good
+Remove these special paths and and their vertices. The vertices removed
+in $W_{1}$ and $W_{k-1}$ comprise uniformly random subsets of their
+size, so again we can use concentration and the union bound to see
+that the situation is still a.a.s. $\delta_{2}$-good (for any $\delta_{2}<\delta_{1}$)
 after these removals. We can therefore repeat the previous argument
-using $\R_{2}$ to find more special paths. After repeating the argument
-all $r$ times (before iteration $i$ we are $\delta_{i}$-good),
-there are at most 
+using $\R_{2}$ (and a slightly lower ``goodness parameter''), to
+find more special paths. In fact for any sequence $\delta_{1}>\delta_{2}>\dots>\delta_{r}$,
+we can repeat the argument $r$ times, where before iteration $i$
+we are $\delta_{i}$-good. Let $\delta_{r}=\delta/2$ (say $\delta_{i}=\delta\left(1-i/\left(2r\right)\right)$),
+so there are at most 
 \[
-n\prod_{i=0}^{r-1}\left(1-\gamma\left(\delta_{i}\right)\right)\le\left(1-\gamma\left(\delta/4\right)\right)^{r}n
+n\prod_{i=1}^{r}\left(1-\gamma\left(\delta_{i}\right)\right)\le\left(1-\gamma\left(\delta/2\right)\right)^{r}n
 \]
-vertices remaining in $X$ and in $Y$. If we choose large enough
-$r$ this is fewer than $\xi n$ remaining vertices, as required.
+vertices remaining in $X$ and in $Y$ after all the $r$ iterations.
+If we choose large enough $r$ this is fewer than $\xi n$ remaining
+vertices, as required.
 \end{proof}
 Now we return to the proof of \ref{thm:main-theorem}. For each $\bi,\bj$
-with $\bj\ne\flip{\bi}$, and some very small $\xi=\xi\left(a,\delta\right)>0$,
+with $\bj\ne\flip{\bi}$, and some very small $\xi=\xi\left(\varepsilon,\delta\right)>0$,
 we want to find $\left(1-\xi\right)s_{\bi}s_{\bj}n/\left(k+1\right)$
-special paths connecting special pairs in $Z_{\bi,\bj}$, in such
-a way that each of these special paths has one interior vertex from
+special paths connecting special pairs in $Z_{\bi,\bj}$. It is convenient
+to do this in such a way that each path connecting a special pair
+in $Z_{\bi,\bj}$ contains mostly vertices from $W_{\bi}$. In particular
+we would like each such special path to have one interior vertex from
 $W_{\flip{\bi}}$, one interior vertex from $W_{\flip{\bj}}$ and
-the other $k-3$ interior vertices from $W_{\bi}$. Provided $k$
-is large we can find our desired paths with at most $\left(2q\right)^{2}$
-applications of \ref{lem:adjusting-paths}. To be precise, as in the
-proof of \ref{lem:adjusting-paths}, we split $\R_{2}$ into $\left(2q\right)^{2}$
+the other $k-3$ interior vertices from $W_{\bi}$. This would remove
+a total of 
+\[
+\left(1-\xi\right)\left(2\left(1-s_{\bi}\right)s_{\flip{\bi}}+\left(k-3\right)s_{\bi}\left(1-s_{\flip{\bi}}\right)\right)n/\left(k+1\right)
+\]
+vertices from each $W_{\bi}$. For large $k$ this expression is less
+than $s_{\bi}\left(1-s_{\flip{\bi}}/2\right)n$. Recall that $\left|W_{\bi}\right|\sim\left(\left(k-1\right)/\left(k+1\right)\right)s_{\bi}n$,
+so if $k$ is large enough then at least $\left(s_{\bi}s_{\flip{\bi}}/3\right)n$
+vertices would remain in each $W_{\bi}$. We can therefore find our
+desired paths with at most $\left(2q\right)^{2}$ applications of
+\ref{lem:adjusting-paths} (recall that $q$ is the number of cluster-pairs
+in \ref{lem:partition-into-blobs}). To be precise, as in the proof
+of \ref{lem:adjusting-paths}, we split $\R_{2}$ into $\left(2q\right)^{2}$
 phases and use \ref{lem:adjusting-paths} to remove paths in each
 phase sequentially. By concentration and the union bound, after each
 phase we still have a suitable minimum degree condition for this to
@@ -957,8 +1010,8 @@ By \ref{lem:random-preserves-superregular}, each $\left(X_{\bi,\bj},W_{\flip{\bi
 $\left(W_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},Y_{\bj,\flip{\bi}}\right)$
 are $\left(\varepsilon_{3},\delta_{3}\right)$-super-regular, where
 $\delta_{3}=\delta_{2}/2$ and $\varepsilon_{3}$ can be arbitrarily
-small respective to $\delta_{3}$. Let $a>0$ satisfy $\left|W_{\bi}\right|\ge an$
-for all $\bi$.
+small respective to $\delta_{3}$. Let $a=\min_{\bi}s_{\bi}s_{\flip{\bi}}/3$,
+so $\left|W_{\bi}\right|\ge an$ for all $\bi$.
 
 Now, for every $\bi,\bj$ with $\bj\ne\flip{\bi}$, we have $\left|Z_{\bi,\bj}\right|=\xi s_{\bi}s_{\bj}n/\left(k+1\right)$.
 The special pairs in all such $Z_{\bi,\bj}$ comprise a total of at
@@ -968,69 +1021,103 @@ remove corresponding special paths without destroying super-regularity,
 as follows. For some bad special pair $\left(\x,\y\right)$ with $\x\in X_{\bi}$
 and $\y\in Y_{\bj}$, greedily build a length-$\left(k-3\right)$
 path $\x w_{1},\dots,w_{k-3}$ in $\G$, where the $w_{\ell}$ alternate
-between $W_{\bi}$ and $W_{\flip{\bi}}$ with $w_{k-3}\in W_{\bi}$
-(recall, $k$ is odd). Then choose a set $U_{x}\subseteq W_{\flip{\bi}}$
-of $\delta_{3}an/2$ neighbours of $w_{k-3}$ and a disjoint set $U_{y}\subseteq W_{\flip{\bj}}$
-of $\delta_{3}an/2$ neighbours of $\y$. Now, note that (if $\c_{3}$
+between $W_{\bi}$ and $W_{\flip{\bi}}$. Then choose a set $U_{x}\subseteq W_{\flip{\bi}}$
+of $\delta_{3}an/4$ neighbours of $w_{k-3}$ and a disjoint set $U_{y}\subseteq W_{\flip{\bj}}$
+of $\delta_{3}an/4$ neighbours of $\y$. Now, note that (if $\c_{3}$
 is large), there is a.a.s. an edge in $\R_{3}$ between any pair of
-disjoint sets of size $\delta_{3}an/2$ (the proof of this is basically
+disjoint sets of size $\delta_{3}an/4$ (the proof of this is basically
 identical to the proof of \ref{lem:bipartite-matching}). Such an
 edge allows us to complete a special path from $\x$ to $\y$, which
 we remove. We can repeat this for each bad special pair. Note that
 these special paths comprise fewer than $\delta_{3}an/2$ vertices
-total, which is so few that each $\left(W_{\bi},W_{\flip{\bi}}\right)$
-is $\left(2\varepsilon_{3},\delta_{3}/2\right)$-super-regular, and
-each $\x\in X_{\bi}$ (respectively $\y\in Y_{\bi}$) has at least
-$\delta_{3}an/2$ neighbours in $W_{\flip{\bi}}$, throughout the
-whole process.
+total, which means that each vertex in $X_{\bi},Y_{\bi},W_{\bi}$
+has at least $\delta_{3}an/2$ neighbours in $W_{\flip{\bi}}$ throughout
+the whole process. Also, after this process each $\left(X_{\bi},W_{\flip{\bi}}\right)$,
+$\left(W_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},Y_{\flip{\bi}}\right)$
+is $\left(2\varepsilon_{3},\delta_{3}/2\right)$-regular.
 
-Now, update all the relevant variables. We are left with a set of
-clusters $X_{\bi},W_{\bi},Y_{\bi}$ partitioning the vertices of $\G\cup\R$,
-such that each $\left(X_{\bi},W_{\flip{\bi}}\right)$, $\left(W_{\bi},W_{\flip{\bi}}\right)$
-and $\left(W_{\bi},Y_{\flip{\bi}}\right)$ is $\left(2\varepsilon_{3},\delta_{3}/2\right)$-regular,
-and each special pair is in some $X_{\bi}\times Y_{\flip{\bi}}$.
-Moreover, with $X$ (respectively $Y$) being the set of $\x$-type
-(respectively $\y$-type) vertices remaining, and $W$ being the set
-of non-special vertices remaining, we have $\left(k-1\right)\left|X\right|=\left(k-1\right)\left|Y\right|=\left|W\right|$.
-For large $k$ each $\left|X_{\bi}\right|,\left|Y_{\bi}\right|,\left|W_{\bi}\right|=\Theta\left(n\right)$,
-and each $\left|X_{\bi}\right|,\left|Y_{\bi}\right|\le\left|W_{\bj}\right|$.
+Now, it is convenient to drop the distinction between $\x$-type and
+$\y$-type vertices: let $Z_{\bi}=X_{\bi}\cup Y_{\bi}$. At the beginning
+of this section we had $\left|X_{\bi}\right|\sim\left|Y_{\bi}\right|$,
+and this is still true since we have deleted asymptotically equally
+many vertices from $X_{\bi}$ and $Y_{\bi}$. So, by \ref{lem:combine-clusters},
+each $\left(Z_{\bi},W_{\flip{\bi}}\right)$ is $\left(2\varepsilon_{3},\delta_{3}/5\right)$-regular.
+
+In summary, the situation now is that we have a set of clusters $Z_{\bi},W_{\bi}$
+of size $\Theta\left(n\right)$ partitioning the vertex set $V$,
+such that each $\left(Z_{\bi},W_{\flip{\bi}}\right)$, and $\left(W_{\bi},W_{\flip{\bi}}\right)$
+is $\left(2\varepsilon_{3},\delta_{3}/5\right)$-regular, and each
+special pair has one element each from $Z_{\bi}$ and $Z_{\flip{\bi}}$.
+ Moreover, with $Z$ and $W$ being the sets of special and non-special
+vertices remaining, we have $\left(k-1\right)\left|Z\right|=2\left|W\right|$
+(this is invariant through removals of special paths). Finally, for
+large $k$ each $\left|W_{\bi}\right|\ge\left|Z_{\bi}\right|+\Theta\left(n\right)$
+(recall that $\left|W_{\bi}\right|$ is of order $s_{\bi}s_{\flip{\bi}}n$,
+and $\left|Z_{\bi}\right|$ is of order $\left(s_{\bi}/k\right)n$).
 
 
 \subsubsection{Adjusting the relative sizes of the clusters\label{sub:embed-relative-sizes}}
 
 The next step is to remove paths such that in the graph that remains,
-we have $\left|W_{\bi}\right|=\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2$
+we have $2\left|W_{\bi}\right|=\left(k-1\right)\left|Z_{\bi}\right|$
 for each $\bi$. This is easily achievable through repeated application
-of \ref{lem:adjusting-paths}, but is a bit fiddly to explain.
+of \ref{lem:adjusting-paths}, but is a bit fiddly to explain. From
+now on we impose that $k$ is odd.
 
-Suppose $\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2+m\ge\left|W_{\bi}\right|$
-and $\left(k-1\right)\left|X_{\bj}\cup Y_{\bj}\right|/2+m\le\left|W_{\bj}\right|$
-for some $m>0$, where one of these inequalities is an equality. Use
-\ref{lem:adjusting-paths} and $\R_{4}$ to find $\floor{m/\left(\left(k-1\right)/2-1\right)}$
-special paths connecting special pairs in $X_{\bi}\times Y_{\flip{\bi}}$,
-each with $\left(k-1\right)/2$ interior vertices in $W_{\flip{\bi}}$,
-one interior vertex in $W_{\bi}$, and the remaining $\left(k-1\right)/2-1$
-interior vertices in $W_{\bj}$.
+Let $D_{\bi}=\left(k-1\right)\left|Z_{\bi}\right|-2\left|W_{\bi}\right|$
+be the ``deficit'' for $\bi$. Since $\left(k-1\right)\left|Z\right|=2\left|W\right|$,
+we have $\sum_{\bi}D_{\bi}=0$. If all the deficits are not already
+zero, then let $D_{\bi}$ be the maximum positive deficit. We will
+remove special paths between $Z_{\bi}$ and $Z_{\bar{\bi}}$ in such
+a way that $D_{\bi}$ becomes zero, no nonpositive deficit becomes
+positive, and such that we still have each $\left|W_{\bi}\right|\ge\left|Z_{\bi}\right|+\Theta\left(n\right)$.
+After at most $2q$ iterations of this argument, all the deficits
+will be zero, as desired.
 
-Then, let 
+In each iteration we will remove a total of $\floor{D_{\bi}/\left(k-3\right)}+1$
+special paths. Each of the first $\floor{D_{\bi}/\left(k-3\right)}$
+paths will have one interior vertex in $W_{\bi}$ and in $W_{\flip{\bi}}$,
+and the other $k-3$ interior vertices coming from $W_{\bi}$ with
+$\bi\ne\flip{\bi}$ (we will explain how to choose these $W_{\bi}$
+shortly). Next, let $r$ be the remainder after dividing $D_{\bi}$
+by $k-3$. Our final special path will have $\left(k-1\right)/2-r/2$
+interior vertices in $W_{\bi}$ and in $W_{\flip{\bi}}$ (recall $k$
+is odd), and the other $r$ interior vertices coming from some $W_{\bi}$
+with $\bi\ne\flip{\bi}$. In all these special paths, we choose the
+as-yet undetermined $W_{\bi}$ arbitrarily, so long as this includes
+no more than $-\left(D_{\flip{\bi}}-D_{\bi}\right)/2$ ($\ge0$) vertices
+from $W_{\flip{\bi}}$, and no more than $-D_{\bi}/2$ vertices from
+each of the other $W_{\bi}$ which have negative deficit. It is easy
+to see that removing all these paths will have the desired effects
+on the deficits.
+
+We find all our special paths with $O\left(1\right)$ applications
+of \ref{lem:adjusting-paths}, using the random edges in $\R_{4}$.
+We make a few observations to show why this is valid. First, note
+that we need $\left|Z_{\bi}\right|,\left|Z_{\flip{\bi}}\right|=\floor{D_{\bi}/\left(k-3\right)}+1+\Theta\left(n\right)$
+and $\left|W_{\bi}\right|,\left|W_{\flip{\bi}}\right|=\floor{D_{\bi}/\left(k-3\right)}+\left(k-1\right)/2-r/2+\Theta\left(n\right)$.
+But this holds for large $n$ because $\left|W_{\bi}\right|,\left|W_{\flip{\bi}}\right|\ge\left|Z_{\bi}\right|=\left|Z_{\flip{\bi}}\right|$
+and
 \[
-r=\left(\left(k-1\right)/2-1\right)\left\langle \frac{m}{\left(k-1\right)/2-1}\right\rangle ,
+\left(\left(k-1\right)-2\right)\left|Z_{\bi}\right|\ge\left(k-1\right)\left|Z_{\bi}\right|-2\left|W_{\bi}\right|+\Theta\left(n\right)=D_{\bi}+\Theta\left(n\right).
 \]
-where $\left\langle \cdot\right\rangle $ denotes the fractional part
-of a real number. With another application of \ref{lem:adjusting-paths},
-find a single special path connecting a special pair in $X_{\bi}\times Y_{\flip{\bi}}$,
-which has $\left(k-1\right)/2$ interior vertices in $W_{\flip{\bi}}$,
-has $\left(k-1\right)/2-r$ interior vertices in $W_{\bi}$, and has
-$r$ interior vertices in $W_{\bj}$. We now have either $\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2=\left|W_{\bi}\right|$
-or $\left(k-1\right)\left|X_{\bj}\cup Y_{\bj}\right|/2=\left|W_{\bj}\right|$.
-After at most $2q$ iterations of this argument, we will have each
-$\left(k-1\right)\left|X_{\bi}\cup Y_{\bi}\right|/2=\left|W_{\bi}\right|$
-as desired. During these iterations we have removed uniformly random
-subsets of certain sizes from each $X_{\bi}$, $W_{\bi}$ and $Y_{\bi}$,
-so by \ref{lem:random-preserves-superregular} each $\left(X_{\bi},W_{\flip{\bi}}\right)$,
-$\left(W_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},Y_{\flip{\bi}}\right)$
+We also need there to be enough vertices in the appropriate $W_{\bi}$
+to fill the undetermined vertices in the special paths (we need $\left(k-3\right)\floor{D_{\bi}/\left(k-3\right)}+r=D_{\bi}$
+such). But this is a consequence of the fact that $\sum_{\bj}D_{\bj}=0$.
+To be precise, the sum of the negative deficits is at least as negative
+as $-D_{\bi}$, so our number of available vertices is
+\[
+\sum_{\bj}\left(-D_{\bj}/2\right)-\left(D_{\flip{\bi}}-D_{\bi}\right)/2\ge D_{\bi},
+\]
+where the sum is over all $\bj\ne\bi,\flip{\bi}$ with $D_{\bj}$
+negative.
+
+After we choose the number of vertices to take from each $W_{\bi}$,
+the removed vertices comprise uniformly random subsets of certain
+sizes from each $Z_{\bi}$ and $W_{\bi}$. By \ref{lem:random-preserves-superregular}
+each $\left(Z_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},W_{\flip{\bi}}\right)$
 is now $\left(\varepsilon_{4},\delta_{4}\right)$-super-regular, where
-$\delta_{4}=\delta_{3}/4$ and $\varepsilon_{4}$ can be arbitrarily
+$\delta_{4}=\delta_{3}/10$ and $\varepsilon_{4}$ can be arbitrarily
 small compared to $\delta_{4}$.
 
 
@@ -1060,36 +1147,32 @@ Now, if a graph $H$ with maximum degree bounded by $\Delta$ can
 be embedded into $b\left(C\right)$, then it can be embedded into
 $b_{\varepsilon,\delta}\left(C\right)$.
 \end{lem}
-Now we describe the setup to apply the blow-up lemma. Uniformly at
-random divide each $W_{\bi}$ into sets $A_{\bi}$ and $B_{\bi}$
-of size $\left(k-1\right)\left|X_{\bi}\right|/2$ and $\left(k-1\right)\left|Y_{\bi}\right|/2$
-respectively. For $\bi=\left(i,\h\right)$, let $S_{\bi}^{0}=X_{\bi}$,
-$S_{\bi}^{1}=B_{\flip{\bi}}$, $S_{\bi}^{2}=A_{\bi}$ and $S_{\bi}^{3}=Y_{\flip{\bi}}$,
-so that each $\left(S_{\bi}^{0},S_{\bi}^{2},S_{\bi}^{3},S_{\bi}^{3}\right)$
-is a sequence of clusters of sizes $n_{\bi},\left(k-1\right)n_{\bi}/2,\left(k-1\right)n_{\bi}/2,n_{\bi}$
-for some $n_{\bi}$, and each $\left(S_{\bi}^{\ell},S_{\bi}^{\ell+1}\right)$
-is $\left(\varepsilon_{5},\delta_{5}\right)$-super-regular, for $\delta_{5}=\delta_{4}/2$
-and $\varepsilon_{5}$ arbitrarily small respective to $\delta_{5}$.
-
-For each $\bi$, we construct an auxiliary graph $G_{\bi}$ as follows.
-Start with the subgraph of $\G$ induced by $S_{\bi}^{0}\cup S_{\bi}^{2}\cup S_{\bi}^{3}\cup S_{\bi}^{3}$,
-and remove every edge not between some $S_{\bi}^{\ell}$ and $S_{\bi}^{\ell+1}$.
-Contract each special pair to a single vertex, to obtain a super-regular
-``cluster-cycle'' with 3 clusters $S_{\bi}^{*}$, $S_{\bi}^{1}$
-and $S_{\bi}^{2}$ of sizes $n_{\bi}$, $\left(k-1\right)n_{\bi}/2$
-and $\left(k-1\right)n_{\bi}/2$. This is a $\left(\varepsilon_{5},\delta_{5}\right)$-super-regular
+Now we describe the setup to apply the blow-up lemma. For each $i\in\range q$,
+let $S_{i}^{0}=Z_{\left(i,1\right)}$, $S_{i}^{1}=W_{\left(i,2\right)}$,
+$S_{i}^{2}=W_{\left(i,1\right)}$ and $S_{i}^{3}=Z_{\left(i,2\right)}$.
+Let $n_{i}=\left|Z_{\left(i,1\right)}\right|=\left|Z_{\left(i,2\right)}\right|$.
+We construct an auxiliary graph $G_{i}$ as follows. Start with the
+subgraph of $\G$ induced by $S_{i}^{0}\cup S_{i}^{2}\cup S_{i}^{3}\cup S_{i}^{3}$,
+and remove every edge not between some $S_{i}^{\ell}$ and $S_{i}^{\ell+1}$.
+Contract each special pair (consisting of a vertex in $S_{i}^{0}$
+and in $S_{i}^{3}$) to a single vertex. This yields a super-regular
+``cluster-cycle'' with 3 clusters $S_{i}^{*}$, $S_{i}^{1}$ and
+$S_{\bi}^{2}$ of sizes $n_{i}$, $\left(k-1\right)n_{i}/2$ and $\left(k-1\right)n_{i}/2$.
+This is a $\left(\varepsilon_{5},\delta_{5}\right)$-super-regular
 blow-up of a 3-cycle $C_{3}$.
 
-The complete blow-up $b\left(C_{3}\right)$ contains $n_{\bi}$ disjoint
-$k$-cycles (each has a vertex in $S_{\bi}^{*}$ and its other $k-1$
-vertices alternate between $S_{\bi}^{1}$ and $S_{\bi}^{2}$). By
-the blow-up lemma, for small $\varepsilon$ the $\left(\varepsilon,\delta''\right)$-super-regular
-blow-up $G_{\bi}$ of $C_{3}$ also contains $n_{\bi}$ disjoint $k$-cycles.
+The corresponding complete blow-up $b\left(C_{3}\right)$ contains
+$n_{i}$ disjoint $k$-cycles (each has a vertex in $S_{i}^{*}$ and
+its other $k-1$ vertices alternate between $S_{i}^{1}$ and $S_{i}^{2}$).
+By the blow-up lemma, for small $\varepsilon$ the $\left(\varepsilon,\delta''\right)$-super-regular
+blow-up $G_{i}$ of $C_{3}$ also contains $n_{i}$ disjoint $k$-cycles.
 Since $k$ is odd, each of these must use at least one vertex from
-$S_{\bi}^{*}$, but since $\left|S_{\bi}^{*}\right|=n_{\bi}$, each
-cycle must then use exactly one vertex from $S_{\bi}^{*}$. Each of
-these cycles corresponds to a special path running through $S_{\bi}^{0},\;S_{\bi}^{2},\;S_{\bi}^{3},\;S_{\bi}^{3}$,
+$S_{i}^{*}$, but since $\left|S_{i}^{*}\right|=n_{i}$, each cycle
+must then use exactly one vertex from $S_{i}^{*}$. Each of these
+cycles corresponds to a special path running through $S_{i}^{0},\;S_{i}^{2},\;S_{i}^{3},\;S_{i}^{3}$,
 and these special paths complete our embedding of $\T$.
+
+THE FOLLOWING PICTURE NEEDS TO BE UPDATED
 
 \begin{figure}[h]
 \begin{center}
