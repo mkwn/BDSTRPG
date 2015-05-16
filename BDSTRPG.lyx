@@ -2499,7 +2499,7 @@ For
 \end_inset
 
 , 
-\begin_inset Formula $R=R\left(\a\right)$
+\begin_inset Formula $\rho=\rho\left(\a\right)$
 \end_inset
 
  and 
@@ -2554,7 +2554,7 @@ For
 
 -super-regular.
  Moreover, each 
-\begin_inset Formula $\left|V_{i}^{\h}\right|/\left|V_{j}^{g}\right|\le R$
+\begin_inset Formula $\left|V_{i}^{\h}\right|/\left|V_{j}^{g}\right|\le\rho$
 \end_inset
 
 .
@@ -2952,11 +2952,8 @@ Let
 \begin_inset Formula $\left(\varepsilon,\delta\right)$
 \end_inset
 
--dense pair with 
-\begin_inset Formula $\varepsilon$
-\end_inset
-
- sufficiently small , and suppose we have 
+-super-regular pair.
+ Suppose we have 
 \begin_inset Formula $W^{\h}\supseteq V^{\h}$
 \end_inset
 
@@ -2964,33 +2961,7 @@ Let
 \begin_inset Formula $\left|W^{\h}\right|\le\left(1+f\varepsilon\right)\left|V^{\h}\right|$
 \end_inset
 
-.
- Then 
-\begin_inset Formula $\left(W^{1},W^{2}\right)$
-\end_inset
-
- is an 
-\begin_inset Formula $\left(\varepsilon',\delta'\right)$
-\end_inset
-
--dense pair, with 
-\begin_inset Formula $\varepsilon'=\max\left\{ 2f,1+f\right\} \varepsilon$
-\end_inset
-
- and 
-\begin_inset Formula $\delta'=\min\left\{ 1/4,1/\left(1+f\varepsilon\right)\right\} \delta$
-\end_inset
-
-.
- If moreover 
-\begin_inset Formula $\left(V^{1},V^{2}\right)$
-\end_inset
-
- is 
-\begin_inset Formula $\left(\varepsilon,\delta\right)$
-\end_inset
-
--super-regular and each vertex in 
+, and suppose that each vertex in 
 \begin_inset Formula $W^{\h}\backslash V^{\h}$
 \end_inset
 
@@ -3002,7 +2973,8 @@ Let
 \begin_inset Formula $W^{\flip{\h}}$
 \end_inset
 
-, then 
+.
+ Then 
 \begin_inset Formula $\left(W^{1},W^{2}\right)$
 \end_inset
 
@@ -3010,7 +2982,15 @@ Let
 \begin_inset Formula $\left(\varepsilon',\delta'\right)$
 \end_inset
 
--super-regular pair.
+-super-regular pair, where 
+\begin_inset Formula 
+\[
+\varepsilon'=\max\left\{ 2f,1+f\right\} \,\varepsilon,\quad\delta'=\min\left\{ 1/4,1/\left(1+f\varepsilon\right)\right\} \,\delta.
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Proof
@@ -3060,16 +3040,7 @@ Suppose
 \end_layout
 
 \begin_layout Proof
-Now consider the second part of the lemma where 
-\begin_inset Formula $\left(V^{1},V^{2}\right)$
-\end_inset
-
- is 
-\begin_inset Formula $\left(\varepsilon,\delta\right)$
-\end_inset
-
--super-regular.
- By this super-regularity each 
+Next, note that each 
 \begin_inset Formula $v\in V^{\h}$
 \end_inset
 
@@ -3984,9 +3955,9 @@ free
 \end_layout
 
 \begin_layout Standard
-Here and in future parts of the proof, it is critical that these kinds of
- random subsets of our super-regular pairs maintain super-regularity (albeit
- with slightly weaker 
+Here and in future parts of the proof, it is critical that after we take
+ certain subsets of our super-regular pairs, we maintain super-regularity
+ or at least density (albeit with weaker 
 \begin_inset Formula $\varepsilon$
 \end_inset
 
@@ -3995,7 +3966,64 @@ Here and in future parts of the proof, it is critical that these kinds of
 \end_inset
 
 ).
- We will ensure this by appealing to the following lemma.
+ We will ensure this in each situation by appealing to one of the following
+ two lemmas.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:large-preserves-dense"
+
+\end_inset
+
+Suppose 
+\begin_inset Formula $\left(V^{1},V^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon,\delta\right)$
+\end_inset
+
+-dense, and let 
+\begin_inset Formula $W^{\h}\subseteq V^{\h}$
+\end_inset
+
+ with 
+\begin_inset Formula $\left|W^{\h}\right|\ge\gamma\left|V^{\h}\right|$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\left(W^{1},W^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\varepsilon/\gamma,\delta\right)$
+\end_inset
+
+-dense.
+\end_layout
+
+\begin_layout Proof
+If 
+\begin_inset Formula $U^{\h}\subseteq W^{\h}$
+\end_inset
+
+ with 
+\begin_inset Formula $\left|U^{\h}\right|\ge\left(\varepsilon/\gamma\right)\left|W^{\h}\right|$
+\end_inset
+
+, then 
+\begin_inset Formula $\left|U^{\h}\right|\ge\varepsilon\left|V^{\h}\right|$
+\end_inset
+
+.
+ The result follows from the definition of 
+\begin_inset Formula $\left(\varepsilon,\delta\right)$
+\end_inset
+
+-denseness.
 \end_layout
 
 \begin_layout Lemma
@@ -4307,8 +4335,16 @@ removing
 \begin_inset Formula $s_{\bi}$
 \end_inset
 
- is still bounded independently of 
+ is (still) bounded independently of 
 \begin_inset Formula $\varepsilon$
+\end_inset
+
+; we can increase 
+\begin_inset Formula $\rho$
+\end_inset
+
+ slightly so that each 
+\begin_inset Formula $\left|s_{\bi}\right|/\left|s_{\bj}\right|\le\rho$
 \end_inset
 
 .
@@ -4399,10 +4435,7 @@ moves
 \end_inset
 
  special paths connecting the new special pairs.
-\end_layout
-
-\begin_layout Standard
-The choice of 
+ The choice of 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4421,7 +4454,76 @@ destination
 
 .
  An easy way to do this is to distribute our special pairs randomly.
- For a special pair 
+\end_layout
+
+\begin_layout Standard
+We now explain how to find the desired length-2 paths.
+ Uniformly at random partition each 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ into sets 
+\begin_inset Formula $W_{\bi}^{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $W_{\bi}^{2}$
+\end_inset
+
+ of size 
+\begin_inset Formula $\left|W_{\bi}\right|/2$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $a=\min_{\bi}\left|W_{\bi}^{1}\right|/n$
+\end_inset
+
+; by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:random-preserves-superregular"
+
+\end_inset
+
+ each 
+\begin_inset Formula $\x\in X_{\bi}$
+\end_inset
+
+ has at least 
+\begin_inset Formula $\left(\delta_{2}/2\right)an$
+\end_inset
+
+ neighbours in 
+\begin_inset Formula $W_{\flip{\bi}}^{1}$
+\end_inset
+
+.
+ Note that (if 
+\begin_inset Formula $\c_{3}$
+\end_inset
+
+ is large), there is a.a.s.
+ an edge in 
+\begin_inset Formula $\R_{3}$
+\end_inset
+
+ between any pair of disjoint sets of size 
+\begin_inset Formula $\left(\delta_{2}a/4\right)n$
+\end_inset
+
+ (the proof of this is basically identical to the proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:bipartite-matching"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+For a special pair 
 \begin_inset Formula $\left\{ \x,\y\right\} $
 \end_inset
 
@@ -4438,20 +4540,16 @@ destination
 \end_inset
 
 .
- Let 
-\begin_inset Formula $a=\min_{\bi}\left|W_{\bi}\right|/n$
-\end_inset
-
-, so that 
+ Now, 
 \begin_inset Formula $\x$
 \end_inset
 
  has at least 
-\begin_inset Formula $\delta_{2}an>\left(\delta_{2}a/2\right)n$
+\begin_inset Formula $\left(\delta_{2}a/4\right)n$
 \end_inset
 
  neighbours in 
-\begin_inset Formula $W_{\bi}$
+\begin_inset Formula $W_{\flip{\bi}}^{1}$
 \end_inset
 
  and 
@@ -4459,53 +4557,32 @@ destination
 \end_inset
 
  has at least 
-\begin_inset Formula $\delta_{2}an>\left(\delta_{2}a/2\right)n$
+\begin_inset Formula $\left(\delta_{2}a/4\right)n$
 \end_inset
 
  neighbours in 
-\begin_inset Formula $W_{\bj}$
+\begin_inset Formula $W_{\flip{\bj}}^{1}$
 \end_inset
 
 .
- Now, note that (if 
-\begin_inset Formula $\c_{3}$
-\end_inset
-
- is large), there is a.a.s.
- an edge in 
-\begin_inset Formula $\R_{3}$
-\end_inset
-
- between any pair of disjoint sets of size 
-\begin_inset Formula $\left(\delta_{2}a/2\right)n$
-\end_inset
-
- (the proof of this is basically identical to the proof of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:bipartite-matching"
-
-\end_inset
-
-).
- Certainly each 
-\begin_inset Formula $\left|W_{\bi}\right|\ge\left(\delta_{2}a/2\right)n$
+ Certainly 
+\begin_inset Formula $\left|W_{\br}^{2}\right|,\left|W_{\flip{\br}}^{2}\right|\ge\left(\delta_{2}a/4\right)n$
 \end_inset
 
 , so there is an edge between 
-\begin_inset Formula $N\left(\x\right)\cap W_{\flip{\bi}}$
+\begin_inset Formula $N\left(\x\right)\cap W_{\bi}^{1}$
 \end_inset
 
  and 
-\begin_inset Formula $W_{\br}$
+\begin_inset Formula $W_{\br}^{2}$
 \end_inset
 
  (respectively, between 
-\begin_inset Formula $N\left(\y\right)\cap W_{\flip{\bj}}$
+\begin_inset Formula $N\left(\y\right)\cap W_{\flip{\bj}}^{1}$
 \end_inset
 
  and 
-\begin_inset Formula $W_{\flip{\br}}$
+\begin_inset Formula $W_{\flip{\br}}^{2}$
 \end_inset
 
 ), giving length-2 paths between 
@@ -4513,7 +4590,7 @@ reference "lem:bipartite-matching"
 \end_inset
 
  and some 
-\begin_inset Formula $\x'\in W_{\br}$
+\begin_inset Formula $\x'\in W_{\br}^{2}$
 \end_inset
 
 , and between 
@@ -4521,11 +4598,11 @@ reference "lem:bipartite-matching"
 \end_inset
 
  and some 
-\begin_inset Formula $\y'\in W_{\flip{\br}}$
+\begin_inset Formula $\y'\in W_{\flip{\br}}^{2}$
 \end_inset
 
 .
- We can then remove 
+ We can then remove from consideration 
 \begin_inset Formula $\x$
 \end_inset
 
@@ -4533,12 +4610,12 @@ reference "lem:bipartite-matching"
 \begin_inset Formula $\y$
 \end_inset
 
- and the two vertices used in 
-\begin_inset Formula $W_{\flip{\bi}}$
+ and the vertices used in 
+\begin_inset Formula $W_{\flip{\bi}}^{1}$
 \end_inset
 
- and 
-\begin_inset Formula $W_{\flip{\bj}}$
+ and in 
+\begin_inset Formula $W_{\flip{\bj}}^{1}$
 \end_inset
 
 .
@@ -4551,33 +4628,46 @@ We claim that for large
 
  we can a.a.s.
  repeat this procedure for every special pair.
- Indeed, the only issue would be if we tried to take more than 
-\begin_inset Formula $\left(\delta_{2}a/2\right)n$
+ Indeed, the only issue would be if we tried to take too many (say, more
+ than more than 
+\begin_inset Formula $\left(\delta_{2}a/4\right)n$
 \end_inset
 
- vertices from some 
-\begin_inset Formula $W_{\flip{\bi}}$
+) vertices from some 
+\begin_inset Formula $W_{\flip{\bi}}^{\ell}$
 \end_inset
 
 , for then we would no longer be able to guarantee that each 
 \begin_inset Formula $\x$
 \end_inset
 
-, 
+ and 
 \begin_inset Formula $\y$
 \end_inset
 
- has enough neighbours in the appropriate cluster.
- But by the Chernoff bound we will a.a.s.
- only try to take 
-\begin_inset Formula 
-\[
-\left|X_{\flip{\bi}}\right|+\left(1+o\left(1\right)\right)\left|X\right|/\left(2q\right)\sim2\left(s_{\bar{\bi}}+s\right)n/\left(k-1\right)
-\]
-
+ has enough neighbours in the appropriate 
+\begin_inset Formula $W_{\bi}^{1}$
 \end_inset
 
-vertices from each 
+, and that there are enough vertices in the 
+\begin_inset Formula $W_{\bi}^{2}$
+\end_inset
+
+.
+ But we will only try to take 
+\begin_inset Formula $\left|X_{\flip{\bi}}\right|\sim2s_{\flip{\bi}}/\left(k-1\right)$
+\end_inset
+
+ vertices from each 
+\begin_inset Formula $W_{\bi}^{1}$
+\end_inset
+
+, and by the Chernoff bound we will a.a.s.
+ only try to take asymptotically 
+\begin_inset Formula $\left|X\right|/\left(2q\right)\sim2sn/\left(k-1\right)$
+\end_inset
+
+ vertices from each 
 \begin_inset Formula $W_{\bi}$
 \end_inset
 
@@ -4598,12 +4688,13 @@ vertices from each
 \begin_inset Formula $k$
 \end_inset
 
- this is fewer than 
-\begin_inset Formula $\left(\delta_{2}a/2\right)n$
+ each 
+\begin_inset Formula $2s_{\bi}/\left(k-1\right)\le\delta_{2}a/4$
 \end_inset
 
- vertices.
- Since the variation in the 
+, so there will a.a.s.
+ be no problem repeating the procedure for each special pair.
+ We emphasize that since the variation in the 
 \begin_inset Formula $s_{\bi}$
 \end_inset
 
@@ -4628,7 +4719,7 @@ Redefine
 \end_inset
 
  to be the set of new special vertices taken from 
-\begin_inset Formula $W_{\bi}$
+\begin_inset Formula $W_{\bi}^{2}$
 \end_inset
 
 , so that all the special pairs are now between some 
@@ -4653,8 +4744,23 @@ Redefine
 \end_inset
 
  be the set of all special pairs.
- By symmetry (considering permutations of 
-\begin_inset Formula $W_{\bi}$
+\end_layout
+
+\begin_layout Standard
+By symmetry, we can assume each 
+\begin_inset Formula $X_{\bi}$
+\end_inset
+
+ is a uniformly random subset of 
+\begin_inset Formula $W_{\bi}^{2}$
+\end_inset
+
+ of its size (condition on the 
+\begin_inset Formula $\br$
+\end_inset
+
+ and consider permutations of 
+\begin_inset Formula $W_{\bi}^{2}$
 \end_inset
 
  with 
@@ -4664,15 +4770,16 @@ reference "rem:symmetry"
 
 \end_inset
 
-), we can assume 
-\begin_inset Formula $X_{\bi}$
+).
+ Since 
+\begin_inset Formula $W_{\bi}^{2}$
 \end_inset
 
- is a uniformly random subset of 
+ is itself a uniformly random subset of 
 \begin_inset Formula $W_{\bi}$
 \end_inset
 
- of its size, so by 
+, by 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:random-preserves-superregular"
@@ -4680,35 +4787,54 @@ reference "lem:random-preserves-superregular"
 \end_inset
 
  each 
-\begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
+\begin_inset Formula $\x\in X_{\bi}$
 \end_inset
 
- is a.a.s.
- 
-\begin_inset Formula $\left(\varepsilon_{3},\delta_{3}\right)$
+ has at least 
+\begin_inset Formula $\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}\right|$
 \end_inset
 
--super-regular, where 
-\begin_inset Formula $\delta_{3}=\delta_{2}/2$
-\end_inset
-
- and 
-\begin_inset Formula $\varepsilon_{3}$
-\end_inset
-
- can be arbitrarily small respective to 
-\begin_inset Formula $\delta_{3}$
+ neighbours in 
+\begin_inset Formula $W_{\flip{\bi}}$
 \end_inset
 
 .
+ By 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:large-preserves-dense"
+
+\end_inset
+
+ each 
+\begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\rho\left(k-1\right)\varepsilon_{2},\delta_{2}\right)$
+\end_inset
+
+-dense (recall that 
+\begin_inset Formula $\rho$
+\end_inset
+
+ controls the relative sizes of the clusters), so it follows that each 
+\begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\rho\left(k-1\right)\varepsilon_{2},\delta_{2}/2\right)$
+\end_inset
+
+-super-regular.
 \end_layout
 
 \begin_layout Standard
-Also, update 
+Now, update each 
 \begin_inset Formula $W_{\bi}$
 \end_inset
 
- by removing all deleted vertices and all new special vertices.
+ by removing all vertices used in all the length-2 paths.
  For large 
 \begin_inset Formula $k$
 \end_inset
@@ -4726,10 +4852,18 @@ Also, update
 \end_inset
 
  are still 
-\begin_inset Formula $\left(2\varepsilon_{3},\delta_{3}/2\right)$
+\begin_inset Formula $\left(\varepsilon_{3},\delta_{3}\right)$
 \end_inset
 
--super-regular.
+-super-regular, for 
+\begin_inset Formula $\varepsilon_{3}=2\rho\left(k-1\right)\varepsilon_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta_{3}=\delta_{2}/4$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5107,7 +5241,7 @@ Suppose we specify a desired number of special paths with each good template,
 \end_inset
 
  are still 
-\begin_inset Formula $\left(\varepsilon'',\delta/8\right)$
+\begin_inset Formula $\left(\varepsilon'',\delta/4\right)$
 \end_inset
 
 -super-regular.
@@ -6043,11 +6177,11 @@ Choose the sizes of the
 \end_inset
 
 ), and also each 
-\begin_inset Formula $\left|W_{\bi}'\right|\ge l_{\bi}\left|W_{\bi}\right|/\left(1+\varepsilon''/2\right)$
+\begin_inset Formula $\left|W_{\bi}'\right|\ge\left(l_{\bi}/2\right)\left|W_{\bi}\right|$
 \end_inset
 
  and 
-\begin_inset Formula $\left|Z_{i}'\right|\ge r_{i}\left|Z_{i}\right|/\left(1+\varepsilon''/2\right)$
+\begin_inset Formula $\left|Z_{i}'\right|\ge\left(r_{i}/2\right)\left|Z_{i}\right|$
 \end_inset
 
  (note that 
@@ -6055,10 +6189,6 @@ Choose the sizes of the
 \end_inset
 
  will have to be small relative to 
-\begin_inset Formula $\varepsilon''$
-\end_inset
-
- and 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -6086,15 +6216,7 @@ reference "lem:random-preserves-superregular"
 \begin_inset Formula $\left(X_{\bi}^{\tau},W_{\flip{\bi}}^{\tau}\right)$
 \end_inset
 
-, 
-\begin_inset Formula $\left(X_{\bi}',W_{\flip{\bi}}'\right)$
-\end_inset
-
- and 
-\begin_inset Formula $\left(W_{\bi}',W_{\flip{\bi}}'\right)$
-\end_inset
-
- are a.a.s.
+ is a.a.s.
  
 \begin_inset Formula $\left(\varepsilon',\delta/2\right)$
 \end_inset
@@ -6155,52 +6277,68 @@ reference "lem:adjusting-paths-basic"
 \end_layout
 
 \begin_layout Proof
-After deleting these special paths, what remains in each 
-\begin_inset Formula $W_{\bi}$
+After deleting these special paths, by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:large-preserves-dense"
+
 \end_inset
 
- (respectively 
-\begin_inset Formula $X_{\bi}$
-\end_inset
-
-) is a superset of 
-\begin_inset Formula $W_{\bi}'$
-\end_inset
-
- with at most 
-\begin_inset Formula $\left(\varepsilon''/2\right)\left|W_{\bi}'\right|$
-\end_inset
-
- extra elements (respectively, a superset of 
-\begin_inset Formula $X_{\bi}'$
-\end_inset
-
- with 
-\begin_inset Formula $\left(\varepsilon''/2\right)\left|X_{\bi}'\right|$
-\end_inset
-
- extra elements).
- This is ensured by the conditions 
-\begin_inset Formula $\left|W_{\bi}'\right|\ge l_{\bi}\left|W_{\bi}\right|/\left(1+\varepsilon''/2\right)$
+ each 
+\begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
  and 
-\begin_inset Formula $\left|Z_{i}'\right|\ge r_{i}\left|Z_{i}\right|/\left(1+\varepsilon''/2\right)$
+\begin_inset Formula $\left(W_{\bi},W_{\flip{\bi}}\right)$
+\end_inset
+
+ are 
+\begin_inset Formula $\left(\varepsilon/\gamma,\delta\right)$
+\end_inset
+
+-dense.
+ By the condition on the sizes of the 
+\begin_inset Formula $W_{\bi}'$
+\end_inset
+
+ and 
+\begin_inset Formula $Z_{i}'$
+\end_inset
+
+, each 
+\begin_inset Formula $x\in X_{\bi}$
+\end_inset
+
+ and 
+\begin_inset Formula $w\in W_{\bi}$
+\end_inset
+
+ now has at least 
+\begin_inset Formula $\left(\delta/4\right)\left|W_{\flip{\bi}}\right|$
+\end_inset
+
+ neighbours in 
+\begin_inset Formula $W_{\flip{\bi}}'$
 \end_inset
 
 .
- So, if we impose that 
-\begin_inset Formula $\varepsilon'\le\varepsilon''/2$
+ So if 
+\begin_inset Formula $\varepsilon\le\gamma\varepsilon''$
 \end_inset
 
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:robust-regular"
-
+, each 
+\begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
- completes the proof.
+ and 
+\begin_inset Formula $\left(W_{\bi},W_{\flip{\bi}}\right)$
+\end_inset
+
+ are 
+\begin_inset Formula $\left(\varepsilon'',\delta/4\right)$
+\end_inset
+
+-super-regular, as required.
 \end_layout
 
 \begin_layout Standard

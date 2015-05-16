@@ -618,13 +618,13 @@ is \emph{$\left(\varepsilon,\delta\right)$-super-regular}.\end{defn}
 \begin{lem}
 \label{lem:partition-into-blobs}For $\a,\varepsilon>0$ with $\varepsilon$
 sufficiently small relative to $\a$, there are $\delta=\delta\left(\a\right)>0$,
-$R=R\left(\a\right)$ and $Q=Q\left(\a,\varepsilon\right)$, such
-that the following holds. Let $\G$ be a graph on $\range n$ with
-minimum degree at least $\a n$. We can choose $q\le Q$ and partition
-$\range n$ into clusters $V_{i}^{\h}$ ($1\le i\le q$, $\h=1,2$)
-such that each $\left|V_{i}^{\h}\right|=\Theta\left(n\right)$ and
-each pair $\left(V_{i}^{1},V_{i}^{2}\right)$ is $\left(\varepsilon,\delta\right)$-super-regular.
-Moreover, each $\left|V_{i}^{\h}\right|/\left|V_{j}^{g}\right|\le R$.
+$\rho=\rho\left(\a\right)$ and $Q=Q\left(\a,\varepsilon\right)$,
+such that the following holds. Let $\G$ be a graph on $\range n$
+with minimum degree at least $\a n$. We can choose $q\le Q$ and
+partition $\range n$ into clusters $V_{i}^{\h}$ ($1\le i\le q$,
+$\h=1,2$) such that each $\left|V_{i}^{\h}\right|=\Theta\left(n\right)$
+and each pair $\left(V_{i}^{1},V_{i}^{2}\right)$ is $\left(\varepsilon,\delta\right)$-super-regular.
+Moreover, each $\left|V_{i}^{\h}\right|/\left|V_{j}^{g}\right|\le\rho$.
 \end{lem}
 We emphasize that in \ref{lem:partition-into-blobs} we do \emph{not
 }guarantee that the sets $V_{i}^{\h}$ are the same size, just that
@@ -681,16 +681,16 @@ with $U^{2}$, so we have $\left|U^{2}\cap V_{i}^{2}\right|\ge\varepsilon\left|V^
 and there are therefore at least $\delta\left|U^{1}\right|\left|U^{2}\cap V_{i}^{2}\right|\ge\left(\delta/r\right)\left|U^{1}\right|\left|U^{2}\right|$
 edges between $U^{1}$ and $U^{2}$.\end{proof}
 \begin{lem}
-\label{lem:robust-regular}Let $\left(V^{1},V^{2}\right)$ be an $\left(\varepsilon,\delta\right)$-dense
-pair with $\varepsilon$ sufficiently small , and suppose we have
-$W^{\h}\supseteq V^{\h}$ with $\left|W^{\h}\right|\le\left(1+f\varepsilon\right)\left|V^{\h}\right|$.
-Then $\left(W^{1},W^{2}\right)$ is an $\left(\varepsilon',\delta'\right)$-dense
-pair, with $\varepsilon'=\max\left\{ 2f,1+f\right\} \varepsilon$
-and $\delta'=\min\left\{ 1/4,1/\left(1+f\varepsilon\right)\right\} \delta$.
-If moreover $\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\delta\right)$-super-regular
-and each vertex in $W^{\h}\backslash V^{\h}$ has at least $\delta'\left|W^{\flip{\h}}\right|$
-neighbours in $W^{\flip{\h}}$, then $\left(W^{1},W^{2}\right)$ is
-an $\left(\varepsilon',\delta'\right)$-super-regular pair.\end{lem}
+\label{lem:robust-regular}Let $\left(V^{1},V^{2}\right)$ be an $\left(\varepsilon,\delta\right)$-super-regular
+pair. Suppose we have $W^{\h}\supseteq V^{\h}$ with $\left|W^{\h}\right|\le\left(1+f\varepsilon\right)\left|V^{\h}\right|$,
+and suppose that each vertex in $W^{\h}\backslash V^{\h}$ has at
+least $\delta'\left|W^{\flip{\h}}\right|$ neighbours in $W^{\flip{\h}}$.
+Then $\left(W^{1},W^{2}\right)$ is an $\left(\varepsilon',\delta'\right)$-super-regular
+pair, where 
+\[
+\varepsilon'=\max\left\{ 2f,1+f\right\} \,\varepsilon,\quad\delta'=\min\left\{ 1/4,1/\left(1+f\varepsilon\right)\right\} \,\delta.
+\]
+\end{lem}
 \begin{proof}
 Suppose $U^{\h}\subseteq W^{\h}$ with $\left|U^{\h}\right|\ge\varepsilon'\left|W^{\h}\right|$.
 Then $\left|U^{\h}\cap V^{\h}\right|\ge\varepsilon'\left|W^{\h}\right|-f\varepsilon\left|V^{\h}\right|\ge\varepsilon\left|V^{\h}\right|$
@@ -699,9 +699,7 @@ edges between $U^{1}$ and $U^{2}$. But note that $\left|U^{\h}\cap V^{\h}\right|
 so $d\left(U^{1},U^{2}\right)\ge\delta/4$ and $\left(W^{1},W^{2}\right)$
 is $\left(\varepsilon',\delta'\right)$-dense.
 
-Now consider the second part of the lemma where $\left(V^{1},V^{2}\right)$
-is $\left(\varepsilon,\delta\right)$-super-regular. By this super-regularity
-each $v\in V^{\h}$ has $\delta\left|V^{\flip{\h}}\right|\ge\delta'\left|W^{\flip{\h}}\right|$
+Next, note that each $v\in V^{\h}$ has $\delta\left|V^{\flip{\h}}\right|\ge\delta'\left|W^{\flip{\h}}\right|$
 neighbours in $W^{\flip{\h}}$, and by assumption each $v\in W^{\h}\backslash V^{\h}$
 has $\delta'\left|W^{\flip{\h}}\right|$ neighbours in $W^{\flip{\h}}$,
 proving that $\left(W^{1},W^{2}\right)$ is $\left(\varepsilon',\delta'\right)$-super-regular.\end{proof}
@@ -837,10 +835,20 @@ the set of ``free'' vertices remaining in $V_{\bi}$. By a concentration
 inequality for the hypergeometric distribution and the union bound,
 a.a.s. each $\left|W_{\bi}\right|\sim s_{\bi}n/2$ and $\left|X_{\bi}\right|\sim s_{\bi}n/\left(k-1\right)$.
 
-Here and in future parts of the proof, it is critical that these kinds
-of random subsets of our super-regular pairs maintain super-regularity
-(albeit with slightly weaker $\varepsilon$ and $\delta$). We will
-ensure this by appealing to the following lemma.
+Here and in future parts of the proof, it is critical that after we
+take certain subsets of our super-regular pairs, we maintain super-regularity
+or at least density (albeit with weaker $\varepsilon$ and $\delta$).
+We will ensure this in each situation by appealing to one of the following
+two lemmas.
+\begin{lem}
+\label{lem:large-preserves-dense}Suppose $\left(V^{1},V^{2}\right)$
+is $\left(\varepsilon,\delta\right)$-dense, and let $W^{\h}\subseteq V^{\h}$
+with $\left|W^{\h}\right|\ge\gamma\left|V^{\h}\right|$. Then $\left(W^{1},W^{2}\right)$
+is $\left(\varepsilon/\gamma,\delta\right)$-dense.\end{lem}
+\begin{proof}
+If $U^{\h}\subseteq W^{\h}$ with $\left|U^{\h}\right|\ge\left(\varepsilon/\gamma\right)\left|W^{\h}\right|$,
+then $\left|U^{\h}\right|\ge\varepsilon\left|V^{\h}\right|$. The
+result follows from the definition of $\left(\varepsilon,\delta\right)$-denseness.\end{proof}
 \begin{lem}
 \label{lem:random-preserves-superregular}Fix $\delta,\varepsilon'>0$.
 There is $\varepsilon=\varepsilon\left(\varepsilon'\right)>0$ such
@@ -886,8 +894,10 @@ $n$ to be the number of vertices not used to embed $\F\backslash X$
 (previously $\left(1/2+1/\left(k-1\right)\right)n$), and update $s_{\bi}$
 to satisfy $\left|W_{\bi}\right|=s_{\bi}n$. Note that (asymptotically
 speaking) this just rescales the $s_{\bi}$ so that they sum to $\left(\left(k-1\right)/\left(k+1\right)\right)n$.
-Therefore the variation between the $s_{\bi}$ is still bounded independently
-of $\varepsilon$. We then have $\left|X_{\bi}\right|\sim2s_{\bi}n/\left(k-1\right)$
+Therefore the variation between the $s_{\bi}$ is (still) bounded
+independently of $\varepsilon$; we can increase $\rho$ slightly
+so that each $\left|s_{\bi}\right|/\left|s_{\bj}\right|\le\rho$.
+We then have $\left|X_{\bi}\right|\sim2s_{\bi}n/\left(k-1\right)$
 for each $\bi$, and there are $n/\left(k+1\right)$ special pairs.
 
 
@@ -902,59 +912,72 @@ from $\x$ to some vertex $\x'\in W_{\br}$ and from $\y$ to some
 $\y\in W_{\flip{\br}}$, for some $\br$. This effectively ``moves''
 the special pair $\left\{ \x,\y\right\} $ to $\left\{ \x',\y'\right\} $:
 to complete the embedding we now need to find length-$\left(k-4\right)$
-special paths connecting the new special pairs.
+special paths connecting the new special pairs. The choice of ``destination''
+$\left\{ W_{\br},W_{\flip{\br}}\right\} $ for each special pair can
+be almost arbitrary, so long as we distribute the special pairs roughly
+evenly between the $W_{\bi}$. An easy way to do this is to distribute
+our special pairs randomly.
 
-The choice of ``destination'' $\left\{ W_{\br},W_{\flip{\br}}\right\} $
-for each special pair can be almost arbitrary, so long as we distribute
-the special pairs roughly evenly between the $W_{\bi}$. An easy way
-to do this is to distribute our special pairs randomly. For a special
-pair $\left\{ \x,\y\right\} $ with $\x\in X_{\bi}$ and $y\in X_{\bj}$,
-uniformly at random choose some $\br$. Let $a=\min_{\bi}\left|W_{\bi}\right|/n$,
-so that $\x$ has at least $\delta_{2}an>\left(\delta_{2}a/2\right)n$
-neighbours in $W_{\bi}$ and $\y$ has at least $\delta_{2}an>\left(\delta_{2}a/2\right)n$
-neighbours in $W_{\bj}$. Now, note that (if $\c_{3}$ is large),
-there is a.a.s. an edge in $\R_{3}$ between any pair of disjoint
-sets of size $\left(\delta_{2}a/2\right)n$ (the proof of this is
-basically identical to the proof of \ref{lem:bipartite-matching}).
-Certainly each $\left|W_{\bi}\right|\ge\left(\delta_{2}a/2\right)n$,
-so there is an edge between $N\left(\x\right)\cap W_{\flip{\bi}}$
-and $W_{\br}$ (respectively, between $N\left(\y\right)\cap W_{\flip{\bj}}$
-and $W_{\flip{\br}}$), giving length-2 paths between $\x$ and some
-$\x'\in W_{\br}$, and between $\y$ and some $\y'\in W_{\flip{\br}}$.
-We can then remove $\x$, $\y$ and the two vertices used in $W_{\flip{\bi}}$
-and $W_{\flip{\bj}}$.
+We now explain how to find the desired length-2 paths. Uniformly at
+random partition each $W_{\bi}$ into sets $W_{\bi}^{1}$ and $W_{\bi}^{2}$
+of size $\left|W_{\bi}\right|/2$. Let $a=\min_{\bi}\left|W_{\bi}^{1}\right|/n$;
+by \ref{lem:random-preserves-superregular} each $\x\in X_{\bi}$
+has at least $\left(\delta_{2}/2\right)an$ neighbours in $W_{\flip{\bi}}^{1}$.
+Note that (if $\c_{3}$ is large), there is a.a.s. an edge in $\R_{3}$
+between any pair of disjoint sets of size $\left(\delta_{2}a/4\right)n$
+(the proof of this is basically identical to the proof of \ref{lem:bipartite-matching})
+
+For a special pair $\left\{ \x,\y\right\} $ with $\x\in X_{\bi}$
+and $y\in X_{\bj}$, uniformly at random choose some $\br$. Now,
+$\x$ has at least $\left(\delta_{2}a/4\right)n$ neighbours in $W_{\flip{\bi}}^{1}$
+and $\y$ has at least $\left(\delta_{2}a/4\right)n$ neighbours in
+$W_{\flip{\bj}}^{1}$. Certainly $\left|W_{\br}^{2}\right|,\left|W_{\flip{\br}}^{2}\right|\ge\left(\delta_{2}a/4\right)n$,
+so there is an edge between $N\left(\x\right)\cap W_{\bi}^{1}$ and
+$W_{\br}^{2}$ (respectively, between $N\left(\y\right)\cap W_{\flip{\bj}}^{1}$
+and $W_{\flip{\br}}^{2}$), giving length-2 paths between $\x$ and
+some $\x'\in W_{\br}^{2}$, and between $\y$ and some $\y'\in W_{\flip{\br}}^{2}$.
+We can then remove from consideration $\x$, $\y$ and the vertices
+used in $W_{\flip{\bi}}^{1}$ and in $W_{\flip{\bj}}^{1}$.
 
 We claim that for large $k$ we can a.a.s. repeat this procedure for
 every special pair. Indeed, the only issue would be if we tried to
-take more than $\left(\delta_{2}a/2\right)n$ vertices from some $W_{\flip{\bi}}$,
-for then we would no longer be able to guarantee that each $\x$,
-$\y$ has enough neighbours in the appropriate cluster. But by the
-Chernoff bound we will a.a.s. only try to take 
-\[
-\left|X_{\flip{\bi}}\right|+\left(1+o\left(1\right)\right)\left|X\right|/\left(2q\right)\sim2\left(s_{\bar{\bi}}+s\right)n/\left(k-1\right)
-\]
+take too many (say, more than more than $\left(\delta_{2}a/4\right)n$)
+vertices from some $W_{\flip{\bi}}^{\ell}$, for then we would no
+longer be able to guarantee that each $\x$ and $\y$ has enough neighbours
+in the appropriate $W_{\bi}^{1}$, and that there are enough vertices
+in the $W_{\bi}^{2}$. But we will only try to take $\left|X_{\flip{\bi}}\right|\sim2s_{\flip{\bi}}/\left(k-1\right)$
+vertices from each $W_{\bi}^{1}$, and by the Chernoff bound we will
+a.a.s. only try to take asymptotically $\left|X\right|/\left(2q\right)\sim2sn/\left(k-1\right)$
 vertices from each $W_{\bi}$, where $s=\left(\left(k-1\right)/\left(k+1\right)\right)/2q$
 is the average $s_{\bi}$ (recall that $q$ is the number of pairs
-of partner clusters). For large $k$ this is fewer than $\left(\delta_{2}a/2\right)n$
-vertices. Since the variation in the $s_{\bi}$ is bounded independently
-of $\varepsilon$, also $k$ is independent of $\varepsilon$.
+of partner clusters). For large $k$ each $2s_{\bi}/\left(k-1\right)\le\delta_{2}a/4$,
+so there will a.a.s. be no problem repeating the procedure for each
+special pair. We emphasize that since the variation in the $s_{\bi}$
+is bounded independently of $\varepsilon$, also $k$ is independent
+of $\varepsilon$.
 
 Redefine $X_{\bi}$ to be the set of new special vertices taken from
-$W_{\bi}$, so that all the special pairs are now between some $X_{\bi}$
-and $X_{\flip{\bi}}$. Let $Z_{\left[\bi\right]}=Z_{\left[\flip{\bi}\right]}$
+$W_{\bi}^{2}$, so that all the special pairs are now between some
+$X_{\bi}$ and $X_{\flip{\bi}}$. Let $Z_{\left[\bi\right]}=Z_{\left[\flip{\bi}\right]}$
 be the set of such pairs (recall that $\left[\left(i,\h\right)\right]=i$),
-and let $Z=\bigcup_{i}Z_{i}$ be the set of all special pairs. By
-symmetry (considering permutations of $W_{\bi}$ with \ref{rem:symmetry}),
-we can assume $X_{\bi}$ is a uniformly random subset of $W_{\bi}$
-of its size, so by \ref{lem:random-preserves-superregular} each $\left(X_{\bi},W_{\flip{\bi}}\right)$
-is a.a.s. $\left(\varepsilon_{3},\delta_{3}\right)$-super-regular,
-where $\delta_{3}=\delta_{2}/2$ and $\varepsilon_{3}$ can be arbitrarily
-small respective to $\delta_{3}$.
+and let $Z=\bigcup_{i}Z_{i}$ be the set of all special pairs.
 
-Also, update $W_{\bi}$ by removing all deleted vertices and all new
-special vertices. For large $k$, we are deleting such a small fraction
+By symmetry, we can assume each $X_{\bi}$ is a uniformly random subset
+of $W_{\bi}^{2}$ of its size (condition on the $\br$ and consider
+permutations of $W_{\bi}^{2}$ with \ref{rem:symmetry}). Since $W_{\bi}^{2}$
+is itself a uniformly random subset of $W_{\bi}$, by \ref{lem:random-preserves-superregular}
+each $\x\in X_{\bi}$ has at least $\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}\right|$
+neighbours in $W_{\flip{\bi}}$. By \ref{lem:large-preserves-dense}
+each $\left(X_{\bi},W_{\flip{\bi}}\right)$ is $\left(\rho\left(k-1\right)\varepsilon_{2},\delta_{2}\right)$-dense
+(recall that $\rho$ controls the relative sizes of the clusters),
+so it follows that each $\left(X_{\bi},W_{\flip{\bi}}\right)$ is
+$\left(\rho\left(k-1\right)\varepsilon_{2},\delta_{2}/2\right)$-super-regular.
+
+Now, update each $W_{\bi}$ by removing all vertices used in all the
+length-2 paths. For large $k$, we are deleting such a small fraction
 of each $W_{\bi}$ that each $\left(X_{\bi},W_{\flip{\bi}}\right)$
-and $\left(W_{\bi},W_{\flip{\bi}}\right)$ are still $\left(2\varepsilon_{3},\delta_{3}/2\right)$-super-regular.
+and $\left(W_{\bi},W_{\flip{\bi}}\right)$ are still $\left(\varepsilon_{3},\delta_{3}\right)$-super-regular,
+for $\varepsilon_{3}=2\rho\left(k-1\right)\varepsilon_{2}$ and $\delta_{3}=\delta_{2}/4$.
 
 We update all the other variables as before: redefine $X=\bigcup_{\bi}X_{\bi}$
 and $W=\bigcup_{\bi}W_{\bi}$, update $n$ to be the number of vertices
@@ -1021,7 +1044,7 @@ template, in such a way that we would be taking no more than $\left(1-\gamma\rig
 from each $X_{\bi}$ (respectively $W_{\bi}$). Then we can find special
 paths in $\G\cup\R$ with our desired templates in such a way that
 after their removal, each $\left(X_{\bi},W_{\flip{\bi}}\right)$ and
-$\left(W_{\bi},W_{\flip{\bi}}\right)$ are still $\left(\varepsilon'',\delta/8\right)$-super-regular.
+$\left(W_{\bi},W_{\flip{\bi}}\right)$ are still $\left(\varepsilon'',\delta/4\right)$-super-regular.
 \end{lem}
 We will prove \ref{lem:adjusting-paths} with two successively simpler
 lemmas.
@@ -1167,16 +1190,15 @@ respectively.
 Choose the sizes of the $W_{\bi}^{\tau}$ and $Z_{i}^{\tau}$ such
 that each $\left|W_{\bi}^{\tau}\right|,\left|Z_{i}^{\tau}\right|=\Omega\left(n\right)$
 (say $\left|W_{\bi}^{\tau}\right|,\left|Z_{i}^{\tau}\right|\ge\xi an/Q^{k+1}$),
-and also each $\left|W_{\bi}'\right|\ge l_{\bi}\left|W_{\bi}\right|/\left(1+\varepsilon''/2\right)$
-and $\left|Z_{i}'\right|\ge r_{i}\left|Z_{i}\right|/\left(1+\varepsilon''/2\right)$
-(note that $\xi$ will have to be small relative to $\varepsilon''$
-and $\gamma$ for this to be possible). Given these part sizes choose
-our partitions uniformly at random.
+and also each $\left|W_{\bi}'\right|\ge\left(l_{\bi}/2\right)\left|W_{\bi}\right|$
+and $\left|Z_{i}'\right|\ge\left(r_{i}/2\right)\left|Z_{i}\right|$
+(note that $\xi$ will have to be small relative to $\gamma$ for
+this to be possible). Given these part sizes choose our partitions
+uniformly at random.
 
 By \ref{lem:random-preserves-superregular}, for any $\varepsilon'>0$
-we can choose $\varepsilon$ such that each $\left(X_{\bi}^{\tau},W_{\flip{\bi}}^{\tau}\right)$,
-$\left(X_{\bi}',W_{\flip{\bi}}'\right)$ and $\left(W_{\bi}',W_{\flip{\bi}}'\right)$
-are a.a.s. $\left(\varepsilon',\delta/2\right)$-super-regular, and
+we can choose $\varepsilon$ such that each $\left(X_{\bi}^{\tau},W_{\flip{\bi}}^{\tau}\right)$
+is a.a.s. $\left(\varepsilon',\delta/2\right)$-super-regular, and
 moreover a.a.s. each $x\in X_{\bi}$ and $w\in W_{\bi}$ has at least
 $\left(\delta/2\right)\left|W_{\flip{\bi}}'\right|$ neighbours in
 $W_{\flip{\bi}}'$. We can find our desired special pairs with good
@@ -1185,14 +1207,14 @@ and \ref{lem:adjusting-paths-basic}, provided $\varepsilon'$ is
 small (in the notation of \ref{lem:adjusting-paths-basic}, we need
 $\varepsilon'\le\varepsilon\left(\delta/2,\xi\right)$).
 
-After deleting these special paths, what remains in each $W_{\bi}$
-(respectively $X_{\bi}$) is a superset of $W_{\bi}'$ with at most
-$\left(\varepsilon''/2\right)\left|W_{\bi}'\right|$ extra elements
-(respectively, a superset of $X_{\bi}'$ with $\left(\varepsilon''/2\right)\left|X_{\bi}'\right|$
-extra elements). This is ensured by the conditions $\left|W_{\bi}'\right|\ge l_{\bi}\left|W_{\bi}\right|/\left(1+\varepsilon''/2\right)$
-and $\left|Z_{i}'\right|\ge r_{i}\left|Z_{i}\right|/\left(1+\varepsilon''/2\right)$.
-So, if we impose that $\varepsilon'\le\varepsilon''/2$, \ref{lem:robust-regular}
-completes the proof.
+After deleting these special paths, by \ref{lem:large-preserves-dense}
+each $\left(X_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},W_{\flip{\bi}}\right)$
+are $\left(\varepsilon/\gamma,\delta\right)$-dense. By the condition
+on the sizes of the $W_{\bi}'$ and $Z_{i}'$, each $x\in X_{\bi}$
+and $w\in W_{\bi}$ now has at least $\left(\delta/4\right)\left|W_{\flip{\bi}}\right|$
+neighbours in $W_{\flip{\bi}}'$. So if $\varepsilon\le\gamma\varepsilon''$,
+each $\left(X_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},W_{\flip{\bi}}\right)$
+are $\left(\varepsilon'',\delta/4\right)$-super-regular, as required.
 \end{proof}
 Having proved \ref{lem:adjusting-paths}, we now just need to show
 that there are suitable good templates so that after using \ref{lem:adjusting-paths}
