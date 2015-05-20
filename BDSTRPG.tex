@@ -89,7 +89,7 @@
 \theoremstyle{remark}
 \newtheorem{myrem}[mythm]{\protect\remarkname}
 \renewenvironment{rem}{\begin{myrem}}{\end{myrem}}
-\theoremstyle{remark}
+\theoremstyle{plain}
 \newtheorem{myclaim}[mythm]{\protect\claimname}
 \renewenvironment{claim}{\begin{myclaim}}{\end{myclaim}}
 
@@ -474,11 +474,10 @@ the random edges $\R$, and we will assume by symmetry that these
 substructures (or some corresponding vertex sets) are themselves uniformly
 random. A simple way to see why this kind of reasoning is valid, is
 to notice that if we apply a uniformly random vertex permutation to
-a random graph $\R\in\GG\left(n,p\right)$ (or even just to some specific
-subset of vertices), then by symmetry the resulting distribution is
-still $\GG\left(n,p\right)$. So we can imagine that we are finding
-substructures in an auxiliary random graph, then randomly mapping
-these structures to our vertex set.
+a random graph $\R\in\GG\left(n,p\right)$, then by symmetry the resulting
+distribution is still $\GG\left(n,p\right)$. So we can imagine that
+we are finding substructures in an auxiliary random graph, then randomly
+mapping these structures to our vertex set.
 \end{rem}
 
 \subsection{Case 1: $\protect\T$ has many leaves\label{sub:many-leaves}}
@@ -562,10 +561,10 @@ for some $\c'=\c'\left(\a\right)$ and $r=r\left(\a\right)$ to be
 determined.
 
 By \ref{lem:bipartite-matching}, if $\c'$ is large we can find a
-$\left(1-\a/8\right)n$-edge matching $M_{i}$ in each $\R_{i}$.
-Let $N_{i}=N_{M_{i}}\left(W\right)$ contain the vertices matched
-with $W$ in each $M_{i}$, and note that each $N_{i}$ is a random
-set satisfying $\left|W\right|-\a n/8\le\left|N_{i}\right|\le\left|W\right|$.
+$\left(1-\a/8\right)n$-edge matching $M_{i}$ in each $\R_{i}$,
+which we can assume is uniformly random. Let $N_{i}=N_{M_{i}}\left(W\right)$
+contain the vertices matched with $W$ in each $M_{i}$, and note
+that each $N_{i}$ is a random set satisfying $\left|W\right|-\a n/8\le\left|N_{i}\right|\le\left|W\right|$.
 Condition on $N_{1}$, and condition on the number of vertices $\left|N_{i}\right|$
 matched by $W$ in each $M_{i}$. Now, for each $i>1$, note that
 $\left|N_{i}\cap N_{1}\right|$ is hypergeometrically distributed
@@ -596,9 +595,10 @@ leaves in $\T$.
 
 \subsubsection{Partitioning into super-regular pairs\label{sub:partition-into-blobs}}
 
-As outlined, we first need to divide $G$ into a bounded number of
-pairs of ``partner clusters'' with edges well-distributed between
-them. This partition will inform the way we use $\R$ to embed $\T$.
+As outlined in the introduction, we first need to divide $G$ into
+a bounded number of pairs of ``partner clusters'' with edges well-distributed
+between them. This partition will inform the way we use $\R$ to embed
+$\T$.
 
 \global\long\def\h{h}
 
@@ -790,11 +790,17 @@ For $\bi=\left(i,\h\right)$, let $V_{\bi}=V_{i}^{\h}$, and let $\left|V_{\bi}\ri
 
 \subsubsection{Embedding a small subforest of $\protect\T$\label{sub:embed-forest}}
 
+Having fixed our partition of $G$ into $V_{\bi}$, in this section
+we will start to embed $\T$ into $\G\cup\R$. Just as in \ref{sub:many-leaves},
+we will use the decomposition of $\R$ into ``phases'' $\R_{1},\R_{2},\R_{3},\R_{4}$
+(but we start with $\R_{2}$ for consistency with the section numbering).
+
 Recall that a \emph{bare path} in $\T$ is a path $P$ such that every
 vertex of $P$ has degree exactly two in $\T$. Proceeding with the
 proof outline, we need the fact that $\T$ is almost entirely composed
-of bare paths, as is guaranteed by the following lemma.
-\begin{lem}[{\cite[Lemma~2.1]{Kri10}}]
+of bare paths, as is guaranteed by the following lemma due to one
+of the authors (\cite[Lemma~2.1]{Kri10}).
+\begin{lem}
 \label{lem:bare-paths-if-no-leaves}Let $\T$ be a tree on $n$ vertices
 with at most $\ell$ leaves. Then $\T$ contains a collection of at
 least $\left(n-\left(2\ell-2\right)\left(k+1\right)\right)/\left(k+1\right)$
@@ -816,14 +822,14 @@ later; it will depend on $\a$ but not $\varepsilon$). If we delete
 the interior vertices of these paths, then we are left with a forest
 $\F$ on $n/2$ vertices.
 
-Now, embed $\F$ into $\R_{1}$. There are $n/\left(2\left(k-1\right)\right)$
-``special pairs'' of ``special vertices'' of $\F\subseteq\R_{1}$
+Now, embed $\F$ into the random graph $\R_{2}$. There are $n/\left(2\left(k-1\right)\right)$
+``special pairs'' of ``special vertices'' of $\F\subseteq\R_{2}$
 that need to be connected with $k$-paths. We call such connecting
 paths ``special paths''. Let $X\subseteq V$ be the set of special
 vertices and let $W=V\backslash\F$ be the set of ``free'' vertices.
 By symmetry we can assume 
 \[
-X\,\cup\,W\,\cup\,V\backslash\F
+X\,\cup\,\F\backslash X\,\cup\,W
 \]
 is a uniformly random partition of $V$ into parts of sizes $n/\left(k-1\right)$,
 $n/2-n/\left(k-1\right)$ and $n/2$ respectively. We can also assume
@@ -831,7 +837,7 @@ that the special pairs correspond to a uniformly random partition
 of $X$ into pairs. Note that $2\left|W\right|=\left(k-1\right)\left|X\right|$.
 
 Let $X_{\bi}=V_{\bi}\cap X$ and $W_{\bi}=V_{\bi}\backslash F$ be
-the set of ``free'' vertices remaining in $V_{\bi}$. By a concentration
+the set of free vertices remaining in $V_{\bi}$. By a concentration
 inequality for the hypergeometric distribution and the union bound,
 a.a.s. each $\left|W_{\bi}\right|\sim s_{\bi}n/2$ and $\left|X_{\bi}\right|\sim s_{\bi}n/\left(k-1\right)$.
 
@@ -871,12 +877,11 @@ The fact that $\left(W^{1},W^{2}\right)$ is a.a.s. $\left(\varepsilon',\delta/2\
 for suitable $\varepsilon$, follows from two applications of \cite[Theorem~3.6]{GKRS07}.
 
 It remains to consider the degree condition for super-regularity.
-For each $v\in W^{\h}$, the number of neighbours of $v\in W^{\flip{\h}}$
+For each $v\in W^{\h}$, the number of neighbours of $v$ in $W^{\flip{\h}}$
 is hypergeometrically distributed, with expected value at least $\delta n_{\flip{\h}}$.
 Since $n_{\flip h}=\Omega\left(n\right)$, a concentration inequality
 and the union bound immediately tells us that a.a.s. each such $v$
-has $\delta n_{\flip h}/2$ such neighbours. This proves that $\left(W^{1},W^{2}\right)$
-is a.a.s. $\left(\varepsilon',\delta/2\right)$-super-regular.
+has $\delta n_{\flip h}/2$ such neighbours, as required.
 \end{proof}
 Let $\flip{\left(i,\h\right)}=\left(i,\flip{\h}\right)$, and let
 $\left[\left(i,\h\right)\right]=i$. It is an immediate consequence
@@ -894,9 +899,8 @@ $n$ to be the number of vertices not used to embed $\F\backslash X$
 (previously $\left(1/2+1/\left(k-1\right)\right)n$), and update $s_{\bi}$
 to satisfy $\left|W_{\bi}\right|=s_{\bi}n$. Note that (asymptotically
 speaking) this just rescales the $s_{\bi}$ so that they sum to $\left(\left(k-1\right)/\left(k+1\right)\right)n$.
-Therefore the variation between the $s_{\bi}$ is (still) bounded
-independently of $\varepsilon$; we can increase $\rho$ slightly
-so that each $\left|s_{\bi}\right|/\left|s_{\bj}\right|\le\rho$.
+Therefore the variation between the $s_{\bi}$ is still bounded independently
+of $\varepsilon$; we can increase $\rho$ slightly so that each $\left|s_{\bi}\right|/\left|s_{\bj}\right|\le\rho$.
 We then have $\left|X_{\bi}\right|\sim2s_{\bi}n/\left(k-1\right)$
 for each $\bi$, and there are $n/\left(k+1\right)$ special pairs.
 
@@ -904,90 +908,153 @@ for each $\bi$, and there are $n/\left(k+1\right)$ special pairs.
 \subsubsection{\label{sub:fix-endpoints}Fixing the endpoints of the special paths}
 
 We will eventually need to start finding and removing special paths
-between our special pairs. For this, we would like the special pairs
-to be ``between partner clusters'', so that we can take advantage
-of the super-regularity in $\G$. Therefore, for every special pair
-$\left\{ \x,\y\right\} $, we will find very short (length-2) paths
-from $\x$ to some vertex $\x'\in W_{\br}$ and from $\y$ to some
-$\y\in W_{\flip{\br}}$, for some $\br$. This effectively ``moves''
-the special pair $\left\{ \x,\y\right\} $ to $\left\{ \x',\y'\right\} $:
-to complete the embedding we now need to find length-$\left(k-4\right)$
-special paths connecting the new special pairs. The choice of ``destination''
-$\left\{ W_{\br},W_{\flip{\br}}\right\} $ for each special pair can
-be almost arbitrary, so long as we distribute the special pairs roughly
-evenly between the $W_{\bi}$. An easy way to do this is to distribute
-our special pairs randomly.
+between our special pairs. For this, we would like each of the special
+pairs to be ``between'' partner clusters $V_{\bi},V_{\flip{\bi}}$,
+so that we can take advantage of the super-regularity in $\G$. Therefore,
+for every special pair $\left\{ \x,\y\right\} $, we will find very
+short (length-2) paths from $\x$ to some vertex $\x'\in W_{\br}$
+and from $\y$ to some $\y'\in W_{\flip{\br}}$, for some $\br$.
+Our short paths effectively ``move'' the special pair $\left\{ \x,\y\right\} $
+to $\left\{ \x',\y'\right\} $: to complete the embedding we now need
+to find length-$\left(k-4\right)$ special paths connecting the new
+special pairs.
 
-We now explain how to find the desired length-2 paths. Uniformly at
-random partition each $W_{\bi}$ into sets $W_{\bi}^{1}$ and $W_{\bi}^{2}$
-of size $\left|W_{\bi}\right|/2$. Let $a=\min_{\bi}\left|W_{\bi}^{1}\right|/n$;
-by \ref{lem:random-preserves-superregular} each $\x\in X_{\bi}$
-has at least $\left(\delta_{2}/2\right)an$ neighbours in $W_{\flip{\bi}}^{1}$.
-Note that (if $\c_{3}$ is large), there is a.a.s. an edge in $\R_{3}$
-between any pair of disjoint sets of size $\left(\delta_{2}a/4\right)n$
-(the proof of this is basically identical to the proof of \ref{lem:bipartite-matching})
+It is relatively straightforward to greedily find suitable short paths
+in $\G\cup\R_{3}$, using the minimum degree condition in the super-regular
+pairs $\left(X_{\bi},W_{\flip{\bi}}\right)$ and the fact that there
+is a.a.s. an edge between any two large vertex sets in the random
+graph $\R_{3}$. However we need to be careful to find and remove
+our paths in such a way that afterwards we still have super-regularity
+between certain subsets. We will accomplish this by setting aside
+a random subset of each $W_{\br}$ from which the $\x'$, $\y'$ (and
+no other vertices in our paths) will come, then using the symmetry
+argument of \ref{rem:symmetry} and appealing to \ref{lem:random-preserves-superregular}.
+The details are a bit involved, as follows.
 
-For a special pair $\left\{ \x,\y\right\} $ with $\x\in X_{\bi}$
-and $y\in X_{\bj}$, uniformly at random choose some $\br$. Now,
-$\x$ has at least $\left(\delta_{2}a/4\right)n$ neighbours in $W_{\flip{\bi}}^{1}$
-and $\y$ has at least $\left(\delta_{2}a/4\right)n$ neighbours in
-$W_{\flip{\bj}}^{1}$. Certainly $\left|W_{\br}^{2}\right|,\left|W_{\flip{\br}}^{2}\right|\ge\left(\delta_{2}a/4\right)n$,
-so there is an edge between $N\left(\x\right)\cap W_{\bi}^{1}$ and
-$W_{\br}^{2}$ (respectively, between $N\left(\y\right)\cap W_{\flip{\bj}}^{1}$
-and $W_{\flip{\br}}^{2}$), giving length-2 paths between $\x$ and
-some $\x'\in W_{\br}^{2}$, and between $\y$ and some $\y'\in W_{\flip{\br}}^{2}$.
-We can then remove from consideration $\x$, $\y$ and the vertices
-used in $W_{\flip{\bi}}^{1}$ and in $W_{\flip{\bj}}^{1}$.
+Uniformly at random partition each $W_{\bi}$ into sets $W_{\bi}^{\left(1\right)}$
+and $W_{\bi}^{\left(2\right)}$ of size $\left|W_{\bi}\right|/2$.
+By \ref{lem:random-preserves-superregular} each $\x\in X_{\bi}$
+has at least $\left(\delta_{2}/2\right)s_{\flip{\bi}}n$ neighbours
+in $W_{\flip{\bi}}^{1}$.
 
-We claim that for large $k$ we can a.a.s. repeat this procedure for
-every special pair. Indeed, the only issue would be if we tried to
-take too many (say, more than more than $\left(\delta_{2}a/4\right)n$)
-vertices from some $W_{\flip{\bi}}^{\ell}$, for then we would no
-longer be able to guarantee that each $\x$ and $\y$ has enough neighbours
-in the appropriate $W_{\bi}^{1}$, and that there are enough vertices
-in the $W_{\bi}^{2}$. But we will only try to take $\left|X_{\flip{\bi}}\right|\sim2s_{\flip{\bi}}/\left(k-1\right)$
-vertices from each $W_{\bi}^{1}$, and by the Chernoff bound we will
-a.a.s. only try to take asymptotically $\left|X\right|/\left(2q\right)\sim2sn/\left(k-1\right)$
-vertices from each $W_{\bi}$, where $s=\left(\left(k-1\right)/\left(k+1\right)\right)/2q$
+We will find our length-2 paths greedily, by repeatedly applying the
+following argument. For a special pair $\left\{ \x,\y\right\} $ with
+$\x\in X_{\bi}$ and $y\in X_{\bj}$, uniformly at random choose some
+$\br$. Now, $\x$ has at least $(\delta_{2}s_{\flip{\bi}}/4)n=\Omega\left(n\right)$
+neighbours in $W_{\flip{\bi}}^{\left(1\right)}$ and $\y$ has at
+least $(\delta_{2}s_{\flip{\bj}}/4)n=\Omega\left(n\right)$ neighbours
+in $W_{\flip{\bj}}^{\left(1\right)}$. Note that if $\c_{3}$ is large,
+there is a.a.s. an edge in the random graph $\R_{3}$ between any
+pair of sets of size $\Omega\left(n\right)$ (the proof of this is
+basically identical to the proof of \ref{lem:bipartite-matching}).
+Certainly $\left|W_{\br}^{\left(2\right)}\right|,\left|W_{\flip{\br}}^{\left(2\right)}\right|=\Omega\left(n\right)$
+so there is a.a.s. an edge between $N\left(\x\right)\cap W_{\flip{\bi}}^{\left(1\right)}$
+and $W_{\br}^{\left(2\right)}$ and between $N\left(\y\right)\cap W_{\flip{\bj}}^{\left(1\right)}$
+and $W_{\flip{\br}}^{\left(2\right)}$, giving length-2 paths between
+$\x$ and some $\x'\in W_{\br}^{\left(2\right)}$, and between $\y$
+and some $\y'\in W_{\flip{\br}}^{\left(2\right)}$. We can then remove
+from consideration $\x$, $\y$ and the vertices used in $W_{\flip{\bi}}^{\left(1\right)}$
+and in $W_{\flip{\bj}}^{\left(1\right)}$.
+
+The only issue that would stop us from repeating this procedure for
+every special pair is if we tried to take too many (more than say
+$\left(\delta_{2}s_{\flip{\bi}}/4\right)n$) vertices from some $W_{\flip{\bi}}^{\left(1\right)}$,
+for then we would no longer be able to guarantee that each special
+vertex has enough neighbours in the appropriate $W_{\bi}^{\left(1\right)}$.
+But by the Chernoff bound we will a.a.s. only try to take asymptotically
+$\left|X\right|/\left(2q\right)\sim2sn/\left(k-1\right)$ vertices
+from each $W_{\bi}$, where $s=\left(\left(k-1\right)/\left(k+1\right)\right)/2q$
 is the average $s_{\bi}$ (recall that $q$ is the number of pairs
-of partner clusters). For large $k$ each $2s_{\bi}/\left(k-1\right)\le\delta_{2}a/4$,
+of partner clusters). Recall that $\rho$ controls the relative sizes
+of the $s_{\bi}$; for large $k$ each 
+\[
+\frac{2sn/\left(k-1\right)}{\left(\delta_{2}s_{\flip{\bi}}/4\right)n}\le\frac{8\rho/\delta_{2}}{k-1}<1,
+\]
 so there will a.a.s. be no problem repeating the procedure for each
-special pair. We emphasize that since the variation in the $s_{\bi}$
-is bounded independently of $\varepsilon$, also $k$ is independent
-of $\varepsilon$.
+special pair. We emphasize that since $\delta_{2}$ and $\rho$ are
+independent of $\varepsilon$, also $k$ is independent of $\varepsilon$.
 
-Redefine $X_{\bi}$ to be the set of new special vertices taken from
-$W_{\bi}^{2}$, so that all the special pairs are now between some
-$X_{\bi}$ and $X_{\flip{\bi}}$. Let $Z_{\left[\bi\right]}=Z_{\left[\flip{\bi}\right]}$
-be the set of such pairs (recall that $\left[\left(i,\h\right)\right]=i$),
-and let $Z=\bigcup_{i}Z_{i}$ be the set of all special pairs.
+Now we claim that even after removing our length-2 paths we maintain
+some important properties about the clusters.
+\begin{claim}
+\label{claim:move-ok}Let $X_{\bi}'\subseteq W_{\bi}$ be the set
+of ``new special vertices'' $\x',\y'$ in $W_{\bi}$, and let $W_{\bi}'=W_{\bi}\backslash X_{\bi}'$
+be the leftover vertices. If we make decisions in the above procedure
+in a suitable random way, then each $\left(X_{\bi}',W_{\flip{\bi}}'\right)$
+and $\left(W_{\bi}',W_{\flip{\bi}}'\right)$ are a.a.s. $\left(2\rho\left(k-1\right)\varepsilon_{2},\delta_{2}/2\right)$-super-regular,
+and each 
+\[
+\left(2\rho\right)^{-1}\le\frac{k-1}{2}\cdot\frac{\left|X_{\bi}'\right|}{\left|W_{\bi}'\right|}\le2\rho.
+\]
+\end{claim}
+\begin{proof}
+We can in fact assume that each $X_{\bi}'$ is a uniformly random
+subset of $W_{\bi}^{\left(2\right)}$ of its size. We can see this
+using a symmetry argument, as per \ref{rem:symmetry}. Indeed, condition
+on the random sets $W_{\bi}^{\left(2\right)}$ and the choice of $\br$
+for each special pair. For any $\bi$, the vertices in $X_{\bi}'$
+taken from $W_{\bi}^{\left(2\right)}$ are each chosen so that they
+are adjacent to some subset (of the form $N\left(\x\right)\cap W_{\bj}^{\left(1\right)}$)
+in $\R_{3}$. Note that the distribution of $\R_{3}$ is invariant
+under permutations of $W_{\bi}^{\left(2\right)}$. We can choose such
+a vertex permutation $\pi$ uniformly at random; then $\pi\left(X_{\bi}'\right)$
+is a uniformly random subset of $W_{\br}^{\left(2\right)}$ of its
+size, which has the right adjacencies in $\pi\left(\R_{3}\right)$
+(which has the same distribution as $\R_{3}$).
 
-By symmetry, we can assume each $X_{\bi}$ is a uniformly random subset
-of $W_{\bi}^{2}$ of its size (condition on the $\br$ and consider
-permutations of $W_{\bi}^{2}$ with \ref{rem:symmetry}). Since $W_{\bi}^{2}$
-is itself a uniformly random subset of $W_{\bi}$, by \ref{lem:random-preserves-superregular}
-each $\x\in X_{\bi}$ has at least $\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}\right|$
-neighbours in $W_{\flip{\bi}}$. By \ref{lem:large-preserves-dense}
-each $\left(X_{\bi},W_{\flip{\bi}}\right)$ is $\left(\rho\left(k-1\right)\varepsilon_{2},\delta_{2}\right)$-dense
-(recall that $\rho$ controls the relative sizes of the clusters),
-so it follows that each $\left(X_{\bi},W_{\flip{\bi}}\right)$ is
-$\left(\rho\left(k-1\right)\varepsilon_{2},\delta_{2}/2\right)$-super-regular.
+Since each $W_{\bi}^{\left(2\right)}$ is itself a uniformly random
+subset of $W_{\bi}$, this means we can assume each $X_{\bi}'$ is
+a uniformly random subset of $W_{\bi}$ of its size, and by \ref{lem:random-preserves-superregular}
+each $w\in W_{\flip{\bi}}$ a.a.s. has at least $\left(\delta_{2}/2\right)\left|X_{\bi}'\right|$
+neighbours in $X_{\flip{\bi}}'$. Recall that $\left|X_{\bi}'\right|\sim2sn/\left(k-1\right)$
+and each $s/s_{\bi}\le\rho$, so certainly $\rho\left(k-1\right)\left|X_{\bi}'\right|\ge\left|W_{\flip{\bi}}\right|$
+and by \ref{lem:large-preserves-dense} each $\left(X_{\bi}',W_{\flip{\bi}}\right)$
+is $\left(\rho\left(k-1\right)\varepsilon_{2},\delta_{2}\right)$-dense.
+It follows that each $\left(X_{\bi}',W_{\flip{\bi}}\right)$ is $\left(\rho\left(k-1\right)\varepsilon_{2},\delta_{2}/2\right)$-super-regular.
 
-Now, update each $W_{\bi}$ by removing all vertices used in all the
-length-2 paths. For large $k$, we are deleting such a small fraction
-of each $W_{\bi}$ that each $\left(X_{\bi},W_{\flip{\bi}}\right)$
-and $\left(W_{\bi},W_{\flip{\bi}}\right)$ are still $\left(\varepsilon_{3},\delta_{3}\right)$-super-regular,
-for $\varepsilon_{3}=2\rho\left(k-1\right)\varepsilon_{2}$ and $\delta_{3}=\delta_{2}/4$.
+Now, for large $k$ we claim that $\left|W_{\bi}\backslash W_{\bi}'\right|\le\left(\delta_{4}/2\right)\left|W_{\bi}\right|$.
+Indeed, recalling the choice of vertices for the length-2 paths, note
+that 
+\[
+\frac{\left|W_{\bi}\backslash W_{\bi}'\right|}{\left|W_{\bi}\right|}=\frac{\left|X_{\flip{\bi}}\right|+\left|X_{\bi}\right|}{\left|W_{\bi}\right|}\sim\frac{\frac{2}{k-1}\left(s_{\flip{\bi}}+s\right)}{s_{\bi}}\le\frac{4\rho}{k-1}.
+\]
+For $v\in W_{\bi}$ we have $N\left(v\right)\cap W_{\flip{\bi}}\ge\delta_{2}\left|W_{\flip{\bi}}\right|$
+by super-regularity, so $\left|N\left(v\right)\cap W_{\flip{\bi}}\right|\ge\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}\right|$.
+Combining this with \ref{lem:large-preserves-dense}, each $\left(W_{\bi}',W_{\flip{\bi}}'\right)$
+is $\left(\varepsilon_{2}/\left(1-\delta_{2}/2\right),\delta_{2}/2\right)$-super-regular
+and each $\left(X_{\bi}',W_{\flip{\bi}}'\right)$ is $\left(\rho\left(k-1\right)\varepsilon_{2}/\left(1-\delta_{2}/2\right),\delta_{2}/2\right)$-super-regular.
 
-We update all the other variables as before: redefine $X=\bigcup_{\bi}X_{\bi}$
-and $W=\bigcup_{\bi}W_{\bi}$, update $n$ to be the number of vertices
-in $X\cup W$ (previously $n-4n/\left(k+1\right)$), and redefine
-the $s_{\bi}$ to still satisfy $\left|W_{\bi}\right|=s_{\bi}n$.
-Provided $k$ is large, we have changed the $s_{\bi}$ very little,
-so still the variation between the $s_{\bi}$ is bounded independently
-of $\varepsilon$. Also, update $k$ to be the new required length
-of special paths (previously $k-4$), so we still have $\left|Z\right|=2\left|W\right|=\left(k-1\right)\left|X\right|$.
-With $s$ updated to still be the average $s_{\bi}$, each $\left|X_{\bi}\right|\sim2sn/\left(k-1\right)$.
+Finally, the claims about the relative sizes of the $W_{\bi}'$, $X_{\bi}'$
+for large $k$ are simple consequences of the asymptotic expressions
+\[
+\left|W_{\bi}'\right|\sim s_{\bi}-\frac{2}{k-1}\left(s_{\flip{\bi}}+s\right),\quad\left|X_{\bi}'\right|\sim s_{\bi}.\qedhere
+\]
+
+\end{proof}
+Now we can redefine each $X_{\bi}$ to be the set of new special vertices
+taken from $W_{\bi}$ (that is, set $X_{\bi}'=X_{\bi}$ in the notation
+of \ref{claim:move-ok}), and we can update the $W_{\bi}$ by removing
+all the vertices used in our length-2 paths (that is, set $W_{\bi}=W_{\bi}'$).
+Now all the special pairs are between some $X_{\bi}$ and $X_{\flip{\bi}}$;
+let $Z_{\left[\bi\right]}=Z_{\left[\flip{\bi}\right]}$ be the set
+of such pairs (recall that $\left[\left(i,\h\right)\right]=i$). Redefine
+$X=\bigcup_{\bi}X_{\bi}$ and $W=\bigcup_{\bi}W_{\bi}$, and let $Z=\bigcup_{i}Z_{i}$.
+
+We also update all the other variables as before: update $n$ to be
+the number of vertices in $X\cup W$ (previously $n-4n/\left(k+1\right)$),
+and redefine the $s_{\bi}$ to still satisfy $\left|W_{\bi}\right|=s_{\bi}n$.
+Also, update $k$ to be the new required length of special paths (previously
+$k-4$), so we still have $\left|Z\right|=2\left|W\right|=\left(k-1\right)\left|X\right|$.
+
+Finally, let $\varepsilon_{3}=2\rho\left(k-1\right)\varepsilon_{2}$
+and $\delta_{3}=\delta_{2}/4$ and double the value of $\rho$. By
+\ref{claim:move-ok}, each $\left(X_{\bi},W_{\flip{\bi}}\right)$
+and $\left(W_{\bi},W_{\flip{\bi}}\right)$ are then $\left(\varepsilon_{3},\delta_{3}\right)$-super-regular,
+and each 
+\[
+\rho^{-1}\le\frac{k-1}{2}\cdot\frac{\left|X_{\bi}\right|}{\left|W_{\bi}\right|}\le\rho.
+\]
+
 
 
 \subsubsection{Adjusting the relative sizes of the clusters\label{sub:cluster-adjustment}}
@@ -1023,49 +1090,23 @@ and $\y\in X_{\flip{\bi}}$ is ``good'' if $w_{1}\in W_{\flip{\bi}}$
 and $w_{k-1}\in W_{\bi}$. We make similar definitions for good special
 paths and good templates. It is easier to find good special paths
 because we can take advantage of super-regularity at the beginning
-and end of the path.
-\begin{lem}
-\label{lem:adjusting-paths}For any $a,\delta,\gamma,\varepsilon''>0$,
-and any integers $Q$ and $k>2$, there are $\varepsilon=\varepsilon\left(\delta,\gamma,\varepsilon''\right)$
-and $\c=\c\left(a,\delta,\gamma,\varepsilon'',M,k\right)$ such that
-the following holds.
-
-Let $\G$ be a graph on some vertex set $\range n$. Suppose the vertices
-of $\G$ are partitioned into clusters $X_{\bi},W_{\bi}$ for $\bi\in\left[q\right]\times\left[2\right]$
-with $q\le Q$, and suppose that each cluster has at least $an$ vertices.
-Suppose further that each $\x\in X_{\bi}$ is bijectively paired with
-a vertex $\y\in X_{\flip{\bi}}$ comprising a special pair $\left\{ \x,\y\right\} $.
-Finally, suppose that each $\left(X_{\bi},W_{\flip{\bi}}\right)$
-and $\left(W_{\bi},W_{\flip{\bi}}\right)$ are $\left(\varepsilon,\delta\right)$-super-regular.
+and end of the paths.
+\begin{claim}
+\label{lem:adjusting-paths}For any $\gamma,\varepsilon_{4}>0$, there
+are $\varepsilon_{3}=\varepsilon\left(\delta_{3},\gamma,\varepsilon_{4}\right)$
+and $\c_{4}=\c_{4}\left(s,\rho,\delta_{3},\gamma,\varepsilon_{4},Q,k\right)$
+such that the following holds. (Recall that each $\left(X_{\bi},W_{\flip{\bi}}\right)$
+and $\left(W_{\bi},W_{\flip{\bi}}\right)$ are $\left(\varepsilon_{3},\delta_{3}\right)$-super-regular).
 
 Suppose we specify a desired number of special paths with each good
 template, in such a way that we would be taking no more than $\left(1-\gamma\right)\left|X_{\bi}\right|$
 (respectively $\left(1-\gamma\right)\left|W_{\bi}\right|$) vertices
 from each $X_{\bi}$ (respectively $W_{\bi}$). Then we can find special
-paths in $\G\cup\R$ with our desired templates in such a way that
-after their removal, each $\left(X_{\bi},W_{\flip{\bi}}\right)$ and
-$\left(W_{\bi},W_{\flip{\bi}}\right)$ are still $\left(\varepsilon'',\delta/4\right)$-super-regular.
-\end{lem}
-We will prove \ref{lem:adjusting-paths} with two successively simpler
-lemmas.
-\begin{lem}
-\label{lem:adjusting-paths-basic}For any $b\delta,\xi>0$ and any
-integer $k>2$, there are $\varepsilon\left(\delta,\xi\right)>0$
-and $\c=\c\left(b,\delta,\xi,k\right)$ such that the following holds.
-
-Let $\G$ be a graph on some vertex set $\range N$ ($n\ge bN$),
-together with a vertex partition into clusters. Consider a sequence
-of clusters $X,W_{1},\dots,W_{r},Y$ (some clusters may be repeated),
-such that $\left|X\right|,\left|Y\right|\ge n$ and if $W_{i}$ appears
-$t_{i}$ times in the sequence then $\left|W_{i}\right|\ge t_{i}n$.
-Suppose that $\left(X,W_{1}\right)$ and $\left(W_{k-1},Y\right)$
-are $\left(\varepsilon,\delta\right)$-dense, and that each $\x\in X$
-is bijectively paired with a vertex $\y\in Y$, comprising a special
-pair $\left(\x,\y\right)$. Let $\R\in\GG\left(N,\c/N\right)$; then
-in $\G\cup\R$ we can find $\left(1-\xi\right)n$ vertex-disjoint
-special paths, each with $t_{i}$ vertices in each $W_{i}$.
-\end{lem}
-
+paths in $\G\cup\R_{4}$ with our desired templates in such a way
+that after their removal, each $\left(X_{\bi},W_{\flip{\bi}}\right)$
+and $\left(W_{\bi},W_{\flip{\bi}}\right)$ are still $\left(\varepsilon_{3}/\gamma,\delta_{3}/4\right)$-super-regular.
+\end{claim}
+We will prove \ref{lem:adjusting-paths} with a simpler lemma.
 \begin{lem}
 \label{lem:adjusting-paths-more-basic}For any $\delta,\xi>0$ and
 any integer $k>2$, there are $\varepsilon\left(\delta,\xi\right)>0$
@@ -1073,11 +1114,12 @@ and $\c=\c\left(\delta,\xi,k\right)$ such that the following holds.
 
 Let $\G$ be a graph on the vertex set $\range{kn}$, together with
 a vertex partition into disjoint clusters $X,W_{1}\dots,W_{k-1},Y$,
-such that each $\left|W_{i}\right|=n$. Suppose that $\left(W,V_{1}\right)$
-and $\left(W_{k-1},Y\right)$ are $\left(\varepsilon,\delta\right)$-dense
-and that each $\x\in X$ is bijectively paired with a vertex $\y\in Y$,
-comprising a special pair $\left(\x,\y\right)$. Let $\R\in\GG\left(kn,\c/n\right)$;
-then in $\G\cup\R$ we can find $\left(1-\xi\right)n$ vertex-disjoint
+such that $\left|X\right|=\left|Y\right|=n$ and each $\left|W_{i}\right|=n$.
+Suppose that $\left(W,W_{1}\right)$ and $\left(W_{k-1},Y\right)$
+are $\left(\varepsilon,\delta\right)$-dense and that each $\x\in X$
+is bijectively paired with a vertex $\y\in Y$, comprising a special
+pair $\left(\x,\y\right)$. Let $\R\in\GG\left(kn,\c/n\right)$; then
+in $\G\cup\R$ we can find $\left(1-\xi\right)n$ vertex-disjoint
 special paths running through $X,W_{1},\dots,W_{k-1},Y$ in order.\end{lem}
 \begin{proof}[Proof of \ref{lem:adjusting-paths-more-basic}]
 By \ref{lem:bipartite-matching}, in $\R$ we can a.a.s. find a matching
@@ -1086,7 +1128,7 @@ $W_{i}$ and $W_{i+1}$ ($1\le i<k-1$). The union of these matchings
 contains at least $\left(1-\varepsilon\right)n$ disjoint length-$\left(k-2\right)$
 paths $P_{i},\dots,P_{\left(1-\varepsilon\right)n}$ running through
 $W_{1},\dots,W_{k-1}$; we write $P_{j}=w_{1}^{j}\dots w_{k-1}^{j}$
-with each $w_{i}\in W_{i}$. We can assume these paths are uniformly
+with each $w_{i}^{j}\in W_{i}$. We can assume these paths are uniformly
 random: that is, for each $i$, the function $j\mapsto w_{i}^{j}$
 is a uniformly random injection from $\left[\left(1-\varepsilon\right)n\right]$
 into $W_{i}$, independent for each $i$.
@@ -1095,9 +1137,9 @@ Consider a $\left(\xi-\varepsilon\right)n$-element subset $J$ of
 $\left[\left(1-\varepsilon\right)n\right]$, and consider a $\xi n$-element
 subset $Z$ of the special pairs. We would like to find a special
 path using one of the special pairs in $Z$ and one of the paths $P_{j}$,
-for $j\in J$. If we could (a.a.s.) find such a special path for all
-such subsets $J$ and $Z$ then we would be done, for we would be
-able to choose our desired $\left(1-\xi\right)n$ graded special paths
+$j\in J$. If we could (a.a.s.) find such a special path for all such
+subsets $J$ and $Z$ then we would be done, for we would be able
+to choose our desired $\left(1-\xi\right)n$ graded special paths
 greedily. That is, given a collection of fewer than $\left(1-\xi\right)n$
 disjoint special paths running through the clusters, we could find
 an additional disjoint special path with the leftover vertices.
@@ -1108,7 +1150,7 @@ each of the $w_{1}^{j}$. Let $N_{j}^{X}$ be the set of neighbours
 of $w_{1}^{j}$ in $X'$ and let $N_{j}^{Y}$ be the vertices of $Y'$
 which form special pairs with the vertices in $N_{j}^{X}$. Let $N_{j}^{W}$
 be the set of neighbours of $N_{j}^{Y}$ in $W_{k-1}$. If we had
-$w_{j}^{1}\in N_{j}^{W}$ for some $j$, that would mean there is
+$w_{k-1}^{j}\in N_{j}^{W}$ for some $j$, that would mean there is
 a special pair $\left(\x,\y\right)\in Z$ with $\x$ adjacent to $w_{1}^{j}$
 and $\y$ adjacent to $w_{k-1}^{j}$; this gives us a special path
 $\x w_{1}^{j}\dots w_{k-1}^{j}\y$ as desired.
@@ -1117,7 +1159,7 @@ By $\left(\varepsilon,\delta\right)$-denseness (with $\varepsilon\le\xi$)
 there are at most $\varepsilon n$ indices $j\in J$ such that $w_{1}^{j}$
 has fewer than $\delta\xi n$ neighbours in $X'$. Let $J'$ be the
 set of indices $j\in J$ such that $\left|N_{j}^{X}\right|\ge\varepsilon n$.
-For small $\varepsilon$ we have$\delta\xi n\ge\varepsilon n$ and
+For small $\varepsilon$ we have $\delta\xi n\ge\varepsilon n$ and
 $\varepsilon n\le\xi n/2$, so $\left|J'\right|\ge\xi n/2$. Now,
 again using $\left(\varepsilon,\delta\right)$-denseness there is
 an edge between each set of $\varepsilon n$ vertices of $Y'$ and
@@ -1131,16 +1173,16 @@ suitable special pair.
 
 There are at most $\left(\varepsilon n\right)^{\left|J'\right|}$
 possibilities for the function $j\mapsto w_{k-1}^{j}$ (restricted
-to the domain $J'$) that fail in this way. The probability that the
-random injection $j\mapsto w_{k-1}^{j}$ ($\left[\left(1-\varepsilon\right)n\right]\to W_{k-1}$)
+to the domain $J'$) that are unfavourable in this way. The probability
+that the random injection $j\mapsto w_{k-1}^{j}$ ($\left[\left(1-\varepsilon\right)n\right]\to W_{k-1}$)
 is unfavourable is therefore at most
 \[
 \frac{\left(\varepsilon n\right)^{\left|J'\right|}\left(n-\left|J'\right|\right)!}{n!}=O\left(\left(\varepsilon e\right)^{\left|J'\right|}\right)=e^{-\Omega\left(\xi\log\left(1/\varepsilon'\right)n\right)}.
 \]
 (We have used Stirling's approximation and the fact that we can obtain
 a uniformly random injection $\left[\left(1-\varepsilon\right)n\right]\to W_{k-1}$
-from a uniformly random bijection $\left[n\right]\to W_{k-1}$). There
-are 
+by restricting a uniformly random bijection $\left[n\right]\to W_{k-1}$).
+There are 
 \[
 {n \choose \left(\xi-\varepsilon'\right)n}{n \choose \xi n}=e^{O\left(\xi\log\left(1/\xi\right)n\right)}
 \]
@@ -1148,26 +1190,44 @@ possible choices of $J$ and $Z$ (we have used the binary entropy
 approximation for binomial coefficients) so if we choose $\varepsilon\le\xi^{1/M}$
 for large $M$ then the union bound finishes the proof.
 \end{proof}
+A corollary of \ref{lem:adjusting-paths-more-basic} is that we can
+find special paths corresponding to a single template:
+\begin{cor}
+\label{cor:adjusting-paths-basic}For any $b,\delta,\xi>0$ and any
+integer $k>2$, there are $\varepsilon\left(\delta,\xi\right)>0$
+and $\c=\c\left(b,\delta,\xi,k\right)$ such that the following holds.
 
-\begin{proof}[Proof of \ref{lem:adjusting-paths-basic}]
-Uniformly at random choose $t_{i}$ disjoint $n$-vertex subsets
-of each $W_{i}$. This gives a total of $k-1$ such subsets; arrange
+Let $\G$ be a graph on some vertex set $\range N$ ($n\ge bN$),
+together with a vertex partition into clusters. Consider a sequence
+of clusters $X,W_{1},\dots,W_{k-1},Y$ (some clusters may be repeated),
+such that $\left|X\right|,\left|Y\right|\ge n$ and if $W_{i}$ appears
+$t_{i}$ times in the sequence then $\left|W_{i}\right|\ge t_{i}n$.
+Suppose that $\left(X,W_{1}\right)$ and $\left(W_{k-1},Y\right)$
+are $\left(\varepsilon,\delta\right)$-dense, and that each $\x\in X$
+is bijectively paired with a vertex $\y\in Y$, comprising a special
+pair $\left(\x,\y\right)$. Let $\R\in\GG\left(N,\c/N\right)$; then
+in $\G\cup\R$ we can find $\left(1-\xi\right)n$ vertex-disjoint
+special paths running through $X,W_{1},\dots,W_{k-1},Y$ in order.\end{cor}
+\begin{proof}
+Uniformly at random choose $t_{i}$ disjoint $n$-vertex subsets of
+each $W_{i}$. This gives a total of $k-1$ disjoint subsets; arrange
 these into a sequence $W_{1}',\dots,W_{k-1}'$ in such a way that
 $W_{i}'\subseteq W_{i}$. Also uniformly at random choose $n$-vertex
-subsets $X\subseteq X$ and of $Y'\subseteq Y$. By \ref{lem:random-preserves-superregular},
+subsets $X'\subseteq X$ and of $Y'\subseteq Y$. By \ref{lem:random-preserves-superregular},
 $\left(X',W_{1}'\right)$ and $\left(W_{k-1}',Y'\right)$ are a.a.s.
 $\left(\varepsilon',\delta\right)$-dense, where we can make $\varepsilon'$
 small by choice of $\varepsilon$. We can therefore directly apply
 \ref{lem:adjusting-paths-more-basic}.
 \end{proof}
-
+We can now prove \ref{lem:adjusting-paths}.
 \begin{proof}[Proof of \ref{lem:adjusting-paths}]
 The basic idea is to split the clusters into many random subsets,
-one for each good template, and apply \ref{lem:adjusting-paths-basic}
+one for each good template, and apply \ref{cor:adjusting-paths-basic}
 many times. (Note that there are fewer than $Q^{k+1}=O\left(1\right)$
 different templates). We also need to guarantee super-regularity in
 what remains. For this, we set aside another random subset of each
-cluster, which we will not touch.
+cluster, which we will not touch (this is the same idea we used in
+\ref{sub:fix-endpoints}).
 
 If we are successful, the special paths with good template $\tau$
 will take some number $t_{\bi}^{\tau}\left|W_{\bi}\right|$ of vertices
@@ -1197,30 +1257,30 @@ this to be possible). Given these part sizes choose our partitions
 uniformly at random.
 
 By \ref{lem:random-preserves-superregular}, for any $\varepsilon'>0$
-we can choose $\varepsilon$ such that each $\left(X_{\bi}^{\tau},W_{\flip{\bi}}^{\tau}\right)$
-is a.a.s. $\left(\varepsilon',\delta/2\right)$-super-regular, and
-moreover a.a.s. each $x\in X_{\bi}$ and $w\in W_{\bi}$ has at least
-$\left(\delta/2\right)\left|W_{\flip{\bi}}'\right|$ neighbours in
-$W_{\flip{\bi}}'$. We can find our desired special pairs with good
-template $\tau$ using the clusters $X_{\bi}^{\tau}$, $W_{\bi}^{\tau}$
-and \ref{lem:adjusting-paths-basic}, provided $\varepsilon'$ is
-small (in the notation of \ref{lem:adjusting-paths-basic}, we need
-$\varepsilon'\le\varepsilon\left(\delta/2,\xi\right)$).
+we can choose $\varepsilon_{3}$ such that each $\left(X_{\bi}^{\tau},W_{\flip{\bi}}^{\tau}\right)$
+is a.a.s. $\left(\varepsilon',\delta_{3}/2\right)$-dense, and moreover
+a.a.s. each $w\in W_{\flip{\bi}}$ has at least $\left(\delta_{3}/2\right)\left|W_{\bi}'\right|$
+neighbours in $W_{\bi}'$ and at least $\left(\delta_{3}/2\right)\left|X_{\bi}'\right|$
+neighbours in $X_{\bi}'$. We can find our desired special pairs with
+good template $\tau$ using the clusters $X_{\bi}^{\tau}$, $W_{\bi}^{\tau}$
+and \ref{cor:adjusting-paths-basic}, provided $\varepsilon'$ is
+small (in the notation of \ref{cor:adjusting-paths-basic}, we need
+$\varepsilon'\le\varepsilon\left(\delta_{3}/2,\xi\right)$).
 
 After deleting these special paths, by \ref{lem:large-preserves-dense}
 each $\left(X_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},W_{\flip{\bi}}\right)$
-are $\left(\varepsilon/\gamma,\delta\right)$-dense. By the condition
-on the sizes of the $W_{\bi}'$ and $Z_{i}'$, each $x\in X_{\bi}$
-and $w\in W_{\bi}$ now has at least $\left(\delta/4\right)\left|W_{\flip{\bi}}\right|$
-neighbours in $W_{\flip{\bi}}'$. So if $\varepsilon\le\gamma\varepsilon''$,
-each $\left(X_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},W_{\flip{\bi}}\right)$
-are $\left(\varepsilon'',\delta/4\right)$-super-regular, as required.
+are $\left(\varepsilon_{3}/\gamma,\delta\right)$-dense. By the condition
+on the sizes of the $W_{\bi}'$ and $Z_{i}'$, each $w\in W_{\flip{\bi}}$
+has at least $\left(\delta_{3}/4\right)\left|W_{\bi}'\right|$ neighbours
+in $W_{\bi}'$ and at least $\left(\delta_{3}/4\right)\left|X_{\bi}'\right|$
+neighbours in $X_{\bi}'$. So each $\left(X_{\bi},W_{\flip{\bi}}\right)$
+and $\left(W_{\bi},W_{\flip{\bi}}\right)$ are $\left(\varepsilon_{3}/\gamma,\delta_{3}/4\right)$-super-regular,
+as required.
 \end{proof}
 Having proved \ref{lem:adjusting-paths}, we now just need to show
-that there are suitable good templates so that after using \ref{lem:adjusting-paths}
-to find and remove special paths with those templates we end up with
-$2\left|W_{\bi}\right|=\left(k-1\right)\left|X_{\bi}\right|$ for
-each $\bi$.
+that there are suitable good templates so that after finding and removing
+special paths with those templates we end up with $2\left|W_{\bi}\right|=\left(k-1\right)\left|X_{\bi}\right|$
+for each $\bi$.
 
 Let
 \[
@@ -1229,29 +1289,41 @@ m_{i}=\min\left\{ \left|Z_{i}\right|,\,2\left|W_{\left(i,1\right)}\right|/\left(
 Impose that $k$ is odd; we want to leave $L_{i}^{Z}:=\floor{m_{i}/2}$
 special pairs in each $Z_{i}$ and $L_{i}^{W}:=\left(\left(k-1\right)/2\right)\floor{m_{i}/2}$
 vertices in each $W_{\left(i,h\right)}$, leaving a total of $L=\sum_{i}\left(L_{i}^{Z}+L_{i}^{W}\right)$
-vertices. Since the variation in the $s_{\bi}$ is bounded independently
-of $\varepsilon$, there is some $\gamma$ independent of $\varepsilon$
-such that each 
+vertices. Recall from \ref{sub:fix-endpoints} that each $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(\left|Z_{\left[\bi\right]}\right|/\left|W_{\bi}\right|\right)\le\rho$,
+so $m_{i}\ge\rho^{-1}\left|Z_{i}\right|$ and 
 \[
-L_{i}^{Z}/\left|Z_{i}\right|,\;L_{i}^{W}/\left|W_{\left(i,h\right)}\right|\ge\gamma.
+L_{i}^{Z}/\left|Z_{i}\right|\ge\left(1+o\left(1\right)\right)\rho^{-1}/2,\quad L_{\left[\bi\right]}^{W}/\left|W_{\bi}\right|\ge\left(1+o\left(1\right)\right)\rho^{-2}/2.
 \]
-We can now choose our templates almost arbitrarily. A convenient way
-to explain this rigorously is to describe our templates by a collection
-of $M:=\left(n-L\right)/\left(k+1\right)$ disjoint good special sequences.
-The equivalence classes of those special sequences will give our templates.
+Provided we can find suitable templates, we can therefore apply \ref{lem:adjusting-paths}
+with $\gamma=\rho^{-2}/3$. We can actually choose our templates almost
+arbitrarily, but it's a little fiddly to rigorously explain why, so
+we wrap up the details in the following claim.
+\begin{claim}
+\label{claim:find-templates}For large $k$, we can choose good templates
+in such a way that if we remove special paths corresponding to these
+templates, there will be $L_{i}^{Z}$ special pairs left in each $Z_{i}$
+and $L_{\left[\bi\right]}^{W}$ vertices left in each $W_{\bi}$.\end{claim}
+\begin{proof}
+It is convenient to describe our templates by a collection of $M:=\left(n-L\right)/\left(k+1\right)$
+disjoint good special sequences. The equivalence classes of those
+special sequences will give our templates.
+
 Arbitrarily choose subsets $Z_{i}'\subseteq Z_{i}$ and $W_{\bi}'\subseteq W_{\bi}$
 with $\left|Z_{i}'\right|=\left|Z_{i}\right|-L_{i}^{Z}$ and $\left|W_{\bi}'\right|=\left|W_{\bi}\right|-L_{\left[\bi\right]}^{W}$.
-Let $Z'=\bigcup_{i}Z_{i}'$ be the set of all special pairs in our
-subsets, let $X'$ be the set of all special vertices in those special
-pairs, and let $W'=\bigcup_{\bi}W_{\bi}'$ be the set of free vertices
-in our subsets. Note that $M=\left|Z'\right|=2\left|X'\right|=\left(k-1\right)\left|W'\right|$.
-Since the variation between the $\left|W_{\bi}\right|$ and $\left(k-1\right)\left|Z_{i}\right|$
-is bounded, for large $k$ we have 
+Let $X_{\bi}'\subseteq X_{\bi}$ be the subset of special vertices
+from $X_{\bi}$ from special pairs in $Z_{\left[\bi\right]}'$. Let
+$Z'=\bigcup_{i}Z_{i}'$ be the set of all special pairs in our subsets,
+let $X'=\bigcup_{\bi}X_{\bi}$ be the set of all special vertices
+in those special pairs, and let $W'=\bigcup_{\bi}W_{\bi}'$ be the
+set of free vertices in our subsets. Note that $M=\left|Z'\right|=2\left|X'\right|=\left(k-1\right)\left|W'\right|$.
+Recall that $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(\left|X_{\bi}\right|/\left|W_{\bi}\right|\right)\le\rho$,
+so if $k$ is large then for each $\bi$ we have
 \[
-\left|W_{\bi}'\right|=\left|W_{\bi}\right|-\left(\left(k-1\right)/2\right)\floor{m_{\left[\bi\right]}/2}\ge\left|Z_{\left[\bi\right]}\right|-\floor{m_{\left[\bi\right]}/2}=\left|Z_{\left[\bi\right]}\right|
+\frac{\left|W_{\bi}'\right|}{\left|X_{\bi}'\right|}\ge\frac{\left|W_{\bi}\right|/2}{\left|X_{\bi}\right|}\ge\frac{k-1}{2\rho}\ge1.
 \]
-for each $\bi$. We now start filling our special sequences with the
-vertices in $X'\cup W'$ (note $\left|X'\cup W'\right|=\left(k+1\right)M$,
+That is, for each $\bi$ there are at least as many vertices $W_{\bi}'$
+as in $X_{\bi}'$. We now start filling our special sequences with
+the vertices in $X'\cup W'$ (note $\left|X'\cup W'\right|=\left(k+1\right)M$,
 as required). For each special sequence we choose its first and last
 vertex to be the vertices of a special pair in $Z'$ (say we choose
 $\left\{ x,y\right\} \in Z_{i}'$, and we choose $x\in X_{\left(i,1\right)}$
@@ -1260,31 +1332,26 @@ in the special sequence respectively). Then we choose arbitrary vertices
 from $W_{\left(i,1\right)}'$ and $W_{\left(i,2\right)}'$ to be the
 second and second-last vertices in the sequence (in our case, a vertex
 from $W_{\left(i,2\right)}'$ should be second and a vertex from $W_{\left(i,1\right)}'$
-should be second-last). After we have determined the first, second,
-second last and last vertices of every sequence, we can use the remaining
-$\left(k-1\right)M$ vertices in $W'$ to complete our special sequences
-arbitrarily.
-
-As outlined, these special sequences yield templates with the desired
-properties. We can now forget about our specific special sequences
-and the sets $W'$, $X'$ and $Z'$; we introduced these only to explain
-how one can easily choose the templates.
+should be second-last). We have just confirmed that there are enough
+vertices in the $W_{\bi}$ for this to be possible. After we have
+determined the first, second, second last and last vertices of every
+sequence, we can use the remaining $\left(k-1\right)M$ vertices in
+$W'$ to complete our special sequences arbitrarily.\end{proof}
 \begin{rem}
 If we are careful, instead of choosing our templates arbitrarily we
 can strategically choose them in such a way that each cluster is only
-involved in a few different templates. This means that in the proof
-of \ref{lem:adjusting-paths}, we do not need to divide each cluster
-into nearly as many as $Q^{k+1}$ subsets. This would mean that we
-can avoid the use of the powerful results of \cite{GKRS07} and make
-do with a simpler and weaker variant of \ref{lem:random-preserves-superregular}.
+involved in a few different templates. In the proof of \ref{lem:adjusting-paths},
+we would then not need to divide each cluster into nearly as many
+as $Q^{k+1}$ subsets. This would mean that we can avoid the use of
+the powerful results of \cite{GKRS07} and make do with a simpler
+and weaker variant of \ref{lem:random-preserves-superregular}.
 \end{rem}
-We now apply \ref{lem:adjusting-paths} using our templates and the
-random edges in $\R_{4}$, and remove the special paths that we find.
-Update the $W_{\bi}$, $X_{\bi}$ and $Z_{i}$; we finally have $2\left|W_{\bi}\right|=\left(k-1\right)\floor{m_{\left[\bi\right]}/2}=\left(k-1\right)\left|X_{\bi}\right|$
+We now apply \ref{lem:adjusting-paths} using the templates from \ref{claim:find-templates},
+and remove the special paths that we find. Update the $W_{\bi}$,
+$X_{\bi}$ and $Z_{i}$; we finally have $2\left|W_{\bi}\right|=\left(k-1\right)\floor{m_{\left[\bi\right]}/2}=\left(k-1\right)\left|X_{\bi}\right|$
 for each $\bi$, and each $\left(X_{\bi},W_{\flip{\bi}}\right)$ and
 $\left(W_{\bi},W_{\flip{\bi}}\right)$ are $\left(\varepsilon_{4},\delta_{4}\right)$-super-regular,
-where $\delta_{4}=\delta_{3}/4$ and $\varepsilon_{4}$ can be arbitrarily
-small respective to $\delta_{4}$.
+where $\delta_{4}=\delta_{3}/4$ and $\varepsilon_{4}=\varepsilon_{3}/\gamma$.
 
 
 \subsubsection{Completing the embedding with the blow-up lemma\label{sub:blow-up}}
@@ -1423,18 +1490,21 @@ corresponds to a special path connecting $\x$ and $\y$. See \ref{fig:cluster-pat
 \end{figure}
 
 
-Let $n_{i}=\left|S_{i}^{Z}\right|=\left|Z_{i}\right|$. Note that
+Let $n_{i}^{Z}=\left|S_{i}^{Z}\right|=\left|Z_{i}\right|$. Note that
 $G_{i}$ is a $\left(\varepsilon_{4},\delta_{4}\right)$-super-regular
-blow-up of a 3-cycle $C_{3}$, with part sizes $n_{i}$, $\left(\left(k-1\right)/2\right)n_{i}$
-and $\left(\left(k-1\right)/2\right)n_{i}$. The corresponding complete
-blow-up $b\left(C_{3}\right)$ contains $n_{i}$ disjoint $k$-cycles
-(each has a vertex in $S_{i}^{Z}$ and its other $k-1$ vertices alternate
-between $S_{i}^{1}$ and $S_{i}^{2}$). By the blow-up lemma, $G_{i}$
-also contains $n_{i}$ disjoint $k$-cycles. Since $k$ is odd, each
-of these must use at least one vertex from $S_{i}^{Z}$, but since
-$\left|S_{i}^{Z}\right|=n_{i}$, each cycle must then use exactly
-one vertex from $S_{i}^{Z}$. These cycles correspond to special paths
-which complete our embedding of $\T$.
+blow-up of a 3-cycle $C_{3}$, with part sizes 
+\[
+n_{i}^{Z},\quad n_{i}^{1}:=\left(\left(k-1\right)/2\right)n_{i}^{Z},\quad n_{i}^{2}:=\left(\left(k-1\right)/2\right)n_{i}^{Z}.
+\]
+The corresponding complete blow-up $b_{n_{i}^{Z},n_{i}^{1},n_{i}^{2}}\left(C_{3}\right)$
+contains $n_{i}^{Z}$ disjoint $k$-cycles (each has a vertex in $S_{i}^{Z}$
+and its other $k-1$ vertices alternate between $S_{i}^{1}$ and $S_{i}^{2}$).
+By the blow-up lemma, $G_{i}$ also contains $n_{i}^{Z}$ disjoint
+$k$-cycles. Since $k$ is odd, each of these must use at least one
+vertex from $S_{i}^{Z}$, but since $\left|S_{i}^{Z}\right|=n_{i}^{Z}$,
+each cycle must then use exactly one vertex from $S_{i}^{Z}$. These
+cycles correspond to special paths which complete our embedding of
+$\T$.
 
 
 \section{Concluding Remarks}
