@@ -81,19 +81,11 @@
 
 %graph drawing
 \usepackage{tikz}
-\usetikzlibrary{external}
+%\usetikzlibrary{external}
 \usetikzlibrary{decorations.markings}
-\usetikzlibrary{arrows.meta}
-\tikzexternalize
+%\usetikzlibrary{arrows.meta}
+%\tikzexternalize
 \tikzstyle{vertex}=[circle,draw=black,fill=black,inner sep=0,minimum size=0.2cm,text=white,font=\footnotesize]
-\tikzset{arc/.style={
-        decoration={markings,
-            mark= at position 0.5 with {\arrow{Latex[length=2mm,width=2mm]}} ,
-        },
-        postaction={decorate}
-    }
-}
-\tikzset{every loop/.style={min distance=50,in=50,out=130,looseness=7}}
 
 %caption labels
 \usepackage[labelfont=bf,labelsep=period]{caption}
@@ -659,8 +651,8 @@ We show that for any bounded-degree spanning tree
 \end_inset
 
 ).
- Our proof depends on a lemma concerning the decomposition of a dense graph
- into super-regular pairs of uneven sizes, which may be of independent interest.
+ Our proof uses a lemma concerning the decomposition of a dense graph into
+ super-regular pairs of comparable sizes, which may be of independent interest.
 \end_layout
 
 \begin_layout Standard
@@ -769,7 +761,7 @@ key "Dir52"
  More recently, there have been many results showing that this kind of minimum
  degree condition is sufficient to guarantee the existence of different
  kinds of spanning graphs.
- For example, 
+ For example, in 
 \begin_inset CommandInset citation
 LatexCommand cite
 after "Theorem~1$'$"
@@ -777,7 +769,59 @@ key "KSS95"
 
 \end_inset
 
- says that for any 
+ Koml
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+os, S
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+ark
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+"
+\end_layout
+
+\end_inset
+
+ozy and Szemer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+edi proved that for any 
 \begin_inset Formula $\Delta$
 \end_inset
 
@@ -802,7 +846,66 @@ key "KSS95"
 \end_inset
 
 .
- (This has also been generalized further in two directions: to allow 
+ This has also been generalized further in two directions: in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KSS01"
+
+\end_inset
+
+ Koml
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+os, S
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+ark
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+"
+\end_layout
+
+\end_inset
+
+ozy and Szemer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+edi improved their result to to allow 
 \begin_inset Formula $\Delta$
 \end_inset
 
@@ -810,28 +913,33 @@ key "KSS95"
 \begin_inset Formula $n$
 \end_inset
 
- and to allow for much more general spanning subgraphs than spanning trees;
- see 
+, and in 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "KSS01,BST09"
+key "BST09"
 
 \end_inset
 
-).
+ B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+"
+\end_layout
+
+\end_inset
+
+ottcher, Schacht and Taraz gave a result for much more general spanning
+ subgraphs than trees.
 \end_layout
 
 \begin_layout Standard
 The constant 
-\begin_inset Quotes eld
-\end_inset
-
-
 \begin_inset Formula $1/2$
-\end_inset
-
-
-\begin_inset Quotes erd
 \end_inset
 
  in the above Dirac-type theorems is tight: in order to guarantee the existence
@@ -994,7 +1102,7 @@ globally
 \begin_inset Quotes erd
 \end_inset
 
- typical graph but for the typical graph in every small 
+ typical graph but for the typical graph in a small 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1071,7 +1179,7 @@ key "BFM03"
  random edges, then the resulting graph will a.a.s.
  be Hamiltonian.
  This saves a logarithmic factor over the usual model where we start with
- nothing.
+ the empty graph.
  Note that some dense graphs require a linear number of extra edges to become
  Hamiltonian (consider for example the complete bipartite graph with partition
  sizes 
@@ -1090,37 +1198,11 @@ Let
 \begin_inset Formula $\GG\left(n,p\right)$
 \end_inset
 
- be the Erd
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-H{o}
-\end_layout
-
-\end_inset
-
-s-R
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-'
-\end_layout
-
-\end_inset
-
-enyi random graph model with vertex set 
+ be the binomial random graph model with vertex set 
 \begin_inset Formula $\range n=\left\{ 1,\dots,n\right\} $
 \end_inset
 
-, where each edge is independently present with probability 
+, where each edge is present independently and with probability 
 \begin_inset Formula $p$
 \end_inset
 
@@ -1549,7 +1631,7 @@ At several points in the proof we will prove that (with high probability)
 
 , and we will assume by symmetry that these substructures (or some corresponding
  vertex sets) are themselves uniformly random.
- A simple way to see why this kind of reasoning is valid, is to notice that
+ A simple way to see why this kind of reasoning is valid is to notice that
  if we apply a uniformly random vertex permutation to a random graph 
 \begin_inset Formula $\R\in\GG\left(n,p\right)$
 \end_inset
@@ -1591,8 +1673,8 @@ For our first case suppose there are at least
 \begin_inset Formula $\lambda=\lambda\left(\a\right)>0$
 \end_inset
 
- to be determined in the second case).
- Then consider the tree 
+ which will be determined in the second case).
+ Then consider a tree 
 \begin_inset Formula $\T'$
 \end_inset
 
@@ -1617,16 +1699,33 @@ reference "lem:almost-spanning"
 \begin_inset Formula $\R_{1}$
 \end_inset
 
-.
+ (we also denote this embedded subgraph by 
+\begin_inset Formula $\T'$
+\end_inset
+
+).
  Let 
-\begin_inset Formula $A'\subseteq V$
+\begin_inset Formula $A\subseteq V$
 \end_inset
 
  be the set of vertices of 
 \begin_inset Formula $\T'$
 \end_inset
 
- which had a leaf deleted from them, and let 
+ which had a leaf deleted from them, and for 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ let 
+\begin_inset Formula $\ell\left(a\right)\le\Delta$
+\end_inset
+
+ be the number of leaves that were deleted from 
+\begin_inset Formula $a$
+\end_inset
+
+.
+ Let 
 \begin_inset Formula $B\subseteq V$
 \end_inset
 
@@ -1639,16 +1738,120 @@ reference "lem:almost-spanning"
 \end_inset
 
 .
- We can assume 
-\begin_inset Formula $A'$
+ In order to complete the embedding of 
+\begin_inset Formula $\T'$
+\end_inset
+
+ into an embedding of 
+\begin_inset Formula $\T$
+\end_inset
+
+ it suffices to find a set of disjoint stars in 
+\begin_inset Formula $\G\cup\R_{2}$
+\end_inset
+
+ each with a center vertex 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ and with 
+\begin_inset Formula $\ell\left(a\right)$
+\end_inset
+
+ leaves in 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ We will prove the existence of such stars with the following Hall-type
+ condition.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:hall-stars"
+
+\end_inset
+
+Consider a bipartite graph 
+\begin_inset Formula $\G$
+\end_inset
+
+ with bipartition 
+\begin_inset Formula $A\cup B$
+\end_inset
+
+, and consider a function 
+\begin_inset Formula $\ell:A\to\NN$
+\end_inset
+
+ such that 
+\begin_inset Formula $\sum_{a\in A}\ell\left(a\right)=\left|B\right|$
+\end_inset
+
+.
+ Suppose that 
+\begin_inset Formula 
+\[
+\left|N\left(S\right)\right|\ge\sum_{s\in S}\ell\left(s\right)\quad\mbox{for all }S\subseteq A.
+\]
+
+\end_inset
+
+Then there is a set of disjoint stars in 
+\begin_inset Formula $\G$
+\end_inset
+
+, each of which has a center vertex 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ and 
+\begin_inset Formula $\ell\left(a\right)$
+\end_inset
+
+ leaves in 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:hall-stars"
+
+\end_inset
+
+ can be easily proved by applying Hall's marriage theorem to an auxiliary
+ bipartite graph which has 
+\begin_inset Formula $\ell\left(a\right)$
+\end_inset
+
+ copies of each vertex 
+\begin_inset Formula $a\in A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We can assume 
+\begin_inset Formula $A$
 \end_inset
 
  and 
 \begin_inset Formula $B$
 \end_inset
 
- are uniformly random disjoint sets of the appropriate size (note 
-\begin_inset Formula $\left|A'\right|\ge\lambda n/\D$
+ are uniformly random disjoint subsets of 
+\begin_inset Formula $V$
+\end_inset
+
+ of their size (note 
+\begin_inset Formula $\left|A\right|\ge\lambda n/\D$
 \end_inset
 
  and 
@@ -1657,19 +1860,19 @@ reference "lem:almost-spanning"
 
 ).
  For each 
-\begin_inset Formula $a\in A'$
+\begin_inset Formula $a\in A$
 \end_inset
 
 , the random variable 
 \begin_inset Formula $\left|N_{\G}\left(a\right)\cap B\right|$
 \end_inset
 
- is hypergeometrically distributed with expected value 
+ is hypergeometrically distributed with expected value at least 
 \begin_inset Formula $\lambda\a n$
 \end_inset
 
 , and similarly each 
-\begin_inset Formula $\left|N_{\G}\left(b\right)\cap A'\right|$
+\begin_inset Formula $\left|N_{\G}\left(b\right)\cap A\right|$
 \end_inset
 
  (
@@ -1698,7 +1901,7 @@ key "JLR00"
 \end_inset
 
  each 
-\begin_inset Formula $a'\in A'$
+\begin_inset Formula $a\in A$
 \end_inset
 
  a.a.s.
@@ -1720,118 +1923,24 @@ key "JLR00"
 \end_inset
 
  neighbours in 
-\begin_inset Formula $A'$
-\end_inset
-
-.
- From now on we treat 
-\begin_inset Formula $A'$
-\end_inset
-
- and 
-\begin_inset Formula $B$
-\end_inset
-
- as fixed sets satisfying these properties.
-\end_layout
-
-\begin_layout Standard
-Let 
 \begin_inset Formula $A$
 \end_inset
 
- be a set consisting of 
-\begin_inset Formula $\ell$
-\end_inset
-
- copies of each vertex 
-\begin_inset Formula $a'\in A'$
-\end_inset
-
- which needs 
-\begin_inset Formula $\ell$
-\end_inset
-
- extra leaves (so 
-\begin_inset Formula $\left|A\right|=\lambda n$
-\end_inset
-
-).
- Define a bipartite graph 
-\begin_inset Formula $\B{\G}$
-\end_inset
-
- on the vertex set 
-\begin_inset Formula $A\cup B$
-\end_inset
-
-, with an edge between 
-\begin_inset Formula $a\in A$
-\end_inset
-
- (a copy of 
-\begin_inset Formula $a'\in A'$
-\end_inset
-
-) and 
-\begin_inset Formula $b\in B$
-\end_inset
-
-, if there is an edge between 
-\begin_inset Formula $a'$
-\end_inset
-
- and 
-\begin_inset Formula $b$
-\end_inset
-
- in 
+.
+ That is to say, the bipartite graph induced by 
 \begin_inset Formula $\G$
 \end_inset
 
-.
- Similarly define 
-\begin_inset Formula $\B{\R_{2}}$
+ on the bipartition 
+\begin_inset Formula $A\cup B$
 \end_inset
 
- and 
-\begin_inset Formula $\B{\G\cup\R}$
-\end_inset
-
- with edges deriving from 
-\begin_inset Formula $\R_{2}$
-\end_inset
-
- and 
-\begin_inset Formula $\G\cup\R$
+ has minimum degree at least 
+\begin_inset Formula $\beta n$
 \end_inset
 
 .
- If we can find a perfect matching in 
-\begin_inset Formula $\B{\G}\cup\B{\R_{2}}\subseteq\B{\G\cup\R}$
-\end_inset
-
-, this gives us a way to extend our embedding of 
-\begin_inset Formula $\T'$
-\end_inset
-
- to an embedding of 
-\begin_inset Formula $\T$
-\end_inset
-
-, as desired.
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $\BB_{A,B}\left(p\right)$
-\end_inset
-
- be the random bipartite graph distribution where each of the 
-\begin_inset Formula $\left|A\right|\left|B\right|$
-\end_inset
-
- possible edges between 
+ We treat 
 \begin_inset Formula $A$
 \end_inset
 
@@ -1839,93 +1948,31 @@ Let
 \begin_inset Formula $B$
 \end_inset
 
- are present with probability 
-\begin_inset Formula $p$
-\end_inset
-
-.
- For any 
-\begin_inset Formula $\c_{\BB}$
-\end_inset
-
-, we can choose large 
-\begin_inset Formula $\c_{2}$
-\end_inset
-
- such that for any 
-\begin_inset Formula $a'\in A$
-\end_inset
-
- and 
-\begin_inset Formula $b\in B$
-\end_inset
-
-, and for large 
-\begin_inset Formula $n$
-\end_inset
-
-, 
-\begin_inset Formula 
-\begin{align*}
- & \Pr\left(\mbox{all copies of }a'\mbox{ are adjacent to }b\mbox{ in }\B{\R_{2}}\right)=\c_{2}/n\\
- & \quad\ge1-\left(1-\c_{\BB}/n\right)^{\Delta}=\Pr\left(\mbox{some copy of }a'\mbox{ is adjacent to }b\mbox{ in }\BB_{A,B}\left(\c_{\BB}/n\right)\right).
-\end{align*}
-
-\end_inset
-
-This means we can couple 
-\begin_inset Formula $\B{\R_{2}}$
-\end_inset
-
- and 
-\begin_inset Formula $G_{\BB}\in\BB_{A,B}\left(\c_{\BB}/n\right)$
-\end_inset
-
- in such a way that 
-\begin_inset Formula $\B{\R_{2}}\supseteq G_{\BB}$
-\end_inset
-
- (the distribution of 
-\begin_inset Formula $\B{\R_{2}}$
-\end_inset
-
- 
-\emph on
-stochastically dominates
-\emph default
- 
-\begin_inset Formula $\BB_{A,B}\left(\c_{\BB}/n\right)$
-\end_inset
-
-).
- The following lemma then provides the desired perfect matching.
+ as fixed sets satisfying this property.
+ It suffices to prove the following lemma.
 \end_layout
 
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
-name "lem:bipartite-perfect-matching"
+name "lem:bipartite-perturbed-stars"
 
 \end_inset
 
-Let 
-\begin_inset Formula $A$
+For any 
+\begin_inset Formula $\beta>0$
 \end_inset
 
  and 
-\begin_inset Formula $B$
+\begin_inset Formula $\Delta\in\RR$
 \end_inset
 
- be 
-\begin_inset Formula $n$
+ there is 
+\begin_inset Formula $\c=\c\left(\beta\right)$
 \end_inset
 
--vertex sets.
- There is 
-\begin_inset Formula $\c_{\BB}=\c_{\BB}\left(\a\right)$
-\end_inset
-
- such that if 
+ such that the following holds.
+ Suppose 
 \begin_inset Formula $\G$
 \end_inset
 
@@ -1933,45 +1980,29 @@ Let
 \begin_inset Formula $A\cup B$
 \end_inset
 
- and minimum degree at least 
-\begin_inset Formula $\a n$
+ (
+\begin_inset Formula $\left|A\right|,\left|B\right|\le n$
 \end_inset
 
-, and if 
-\begin_inset Formula $\R\in\BB_{A,B}\left(\c_{\BB}/n\right)$
+) and minimum degree at least 
+\begin_inset Formula $\beta n$
 \end_inset
 
-, then a.a.s.
- 
-\begin_inset Formula $\G\cup\R$
+.
+ Suppose 
+\begin_inset Formula $\ell:A\to\range{\Delta}$
 \end_inset
 
- has a perfect matching.
-\end_layout
-
-\begin_layout Standard
-In order to prove 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:bipartite-perfect-matching"
-
+ is some function satisfying 
+\begin_inset Formula $\sum_{a\in A}\ell\left(a\right)=\left|B\right|$
 \end_inset
 
- we need another lemma.
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:bipartite-matching"
-
+.
+ Let 
+\begin_inset Formula $\R$
 \end_inset
 
-Let 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, and let 
+ be the random bipartite graph where each edge between 
 \begin_inset Formula $A$
 \end_inset
 
@@ -1979,37 +2010,89 @@ Let
 \begin_inset Formula $B$
 \end_inset
 
- be 
-\begin_inset Formula $n$
+ is present independently and with probability 
+\begin_inset Formula $\c/n$
 \end_inset
 
--vertex sets.
- There is 
-\begin_inset Formula $\c=\c\left(\varepsilon\right)$
+.
+ Then a.a.s.
+ 
+\begin_inset Formula $\G\cup\R$
 \end_inset
 
- such that 
-\begin_inset Formula $\R\in\BB_{A,B}\left(\c/n\right)$
-\end_inset
+ satisfies the condition in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:hall-stars"
 
- has a matching of size 
-\begin_inset Formula $\left(1-\varepsilon\right)n$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Proof
-For any subsets 
-\begin_inset Formula $A'$
+Let 
+\begin_inset Formula $S\subseteq A$
+\end_inset
+
+ be nonempty.
+ If 
+\begin_inset Formula $\left|S\right|\le\beta n/\Delta$
+\end_inset
+
+ then 
+\begin_inset Formula $\left|N_{\G}\left(S\right)\right|\ge\left|N_{\G}\left(a\right)\right|\ge\beta n\ge\sum_{s\in S}\ell\left(s\right)$
+\end_inset
+
+ for any 
+\begin_inset Formula $a\in S$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\left|S\right|\ge\left|A\right|-\beta n$
+\end_inset
+
+ then 
+\begin_inset Formula $\left|A\backslash S\right|\le\left|N_{\G}\left(b\right)\right|$
+\end_inset
+
+ for each 
+\begin_inset Formula $b\in B$
+\end_inset
+
+, so 
+\begin_inset Formula $\left|N_{\G}\left(S\right)\right|=\left|B\right|\ge\sum_{s\in S}\ell\left(s\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+The remaining case is where 
+\begin_inset Formula $\beta n/\Delta\le\left|S\right|\le\left|A\right|-\beta n$
+\end_inset
+
+.
+ In this case 
+\begin_inset Formula $\sum_{s\in S}\ell\left(s\right)=\left|B\right|-\sum_{a\in A\backslash S}\ell\left(a\right)\le\left|B\right|-\beta n$
+\end_inset
+
+.
+ Now, for any subsets 
+\begin_inset Formula $A'\subseteq A$
 \end_inset
 
  and 
-\begin_inset Formula $B'$
+\begin_inset Formula $B'\subseteq B$
 \end_inset
 
- of size 
-\begin_inset Formula $\varepsilon n$
+ with 
+\begin_inset Formula $\left|A'\right|=\beta n/\Delta$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|B'\right|=\beta n$
 \end_inset
 
 , the probability there is no edge between 
@@ -2021,7 +2104,7 @@ For any subsets
 \end_inset
 
  is 
-\begin_inset Formula $\left(1-\c/n\right)^{\left(\varepsilon n\right)^{2}}\le e^{-\c\varepsilon^{2}n}$
+\begin_inset Formula $\left(1-\c/n\right)^{\left(\beta n/\Delta\right)\left(\beta n\right)}\le e^{-\c\beta^{2}n/\Delta}$
 \end_inset
 
 .
@@ -2038,253 +2121,35 @@ For any subsets
 \end_inset
 
 , by the union bound there is a.a.s.
- an edge between any such pair of sets.
- It follows that a maximum-size matching a.a.s.
- has at least 
-\begin_inset Formula $\left(1-\varepsilon\right)n$
+ an edge between any such pair of such sets.
+ If this is true, it follows that 
+\begin_inset Formula $\left|N_{\R}\left(S\right)\right|\ge\left|B\right|-\beta n$
 \end_inset
 
- edges.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
+, because if 
+\begin_inset Formula $S$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Proof of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:bipartite-perfect-matching"
-
+ had more than 
+\begin_inset Formula $\beta n$
 \end_inset
 
-
-\end_layout
-
+ non-neighbours in 
+\begin_inset Formula $B$
 \end_inset
 
-We apply Hall's marriage theorem.
- If 
-\begin_inset Formula $W\subseteq A$
+ then this would give us a contradictory pair of subsets with no edge between
+ them.
+ We have proved that a.a.s.
+ 
+\begin_inset Formula $\left|N_{\R}\left(S\right)\right|\ge\sum_{s\in S}\ell\left(s\right)$
 \end_inset
 
- with 
-\begin_inset Formula $\left|W\right|\le\a n$
+ for all 
+\begin_inset Formula $S\subseteq A$
 \end_inset
 
- then 
-\begin_inset Formula $\left|N_{\G}\left(W\right)\right|\ge\a n\ge\left|W\right|$
-\end_inset
-
- by the minimum degree condition on 
-\begin_inset Formula $\G$
-\end_inset
-
-.
- Similarly, every vertex outside 
-\begin_inset Formula $N_{\G}\left(W\right)$
-\end_inset
-
- has at least 
-\begin_inset Formula $\a n$
-\end_inset
-
- neighbours outside 
-\begin_inset Formula $W$
-\end_inset
-
-, so if 
-\begin_inset Formula $\left|W\right|\ge\left(1-\a\right)n$
-\end_inset
-
- then 
-\begin_inset Formula $\left|N_{\G}\left(W\right)\right|=n\ge\left|W\right|$
-\end_inset
-
-.
- So, consider any 
-\begin_inset Formula $W$
-\end_inset
-
- with 
-\begin_inset Formula $\a n\le\left|W\right|\le\left(1-\a\right)n$
-\end_inset
-
- (in which case we must have 
-\begin_inset Formula $\a\le1/2$
-\end_inset
-
-).
- Split 
-\begin_inset Formula $\R$
-\end_inset
-
- into phases 
-\begin_inset Formula $\R\supseteq\R_{1}\cup\dots\cup\R_{r}$
-\end_inset
-
-, with 
-\begin_inset Formula $\R_{i}\in\BB_{A,B}\left(\c'/n\right)$
-\end_inset
-
-, for some 
-\begin_inset Formula $\c'=\c'\left(\a\right)$
-\end_inset
-
- and 
-\begin_inset Formula $r=r\left(\a\right)$
-\end_inset
-
- to be determined.
-\end_layout
-
-\begin_layout Proof
-By 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:bipartite-matching"
-
-\end_inset
-
-, if 
-\begin_inset Formula $\c'$
-\end_inset
-
- is large we can find a 
-\begin_inset Formula $\left(1-\a/8\right)n$
-\end_inset
-
--edge matching 
-\begin_inset Formula $M_{i}$
-\end_inset
-
- in each 
-\begin_inset Formula $\R_{i}$
-\end_inset
-
-, which we can assume is uniformly random.
- Let 
-\begin_inset Formula $N_{i}=N_{M_{i}}\left(W\right)$
-\end_inset
-
- contain the vertices matched with 
-\begin_inset Formula $W$
-\end_inset
-
- in each 
-\begin_inset Formula $M_{i}$
-\end_inset
-
-, and note that each 
-\begin_inset Formula $N_{i}$
-\end_inset
-
- is a random set satisfying 
-\begin_inset Formula $\left|W\right|-\a n/8\le\left|N_{i}\right|\le\left|W\right|$
-\end_inset
-
-.
- Condition on 
-\begin_inset Formula $N_{1}$
-\end_inset
-
-, and condition on the number of vertices 
-\begin_inset Formula $\left|N_{i}\right|$
-\end_inset
-
- matched by 
-\begin_inset Formula $W$
-\end_inset
-
- in each 
-\begin_inset Formula $M_{i}$
-\end_inset
-
-.
- Now, for each 
-\begin_inset Formula $i>1$
-\end_inset
-
-, note that 
-\begin_inset Formula $\left|N_{i}\cap N_{1}\right|$
-\end_inset
-
- is hypergeometrically distributed with mean 
-\begin_inset Formula $\left|N_{i}\right|\left|N_{1}\right|/n$
-\end_inset
-
-.
- Since 
-\begin_inset Formula $\left|W\right|\left(n-\left|W\right|\right)\ge\a n\left(1-\a\right)n\ge\a n^{2}/2$
-\end_inset
-
-, we have 
-\begin_inset Formula $\left|W\right|^{2}\le\left|W\right|n-\a n^{2}/2$
-\end_inset
-
- and 
-\begin_inset Formula 
-\[
-\left|N_{i}\right|\left|N_{1}\right|/n\le\left|W\right|^{2}/n\le\left|W\right|-\a n/2=2\left(\left|W\right|-\a/8\right)-\left|W\right|-\a/4\le\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|-\a n/4.
-\]
-
-\end_inset
-
-So, by a concentration inequality,
-\begin_inset Formula 
-\[
-\Pr\left(\left|N_{i}\cup N_{1}\right|<\left|W\right|\right)=\Pr\left(\left|N_{i}\cap N_{1}\right|>\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|\right)=e^{-\Omega\left(\a^{2}n\right)}
-\]
-
-\end_inset
-
-and therefore
-\begin_inset Formula 
-\[
-\Pr\left(\left|N_{\R}\left(W\right)\right|<\left|W\right|\right)\le\prod_{i=2}^{r}\Pr\left(\left|N_{i}\cup N_{1}\right|<\left|W\right|\right)=e^{-\Omega\left(r\a^{2}n\right)}.
-\]
-
-\end_inset
-
-If 
-\begin_inset Formula $r$
-\end_inset
-
- is large this probability is 
-\begin_inset Formula $o\left(2^{-n}\right)$
-\end_inset
-
-, and since there are at most 
-\begin_inset Formula $2^{n}$
-\end_inset
-
- choices for 
-\begin_inset Formula $W$
-\end_inset
-
-, the union bound gives 
-\begin_inset Formula $\left|N_{\R}\left(W\right)\right|\ge\left|W\right|$
-\end_inset
-
- for all required 
-\begin_inset Formula $W$
-\end_inset
-
-.
+, as required.
 \end_layout
 
 \begin_layout Subsection
@@ -2327,7 +2192,7 @@ name "sub:partition-into-blobs"
 
 \begin_layout Standard
 As outlined in the introduction, we first need to divide 
-\begin_inset Formula $G$
+\begin_inset Formula $\G$
 \end_inset
 
  into a bounded number of pairs of 
@@ -2339,15 +2204,6 @@ partner clusters
 \end_inset
 
  with edges well-distributed between them.
- This partition will inform the way we use 
-\begin_inset Formula $\R$
-\end_inset
-
- to embed 
-\begin_inset Formula $\T$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -2364,7 +2220,11 @@ For a disjoint pair of vertex sets
 \begin_inset Formula $\left(X,Y\right)$
 \end_inset
 
- in a graph, let its 
+ in a graph 
+\begin_inset Formula $G$
+\end_inset
+
+, let its 
 \emph on
 density
 \emph default
@@ -2397,6 +2257,10 @@ density
 
 -regular
 \emph default
+ in 
+\begin_inset Formula $G$
+\end_inset
+
  if for any 
 \begin_inset Formula $U_{1},U_{2}$
 \end_inset
@@ -2510,21 +2374,21 @@ For
 \begin_inset Formula $\G$
 \end_inset
 
- be a graph on 
-\begin_inset Formula $\range n$
+ be an 
+\begin_inset Formula $n$
 \end_inset
 
- with minimum degree at least 
+-vertex graph with minimum degree at least 
 \begin_inset Formula $\a n$
 \end_inset
 
 .
- We can choose 
+ Then there is 
 \begin_inset Formula $q\le Q$
 \end_inset
 
- and partition 
-\begin_inset Formula $\range n$
+ and a partition of 
+\begin_inset Formula $V\left(\G\right)$
 \end_inset
 
  into clusters 
@@ -2575,7 +2439,7 @@ guarantee that the sets
 \begin_inset Formula $V_{i}^{\h}$
 \end_inset
 
- are the same size, just that the variation in the sizes of the clusters
+ are of the same size, just that the variation in the sizes of the clusters
  is bounded independently of 
 \begin_inset Formula $\varepsilon$
 \end_inset
@@ -2613,7 +2477,7 @@ cluster graph
 \begin_inset Formula $T_{i}$
 \end_inset
 
-, the centre cluster will correspond to 
+, the center cluster will correspond to 
 \begin_inset Formula $V_{i}^{1}$
 \end_inset
 
@@ -2684,7 +2548,7 @@ For every
 \begin_inset Formula $\a$
 \end_inset
 
-, there is 
+, there are 
 \begin_inset Formula $\a'=\a'\left(\a\right)>0$
 \end_inset
 
@@ -2756,7 +2620,7 @@ exceptional cluster
 \begin_inset Formula $\G'$
 \end_inset
 
- within clusters, and each pair of non-exceptional clusters is 
+ within the clusters, and each pair of non-exceptional clusters is 
 \begin_inset Formula $\varepsilon$
 \end_inset
 
@@ -2803,7 +2667,24 @@ cluster graph
 \end_layout
 
 \begin_layout Standard
-This version of Szemeredi's regularity lemma follows directly from 
+This version of Szemeredi's regularity lemma is just the 
+\begin_inset Quotes eld
+\end_inset
+
+degree form
+\begin_inset Quotes erd
+\end_inset
+
+ of 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem~1.10"
+key "KS96"
+
+\end_inset
+
+, plus a straightforward claim about minimum degree.
+ Our statement follows directly from 
 \begin_inset CommandInset citation
 LatexCommand cite
 after "Proposition~9"
@@ -3185,7 +3066,7 @@ Let
 \begin_inset Formula $v$
 \end_inset
 
- has a neighbour which is a centre of one of the stars in 
+ has a neighbour which is a center of one of the stars in 
 \begin_inset Formula $S$
 \end_inset
 
@@ -3202,7 +3083,7 @@ Let
 \begin_inset Quotes eld
 \end_inset
 
-centre
+center
 \begin_inset Quotes erd
 \end_inset
 
@@ -3233,7 +3114,7 @@ centre
 \begin_inset Formula $v$
 \end_inset
 
- is a centre of a star with 
+ is a center of a star with 
 \begin_inset Formula $1+\floor{1/\a}>1/\a$
 \end_inset
 
@@ -3326,7 +3207,7 @@ reference "lem:star-cover"
 \begin_inset Formula $W_{i}^{1}$
 \end_inset
 
- be the centre cluster of 
+ be the center cluster of 
 \begin_inset Formula $T_{i}$
 \end_inset
 
@@ -3350,7 +3231,7 @@ leaf
 \begin_inset Quotes eld
 \end_inset
 
-centre
+center
 \begin_inset Quotes erd
 \end_inset
 
@@ -4152,7 +4033,20 @@ reference "lem:random-preserves-superregular"
 \end_inset
 
  is a simple consequence of a highly nontrivial (and much more general)
- result in 
+ result proved by Gerke, Kohayakawa, R
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+"
+\end_layout
+
+\end_inset
+
+odl and Steger in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "GKRS07"
@@ -4612,10 +4506,11 @@ We will find our length-2 paths greedily, by repeatedly applying the following
 \begin_inset Formula $\Omega\left(n\right)$
 \end_inset
 
- (the proof of this is basically identical to the proof of 
+ (we can prove this with basically the same argument as in the proof of
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:bipartite-matching"
+reference "lem:bipartite-perturbed-stars"
 
 \end_inset
 

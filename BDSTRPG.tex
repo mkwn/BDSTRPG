@@ -120,19 +120,11 @@
 
 %graph drawing
 \usepackage{tikz}
-\usetikzlibrary{external}
+%\usetikzlibrary{external}
 \usetikzlibrary{decorations.markings}
-\usetikzlibrary{arrows.meta}
-\tikzexternalize
+%\usetikzlibrary{arrows.meta}
+%\tikzexternalize
 \tikzstyle{vertex}=[circle,draw=black,fill=black,inner sep=0,minimum size=0.2cm,text=white,font=\footnotesize]
-\tikzset{arc/.style={
-        decoration={markings,
-            mark= at position 0.5 with {\arrow{Latex[length=2mm,width=2mm]}} ,
-        },
-        postaction={decorate}
-    }
-}
-\tikzset{every loop/.style={min distance=50,in=50,out=130,looseness=7}}
 
 %caption labels
 \usepackage[labelfont=bf,labelsep=period]{caption}
@@ -303,9 +295,9 @@ such that if $\G$ is an $n$-vertex graph with minimum degree at
 least $\a n$, and $\T$ is an $n$-vertex tree with maximum degree
 at most $\D$, then if we add $\c n$ uniformly random edges to $\G$,
 the resulting graph will contain $\T$ asymptotically almost surely
-(as $n\to\infty$). Our proof depends on a lemma concerning the decomposition
-of a dense graph into super-regular pairs of uneven sizes, which may
-be of independent interest.
+(as $n\to\infty$). Our proof uses a lemma concerning the decomposition
+of a dense graph into super-regular pairs of comparable sizes, which
+may be of independent interest.
 \end{abstract}
 \begin{comment}
 \begin{thm}
@@ -337,32 +329,34 @@ graph ($n\ge3$) with minimum degree at least $n/2$ has a Hamilton
 cycle: a cycle that passes through all the vertices of the graph.
 More recently, there have been many results showing that this kind
 of minimum degree condition is sufficient to guarantee the existence
-of different kinds of spanning graphs. For example, \cite[Theorem~1$'$]{KSS95}
-says that for any $\Delta$ and $\gamma>0$, any $n$-vertex graph
-($n$ sufficiently large) with minimum degree $\left(1/2+\gamma\right)n$
-contains every spanning tree which has maximum degree at most $\Delta$.
-(This has also been generalized further in two directions: to allow
-$\Delta$ to grow with $n$ and to allow for much more general spanning
-subgraphs than spanning trees; see \cite{KSS01,BST09}).
+of different kinds of spanning graphs. For example, in \cite[Theorem~1$'$]{KSS95}
+Koml\'os, S\'ark\"ozy and Szemer\'edi proved that for any $\Delta$
+and $\gamma>0$, any $n$-vertex graph ($n$ sufficiently large) with
+minimum degree $\left(1/2+\gamma\right)n$ contains every spanning
+tree which has maximum degree at most $\Delta$. This has also been
+generalized further in two directions: in \cite{KSS01} Koml\'os,
+S\'ark\"ozy and Szemer\'edi improved their result to to allow $\Delta$
+to grow with $n$, and in \cite{BST09} B\"ottcher, Schacht and Taraz
+gave a result for much more general spanning subgraphs than trees.
 
-The constant ``$1/2$'' in the above Dirac-type theorems is tight:
-in order to guarantee the existence of these spanning subgraphs we
-require very strong density conditions. But the situation is very
-different for a ``typical'' large graph. If we fix an arbitrarily
-small $\alpha>0$ and select a graph uniformly at random among the
-(labelled) graphs with $n$ vertices and $\alpha{n \choose 2}$ edges,
-then the degrees will probably each be about $\alpha n$. Such a random
-graph is Hamiltonian with probability $1-o\left(1\right)$ (we say
-it is Hamiltonian \emph{asymptotically almost surely}, or \emph{a.a.s.}).
-This follows from a stronger result \cite{Pos76} that gives a \emph{threshold}
-for Hamiltonicity: a random $n$-vertex, $m$-edge graph is Hamiltonian
-a.a.s. if $m\gg n\log n$, and fails to be Hamiltonian a.a.s. if $m\ll n\log n$.
-Although the exact threshold for bounded-degree spanning trees is
-not known, it was proved in \cite{Mon14} that for any $\Delta$ and
-any tree $T$ with maximum degree at most $\Delta$, a random $n$-vertex
-graph with $\Delta n\left(\log n\right)^{5}$ edges a.a.s. contains
-$T$. Here and from now on, all asymptotics are as $n\to\infty$,
-and we implicitly round large quantities to integers.
+The constant $1/2$ in the above Dirac-type theorems is tight: in
+order to guarantee the existence of these spanning subgraphs we require
+very strong density conditions. But the situation is very different
+for a ``typical'' large graph. If we fix an arbitrarily small $\alpha>0$
+and select a graph uniformly at random among the (labelled) graphs
+with $n$ vertices and $\alpha{n \choose 2}$ edges, then the degrees
+will probably each be about $\alpha n$. Such a random graph is Hamiltonian
+with probability $1-o\left(1\right)$ (we say it is Hamiltonian \emph{asymptotically
+almost surely}, or \emph{a.a.s.}). This follows from a stronger result
+\cite{Pos76} that gives a \emph{threshold} for Hamiltonicity: a random
+$n$-vertex, $m$-edge graph is Hamiltonian a.a.s. if $m\gg n\log n$,
+and fails to be Hamiltonian a.a.s. if $m\ll n\log n$. Although the
+exact threshold for bounded-degree spanning trees is not known, it
+was proved in \cite{Mon14} that for any $\Delta$ and any tree $T$
+with maximum degree at most $\Delta$, a random $n$-vertex graph
+with $\Delta n\left(\log n\right)^{5}$ edges a.a.s. contains $T$.
+Here and from now on, all asymptotics are as $n\to\infty$, and we
+implicitly round large quantities to integers.
 
 In \cite{BFM03}, the authors studied Hamiltonicity in the random
 graph model that starts with a dense graph and adds $m$ random edges.
@@ -373,7 +367,7 @@ paragraphs. The model has since been studied in a number of other
 contexts; see for example \cite{BHM04,KST06,KKS15}. A property that
 holds a.a.s. with small $m$ in our random graph model can be said
 to hold not just for a ``globally'' typical graph but for the typical
-graph in every small ``neighbourhood'' of our space of graphs. This
+graph in a small ``neighbourhood'' of our space of graphs. This
 tells us that the graphs which fail to satisfy our property are in
 some sense ``fragile''. We highlight that it is generally very easy
 to transfer results from our model of random perturbation to other
@@ -389,18 +383,18 @@ The statement of \cite[Theorem~1]{BFM03} is that for every $\alpha>0$
 there is $c=c\left(\alpha\right)$ such that if we start with a graph
 with minimum degree at least $\alpha n$ and add $cn$ random edges,
 then the resulting graph will a.a.s. be Hamiltonian. This saves a
-logarithmic factor over the usual model where we start with nothing.
-Note that some dense graphs require a linear number of extra edges
-to become Hamiltonian (consider for example the complete bipartite
+logarithmic factor over the usual model where we start with the empty
+graph. Note that some dense graphs require a linear number of extra
+edges to become Hamiltonian (consider for example the complete bipartite
 graph with partition sizes $n/3$ and $2n/3$), so the order of magnitude
 of this result is tight.
 
-Let $\GG\left(n,p\right)$ be the Erd\H{o}s-R\'enyi random graph
-model with vertex set $\range n=\left\{ 1,\dots,n\right\} $, where
-each edge is independently present with probability $p$. (For our
-purposes this is equivalent to the model that uniformly at random
-selects a $p{n \choose 2}$-edge graph on the vertex set $\range n$).
-In this paper we prove the following theorem, extending the aforementioned
+Let $\GG\left(n,p\right)$ be the binomial random graph model with
+vertex set $\range n=\left\{ 1,\dots,n\right\} $, where each edge
+is present independently and with probability $p$. (For our purposes
+this is equivalent to the model that uniformly at random selects a
+$p{n \choose 2}$-edge graph on the vertex set $\range n$). In this
+paper we prove the following theorem, extending the aforementioned
 result to bounded-degree spanning trees.
 \begin{thm}
 \label{thm:main-theorem}There is $\c=\c\left(\a,\D\right)$ such
@@ -472,7 +466,7 @@ be the common vertex set of $\G$, $\R$ and the $\R_{i}$.
 that (with high probability) there exist certain substructures in
 the random edges $\R$, and we will assume by symmetry that these
 substructures (or some corresponding vertex sets) are themselves uniformly
-random. A simple way to see why this kind of reasoning is valid, is
+random. A simple way to see why this kind of reasoning is valid is
 to notice that if we apply a uniformly random vertex permutation to
 a random graph $\R\in\GG\left(n,p\right)$, then by symmetry the resulting
 distribution is still $\GG\left(n,p\right)$. So we can imagine that
@@ -483,108 +477,75 @@ mapping these structures to our vertex set.
 \subsection{Case 1: $\protect\T$ has many leaves\label{sub:many-leaves}}
 
 For our first case suppose there are at least $\lambda n$ leaves
-in $\T$ (for some fixed $\lambda=\lambda\left(\a\right)>0$ to be
-determined in the second case). Then consider the tree $\T'$ with
-some $\lambda n$ leaves removed. By \ref{lem:almost-spanning} we
-can a.a.s. embed $\T'$ into $\R_{1}$. Let $A'\subseteq V$ be the
-set of vertices of $\T'$ which had a leaf deleted from them, and
-let $B\subseteq V$ be the set of $\lambda n$ vertices not part of
-$\T'$. We can assume $A'$ and $B$ are uniformly random disjoint
-sets of the appropriate size (note $\left|A'\right|\ge\lambda n/\D$
-and $\left|B\right|=\lambda n$). For each $a\in A'$, the random
-variable $\left|N_{\G}\left(a\right)\cap B\right|$ is hypergeometrically
-distributed with expected value $\lambda\a n$, and similarly each
-$\left|N_{\G}\left(b\right)\cap A'\right|$ ($b\in B$) is hypergeometric
-with expectation at least $\lambda\a n/\D$. Let $\beta=\lambda\a/\left(2\D\right)$;
-by a concentration inequality (for example, see \cite[Theorem 2.10]{JLR00})
-and the union bound, in $\G$ each $a'\in A'$ a.a.s. has at least
-$\beta n$ neighbours in $B$, and each $b\in B$ a.a.s. has at least
-$\beta n$ neighbours in $A'$. From now on we treat $A'$ and $B$
-as fixed sets satisfying these properties.
-
-Let $A$ be a set consisting of $\ell$ copies of each vertex $a'\in A'$
-which needs $\ell$ extra leaves (so $\left|A\right|=\lambda n$).
-Define a bipartite graph $\B{\G}$ on the vertex set $A\cup B$, with
-an edge between $a\in A$ (a copy of $a'\in A'$) and $b\in B$, if
-there is an edge between $a'$ and $b$ in $\G$. Similarly define
-$\B{\R_{2}}$ and $\B{\G\cup\R}$ with edges deriving from $\R_{2}$
-and $\G\cup\R$. If we can find a perfect matching in $\B{\G}\cup\B{\R_{2}}\subseteq\B{\G\cup\R}$,
-this gives us a way to extend our embedding of $\T'$ to an embedding
-of $\T$, as desired.
-
-Let $\BB_{A,B}\left(p\right)$ be the random bipartite graph distribution
-where each of the $\left|A\right|\left|B\right|$ possible edges between
-$A$ and $B$ are present with probability $p$. For any $\c_{\BB}$,
-we can choose large $\c_{2}$ such that for any $a'\in A$ and $b\in B$,
-and for large $n$, 
-\begin{align*}
- & \Pr\left(\mbox{all copies of }a'\mbox{ are adjacent to }b\mbox{ in }\B{\R_{2}}\right)=\c_{2}/n\\
- & \quad\ge1-\left(1-\c_{\BB}/n\right)^{\Delta}=\Pr\left(\mbox{some copy of }a'\mbox{ is adjacent to }b\mbox{ in }\BB_{A,B}\left(\c_{\BB}/n\right)\right).
-\end{align*}
-This means we can couple $\B{\R_{2}}$ and $G_{\BB}\in\BB_{A,B}\left(\c_{\BB}/n\right)$
-in such a way that $\B{\R_{2}}\supseteq G_{\BB}$ (the distribution
-of $\B{\R_{2}}$ \emph{stochastically dominates} $\BB_{A,B}\left(\c_{\BB}/n\right)$).
-The following lemma then provides the desired perfect matching.
+in $\T$ (for some fixed $\lambda=\lambda\left(\a\right)>0$ which
+will be determined in the second case). Then consider a tree $\T'$
+with some $\lambda n$ leaves removed. By \ref{lem:almost-spanning}
+we can a.a.s. embed $\T'$ into $\R_{1}$ (we also denote this embedded
+subgraph by $\T'$). Let $A\subseteq V$ be the set of vertices of
+$\T'$ which had a leaf deleted from them, and for $a\in A$ let $\ell\left(a\right)\le\Delta$
+be the number of leaves that were deleted from $a$. Let $B\subseteq V$
+be the set of $\lambda n$ vertices not part of $\T'$. In order to
+complete the embedding of $\T'$ into an embedding of $\T$ it suffices
+to find a set of disjoint stars in $\G\cup\R_{2}$ each with a center
+vertex $a\in A$ and with $\ell\left(a\right)$ leaves in $B$. We
+will prove the existence of such stars with the following Hall-type
+condition.
 \begin{lem}
-\label{lem:bipartite-perfect-matching}Let $A$ and $B$ be $n$-vertex
-sets. There is $\c_{\BB}=\c_{\BB}\left(\a\right)$ such that if $\G$
-is a bipartite graph with bipartition $A\cup B$ and minimum degree
-at least $\a n$, and if $\R\in\BB_{A,B}\left(\c_{\BB}/n\right)$,
-then a.a.s. $\G\cup\R$ has a perfect matching.
+\label{lem:hall-stars}Consider a bipartite graph $\G$ with bipartition
+$A\cup B$, and consider a function $\ell:A\to\NN$ such that $\sum_{a\in A}\ell\left(a\right)=\left|B\right|$.
+Suppose that 
+\[
+\left|N\left(S\right)\right|\ge\sum_{s\in S}\ell\left(s\right)\quad\mbox{for all }S\subseteq A.
+\]
+Then there is a set of disjoint stars in $\G$, each of which has
+a center vertex $a\in A$ and $\ell\left(a\right)$ leaves in $B$.
 \end{lem}
-In order to prove \ref{lem:bipartite-perfect-matching} we need another
-lemma.
+\ref{lem:hall-stars} can be easily proved by applying Hall's marriage
+theorem to an auxiliary bipartite graph which has $\ell\left(a\right)$
+copies of each vertex $a\in A$.
+
+We can assume $A$ and $B$ are uniformly random disjoint subsets
+of $V$ of their size (note $\left|A\right|\ge\lambda n/\D$ and $\left|B\right|=\lambda n$).
+For each $a\in A$, the random variable $\left|N_{\G}\left(a\right)\cap B\right|$
+is hypergeometrically distributed with expected value at least $\lambda\a n$,
+and similarly each $\left|N_{\G}\left(b\right)\cap A\right|$ ($b\in B$)
+is hypergeometric with expectation at least $\lambda\a n/\D$. Let
+$\beta=\lambda\a/\left(2\D\right)$; by a concentration inequality
+(for example, see \cite[Theorem 2.10]{JLR00}) and the union bound,
+in $\G$ each $a\in A$ a.a.s. has at least $\beta n$ neighbours
+in $B$, and each $b\in B$ a.a.s. has at least $\beta n$ neighbours
+in $A$. That is to say, the bipartite graph induced by $\G$ on the
+bipartition $A\cup B$ has minimum degree at least $\beta n$. We
+treat $A$ and $B$ as fixed sets satisfying this property. It suffices
+to prove the following lemma.
 \begin{lem}
-\label{lem:bipartite-matching}Let $\varepsilon>0$, and let $A$
-and $B$ be $n$-vertex sets. There is $\c=\c\left(\varepsilon\right)$
-such that $\R\in\BB_{A,B}\left(\c/n\right)$ has a matching of size
-$\left(1-\varepsilon\right)n$.\end{lem}
+\label{lem:bipartite-perturbed-stars}For any $\beta>0$ and $\Delta\in\RR$
+there is $\c=\c\left(\beta\right)$ such that the following holds.
+Suppose $\G$ is a bipartite graph with bipartition $A\cup B$ ($\left|A\right|,\left|B\right|\le n$)
+and minimum degree at least $\beta n$. Suppose $\ell:A\to\range{\Delta}$
+is some function satisfying $\sum_{a\in A}\ell\left(a\right)=\left|B\right|$.
+Let $\R$ be the random bipartite graph where each edge between $A$
+and $B$ is present independently and with probability $\c/n$. Then
+a.a.s. $\G\cup\R$ satisfies the condition in \ref{lem:hall-stars}.\end{lem}
 \begin{proof}
-For any subsets $A'$ and $B'$ of size $\varepsilon n$, the probability
-there is no edge between $A'$ and $B'$ is $\left(1-\c/n\right)^{\left(\varepsilon n\right)^{2}}\le e^{-\c\varepsilon^{2}n}$.
+Let $S\subseteq A$ be nonempty. If $\left|S\right|\le\beta n/\Delta$
+then $\left|N_{\G}\left(S\right)\right|\ge\left|N_{\G}\left(a\right)\right|\ge\beta n\ge\sum_{s\in S}\ell\left(s\right)$
+for any $a\in S$. If $\left|S\right|\ge\left|A\right|-\beta n$ then
+$\left|A\backslash S\right|\le\left|N_{\G}\left(b\right)\right|$
+for each $b\in B$, so $\left|N_{\G}\left(S\right)\right|=\left|B\right|\ge\sum_{s\in S}\ell\left(s\right)$.
+
+The remaining case is where $\beta n/\Delta\le\left|S\right|\le\left|A\right|-\beta n$.
+In this case $\sum_{s\in S}\ell\left(s\right)=\left|B\right|-\sum_{a\in A\backslash S}\ell\left(a\right)\le\left|B\right|-\beta n$.
+Now, for any subsets $A'\subseteq A$ and $B'\subseteq B$ with $\left|A'\right|=\beta n/\Delta$
+and $\left|B'\right|=\beta n$, the probability there is no edge between
+$A'$ and $B'$ is $\left(1-\c/n\right)^{\left(\beta n/\Delta\right)\left(\beta n\right)}\le e^{-\c\beta^{2}n/\Delta}$.
 There are at most $2^{2n}$ choices of such $A',B'$, so for large
 $\c$, by the union bound there is a.a.s. an edge between any such
-pair of sets. It follows that a maximum-size matching a.a.s. has at
-least $\left(1-\varepsilon\right)n$ edges.
-\end{proof}
-
-\begin{proof}[Proof of \ref{lem:bipartite-perfect-matching}]
-We apply Hall's marriage theorem. If $W\subseteq A$ with $\left|W\right|\le\a n$
-then $\left|N_{\G}\left(W\right)\right|\ge\a n\ge\left|W\right|$
-by the minimum degree condition on $\G$. Similarly, every vertex
-outside $N_{\G}\left(W\right)$ has at least $\a n$ neighbours outside
-$W$, so if $\left|W\right|\ge\left(1-\a\right)n$ then $\left|N_{\G}\left(W\right)\right|=n\ge\left|W\right|$.
-So, consider any $W$ with $\a n\le\left|W\right|\le\left(1-\a\right)n$
-(in which case we must have $\a\le1/2$). Split $\R$ into phases
-$\R\supseteq\R_{1}\cup\dots\cup\R_{r}$, with $\R_{i}\in\BB_{A,B}\left(\c'/n\right)$,
-for some $\c'=\c'\left(\a\right)$ and $r=r\left(\a\right)$ to be
-determined.
-
-By \ref{lem:bipartite-matching}, if $\c'$ is large we can find a
-$\left(1-\a/8\right)n$-edge matching $M_{i}$ in each $\R_{i}$,
-which we can assume is uniformly random. Let $N_{i}=N_{M_{i}}\left(W\right)$
-contain the vertices matched with $W$ in each $M_{i}$, and note
-that each $N_{i}$ is a random set satisfying $\left|W\right|-\a n/8\le\left|N_{i}\right|\le\left|W\right|$.
-Condition on $N_{1}$, and condition on the number of vertices $\left|N_{i}\right|$
-matched by $W$ in each $M_{i}$. Now, for each $i>1$, note that
-$\left|N_{i}\cap N_{1}\right|$ is hypergeometrically distributed
-with mean $\left|N_{i}\right|\left|N_{1}\right|/n$. Since $\left|W\right|\left(n-\left|W\right|\right)\ge\a n\left(1-\a\right)n\ge\a n^{2}/2$,
-we have $\left|W\right|^{2}\le\left|W\right|n-\a n^{2}/2$ and 
-\[
-\left|N_{i}\right|\left|N_{1}\right|/n\le\left|W\right|^{2}/n\le\left|W\right|-\a n/2=2\left(\left|W\right|-\a/8\right)-\left|W\right|-\a/4\le\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|-\a n/4.
-\]
-So, by a concentration inequality,
-\[
-\Pr\left(\left|N_{i}\cup N_{1}\right|<\left|W\right|\right)=\Pr\left(\left|N_{i}\cap N_{1}\right|>\left|N_{i}\right|+\left|N_{1}\right|-\left|W\right|\right)=e^{-\Omega\left(\a^{2}n\right)}
-\]
-and therefore
-\[
-\Pr\left(\left|N_{\R}\left(W\right)\right|<\left|W\right|\right)\le\prod_{i=2}^{r}\Pr\left(\left|N_{i}\cup N_{1}\right|<\left|W\right|\right)=e^{-\Omega\left(r\a^{2}n\right)}.
-\]
-If $r$ is large this probability is $o\left(2^{-n}\right)$, and
-since there are at most $2^{n}$ choices for $W$, the union bound
-gives $\left|N_{\R}\left(W\right)\right|\ge\left|W\right|$ for all
-required $W$.
+pair of such sets. If this is true, it follows that $\left|N_{\R}\left(S\right)\right|\ge\left|B\right|-\beta n$,
+because if $S$ had more than $\beta n$ non-neighbours in $B$ then
+this would give us a contradictory pair of subsets with no edge between
+them. We have proved that a.a.s. $\left|N_{\R}\left(S\right)\right|\ge\sum_{s\in S}\ell\left(s\right)$
+for all $S\subseteq A$, as required.
 \end{proof}
 
 \subsection{Case 2: $\protect\T$ has few leaves\label{sub:few leaves}}
@@ -595,20 +556,19 @@ leaves in $\T$.
 
 \subsubsection{Partitioning into super-regular pairs\label{sub:partition-into-blobs}}
 
-As outlined in the introduction, we first need to divide $G$ into
+As outlined in the introduction, we first need to divide $\G$ into
 a bounded number of pairs of ``partner clusters'' with edges well-distributed
-between them. This partition will inform the way we use $\R$ to embed
-$\T$.
+between them.
 
 \global\long\def\h{h}
 
 \begin{defn}
-For a disjoint pair of vertex sets $\left(X,Y\right)$ in a graph,
-let its \emph{density} $d\left(X,Y\right)$ be the number of edges
-between $X$ and $Y$, divided by $\left|X\right|\left|Y\right|$.
+For a disjoint pair of vertex sets $\left(X,Y\right)$ in a graph
+$G$, let its \emph{density} $d\left(X,Y\right)$ be the number of
+edges between $X$ and $Y$, divided by $\left|X\right|\left|Y\right|$.
 A pair of vertex sets $\left(V_{1},V_{2}\right)$ is said to be \emph{$\varepsilon$-regular}
-if for any $U_{1},U_{2}$ with $U_{\h}\subseteq V_{\h}$ and $\left|U_{\h}\right|\ge\varepsilon\left|V_{\h}\right|$,
-we have $\left|d\left(U_{1},U_{2}\right)-d\left(V_{1},V_{2}\right)\right|\le\varepsilon$.
+in $G$ if for any $U_{1},U_{2}$ with $U_{\h}\subseteq V_{\h}$ and
+$\left|U_{\h}\right|\ge\varepsilon\left|V_{\h}\right|$, we have $\left|d\left(U_{1},U_{2}\right)-d\left(V_{1},V_{2}\right)\right|\le\varepsilon$.
 If alternatively $d\left(U_{1},U_{2}\right)\ge\delta$ for all such
 pairs $U_{1},U_{2}$ then we say $\left(V_{1},V_{2}\right)$ is \emph{$\left(\varepsilon,\delta\right)$-dense}.
 Let $\flip{\h}=2-\h$; if $\left(V_{1},V_{2}\right)$ is $\left(\varepsilon,\delta\right)$-dense
@@ -619,21 +579,21 @@ is \emph{$\left(\varepsilon,\delta\right)$-super-regular}.\end{defn}
 \label{lem:partition-into-blobs}For $\a,\varepsilon>0$ with $\varepsilon$
 sufficiently small relative to $\a$, there are $\delta=\delta\left(\a\right)>0$,
 $\rho=\rho\left(\a\right)$ and $Q=Q\left(\a,\varepsilon\right)$,
-such that the following holds. Let $\G$ be a graph on $\range n$
-with minimum degree at least $\a n$. We can choose $q\le Q$ and
-partition $\range n$ into clusters $V_{i}^{\h}$ ($1\le i\le q$,
+such that the following holds. Let $\G$ be an $n$-vertex graph with
+minimum degree at least $\a n$. Then there is $q\le Q$ and a partition
+of $V\left(\G\right)$ into clusters $V_{i}^{\h}$ ($1\le i\le q$,
 $\h=1,2$) such that each $\left|V_{i}^{\h}\right|=\Theta\left(n\right)$
 and each pair $\left(V_{i}^{1},V_{i}^{2}\right)$ is $\left(\varepsilon,\delta\right)$-super-regular.
 Moreover, each $\left|V_{i}^{\h}\right|/\left|V_{j}^{g}\right|\le\rho$.
 \end{lem}
 We emphasize that in \ref{lem:partition-into-blobs} we do \emph{not
-}guarantee that the sets $V_{i}^{\h}$ are the same size, just that
-the variation in the sizes of the clusters is bounded independently
+}guarantee that the sets $V_{i}^{\h}$ are of the same size, just
+that the variation in the sizes of the clusters is bounded independently
 of $\varepsilon$.
 
 To prove \ref{lem:partition-into-blobs}, we will apply Szemer\'edi's
 regularity lemma to obtain a reduced \emph{cluster graph}, then decompose
-this cluster graph into small stars. In each star $T_{i}$, the centre
+this cluster graph into small stars. In each star $T_{i}$, the center
 cluster will correspond to $V_{i}^{1}$ and the leaf clusters will
 be combined to form $V_{i}^{2}$. We will then have to redistribute
 some of the vertices to ensure super-regularity. Before giving the
@@ -642,7 +602,7 @@ regularity lemma and some auxiliary lemmas for working with regularity
 and super-regularity.
 \begin{lem}[Szemer\'edi's regularity lemma, minimum degree form]
 \label{lem:szemeredi-regularity}For every $\a>0$, and any $\varepsilon>0$
-that is sufficiently small relative to $\a$, there is $\a'=\a'\left(\a\right)>0$
+that is sufficiently small relative to $\a$, there are $\a'=\a'\left(\a\right)>0$
 and $K=K\left(\varepsilon\right)$ such that the following holds.
 For any graph $\G$ of minimum degree at least $\a\left|\G\right|$,
 there is a partition of $V\left(\G\right)$ into clusters $V_{0},V_{1},\dots V_{k}$
@@ -650,15 +610,16 @@ there is a partition of $V\left(\G\right)$ into clusters $V_{0},V_{1},\dots V_{k
 following properties. The ``exceptional cluster'' $V_{0}$ has size
 at most $\varepsilon n$, and the other clusters have equal size $sn$.
 The minimum degree of $\G'$ is at least $\a'n$. There are no edges
-of $\G'$ within clusters, and each pair of non-exceptional clusters
+of $\G'$ within the clusters, and each pair of non-exceptional clusters
 is $\varepsilon$-regular in $\G'$ with density zero or at least
 $\a'$. Moreover, define the \emph{cluster graph} $C$ as the graph
 whose vertices are the $k$ non-exceptional clusters $V_{i}$, and
 whose edges are the pairs of clusters between which there is nonzero
 density in $\G'$. The minimum degree of $C$ is at least $\a'k$.
 \end{lem}
-This version of Szemeredi's regularity lemma follows directly from
-\cite[Proposition~9]{KOT05}.
+This version of Szemeredi's regularity lemma is just the ``degree
+form'' of \cite[Theorem~1.10]{KS96}, plus a straightforward claim
+about minimum degree. Our statement follows directly from \cite[Proposition~9]{KOT05}.
 
 Before we proceed to the proof of \ref{lem:partition-into-blobs},
 we give some simple lemmas about $\left(\varepsilon,\delta\right)$-denseness.
@@ -721,14 +682,14 @@ most $1+1/\a$ vertices.\end{lem}
 \begin{proof}
 Let $S$ be a union of such stars with the maximum number of vertices.
 Suppose there is a vertex $v$ uncovered by $S$. If $v$ has a neighbour
-which is a centre of one of the stars in $S$, and that star has fewer
+which is a center of one of the stars in $S$, and that star has fewer
 than $1+\floor{1/\a}$ vertices, then we could add $v$ to that star,
 contradicting maximality. (Here we allow either vertex of a 2-vertex
-star to be considered the ``centre''). Otherwise, if $v$ has a
+star to be considered the ``center''). Otherwise, if $v$ has a
 neighbour $w$ which is a leaf of one of the stars in $S$, then we
 could remove that leaf from its star and create a new 2-vertex star
 with edge $vw$, again contradicting maximality. The remaining case
-is where each of the (at least $\a n$) neighbours of $v$ is a centre
+is where each of the (at least $\a n$) neighbours of $v$ is a center
 of a star with $1+\floor{1/\a}>1/\a$ vertices. But these stars would
 comprise more than $n$ vertices, which is again a contradiction.
 We conclude that $S$ covers $G$, as desired.
@@ -739,9 +700,9 @@ Apply our minimum degree form of Szemer\'edi's regularity lemma,
 with some $\varepsilon'$ to be determined (which we will repeatedly
 assume is sufficiently small). Consider a cover of $C$ by stars $T_{1},\dots,T_{q}$
 of size at most $1+1/\a'$, as guaranteed by \ref{lem:star-cover}.
-Let $W_{i}^{1}$ be the centre cluster of $T_{i}$, and let $W_{i}^{2}$
+Let $W_{i}^{1}$ be the center cluster of $T_{i}$, and let $W_{i}^{2}$
 be the union of the leaf clusters of $T_{i}$ (for two-vertex stars,
-arbitrarily choose one vertex as the ``leaf'' and one as the ``centre'').
+arbitrarily choose one vertex as the ``leaf'' and one as the ``center'').
 Each edge of the cluster graph $C$ corresponds to an $\left(\varepsilon',\a'/2\right)$-dense
 pair, and each $W_{i}^{\h}$ is the union of at most $1/\a'$ clusters
 $V_{i}$. By \ref{lem:combine-clusters}, with $\delta'=\left(\a'\right)^{2}/2$
@@ -868,10 +829,11 @@ was $\left(\varepsilon,\delta\right)$-super-regular then $\left(W^{1},W^{2}\righ
 is a.a.s. $\left(\varepsilon',\delta/2\right)$-super-regular.
 \end{lem}
 \ref{lem:random-preserves-superregular} is a simple consequence of
-a highly nontrivial (and much more general) result in \cite{GKRS07},
-which shows that small random subsets inherit certain regularity-like
-properties with very high probability. The notion of ``lower regularity''
-in that paper essentially corresponds to our notion of $\left(\varepsilon,\delta\right)$-density.
+a highly nontrivial (and much more general) result proved by Gerke,
+Kohayakawa, R\"odl and Steger in \cite{GKRS07}, which shows that
+small random subsets inherit certain regularity-like properties with
+very high probability. The notion of ``lower regularity'' in that
+paper essentially corresponds to our notion of $\left(\varepsilon,\delta\right)$-density.
 \begin{proof}[Proof of \ref{lem:random-preserves-superregular}]
 The fact that $\left(W^{1},W^{2}\right)$ is a.a.s. $\left(\varepsilon',\delta/2\right)$-dense
 for suitable $\varepsilon$, follows from two applications of \cite[Theorem~3.6]{GKRS07}.
@@ -945,8 +907,8 @@ neighbours in $W_{\flip{\bi}}^{\left(1\right)}$ and $\y$ has at
 least $(\delta_{2}s_{\flip{\bj}}/4)n=\Omega\left(n\right)$ neighbours
 in $W_{\flip{\bj}}^{\left(1\right)}$. Note that if $\c_{3}$ is large,
 there is a.a.s. an edge in the random graph $\R_{3}$ between any
-pair of sets of size $\Omega\left(n\right)$ (the proof of this is
-basically identical to the proof of \ref{lem:bipartite-matching}).
+pair of sets of size $\Omega\left(n\right)$ (we can prove this with
+basically the same argument as in the proof of \ref{lem:bipartite-perturbed-stars}).
 Certainly $\left|W_{\br}^{\left(2\right)}\right|,\left|W_{\flip{\br}}^{\left(2\right)}\right|=\Omega\left(n\right)$
 so there is a.a.s. an edge between $N\left(\x\right)\cap W_{\flip{\bi}}^{\left(1\right)}$
 and $W_{\br}^{\left(2\right)}$ and between $N\left(\y\right)\cap W_{\flip{\bj}}^{\left(1\right)}$
