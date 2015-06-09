@@ -334,10 +334,11 @@ Koml\'os, S\'ark\"ozy and Szemer\'edi proved that for any $\Delta$
 and $\gamma>0$, any $n$-vertex graph ($n$ sufficiently large) with
 minimum degree $\left(1/2+\gamma\right)n$ contains every spanning
 tree which has maximum degree at most $\Delta$. This has also been
-generalized further in two directions: in \cite{KSS01} Koml\'os,
+generalized further in two directions. In \cite{KSS01} Koml\'os,
 S\'ark\"ozy and Szemer\'edi improved their result to to allow $\Delta$
 to grow with $n$, and in \cite{BST09} B\"ottcher, Schacht and Taraz
-gave a result for much more general spanning subgraphs than trees.
+gave a result for much more general spanning subgraphs than trees
+(see also a result \cite{Csa08} due to Csaba).
 
 The constant $1/2$ in the above Dirac-type theorems is tight: in
 order to guarantee the existence of these spanning subgraphs we require
@@ -348,36 +349,37 @@ with $n$ vertices and $\alpha{n \choose 2}$ edges, then the degrees
 will probably each be about $\alpha n$. Such a random graph is Hamiltonian
 with probability $1-o\left(1\right)$ (we say it is Hamiltonian \emph{asymptotically
 almost surely}, or \emph{a.a.s.}). This follows from a stronger result
-\cite{Pos76} that gives a \emph{threshold} for Hamiltonicity: a random
-$n$-vertex, $m$-edge graph is Hamiltonian a.a.s. if $m\gg n\log n$,
+by P\'osa \cite{Pos76} that gives a \emph{threshold} for Hamiltonicity:
+a random $n$-vertex, $m$-edge graph is Hamiltonian a.a.s. if $m\gg n\log n$,
 and fails to be Hamiltonian a.a.s. if $m\ll n\log n$. Although the
-exact threshold for bounded-degree spanning trees is not known, it
-was proved in \cite{Mon14} that for any $\Delta$ and any tree $T$
-with maximum degree at most $\Delta$, a random $n$-vertex graph
+exact threshold for bounded-degree spanning trees is not known, in
+\cite{Mon14} Montgomery proved that for any $\Delta$ and any tree
+$T$ with maximum degree at most $\Delta$, a random $n$-vertex graph
 with $\Delta n\left(\log n\right)^{5}$ edges a.a.s. contains $T$.
 Here and from now on, all asymptotics are as $n\to\infty$, and we
 implicitly round large quantities to integers.
 
-In \cite{BFM03}, the authors studied Hamiltonicity in the random
-graph model that starts with a dense graph and adds $m$ random edges.
-This model is a natural generalization of the ordinary random graph
-model where we start with nothing, and offers a ``hybrid'' perspective
-combining the extremal and probabilistic settings of the last two
-paragraphs. The model has since been studied in a number of other
-contexts; see for example \cite{BHM04,KST06,KKS15}. A property that
-holds a.a.s. with small $m$ in our random graph model can be said
-to hold not just for a ``globally'' typical graph but for the typical
-graph in a small ``neighbourhood'' of our space of graphs. This
-tells us that the graphs which fail to satisfy our property are in
-some sense ``fragile''. We highlight that it is generally very easy
-to transfer results from our model of random perturbation to other
-natural models, including those that delete as well as add edges (this
-can be accomplished with standard coupling and conditioning arguments).
-We also note that a particularly important motivation is the notion
-of \emph{smoothed analysis} of algorithms introduced in \cite{ST04}.
-This is is a hybrid of worst-case and average-case analysis, studying
-the performance of algorithms in the more realistic setting of inputs
-that are ``noisy'' but not completely random.
+In \cite{BFM03}, Bohman, Frieze and Martin studied Hamiltonicity
+in the random graph model that starts with a dense graph and adds
+$m$ random edges. This model is a natural generalization of the ordinary
+random graph model where we start with nothing, and offers a ``hybrid''
+perspective combining the extremal and probabilistic settings of the
+last two paragraphs. The model has since been studied in a number
+of other contexts; see for example \cite{BHM04,KST06,KKS15}. A property
+that holds a.a.s. with small $m$ in our random graph model can be
+said to hold not just for a ``globally'' typical graph but for the
+typical graph in a small ``neighbourhood'' of our space of graphs.
+This tells us that the graphs which fail to satisfy our property are
+in some sense ``fragile''. We highlight that it is generally very
+easy to transfer results from our model of random perturbation to
+other natural models, including those that delete as well as add edges
+(this can be accomplished with standard coupling and conditioning
+arguments). We also note that a particularly important motivation
+is the notion of \emph{smoothed analysis} of algorithms introduced
+by Spielman and Teng in \cite{ST04}. This is is a hybrid of worst-case
+and average-case analysis, studying the performance of algorithms
+in the more realistic setting of inputs that are ``noisy'' but not
+completely random.
 
 The statement of \cite[Theorem~1]{BFM03} is that for every $\alpha>0$
 there is $c=c\left(\alpha\right)$ such that if we start with a graph
@@ -541,7 +543,7 @@ and $\left|B'\right|=\beta n$, the probability there is no edge between
 $A'$ and $B'$ is $\left(1-\c/n\right)^{\left(\beta n/\Delta\right)\left(\beta n\right)}\le e^{-\c\beta^{2}n/\Delta}$.
 There are at most $2^{2n}$ choices of such $A',B'$, so for large
 $\c$, by the union bound there is a.a.s. an edge between any such
-pair of such sets. If this is true, it follows that $\left|N_{\R}\left(S\right)\right|\ge\left|B\right|-\beta n$,
+pair of sets. If this is true, it follows that $\left|N_{\R}\left(S\right)\right|\ge\left|B\right|-\beta n$,
 because if $S$ had more than $\beta n$ non-neighbours in $B$ then
 this would give us a contradictory pair of subsets with no edge between
 them. We have proved that a.a.s. $\left|N_{\R}\left(S\right)\right|\ge\sum_{s\in S}\ell\left(s\right)$
@@ -617,7 +619,7 @@ whose vertices are the $k$ non-exceptional clusters $V_{i}$, and
 whose edges are the pairs of clusters between which there is nonzero
 density in $\G'$. The minimum degree of $C$ is at least $\a'k$.
 \end{lem}
-This version of Szemeredi's regularity lemma is just the ``degree
+This version of Szemer\'edi's regularity lemma is just the ``degree
 form'' of \cite[Theorem~1.10]{KS96}, plus a straightforward claim
 about minimum degree. Our statement follows directly from \cite[Proposition~9]{KOT05}.
 
@@ -881,16 +883,32 @@ to $\left\{ \x',\y'\right\} $: to complete the embedding we now need
 to find length-$\left(k-4\right)$ special paths connecting the new
 special pairs.
 
+Note that there is a.a.s. an edge between any two large vertex sets
+in the random graph $\R_{3}$, as formalized below.
+\begin{lem}
+\label{lem:edge-between-large-sets}For any $\varepsilon>0$, there
+is $\c=\c\left(\varepsilon\right)$ such that the following holds.
+In a random graph $\R\in\GG\left(n,\c/n\right)$, there is a.a.s.
+an edge between any two (not necessarily disjoint) vertex subsets
+$A,B$ of size $\varepsilon n$.\end{lem}
+\begin{proof}
+For any such subsets $A,B$, choose disjoint $A'\subseteq A$ and
+$B'\subseteq B$ of size $\varepsilon n/2$. The probability there
+is no edge between $A$ and $B$ is less than the probability there
+is no edge between $A'$ and $B'$, which is $\left(1-\c/n\right)^{\left(\varepsilon n/2\right)^{2}}\le e^{-\c\varepsilon^{2}n/2}$.
+There are at most $2^{2n}$ choices of $A$ and $B$ so for large
+$\c$, by the union bound there is a.a.s. an edge between any such
+pair of sets.
+\end{proof}
 It is relatively straightforward to greedily find suitable short paths
-in $\G\cup\R_{3}$, using the minimum degree condition in the super-regular
-pairs $\left(X_{\bi},W_{\flip{\bi}}\right)$ and the fact that there
-is a.a.s. an edge between any two large vertex sets in the random
-graph $\R_{3}$. However we need to be careful to find and remove
-our paths in such a way that afterwards we still have super-regularity
-between certain subsets. We will accomplish this by setting aside
-a random subset of each $W_{\br}$ from which the $\x'$, $\y'$ (and
-no other vertices in our paths) will come, then using the symmetry
-argument of \ref{rem:symmetry} and appealing to \ref{lem:random-preserves-superregular}.
+in $\G\cup\R_{3}$ using the minimum degree condition in the super-regular
+pairs $\left(X_{\bi},W_{\flip{\bi}}\right)$ and \ref{lem:edge-between-large-sets}.
+However we need to be careful to find and remove our paths in such
+a way that afterwards we still have super-regularity between certain
+subsets. We will accomplish this by setting aside a random subset
+of each $W_{\br}$ from which the $\x'$, $\y'$ (and no other vertices
+in our paths) will be chosen, then using the symmetry argument of
+\ref{rem:symmetry} and appealing to \ref{lem:random-preserves-superregular}.
 The details are a bit involved, as follows.
 
 Uniformly at random partition each $W_{\bi}$ into sets $W_{\bi}^{\left(1\right)}$
@@ -905,13 +923,10 @@ $\x\in X_{\bi}$ and $y\in X_{\bj}$, uniformly at random choose some
 $\br$. Now, $\x$ has at least $(\delta_{2}s_{\flip{\bi}}/4)n=\Omega\left(n\right)$
 neighbours in $W_{\flip{\bi}}^{\left(1\right)}$ and $\y$ has at
 least $(\delta_{2}s_{\flip{\bj}}/4)n=\Omega\left(n\right)$ neighbours
-in $W_{\flip{\bj}}^{\left(1\right)}$. Note that if $\c_{3}$ is large,
-there is a.a.s. an edge in the random graph $\R_{3}$ between any
-pair of sets of size $\Omega\left(n\right)$ (we can prove this with
-basically the same argument as in the proof of \ref{lem:bipartite-perturbed-stars}).
-Certainly $\left|W_{\br}^{\left(2\right)}\right|,\left|W_{\flip{\br}}^{\left(2\right)}\right|=\Omega\left(n\right)$
-so there is a.a.s. an edge between $N\left(\x\right)\cap W_{\flip{\bi}}^{\left(1\right)}$
-and $W_{\br}^{\left(2\right)}$ and between $N\left(\y\right)\cap W_{\flip{\bj}}^{\left(1\right)}$
+in $W_{\flip{\bj}}^{\left(1\right)}$. Certainly $\left|W_{\br}^{\left(2\right)}\right|,\left|W_{\flip{\br}}^{\left(2\right)}\right|=\Omega\left(n\right)$
+so by \ref{lem:edge-between-large-sets} there is a.a.s. an edge between
+$N\left(\x\right)\cap W_{\flip{\bi}}^{\left(1\right)}$ and $W_{\br}^{\left(2\right)}$
+and between $N\left(\y\right)\cap W_{\flip{\bj}}^{\left(1\right)}$
 and $W_{\flip{\br}}^{\left(2\right)}$, giving length-2 paths between
 $\x$ and some $\x'\in W_{\br}^{\left(2\right)}$, and between $\y$
 and some $\y'\in W_{\flip{\br}}^{\left(2\right)}$. We can then remove
@@ -1084,10 +1099,13 @@ pair $\left(\x,\y\right)$. Let $\R\in\GG\left(kn,\c/n\right)$; then
 in $\G\cup\R$ we can find $\left(1-\xi\right)n$ vertex-disjoint
 special paths running through $X,W_{1},\dots,W_{k-1},Y$ in order.\end{lem}
 \begin{proof}[Proof of \ref{lem:adjusting-paths-more-basic}]
-By \ref{lem:bipartite-matching}, in $\R$ we can a.a.s. find a matching
-of $\left(1-\varepsilon/\left(k-2\right)\right)n$ edges between each
-$W_{i}$ and $W_{i+1}$ ($1\le i<k-1$). The union of these matchings
-contains at least $\left(1-\varepsilon\right)n$ disjoint length-$\left(k-2\right)$
+If $\c$ is large, in $\R$ we can a.a.s. find a matching of $\left(1-\varepsilon/\left(k-2\right)\right)n$
+edges between each $W_{i}$ and $W_{i+1}$ ($1\le i<k-1$). Indeed,
+the unmatched vertices in a maximal matching have no edge between
+them, so we can prove this fact with basically the same argument as
+in the proof of \ref{lem:edge-between-large-sets}. The union of our
+$\left(1-\varepsilon/\left(k-2\right)\right)n$-edge matchings contains
+at least $\left(1-\varepsilon\right)n$ disjoint length-$\left(k-2\right)$
 paths $P_{i},\dots,P_{\left(1-\varepsilon\right)n}$ running through
 $W_{1},\dots,W_{k-1}$; we write $P_{j}=w_{1}^{j}\dots w_{k-1}^{j}$
 with each $w_{i}^{j}\in W_{i}$. We can assume these paths are uniformly
@@ -1321,7 +1339,7 @@ where $\delta_{4}=\delta_{3}/4$ and $\varepsilon_{4}=\varepsilon_{3}/\gamma$.
 We have now finished with the edges in $\R$; what remains is sufficiently
 well-structured that we can embed the remaining paths using the blow-up
 lemma and the super-regularity in $\G$. We first give a statement
-of the blow-up lemma.
+of the blow-up lemma, due to Koml\'os, S\'ark\"ozy and Szemer\'edi.
 \begin{lem}[Blow-up Lemma \cite{KSS97}]
 Let $\delta,\Delta>0$ and $r\in\NN$. There is $\varepsilon=\varepsilon\left(r,\delta,\Delta\right)$
 such that the following holds.
@@ -1367,8 +1385,8 @@ corresponds to a special path connecting $\x$ and $\y$. See \ref{fig:cluster-pat
 \def\rh{1}
 \def\rw{3}
 
-\draw (0,-\rh) -| (\rw,\rh) -| cycle
-      (0,0) -- (\rw,0);
+\draw (0,-\rh) -| (\rw,\rh) -| cycle;
+\draw (0,0) -- (\rw,0);
 
 \coordinate (xb11) at (\rw-0.25,-\rh);
 \coordinate (xb12) at (0.25,-\rh);
@@ -1427,13 +1445,13 @@ corresponds to a special path connecting $\x$ and $\y$. See \ref{fig:cluster-pat
 \fill [opacity=0.15] (xb\rn1) -- (r{\rn}b1) -- (r{\rn}b2) -- (xb\rn2) -- cycle;
 
 \fill [opacity=0.15] (r{1}b2) -- (r{2}b1) -- (r{2}b2) -- (r{1}b1) -- cycle;
-\draw (xc1) -- (r{1}p5)
-      (r{1}p5)-- (r{2}p2)
-      (r{2}p2) -- (r{1}p3)
-      (r{1}p3) -- (r{2}p3)
-      (r{2}p3) -- (r{1}p4)
-      (r{1}p4) -- (r{2}p1)
-      (r{2}p1) -- (xc2);
+\draw (xc1) -- (r{1}p5);
+\draw (r{1}p5)-- (r{2}p2);
+\draw (r{2}p2) -- (r{1}p3);
+\draw (r{1}p3) -- (r{2}p3);
+\draw (r{2}p3) -- (r{1}p4);
+\draw (r{1}p4) -- (r{2}p1);
+\draw (r{2}p1) -- (xc2);
 
 \end{scope}
 \end{scope}

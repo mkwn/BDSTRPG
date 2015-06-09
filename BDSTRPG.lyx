@@ -846,7 +846,8 @@ edi proved that for any
 \end_inset
 
 .
- This has also been generalized further in two directions: in 
+ This has also been generalized further in two directions.
+ In 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "KSS01"
@@ -934,7 +935,14 @@ status open
 \end_inset
 
 ottcher, Schacht and Taraz gave a result for much more general spanning
- subgraphs than trees.
+ subgraphs than trees (see also a result 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Csa08"
+
+\end_inset
+
+ due to Csaba).
 \end_layout
 
 \begin_layout Standard
@@ -984,7 +992,20 @@ asymptotically almost surely
 a.a.s.
 \emph default
 ).
- This follows from a stronger result 
+ This follows from a stronger result by P
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+osa 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Pos76"
@@ -1015,14 +1036,14 @@ threshold
 
 .
  Although the exact threshold for bounded-degree spanning trees is not known,
- it was proved in 
+ in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Mon14"
 
 \end_inset
 
- that for any 
+ Montgomery proved that for any 
 \begin_inset Formula $\Delta$
 \end_inset
 
@@ -1063,8 +1084,8 @@ key "BFM03"
 
 \end_inset
 
-, the authors studied Hamiltonicity in the random graph model that starts
- with a dense graph and adds 
+, Bohman, Frieze and Martin studied Hamiltonicity in the random graph model
+ that starts with a dense graph and adds 
 \begin_inset Formula $m$
 \end_inset
 
@@ -1130,7 +1151,7 @@ fragile
 \emph on
 smoothed analysis
 \emph default
- of algorithms introduced in 
+ of algorithms introduced by Spielman and Teng in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ST04"
@@ -2121,7 +2142,7 @@ The remaining case is where
 \end_inset
 
 , by the union bound there is a.a.s.
- an edge between any such pair of such sets.
+ an edge between any such pair of sets.
  If this is true, it follows that 
 \begin_inset Formula $\left|N_{\R}\left(S\right)\right|\ge\left|B\right|-\beta n$
 \end_inset
@@ -2667,7 +2688,20 @@ cluster graph
 \end_layout
 
 \begin_layout Standard
-This version of Szemeredi's regularity lemma is just the 
+This version of Szemer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+edi's regularity lemma is just the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4360,18 +4394,120 @@ move
 \end_layout
 
 \begin_layout Standard
+Note that there is a.a.s.
+ an edge between any two large vertex sets in the random graph 
+\begin_inset Formula $\R_{3}$
+\end_inset
+
+, as formalized below.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:edge-between-large-sets"
+
+\end_inset
+
+For any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, there is 
+\begin_inset Formula $\c=\c\left(\varepsilon\right)$
+\end_inset
+
+ such that the following holds.
+ In a random graph 
+\begin_inset Formula $\R\in\GG\left(n,\c/n\right)$
+\end_inset
+
+, there is a.a.s.
+ an edge between any two (not necessarily disjoint) vertex subsets 
+\begin_inset Formula $A,B$
+\end_inset
+
+ of size 
+\begin_inset Formula $\varepsilon n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+For any such subsets 
+\begin_inset Formula $A,B$
+\end_inset
+
+, choose disjoint 
+\begin_inset Formula $A'\subseteq A$
+\end_inset
+
+ and 
+\begin_inset Formula $B'\subseteq B$
+\end_inset
+
+ of size 
+\begin_inset Formula $\varepsilon n/2$
+\end_inset
+
+.
+ The probability there is no edge between 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ is less than the probability there is no edge between 
+\begin_inset Formula $A'$
+\end_inset
+
+ and 
+\begin_inset Formula $B'$
+\end_inset
+
+, which is 
+\begin_inset Formula $\left(1-\c/n\right)^{\left(\varepsilon n/2\right)^{2}}\le e^{-\c\varepsilon^{2}n/2}$
+\end_inset
+
+.
+ There are at most 
+\begin_inset Formula $2^{2n}$
+\end_inset
+
+ choices of 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ so for large 
+\begin_inset Formula $\c$
+\end_inset
+
+, by the union bound there is a.a.s.
+ an edge between any such pair of sets.
+\end_layout
+
+\begin_layout Standard
 It is relatively straightforward to greedily find suitable short paths in
  
 \begin_inset Formula $\G\cup\R_{3}$
 \end_inset
 
-, using the minimum degree condition in the super-regular pairs 
+ using the minimum degree condition in the super-regular pairs 
 \begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
- and the fact that there is a.a.s.
- an edge between any two large vertex sets in the random graph 
-\begin_inset Formula $\R_{3}$
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:edge-between-large-sets"
+
 \end_inset
 
 .
@@ -4389,7 +4525,7 @@ It is relatively straightforward to greedily find suitable short paths in
 \begin_inset Formula $\y'$
 \end_inset
 
- (and no other vertices in our paths) will come, then using the symmetry
+ (and no other vertices in our paths) will be chosen, then using the symmetry
  argument of 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4493,33 +4629,18 @@ We will find our length-2 paths greedily, by repeatedly applying the following
 \end_inset
 
 .
- Note that if 
-\begin_inset Formula $\c_{3}$
-\end_inset
-
- is large, there is a.a.s.
- an edge in the random graph 
-\begin_inset Formula $\R_{3}$
-\end_inset
-
- between any pair of sets of size 
-\begin_inset Formula $\Omega\left(n\right)$
-\end_inset
-
- (we can prove this with basically the same argument as in the proof of
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:bipartite-perturbed-stars"
-
-\end_inset
-
-).
  Certainly 
 \begin_inset Formula $\left|W_{\br}^{\left(2\right)}\right|,\left|W_{\flip{\br}}^{\left(2\right)}\right|=\Omega\left(n\right)$
 \end_inset
 
- so there is a.a.s.
+ so by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:edge-between-large-sets"
+
+\end_inset
+
+ there is a.a.s.
  an edge between 
 \begin_inset Formula $N\left(\x\right)\cap W_{\flip{\bi}}^{\left(1\right)}$
 \end_inset
@@ -5470,14 +5591,11 @@ reference "lem:adjusting-paths-more-basic"
 
 \end_inset
 
-By 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:bipartite-matching"
-
+If 
+\begin_inset Formula $\c$
 \end_inset
 
-, in 
+ is large, in 
 \begin_inset Formula $\R$
 \end_inset
 
@@ -5499,7 +5617,21 @@ reference "lem:bipartite-matching"
 \end_inset
 
 ).
- The union of these matchings contains at least 
+ Indeed, the unmatched vertices in a maximal matching have no edge between
+ them, so we can prove this fact with basically the same argument as in
+ the proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:edge-between-large-sets"
+
+\end_inset
+
+.
+ The union of our 
+\begin_inset Formula $\left(1-\varepsilon/\left(k-2\right)\right)n$
+\end_inset
+
+-edge matchings contains at least 
 \begin_inset Formula $\left(1-\varepsilon\right)n$
 \end_inset
 
@@ -6815,7 +6947,59 @@ We have now finished with the edges in
 \end_inset
 
 .
- We first give a statement of the blow-up lemma.
+ We first give a statement of the blow-up lemma, due to Koml
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+os, S
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+ark
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+"
+\end_layout
+
+\end_inset
+
+ozy and Szemer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+edi.
 \end_layout
 
 \begin_layout Lemma
@@ -7150,12 +7334,14 @@ rh) -| (
 \backslash
 rw,
 \backslash
-rh) -| cycle
+rh) -| cycle;
 \end_layout
 
 \begin_layout Plain Layout
 
-      (0,0) -- (
+
+\backslash
+draw (0,0) -- (
 \backslash
 rw,0);
 \end_layout
@@ -7719,37 +7905,49 @@ fill [opacity=0.15] (r{1}b2) -- (r{2}b1) -- (r{2}b2) -- (r{1}b1) -- cycle;
 
 
 \backslash
-draw (xc1) -- (r{1}p5)
+draw (xc1) -- (r{1}p5);
 \end_layout
 
 \begin_layout Plain Layout
 
-      (r{1}p5)-- (r{2}p2)
+
+\backslash
+draw (r{1}p5)-- (r{2}p2);
 \end_layout
 
 \begin_layout Plain Layout
 
-      (r{2}p2) -- (r{1}p3)
+
+\backslash
+draw (r{2}p2) -- (r{1}p3);
 \end_layout
 
 \begin_layout Plain Layout
 
-      (r{1}p3) -- (r{2}p3)
+
+\backslash
+draw (r{1}p3) -- (r{2}p3);
 \end_layout
 
 \begin_layout Plain Layout
 
-      (r{2}p3) -- (r{1}p4)
+
+\backslash
+draw (r{2}p3) -- (r{1}p4);
 \end_layout
 
 \begin_layout Plain Layout
 
-      (r{1}p4) -- (r{2}p1)
+
+\backslash
+draw (r{1}p4) -- (r{2}p1);
 \end_layout
 
 \begin_layout Plain Layout
 
-      (r{2}p1) -- (xc2);
+
+\backslash
+draw (r{2}p1) -- (xc2);
 \end_layout
 
 \begin_layout Plain Layout
