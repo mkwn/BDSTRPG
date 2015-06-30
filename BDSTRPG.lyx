@@ -588,15 +588,15 @@ Michael Krivelevich, Matthew Kwan, Benny Sudakov
 \end_layout
 
 \begin_layout Abstract
-We show that for any bounded-degree spanning tree 
-\begin_inset Formula $T$
-\end_inset
-
- and any fixed dense graph 
+We show that for any fixed dense graph 
 \begin_inset Formula $G$
 \end_inset
 
-, a modest random perturbation of 
+ and bounded-degree tree 
+\begin_inset Formula $T$
+\end_inset
+
+ on the same number of vertices, a modest random perturbation of 
 \begin_inset Formula $G$
 \end_inset
 
@@ -1722,7 +1722,7 @@ reference "lem:almost-spanning"
 \begin_inset Formula $\R_{1}$
 \end_inset
 
- (we also denote this embedded subgraph by 
+ (abusing notation, we also denote this embedded subgraph by 
 \begin_inset Formula $\T'$
 \end_inset
 
@@ -3776,7 +3776,7 @@ Now, embed
 \begin_inset Formula $\R_{2}$
 \end_inset
 
- (also denote this embedded subgraph by 
+ (also, with some abuse of notation, denote this embedded subgraph by 
 \begin_inset Formula $\F$
 \end_inset
 
@@ -4473,14 +4473,6 @@ For any such subsets
 \end_inset
 
 .
- We now use a standard argument also found in the proof of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:bipartite-perturbed-stars"
-
-\end_inset
-
-.
  The probability there is no edge between 
 \begin_inset Formula $A$
 \end_inset
@@ -4603,12 +4595,12 @@ Uniformly at random partition each
 \begin_inset Formula $W_{\bi}^{\left(2\right)}$
 \end_inset
 
- and we will take the intermediate vertices in our length-2 paths from the
- 
+s and we will take the intermediate vertices in our length-2 paths from
+ the 
 \begin_inset Formula $W_{\bi}^{\left(1\right)}$
 \end_inset
 
-.
+s.
  By 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4701,7 +4693,7 @@ th special pair, with
 \end_inset
 
  is large then 
-\begin_inset Formula $\left|N_{\G}\left(\x\right)\cap W_{\flip{\bi}}^{\left(1\right)}\backslash S\right|=\Omega\left(n\right)$
+\begin_inset Formula $\left|N_{\G}\left(\x\right)\cap\left(W_{\flip{\bi}}^{\left(1\right)}\backslash S\right)\right|=\Omega\left(n\right)$
 \end_inset
 
  and 
@@ -4718,7 +4710,7 @@ reference "lem:edge-between-large-sets"
 
  that there is a.a.s.
  an edge between 
-\begin_inset Formula $N_{\G}\left(\x\right)\cap W_{\flip{\bi}}^{\left(1\right)}\backslash S$
+\begin_inset Formula $N_{\G}\left(\x\right)\cap\left(W_{\flip{\bi}}^{\left(1\right)}\backslash S\right)$
 \end_inset
 
  and 
@@ -4765,7 +4757,7 @@ To prove the claims in the preceding argument, note that we always have
 \end_inset
 
  and 
-\begin_inset Formula $\left|W_{\br}^{\left(2\right)}\backslash S\right|\le\left|X\right|/\left(2q\right)$
+\begin_inset Formula $\left|W_{\br}^{\left(2\right)}\cap S\right|\le\left|X\right|/\left(2q\right)$
 \end_inset
 
 .
@@ -4793,7 +4785,7 @@ To prove the claims in the preceding argument, note that we always have
 ,
 \begin_inset Formula 
 \[
-\left|N_{\G}\left(\x\right)\cap W_{\flip{\bi}}^{\left(1\right)}\backslash S\right|\ge\frac{\delta_{2}s_{\flip{\bi}}}{2}n-\left|X_{\bi}\right|\sim\frac{\delta_{2}s_{\flip{\bi}}}{2}n-\frac{2s_{\bi}}{k-1}n\ge\left(\frac{\delta_{2}}{2}-\frac{2\rho}{k-1}\right)s_{\flip{\bi}}n=\Omega\left(n\right),
+\left|N_{\G}\left(\x\right)\cap\left(W_{\flip{\bi}}^{\left(1\right)}\backslash S\right)\right|\ge\frac{\delta_{2}s_{\flip{\bi}}}{2}n-\left|X_{\bi}\right|\sim\frac{\delta_{2}s_{\flip{\bi}}}{2}n-\frac{2s_{\bi}}{k-1}n\ge\left(\frac{\delta_{2}}{2}-\frac{2\rho}{k-1}\right)s_{\flip{\bi}}n=\Omega\left(n\right),
 \]
 
 \end_inset
@@ -4860,7 +4852,11 @@ new special vertices
 \begin_inset Formula $W_{\bi}^{\left(2\right)}$
 \end_inset
 
- of its size.
+ of its size (which is 
+\begin_inset Formula $\left|X\right|/\left(2q\right)$
+\end_inset
+
+).
  This can be seen by a symmetry argument, as per 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4927,7 +4923,17 @@ reference "rem:symmetry"
 \begin_layout Standard
 Now we claim that even after removing the vertices of our length-2 paths
  we a.a.s.
- maintain some important properties about the clusters.
+ maintain some important properties of the clusters.
+ Let 
+\begin_inset Formula $W_{\bi}'\subseteq W_{\bi}\backslash X_{\bi}'$
+\end_inset
+
+ be the subset of 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ that remains after the vertices in the length-2 paths are deleted.
+ 
 \end_layout
 
 \begin_layout Claim
@@ -4937,16 +4943,7 @@ name "claim:move-ok"
 
 \end_inset
 
-Let 
-\begin_inset Formula $W_{\bi}'\subseteq W_{\bi}\backslash X_{\bi}'$
-\end_inset
-
- be the subset of 
-\begin_inset Formula $W_{\bi}$
-\end_inset
-
- that remains after the vertices in the length-2 paths are deleted.
- Each 
+Each 
 \begin_inset Formula $\left(X_{\bi}',W_{\flip{\bi}}'\right)$
 \end_inset
 
@@ -4959,7 +4956,7 @@ Let
 \begin_inset Formula $\left(\rho\left(k-1\right)\varepsilon_{2}/\left(1-\delta_{2}/2\right),\delta_{2}/2\right)$
 \end_inset
 
--super-regular, and each 
+-super-regular, satisfying 
 \begin_inset Formula 
 \[
 \left(2\rho\right)^{-1}\le\frac{k-1}{2}\cdot\frac{\left|X_{\bi}'\right|}{\left|W_{\bi}'\right|}\le2\rho.
@@ -5012,15 +5009,16 @@ reference "lem:random-preserves-superregular"
 \end_inset
 
 .
- Note that 
+ Next, note that each 
 \begin_inset Formula $\left|X_{\bi}'\right|\sim2sn/\left(k-1\right)$
 \end_inset
 
- and each 
-\begin_inset Formula $s/s_{\bi}\le\rho$
+.
+ Since 
+\begin_inset Formula $s/s_{\flip{\bi}}\ge1/\rho$
 \end_inset
 
-, so 
+, we have 
 \begin_inset Formula $\rho\left(k-1\right)\left|X_{\bi}'\right|\ge\left|W_{\flip{\bi}}\right|$
 \end_inset
 
@@ -5057,7 +5055,7 @@ Now, for large
 \end_inset
 
  note that 
-\begin_inset Formula $\left|W_{\bi}\backslash W_{\bi}'\right|\le\left(\delta_{4}/2\right)\left|W_{\bi}\right|$
+\begin_inset Formula $\left|W_{\bi}\backslash W_{\bi}'\right|\le\left(\delta_{2}/2\right)\left|W_{\bi}\right|$
 \end_inset
 
 .
@@ -5065,12 +5063,21 @@ Now, for large
  
 \begin_inset Formula 
 \[
-\frac{\left|W_{\bi}\backslash W_{\bi}'\right|}{\left|W_{\bi}\right|}=\frac{\left|X_{\flip{\bi}}\right|+\left|X\right|/2q}{\left|W_{\bi}\right|}\sim\frac{\frac{2}{k-1}\left(s_{\flip{\bi}}+s\right)}{s_{\bi}}\le\frac{4\rho}{k-1}.
+\frac{\left|W_{\bi}\backslash W_{\bi}'\right|}{\left|W_{\bi}\right|}=\frac{\left|X_{\flip{\bi}}\right|+\left|X\right|/2q}{\left|W_{\bi}\right|}\sim\frac{\frac{2}{k-1}\left(s_{\flip{\bi}}+s\right)}{s_{\bi}}\le\frac{4\rho}{k-1},
 \]
 
 \end_inset
 
-For 
+which is smaller than 
+\begin_inset Formula $\delta_{2}/2$
+\end_inset
+
+ for large 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ For 
 \begin_inset Formula $v\in W_{\bi}$
 \end_inset
 
@@ -5079,11 +5086,14 @@ For
 \end_inset
 
  by super-regularity, so 
-\begin_inset Formula $\left|N_{\G}\left(v\right)\cap W_{\flip{\bi}}'\right|\ge\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}'\right|$
+\begin_inset Formula 
+\[
+\left|N_{\G}\left(v\right)\cap W_{\flip{\bi}}'\right|\ge\left|N_{\G}\left(v\right)\cap W_{\flip{\bi}}'\right|-\left|W_{\bi}\backslash W_{\bi}'\right|\ge\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}\right|\ge\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}'\right|.
+\]
+
 \end_inset
 
-.
- Combining this with 
+Combining this with 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:large-preserves-dense"
@@ -5126,7 +5136,7 @@ Finally, the claims about the relative sizes of the
  are simple consequences of the asymptotic expressions
 \begin_inset Formula 
 \[
-\left|W_{\bi}'\right|\sim s_{\bi}-\frac{2}{k-1}\left(s_{\flip{\bi}}+s\right),\quad\left|X_{\bi}'\right|\sim s_{\bi}.\qedhere
+\left|W_{\bi}'\right|\sim s_{\bi}n-\frac{2}{k-1}\left(s_{\flip{\bi}}+s\right)n,\quad\left|X_{\bi}'\right|\sim\frac{2s}{k-1}n.\qedhere
 \]
 
 \end_inset
@@ -5143,15 +5153,15 @@ Now we can redefine each
 \begin_inset Formula $W_{\bi}$
 \end_inset
 
- (that is, set 
-\begin_inset Formula $X_{\bi}=X_{\bi}'$
-\end_inset
-
-), and we can update the 
+, and we can update the 
 \begin_inset Formula $W_{\bi}$
 \end_inset
 
  by removing all the vertices used in our length-2 paths (that is, set 
+\begin_inset Formula $X_{\bi}=X_{\bi}'$
+\end_inset
+
+ and 
 \begin_inset Formula $W_{\bi}=W_{\bi}'$
 \end_inset
 
@@ -5185,7 +5195,11 @@ Now we can redefine each
 \begin_inset Formula $Z=\bigcup_{i}Z_{i}$
 \end_inset
 
- be the set of all special pairs.
+ be the set of all special pairs, so 
+\begin_inset Formula $\left|Z\right|=\left|X\right|/2$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5219,7 +5233,7 @@ We also update all the other variables as before: update
 \end_inset
 
 ), so we still have 
-\begin_inset Formula $\left|Z\right|=2\left|W\right|=\left(k-1\right)\left|X\right|$
+\begin_inset Formula $2\left|W\right|=\left(k-1\right)\left|X\right|$
 \end_inset
 
 .
@@ -5467,7 +5481,19 @@ For any
 \end_inset
 
  such that the following holds.
- (Recall that each 
+ (Recall that 
+\begin_inset Formula $\R_{4}\in\GG\left(n,\c_{4}/n\right)$
+\end_inset
+
+, that 
+\begin_inset Formula $Q$
+\end_inset
+
+ is an upper bound on the number of pairs of partner clusters 
+\begin_inset Formula $q$
+\end_inset
+
+, and that each 
 \begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
@@ -5779,7 +5805,7 @@ Consider a
 \begin_inset Formula $\left(1-\xi\right)n$
 \end_inset
 
- graded special paths greedily.
+ special paths greedily.
  That is, given a collection of fewer than 
 \begin_inset Formula $\left(1-\xi\right)n$
 \end_inset
@@ -5806,7 +5832,7 @@ Let
 \begin_inset Formula $w_{1}^{j}$
 \end_inset
 
-.
+s.
  Let 
 \begin_inset Formula $N_{j}^{X}$
 \end_inset
@@ -5845,7 +5871,7 @@ Let
 \end_inset
 
 .
- If we had 
+ We would like to prove 
 \begin_inset Formula $w_{k-1}^{j}\in N_{j}^{W}$
 \end_inset
 
@@ -5853,7 +5879,8 @@ Let
 \begin_inset Formula $j$
 \end_inset
 
-, that would mean there is a special pair 
+.
+ This would mean there is a special pair 
 \begin_inset Formula $\left(\x,\y\right)\in Z$
 \end_inset
 
@@ -5932,11 +5959,11 @@ By
 \end_inset
 
  and 
-\begin_inset Formula $\varepsilon n\le\xi n/2$
+\begin_inset Formula $2\varepsilon n\le\xi n/2$
 \end_inset
 
 , so 
-\begin_inset Formula $\left|J'\right|\ge\xi n/2$
+\begin_inset Formula $\left|J'\right|\ge\left|J\right|-\varepsilon n=\left(\xi-2\varepsilon\right)n\ge\xi n/2$
 \end_inset
 
 .
@@ -6021,7 +6048,7 @@ There are at most
 ) is unfavourable is therefore at most
 \begin_inset Formula 
 \[
-\frac{\left(\varepsilon n\right)^{\left|J'\right|}\left(n-\left|J'\right|\right)!}{n!}=O\left(\left(\varepsilon e\right)^{\left|J'\right|}\right)=e^{-\Omega\left(\xi\log\left(1/\varepsilon'\right)n\right)}.
+\frac{\left(\varepsilon n\right)^{\left|J'\right|}\left(n-\left|J'\right|\right)!}{n!}=O\left(\left(\varepsilon e\right)^{\left|J'\right|}\right)=e^{-\Omega\left(\xi\log\left(1/\varepsilon\right)n\right)}.
 \]
 
 \end_inset
@@ -6039,7 +6066,7 @@ There are at most
  There are 
 \begin_inset Formula 
 \[
-{n \choose \left(\xi-\varepsilon'\right)n}{n \choose \xi n}=e^{O\left(\xi\log\left(1/\xi\right)n\right)}
+{n \choose \left(\xi-\varepsilon\right)n}{n \choose \xi n}=e^{O\left(\xi\log\left(1/\xi\right)n\right)}
 \]
 
 \end_inset
@@ -6327,8 +6354,9 @@ If we are successful, the special paths with good template
 \begin_inset Formula $W_{\bi}$
 \end_inset
 
-, leaving 
-\begin_inset Formula $l_{\bi}\left|W_{\bi}\right|=\left|W_{\bi}\right|-\sum_{\tau}w_{\bi}n\ge\gamma\left|W_{\bi}\right|$
+, so that after removing the special paths with each template there are
+ will be 
+\begin_inset Formula $l_{\bi}\left|W_{\bi}\right|=\left(1-\sum_{\tau}t_{\bi}^{\tau}\right)\left|W_{\bi}\right|\ge\gamma\left|W_{\bi}\right|$
 \end_inset
 
  vertices.
@@ -6559,7 +6587,7 @@ reference "lem:large-preserves-dense"
 \end_inset
 
  are 
-\begin_inset Formula $\left(\varepsilon_{3}/\gamma,\delta\right)$
+\begin_inset Formula $\left(\varepsilon_{3}/\gamma,\delta_{3}\right)$
 \end_inset
 
 -dense.
@@ -6567,28 +6595,28 @@ reference "lem:large-preserves-dense"
 \begin_inset Formula $W_{\bi}'$
 \end_inset
 
- and 
+s and 
 \begin_inset Formula $Z_{i}'$
 \end_inset
 
-, each 
+s, each 
 \begin_inset Formula $w\in W_{\flip{\bi}}$
 \end_inset
 
  has at least 
-\begin_inset Formula $\left(\delta_{3}/4\right)\left|W_{\bi}'\right|$
+\begin_inset Formula $\left(\delta_{3}/4\right)\left|W_{\bi}\right|$
 \end_inset
 
  neighbours in 
-\begin_inset Formula $W_{\bi}'$
+\begin_inset Formula $W_{\bi}$
 \end_inset
 
  and at least 
-\begin_inset Formula $\left(\delta_{3}/4\right)\left|X_{\bi}'\right|$
+\begin_inset Formula $\left(\delta_{3}/4\right)\left|X_{\bi}\right|$
 \end_inset
 
  neighbours in 
-\begin_inset Formula $X_{\bi}'$
+\begin_inset Formula $X_{\bi}$
 \end_inset
 
 .
@@ -6670,17 +6698,17 @@ reference "sub:fix-endpoints"
 \end_inset
 
  that each 
-\begin_inset Formula $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(\left|Z_{\left[\bi\right]}\right|/\left|W_{\bi}\right|\right)\le\rho$
+\begin_inset Formula $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(2\left|Z_{\left[\bi\right]}\right|/\left|W_{\bi}\right|\right)\le\rho$
 \end_inset
 
 , so 
-\begin_inset Formula $m_{i}\ge\rho^{-1}\left|Z_{i}\right|$
+\begin_inset Formula $m_{i}\ge2\rho^{-1}\left|Z_{i}\right|$
 \end_inset
 
  and 
 \begin_inset Formula 
 \[
-L_{i}^{Z}/\left|Z_{i}\right|\ge\left(1+o\left(1\right)\right)\rho^{-1}/2,\quad L_{\left[\bi\right]}^{W}/\left|W_{\bi}\right|\ge\left(1+o\left(1\right)\right)\rho^{-2}/2.
+L_{i}^{Z}/\left|Z_{i}\right|\ge\left(1+o\left(1\right)\right)\rho^{-1},\quad L_{\left[\bi\right]}^{W}/\left|W_{\bi}\right|\ge\left(1+o\left(1\right)\right)\rho^{-2}/2.
 \]
 
 \end_inset
@@ -6697,9 +6725,9 @@ reference "lem:adjusting-paths"
 \end_inset
 
 .
- We can actually choose our templates almost arbitrarily, but it's a little
- fiddly to rigorously explain why, so we wrap up the details in the following
- claim.
+ We can actually choose our templates almost arbitrarily.
+ It's a little fiddly to rigorously explain why, so we wrap up the details
+ in the following claim.
 \end_layout
 
 \begin_layout Claim
@@ -6787,7 +6815,7 @@ Arbitrarily choose subsets
 
  be the set of free vertices in our subsets.
  Note that 
-\begin_inset Formula $M=\left|Z'\right|=2\left|X'\right|=\left(k-1\right)\left|W'\right|$
+\begin_inset Formula $\left|Z'\right|=M=\left|X'\right|/2=\left|W'\right|/\left(k-1\right)$
 \end_inset
 
 .
@@ -6990,7 +7018,7 @@ name "sub:blow-up"
 \end_layout
 
 \begin_layout Standard
-We have now finished with the edges in 
+We have now finished with the random edges in 
 \begin_inset Formula $\R$
 \end_inset
 
