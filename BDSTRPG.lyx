@@ -3746,7 +3746,7 @@ In our case
 \begin_inset Formula $k$
 \end_inset
 
- will be determined later; it will depend on 
+ will be determined later; it will be odd and depend on 
 \begin_inset Formula $\a$
 \end_inset
 
@@ -3809,7 +3809,7 @@ special vertices
 \begin_inset Formula $k$
 \end_inset
 
--paths.
+-paths of non-special vertices.
  We call such connecting paths 
 \begin_inset Quotes eld
 \end_inset
@@ -5358,7 +5358,14 @@ special sequence
 \end_inset
 
 .
- We also define an equivalence relation on special sequences: two special
+ For any special path we might find, the sequence of verticess in that path
+ will be special.
+ In fact, the special sequences are precisely the allowed sequences of vertices
+ in special paths.
+\end_layout
+
+\begin_layout Standard
+We also define an equivalence relation on special sequences: two special
  sequences 
 \begin_inset Formula $\x,w_{1},\dots,w_{k-1},\y$
 \end_inset
@@ -5414,20 +5421,17 @@ template
 \end_inset
 
  (repetitions permitted).
- The sequence of vertices in any special path is a special sequence, so
- we can classify special paths by their template.
- The idea is that we can specify desired quantities of special paths correspondi
-ng to each template, and provided certain conditions are satisfied we can
- find special paths with these templates, using the remaining vertices in
- 
+\end_layout
+
+\begin_layout Standard
+The idea is that we can specify (a multiset of) desired templates, and provided
+ certain conditions are satisfied we can find special paths with these templates
+, using the remaining vertices in 
 \begin_inset Formula $\G\cup\R_{4}$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Say a special sequence 
+ Say a special sequence 
 \begin_inset Formula $\x,w_{1},\dots,w_{k-1},\y$
 \end_inset
 
@@ -5461,39 +5465,33 @@ good
  super-regularity at the beginning and end of the paths.
 \end_layout
 
-\begin_layout Claim
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:adjusting-paths"
-
-\end_inset
-
-For any 
-\begin_inset Formula $\gamma,\varepsilon_{4}>0$
-\end_inset
-
-, there are 
-\begin_inset Formula $\varepsilon_{3}=\varepsilon\left(\delta_{3},\gamma,\varepsilon_{4}\right)$
-\end_inset
-
- and 
-\begin_inset Formula $\c_{4}=\c_{4}\left(s,\rho,\delta_{3},\gamma,\varepsilon_{4},Q,k\right)$
-\end_inset
-
- such that the following holds.
- (Recall that 
+\begin_layout Standard
+Recall that 
 \begin_inset Formula $\R_{4}\in\GG\left(n,\c_{4}/n\right)$
 \end_inset
 
-, that 
+; we still have the freedom to choose large 
+\begin_inset Formula $\c_{4}$
+\end_inset
+
+ to make it possible to find our desired special paths in 
+\begin_inset Formula $\G\cup\R_{4}$
+\end_inset
+
+.
+ Recall from previous sections that 
+\begin_inset Formula $s$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho$
+\end_inset
+
+ control the sizes of the clusters, that 
 \begin_inset Formula $Q$
 \end_inset
 
- is an upper bound on the number of pairs of partner clusters 
-\begin_inset Formula $q$
-\end_inset
-
-, and that each 
+ controls the number of clusters, and that each 
 \begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
@@ -5505,35 +5503,73 @@ For any
 \begin_inset Formula $\left(\varepsilon_{3},\delta_{3}\right)$
 \end_inset
 
--super-regular).
+-super-regular, where we can make 
+\begin_inset Formula $\varepsilon_{3}$
+\end_inset
+
+ as small as we like relative to 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Claim
-Suppose we specify a desired number of special paths with each good template,
- in such a way that we would be taking no more than 
-\begin_inset Formula $\left(1-\gamma\right)\left|X_{\bi}\right|$
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:adjusting-paths"
+
 \end_inset
 
- (respectively 
-\begin_inset Formula $\left(1-\gamma\right)\left|W_{\bi}\right|$
+For any 
+\begin_inset Formula $\gamma>0$
 \end_inset
 
-) vertices from each 
+, if 
+\begin_inset Formula $\varepsilon_{3}$
+\end_inset
+
+ is sufficiently small relative to 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta_{3}$
+\end_inset
+
+, there is 
+\begin_inset Formula $\c_{4}=\c_{4}\left(s,\rho,\delta_{3},\gamma,Q,k\right)$
+\end_inset
+
+ such that the following holds.
+\end_layout
+
+\begin_layout Claim
+Suppose we specify a multiset of templates (each of which we interpret as
+ sequences of clusters), in such a way that each 
 \begin_inset Formula $X_{\bi}$
 \end_inset
 
- (respectively 
+ (respectively, each 
 \begin_inset Formula $W_{\bi}$
 \end_inset
 
-).
- Then we can a.a.s.
+) appears in these templates at most 
+\begin_inset Formula $\left(1-\gamma\right)\left|X_{\bi}\right|$
+\end_inset
+
+ times (respectively, no more than 
+\begin_inset Formula $\left(1-\gamma\right)\left|W_{\bi}\right|$
+\end_inset
+
+ times).
+ Then, we can a.a.s.
  find special paths in 
 \begin_inset Formula $\G\cup\R_{4}$
 \end_inset
 
- with our desired templates in such a way that after their removal, each
- 
+ with our desired templates in such a way that after the removal of their
+ vertices, each 
 \begin_inset Formula $\left(X_{\bi},W_{\flip{\bi}}\right)$
 \end_inset
 
@@ -5546,6 +5582,20 @@ Suppose we specify a desired number of special paths with each good template,
 \end_inset
 
 -super-regular.
+ Note that our condition on the templates says precisely that at least a
+ 
+\begin_inset Formula $\gamma$
+\end_inset
+
+-fraction of each 
+\begin_inset Formula $X_{\bi}$
+\end_inset
+
+ and 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+ should remain after these deletions.
 \end_layout
 
 \begin_layout Standard
@@ -5591,7 +5641,7 @@ Let
 \end_inset
 
  be a graph on the vertex set 
-\begin_inset Formula $\range{kn}$
+\begin_inset Formula $\range{\left(k+1\right)n}$
 \end_inset
 
 , together with a vertex partition into disjoint clusters 
@@ -5608,7 +5658,7 @@ Let
 
 .
  Suppose that 
-\begin_inset Formula $\left(W,W_{1}\right)$
+\begin_inset Formula $\left(X,W_{1}\right)$
 \end_inset
 
  and 
@@ -5627,16 +5677,21 @@ Let
 \begin_inset Formula $\y\in Y$
 \end_inset
 
-, comprising a special pair 
+, comprising a 
+\emph on
+special pair
+\emph default
+ 
 \begin_inset Formula $\left(\x,\y\right)$
 \end_inset
 
 .
  Let 
-\begin_inset Formula $\R\in\GG\left(kn,\c/n\right)$
+\begin_inset Formula $\R\in\GG\left(\left(k+1\right)n,\c/n\right)$
 \end_inset
 
-; then in 
+.
+ Then, in 
 \begin_inset Formula $\G\cup\R$
 \end_inset
 
@@ -5645,11 +5700,16 @@ Let
 \begin_inset Formula $\left(1-\xi\right)n$
 \end_inset
 
- vertex-disjoint special paths running through 
+ vertex-disjoint paths running through 
 \begin_inset Formula $X,W_{1},\dots,W_{k-1},Y$
 \end_inset
 
- in order.
+ in that order, each of which connects the vertices of a special pair (these
+ are 
+\emph on
+special paths
+\emph default
+).
 \end_layout
 
 \begin_layout Proof
@@ -5678,26 +5738,25 @@ If
 \end_inset
 
  we can a.a.s.
- find a matching of 
-\begin_inset Formula $\left(1-\varepsilon/\left(k-2\right)\right)n$
-\end_inset
-
- edges between each 
-\begin_inset Formula $W_{i}$
+ find an edge between any subsets 
+\begin_inset Formula $W_{i}'\subseteq W_{i}$
 \end_inset
 
  and 
-\begin_inset Formula $W_{i+1}$
+\begin_inset Formula $W_{i+1}'\subseteq W_{i+1}$
 \end_inset
 
- (
+ with 
+\begin_inset Formula $\left|W_{i}'\right|,\left|W_{i+1}'\right|\ge\delta\xi n/\left(k-2\right)$
+\end_inset
+
+, for any 
 \begin_inset Formula $1\le i<k-1$
 \end_inset
 
-).
- Indeed, the unmatched vertices in a maximal matching have no edge between
- them, so we can prove this fact with basically the same argument as in
- the proof of 
+.
+ We can prove this fact with basically the same argument as in the proof
+ of 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:edge-between-large-sets"
@@ -5705,100 +5764,111 @@ reference "lem:edge-between-large-sets"
 \end_inset
 
 .
- The union of our 
-\begin_inset Formula $\left(1-\varepsilon/\left(k-2\right)\right)n$
+ In fact, it immediately follows that a.a.s.
+ between any such 
+\begin_inset Formula $W_{i}'$
 \end_inset
 
--edge matchings contains at least 
-\begin_inset Formula $\left(1-\varepsilon\right)n$
+ and 
+\begin_inset Formula $W_{i+1}'$
 \end_inset
 
- disjoint length-
-\begin_inset Formula $\left(k-2\right)$
+ there is a matching with more than 
+\begin_inset Formula $\min\left\{ \left|W_{i}'\right|,\left|W_{i}'\right|\right\} -\delta\xi n/\left(k-2\right)$
 \end_inset
 
- paths 
-\begin_inset Formula $P_{i},\dots,P_{\left(1-\varepsilon\right)n}$
-\end_inset
-
- running through 
-\begin_inset Formula $W_{1},\dots,W_{k-1}$
-\end_inset
-
-; we write 
-\begin_inset Formula $P_{j}=w_{1}^{j}\dots w_{k-1}^{j}$
-\end_inset
-
- with each 
-\begin_inset Formula $w_{i}^{j}\in W_{i}$
+ edges, in 
+\begin_inset Formula $\R$
 \end_inset
 
 .
- We can assume these paths are uniformly random: that is, for each 
-\begin_inset Formula $i$
+ This is because in a maximal matching, the subsets of unmatched vertices
+ in 
+\begin_inset Formula $W_{i}'$
 \end_inset
 
-, the function 
-\begin_inset Formula $j\mapsto w_{i}^{j}$
+ and 
+\begin_inset Formula $W_{i+1}'$
 \end_inset
 
- is a uniformly random injection from 
-\begin_inset Formula $\left[\left(1-\varepsilon\right)n\right]$
-\end_inset
-
- into 
-\begin_inset Formula $W_{i}$
-\end_inset
-
-, independent for each 
-\begin_inset Formula $i$
-\end_inset
-
-.
+ have no edge between them.
 \end_layout
 
 \begin_layout Proof
-Consider a 
-\begin_inset Formula $\left(\xi-\varepsilon\right)n$
+It follows that (a.a.s.) if we choose any subsets 
+\begin_inset Formula $W_{i}'\subseteq W_{i}$
 \end_inset
 
--element subset 
-\begin_inset Formula $J$
+ (
+\begin_inset Formula $1\le i\le k-1$
 \end_inset
 
- of 
-\begin_inset Formula $\left[\left(1-\varepsilon\right)n\right]$
+) with 
+\begin_inset Formula $\left|W_{1}'\right|=\dots=\left|W_{k-1}'\right|=\delta\xi n$
 \end_inset
 
-, and consider a 
+, there is a path in 
+\begin_inset Formula $\R$
+\end_inset
+
+ running through the 
+\begin_inset Formula $W_{1}',\dots,W_{k-1}'$
+\end_inset
+
+ in that order.
+ Indeed, we have just proven there is a matching of size 
+\begin_inset Formula $\left|W_{i}'\right|-\delta\xi n/\left(k-2\right)$
+\end_inset
+
+ between each 
+\begin_inset Formula $W_{i}'$
+\end_inset
+
+ and 
+\begin_inset Formula $W_{i+1}'$
+\end_inset
+
+; the union of such matchings must include a suitable path.
+\end_layout
+
+\begin_layout Proof
+Now, consider a 
 \begin_inset Formula $\xi n$
 \end_inset
 
 -element subset 
-\begin_inset Formula $Z$
+\begin_inset Formula $Z'$
 \end_inset
 
- of the special pairs.
+ of the special pairs, and consider a 
+\begin_inset Formula $\xi n$
+\end_inset
+
+-element subset 
+\begin_inset Formula $W_{i}'$
+\end_inset
+
+ of each 
+\begin_inset Formula $W_{i}$
+\end_inset
+
+.
  We would like to find a special path using one of the special pairs in
  
 \begin_inset Formula $Z$
 \end_inset
 
- and one of the paths 
-\begin_inset Formula $P_{j}$
-\end_inset
-
-, 
-\begin_inset Formula $j\in J$
+ and a vertex from each 
+\begin_inset Formula $W_{i}'$
 \end_inset
 
 .
  If we could (a.a.s.) find such a special path for all such subsets 
-\begin_inset Formula $J$
+\begin_inset Formula $Z'$
 \end_inset
 
  and 
-\begin_inset Formula $Z$
+\begin_inset Formula $W_{i}'$
 \end_inset
 
  then we would be done, for we would be able to choose our desired 
@@ -5823,92 +5893,12 @@ Let
 \begin_inset Formula $Y'\subseteq Y$
 \end_inset
 
- be the subsets containing the special vertices in the special pairs in
- 
-\begin_inset Formula $Z$
-\end_inset
-
-, and condition on each of the 
-\begin_inset Formula $w_{1}^{j}$
-\end_inset
-
-s.
- Let 
-\begin_inset Formula $N_{j}^{X}$
-\end_inset
-
- be the set of neighbours of 
-\begin_inset Formula $w_{1}^{j}$
-\end_inset
-
- in 
-\begin_inset Formula $X'$
-\end_inset
-
-, and let 
-\begin_inset Formula $N_{j}^{Y}$
-\end_inset
-
- be the vertices of 
-\begin_inset Formula $Y'$
-\end_inset
-
- which form special pairs with the vertices in 
-\begin_inset Formula $N_{j}^{X}$
+ be the subsets containing the vertices in the special pairs in 
+\begin_inset Formula $Z'$
 \end_inset
 
 .
- Let 
-\begin_inset Formula $N_{j}^{W}$
-\end_inset
-
- be the set of neighbours of 
-\begin_inset Formula $N_{j}^{Y}$
-\end_inset
-
- in 
-\begin_inset Formula $W_{k-1}$
-\end_inset
-
-.
- We would like to prove 
-\begin_inset Formula $w_{k-1}^{j}\in N_{j}^{W}$
-\end_inset
-
- for some 
-\begin_inset Formula $j$
-\end_inset
-
-.
- This would mean there is a special pair 
-\begin_inset Formula $\left(\x,\y\right)\in Z$
-\end_inset
-
- with 
-\begin_inset Formula $\x$
-\end_inset
-
- adjacent to 
-\begin_inset Formula $w_{1}^{j}$
-\end_inset
-
- and 
-\begin_inset Formula $\y$
-\end_inset
-
- adjacent to 
-\begin_inset Formula $w_{k-1}^{j}$
-\end_inset
-
-; this gives us a special path 
-\begin_inset Formula $\x w_{1}^{j}\dots w_{k-1}^{j}\y$
-\end_inset
-
- as desired.
-\end_layout
-
-\begin_layout Proof
-By 
+ By 
 \begin_inset Formula $\left(\varepsilon,\delta\right)$
 \end_inset
 
@@ -5920,175 +5910,71 @@ By
 \begin_inset Formula $\varepsilon n$
 \end_inset
 
- indices 
-\begin_inset Formula $j\in J$
+ vertices in 
+\begin_inset Formula $X'$
 \end_inset
 
- such that 
-\begin_inset Formula $w_{1}^{j}$
+ (respectively, in 
+\begin_inset Formula $Y'$
 \end_inset
 
- has fewer than 
+) with fewer than 
 \begin_inset Formula $\delta\xi n$
 \end_inset
 
  neighbours in 
-\begin_inset Formula $X'$
+\begin_inset Formula $W_{1}'$
+\end_inset
+
+ (respectively, in 
+\begin_inset Formula $W_{k-1}'$
+\end_inset
+
+), in 
+\begin_inset Formula $\G$
 \end_inset
 
 .
- Let 
-\begin_inset Formula $J'$
+ So, if 
+\begin_inset Formula $\varepsilon<\xi/2$
 \end_inset
 
- be the set of indices 
-\begin_inset Formula $j\in J$
+, then there must be a special pair 
+\begin_inset Formula $\left(\x,\y\right)$
 \end_inset
 
  such that 
-\begin_inset Formula $\left|N_{j}^{X}\right|\ge\varepsilon n$
+\begin_inset Formula $\left|N_{G}\left(\x\right)\cap W_{1}'\right|,\left|N_{G}\left(\y\right)\cap W_{k-1}'\right|\ge\delta\xi n$
 \end_inset
 
 .
- For small 
-\begin_inset Formula $\varepsilon$
+ By the discussion at the beginning of the proof, there is a.a.s.
+ a path in 
+\begin_inset Formula $\R$
 \end_inset
 
- we have 
-\begin_inset Formula $\delta\xi n\ge\varepsilon n$
+ running through 
+\begin_inset Formula $N_{G}\left(\x\right)\cap W_{1}',W_{2}',\dots,W_{k-2}',N_{G}\left(\y\right)\cap W_{k-1}'$
 \end_inset
 
- and 
-\begin_inset Formula $2\varepsilon n\le\xi n/2$
-\end_inset
-
-, so 
-\begin_inset Formula $\left|J'\right|\ge\left|J\right|-\varepsilon n=\left(\xi-2\varepsilon\right)n\ge\xi n/2$
-\end_inset
-
-.
- Now, again using 
-\begin_inset Formula $\left(\varepsilon,\delta\right)$
-\end_inset
-
--denseness there is an edge between each set of 
-\begin_inset Formula $\varepsilon n$
-\end_inset
-
- vertices of 
-\begin_inset Formula $Y'$
-\end_inset
-
- and each set of 
-\begin_inset Formula $\varepsilon n$
-\end_inset
-
- vertices of 
-\begin_inset Formula $W_{k-1}$
-\end_inset
-
-, so if 
-\begin_inset Formula $j\in J'$
-\end_inset
-
- then 
-\begin_inset Formula $\left|N_{j}^{W}\right|\ge\left(1-\varepsilon\right)n$
-\end_inset
-
- (that is, the set 
-\begin_inset Formula $N_{j}^{Y}$
-\end_inset
-
-, which has at least 
-\begin_inset Formula $\varepsilon n$
-\end_inset
-
- elements, has at least 
-\begin_inset Formula $\left(1-\varepsilon\right)n$
-\end_inset
-
- neighbours in 
-\begin_inset Formula $W_{k-1}$
-\end_inset
-
-).
- We want to estimate the probability that 
-\begin_inset Formula $w_{k-1}^{j}\notin N_{j}^{W}$
-\end_inset
-
- for all 
-\begin_inset Formula $j\in J'$
-\end_inset
-
-; this is the probability that we fail to find a suitable special pair.
-\end_layout
-
-\begin_layout Proof
-There are at most 
-\begin_inset Formula $\left(\varepsilon n\right)^{\left|J'\right|}$
-\end_inset
-
- possibilities for the function 
-\begin_inset Formula $j\mapsto w_{k-1}^{j}$
-\end_inset
-
- (restricted to the domain 
-\begin_inset Formula $J'$
-\end_inset
-
-) that are unfavourable in this way.
- The probability that the random injection 
-\begin_inset Formula $j\mapsto w_{k-1}^{j}$
-\end_inset
-
- (
-\begin_inset Formula $\left[\left(1-\varepsilon\right)n\right]\to W_{k-1}$
-\end_inset
-
-) is unfavourable is therefore at most
-\begin_inset Formula 
-\[
-\frac{\left(\varepsilon n\right)^{\left|J'\right|}\left(n-\left|J'\right|\right)!}{n!}=O\left(\left(\varepsilon e\right)^{\left|J'\right|}\right)=e^{-\Omega\left(\xi\log\left(1/\varepsilon\right)n\right)}.
-\]
-
-\end_inset
-
-(We have used Stirling's approximation and the fact that we can obtain a
- uniformly random injection 
-\begin_inset Formula $\left[\left(1-\varepsilon\right)n\right]\to W_{k-1}$
-\end_inset
-
- by restricting a uniformly random bijection 
-\begin_inset Formula $\left[n\right]\to W_{k-1}$
-\end_inset
-
-).
- There are 
-\begin_inset Formula 
-\[
-{n \choose \left(\xi-\varepsilon\right)n}{n \choose \xi n}=e^{O\left(\xi\log\left(1/\xi\right)n\right)}
-\]
-
-\end_inset
-
-possible choices of 
-\begin_inset Formula $J$
+ in that order.
+ Combining this path with 
+\begin_inset Formula $\x$
 \end_inset
 
  and 
-\begin_inset Formula $Z$
+\begin_inset Formula $\y$
 \end_inset
 
- (we have used the binary entropy approximation for binomial coefficients)
- so if we choose 
-\begin_inset Formula $\varepsilon\le\xi^{1/M}$
+ gives us a special path between 
+\begin_inset Formula $\x$
 \end_inset
 
- for large 
-\begin_inset Formula $M$
+ and 
+\begin_inset Formula $\y$
 \end_inset
 
- then the union bound finishes the proof.
+, as desired.
 \end_layout
 
 \begin_layout Standard
@@ -6146,7 +6032,11 @@ Let
 \begin_inset Formula $X,W_{1},\dots,W_{k-1},Y$
 \end_inset
 
- (some clusters may be repeated), such that 
+ (there may be repetitions in the 
+\begin_inset Formula $W_{i}$
+\end_inset
+
+s), such that 
 \begin_inset Formula $\left|X\right|,\left|Y\right|\ge n$
 \end_inset
 
@@ -6183,7 +6073,11 @@ Let
 \begin_inset Formula $\y\in Y$
 \end_inset
 
-, comprising a special pair 
+, comprising a 
+\emph on
+special pair
+\emph default
+ 
 \begin_inset Formula $\left(\x,\y\right)$
 \end_inset
 
@@ -6192,7 +6086,8 @@ Let
 \begin_inset Formula $\R\in\GG\left(N,\c/N\right)$
 \end_inset
 
-; then in 
+.
+ Then, in 
 \begin_inset Formula $\G\cup\R$
 \end_inset
 
@@ -6201,11 +6096,16 @@ Let
 \begin_inset Formula $\left(1-\xi\right)n$
 \end_inset
 
- vertex-disjoint special paths running through 
+ vertex-disjoint paths running through 
 \begin_inset Formula $X,W_{1},\dots,W_{k-1},Y$
 \end_inset
 
- in order.
+ in that order, each of which connects the vertices of a special pair (these
+ are 
+\emph on
+special paths
+\emph default
+).
 \end_layout
 
 \begin_layout Proof
@@ -6325,7 +6225,7 @@ reference "cor:adjusting-paths-basic"
 
  many times.
  (Note that there are fewer than 
-\begin_inset Formula $Q^{k+1}=O\left(1\right)$
+\begin_inset Formula $Q^{k}=O\left(1\right)$
 \end_inset
 
  different templates).
@@ -6342,29 +6242,40 @@ reference "sub:fix-endpoints"
 \end_layout
 
 \begin_layout Proof
-If we are successful, the special paths with good template 
+If we are able to successfully find our special paths, those with template
+ 
 \begin_inset Formula $\tau$
 \end_inset
 
- will take some number 
+ will contain some number 
 \begin_inset Formula $t_{\bi}^{\tau}\left|W_{\bi}\right|$
 \end_inset
 
- of vertices from each 
+ of vertices from 
 \begin_inset Formula $W_{\bi}$
 \end_inset
 
-, so that after removing the special paths with each template there are
- will be 
+.
+ (Note that 
+\begin_inset Formula $t_{\bi}^{\tau}$
+\end_inset
+
+ depends only on the multiset of desired templates, and not on the specific
+ special paths we find).
+ After removing the vertices in our found special paths, there will be 
 \begin_inset Formula $l_{\bi}\left|W_{\bi}\right|=\left(1-\sum_{\tau}t_{\bi}^{\tau}\right)\left|W_{\bi}\right|\ge\gamma\left|W_{\bi}\right|$
 \end_inset
 
- vertices.
+ vertices remaining in 
+\begin_inset Formula $W_{\bi}$
+\end_inset
+
+.
  Similarly, the special paths with good template 
 \begin_inset Formula $\tau$
 \end_inset
 
- take some number 
+ will take some number 
 \begin_inset Formula $s_{i}^{\tau}\left|Z_{i}\right|$
 \end_inset
 
@@ -6459,14 +6370,14 @@ Choose the sizes of the
 \end_inset
 
  such that each 
-\begin_inset Formula $\left|W_{\bi}^{\tau}\right|,\left|Z_{i}^{\tau}\right|=\Omega\left(n\right)$
+\begin_inset Formula $\left|W_{\bi}^{\tau}\right|\ge\xi sn/Q^{k}$
 \end_inset
 
- (say 
-\begin_inset Formula $\left|W_{\bi}^{\tau}\right|,\left|Z_{i}^{\tau}\right|\ge\xi an/Q^{k+1}$
+ and 
+\begin_inset Formula $\left|Z_{i}^{\tau}\right|\ge\xi sn/\left(\left(k-1\right)Q^{k}\right)$
 \end_inset
 
-), and also each 
+, and also each 
 \begin_inset Formula $\left|W_{\bi}'\right|\ge\left(l_{\bi}/2\right)\left|W_{\bi}\right|$
 \end_inset
 
@@ -6474,15 +6385,15 @@ Choose the sizes of the
 \begin_inset Formula $\left|Z_{i}'\right|\ge\left(r_{i}/2\right)\left|Z_{i}\right|$
 \end_inset
 
- (note that 
+ (this will be possible if 
 \begin_inset Formula $\xi$
 \end_inset
 
- will have to be small relative to 
-\begin_inset Formula $\gamma$
+ is small enough to satisfy 
+\begin_inset Formula $\left(1-\gamma\right)/\left(1-\xi\right)+\xi\le\left(1-\gamma/2\right)$
 \end_inset
 
- for this to be possible).
+).
  Given these part sizes choose our partitions uniformly at random.
 \end_layout
 
@@ -6511,7 +6422,8 @@ reference "lem:random-preserves-superregular"
 \begin_inset Formula $\left(\varepsilon',\delta_{3}/2\right)$
 \end_inset
 
--dense, and moreover a.a.s.
+-dense.
+ Moreover a.a.s.
  each 
 \begin_inset Formula $w\in W_{\flip{\bi}}$
 \end_inset
@@ -6530,6 +6442,18 @@ reference "lem:random-preserves-superregular"
 
  neighbours in 
 \begin_inset Formula $X_{\bi}'$
+\end_inset
+
+, and each 
+\begin_inset Formula $x\in X_{\bi}$
+\end_inset
+
+ has at least 
+\begin_inset Formula $\left(\delta_{3}/2\right)\left|W_{\flip{\bi}}'\right|$
+\end_inset
+
+ neighbours in 
+\begin_inset Formula $W_{\flip{\bi}}'$
 \end_inset
 
 .
@@ -6571,7 +6495,7 @@ reference "cor:adjusting-paths-basic"
 \end_layout
 
 \begin_layout Proof
-After deleting these special paths, by 
+After deleting the vertices in these special paths, by 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:large-preserves-dense"
@@ -6599,11 +6523,11 @@ s and
 \begin_inset Formula $Z_{i}'$
 \end_inset
 
-s, each 
+ and the bounds on the neighbourhood sizes in the last paragraph, each 
 \begin_inset Formula $w\in W_{\flip{\bi}}$
 \end_inset
 
- has at least 
+ now has at least 
 \begin_inset Formula $\left(\delta_{3}/4\right)\left|W_{\bi}\right|$
 \end_inset
 
@@ -6617,6 +6541,18 @@ s, each
 
  neighbours in 
 \begin_inset Formula $X_{\bi}$
+\end_inset
+
+, and each 
+\begin_inset Formula $x\in X_{\bi}$
+\end_inset
+
+ has at least 
+\begin_inset Formula $\left(\delta_{3}/4\right)\left|W_{\flip{\bi}}\right|$
+\end_inset
+
+ neighbours in 
+\begin_inset Formula $W_{\flip{\bi}}'$
 \end_inset
 
 .
@@ -6644,8 +6580,8 @@ reference "lem:adjusting-paths"
 \end_inset
 
 , we now just need to show that there are suitable good templates so that
- after finding and removing special paths with those templates we end up
- with 
+ after finding special paths with those templates and removing their vertices,
+ we end up with 
 \begin_inset Formula $2\left|W_{\bi}\right|=\left(k-1\right)\left|X_{\bi}\right|$
 \end_inset
 
@@ -6741,8 +6677,8 @@ For large
 \begin_inset Formula $k$
 \end_inset
 
-, we can choose good templates in such a way that if we remove special paths
- corresponding to these templates, there will be 
+, we can choose good templates in such a way that if we remove the vertices
+ of special paths corresponding to these templates, there will be 
 \begin_inset Formula $L_{i}^{Z}$
 \end_inset
 
@@ -6962,7 +6898,7 @@ reference "claim:find-templates"
 
 \end_inset
 
-, and remove the special paths that we find.
+, and remove the vertices of the special paths that we find.
  Update the 
 \begin_inset Formula $W_{\bi}$
 \end_inset
