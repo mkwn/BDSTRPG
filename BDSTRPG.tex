@@ -422,40 +422,25 @@ in a similar way to \cite{Kri10}. If our spanning tree $\T$ has
 many leaves, then we remove the leaves and embed the resulting non-spanning
 tree in $\R$ using \ref{lem:almost-spanning}. To complete this into
 our spanning tree $\T$, it remains to match the the vertices needing
-leaves with leftover vertices. This amounts to finding a perfect matching
-in a certain bipartite graph. The random edges in $\R$ provide several
-almost-perfect matchings on their own; we combine these with the dense
-graph $\G$ to satisfy the conditions of Hall's marriage theorem and
-guarantee the required perfect matching. The details for this case
-are given in \ref{sub:many-leaves}.
+leaves with leftover vertices. We show that this is possible by verifying
+that a certain Hall-type condition typically holds.
 
 The more difficult case is where $\T$ has few leaves, which we attack
 in \ref{sub:few leaves}. In this case $\T$ cannot be very ``complicated''
 and must be a subdivision of a small tree. In particular $\T$ must
 have many long \emph{bare paths}: paths where each vertex has degree
 exactly two. By removing these bare paths we obtain a small forest
-which we can embed into $\R$ using \ref{lem:almost-spanning} (the
-details are in \ref{sub:embed-forest}). In order to complete this
-forest into our spanning tree $\T$, we need to join up distinguished
-``special pairs'' of vertices with disjoint paths of certain lengths.
+which we can embed into $\R$ using \ref{lem:almost-spanning}. In
+order to complete this forest into our spanning tree $\T$, we need
+to join up distinguished ``special pairs'' of vertices with disjoint
+paths of certain lengths.
 
-In order to make this task feasible, in \ref{sub:partition-into-blobs}
-we first use Szemer\'edi's regularity lemma to divide the vertex
-set into a bounded number of ``clusters'', which we can partition
-into ``super-regular pairs'' (basically, dense subgraphs with edges
-very well-distributed in $\G$). After embedding our small forest,
-In \ref{sub:fix-endpoints} we find some short paths that effectively
-``move'' the special pairs we need to join up. We do this in such
-a way that it remains to join up special pairs of vertices which are
-each fully contained in one of the super-regular cluster-pairs with
-which we partitioned $\G$. Combining the super-regularity in the
-cluster-pairs with the random edges in $\R$, in \ref{sub:cluster-adjustment}
-we can then greedily find many of our desired paths. We carefully
-set aside some of these special paths in such a way that the numbers
-of vertices remaining in each cluster satisfy certain divisibility
-requirements. From here the super-regularity of the pairs allows us
-to find the rest of our paths using a tool called the ``blow-up lemma''
-(\ref{sub:blow-up}).
+In order to make this task feasible, we first use Szemer\'edi's regularity
+lemma to divide the vertex set into a bounded number of ``super-regular
+pairs'' (basically, dense subgraphs with edges very well-distributed
+in $\G$). After embedding our small forest and making a number of
+further adjustments, we can find our desired special paths using super-regularity
+and a tool called the ``blow-up lemma''.
 
 
 \section{Proof of \texorpdfstring{}{Theorem~}\ref{thm:main-theorem}}
@@ -555,22 +540,69 @@ for all $S\subseteq A$, as required.
 
 \subsection{Case 2: $\protect\T$ has few leaves\label{sub:few leaves}}
 
+\global\long\def\h{h}
+
+
 Now we address the second case where there are fewer than $\lambda n$
-leaves in $\T$.
+leaves in $\T$. The argument is broken into a number of subsections,
+which we outline here. The first step (carried out in \ref{sub:partition-into-blobs})
+is to divide $\G$ into a bounded number of pairs of ``partner clusters''
+with edges well-distributed between them. Specifically, the edges
+between each pair of partner clusters will each have a property called
+``super-regularity''\emph{.} The significance of this is that one
+can use a tool called the ``blow up lemma'' to easily embed bounded-degree
+spanning structures into super-regular pairs.
+
+Guided by our partition into pairs of clusters, we then embed most
+of $\T$ into $\G\cup\R$ in a step-by-step fashion. The objective
+is to do this in such a way that, afterwards, the remaining connected
+components of $\T$ can each be assigned to their own cluster-pair,
+so that we can finish the embedding in each cluster-pair individually;
+we can do this with the blow-up lemma.
+
+As outlined in the introduction, the fact that $\T$ has few leaves
+means that it is mostly comprised of long \emph{bare paths}: paths
+where every vertex has degree two. The first step in the embedding
+is to embed the non-bare-path parts of $\T$ using only the random
+edges in $\R$. That is, we obtain a forest $\F$ by removing bare
+paths from $\T$, then we embed $\F$ into $\R$ using \ref{lem:almost-spanning}.
+This step is performed in \ref{sub:embed-forest}.
+
+After embedding $\F$, it remains to connect certain ``special pairs''
+of vertices with paths of certain lengths in $\G\cup\R$, using the
+vertices that were not yet used to embed $\F$. (That is, we need
+to embed the bare paths we deleted from $\T$ to obtain $\F$). There
+are a few problems we need to overcome before we can apply the blow-up
+lemma to accomplish this. First, the vertices in special pairs, in
+general, lie in totally different clusters in our partition, so we
+cannot hope to embed each path in a single cluster-pair. In \ref{sub:fix-endpoints},
+we correct this problem by finding very short paths from the vertices
+of each special pair to a common cluster-pair.
+
+The next issue is that the relative sizes of the cluster-pairs will
+not in general match the number of special pairs they contain. For
+example, if a cluster-pair contains $N$ special pairs which we need
+to connect with paths of length $k$, then we need that cluster-pair
+to have exactly $\left(k-1\right)N$ vertices that were not used for
+anything so far. To fix this problem, in \ref{sub:cluster-adjustment}
+we already start to embed some of the paths between special pairs,
+mainly using the random edges in $\R$. We choose the vertices for
+these paths in a very specific way, to control the relative quantities
+of remaining vertices in the clusters.
+
+After these adjustments, in \ref{sub:blow-up} we are able to complete
+the embedding of $\T$. We show that finding paths between distinguished
+vertices is equivalent to finding cycles with certain properties in
+a certain auxiliary graph. These cycles can be found in a straightforward
+manner using the blow-up lemma and super-regularity.
 
 
 \subsubsection{Partitioning into super-regular pairs\label{sub:partition-into-blobs}}
 
-As outlined in the introduction, we first need to divide $\G$ into
-a bounded number of pairs of ``partner clusters'' with edges well-distributed
-between them.
-
-\global\long\def\h{h}
-
+As outlined, we first need to divide $\G$ into a bounded number of
+pairs of ``partner clusters'' with well-distributed edges.
 \begin{defn}
-For a disjoint pair of vertex sets $\left(X,Y\right)$ in a graph
-$G$, let its \emph{density} $d\left(X,Y\right)$ be the number of
-edges between $X$ and $Y$, divided by $\left|X\right|\left|Y\right|$.
+s between $X$ and $Y$, divided by $\left|X\right|\left|Y\right|$.
 A pair of vertex sets $\left(V_{1},V_{2}\right)$ is said to be \emph{$\varepsilon$-regular}
 in $G$ if for any $U_{1},U_{2}$ with $U_{\h}\subseteq V_{\h}$ and
 $\left|U_{\h}\right|\ge\varepsilon\left|V_{\h}\right|$, we have $\left|d\left(U_{1},U_{2}\right)-d\left(V_{1},V_{2}\right)\right|\le\varepsilon$.
@@ -757,10 +789,10 @@ For $\bi=\left(i,\h\right)$, let $V_{\bi}=V_{i}^{\h}$, and let $\left|V_{\bi}\ri
 
 \subsubsection{Embedding a subforest of $\protect\T$\label{sub:embed-forest}}
 
-Having fixed our partition of $G$ into $V_{\bi}$, in this section
-we will start to embed $\T$ into $\G\cup\R$. Just as in \ref{sub:many-leaves},
-we will use the decomposition of $\R$ into ``phases'' $\R_{1},\R_{2},\R_{3},\R_{4}$
-(but we start with $\R_{2}$ for consistency with the section numbering).
+In this section we will start to embed $\T$ into $\G\cup\R$. Just
+as in \ref{sub:many-leaves}, we will use the decomposition of $\R$
+into ``phases'' $\R_{1},\R_{2},\R_{3},\R_{4}$ (but we start with
+$\R_{2}$ for consistency with the section numbering).
 
 Recall that a \emph{bare path} in $\T$ is a path $P$ such that every
 vertex of $P$ has degree exactly two in $\T$. Proceeding with the
@@ -1114,10 +1146,11 @@ times). Then, we can a.a.s. find special paths in $\G\cup\R_{4}$
 with our desired templates in such a way that after the removal of
 their vertices, each $\left(X_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},W_{\flip{\bi}}\right)$
 are still $\left(\varepsilon_{3}/\gamma,\delta_{3}/4\right)$-super-regular.
+\end{claim}
 Note that our condition on the templates says precisely that at least
 a $\gamma$-fraction of each $X_{\bi}$ and $W_{\bi}$ should remain
-after these deletions.
-\end{claim}
+after deleting the vertices of the special paths.
+
 We will prove \ref{lem:adjusting-paths} with a simpler lemma.
 \begin{lem}
 \label{lem:adjusting-paths-more-basic}For any $\delta,\xi>0$ and
@@ -1212,7 +1245,7 @@ small by choice of $\varepsilon$. We can therefore directly apply
 We can now prove \ref{lem:adjusting-paths}.
 \begin{proof}[Proof of \ref{lem:adjusting-paths}]
 The basic idea is to split the clusters into many random subsets,
-one for each good template, and apply \ref{cor:adjusting-paths-basic}
+one for each good template, and to apply \ref{cor:adjusting-paths-basic}
 many times. (Note that there are fewer than $Q^{k}=O\left(1\right)$
 different templates). We also need to guarantee super-regularity in
 what remains. For this, we set aside another random subset of each
@@ -1230,7 +1263,7 @@ good template $\tau$ will take some number $s_{i}^{\tau}\left|Z_{i}\right|$
 of special pairs from each $Z_{i}$, leaving $r_{i}\left|Z_{i}\right|\ge\gamma\left|Z_{i}\right|$
 special pairs.
 
-Now, for some small $\xi$ to be determined, we want to partition
+Now, for some small $\xi>0$ to be determined, we want to partition
 each $W_{\bi}$ into parts $W_{\bi}^{\tau}$ of size at least $t_{\bi}^{\tau}\left|W_{\bi}\right|/\left(1-\xi\right)$,
 and a ``leftover'' part $W_{\bi}'$ of size $\left|W_{\bi}\right|-\sum_{\tau}\left|W_{\bi}^{\tau}\right|$.
 Similarly, we want to partition each $Z_{i}$ into parts $Z_{i}^{\tau}$
@@ -1291,8 +1324,7 @@ L_{i}^{Z}/\left|Z_{i}\right|\ge\left(1+o\left(1\right)\right)\rho^{-1},\quad L_{
 \]
 Provided we can find suitable templates, we can therefore apply \ref{lem:adjusting-paths}
 with $\gamma=\rho^{-2}/3$. We can actually choose our templates almost
-arbitrarily. It's a little fiddly to rigorously explain why, so we
-wrap up the details in the following claim.
+arbitrarily; we wrap up the details in the following claim.
 \begin{claim}
 \label{claim:find-templates}For large $k$, we can choose good templates
 in such a way that if we remove the vertices of special paths corresponding
@@ -1307,15 +1339,15 @@ special sequences will give our templates.
 Arbitrarily choose subsets $Z_{i}'\subseteq Z_{i}$ and $W_{\bi}'\subseteq W_{\bi}$
 with $\left|Z_{i}'\right|=\left|Z_{i}\right|-L_{i}^{Z}$ and $\left|W_{\bi}'\right|=\left|W_{\bi}\right|-L_{\left[\bi\right]}^{W}$.
 Let $X_{\bi}'\subseteq X_{\bi}$ be the subset of special vertices
-from $X_{\bi}$ from special pairs in $Z_{\left[\bi\right]}'$. Let
-$Z'=\bigcup_{i}Z_{i}'$ be the set of all special pairs in our subsets,
-let $X'=\bigcup_{\bi}X_{\bi}$ be the set of all special vertices
-in those special pairs, and let $W'=\bigcup_{\bi}W_{\bi}'$ be the
-set of free vertices in our subsets. Note that $\left|Z'\right|=M=\left|X'\right|/2=\left|W'\right|/\left(k-1\right)$.
+from $X_{\bi}$ coming from special pairs in $Z_{\left[\bi\right]}'$.
+Let $Z'=\bigcup_{i}Z_{i}'$ be the set of all special pairs in our
+subsets, let $X'=\bigcup_{\bi}X_{\bi}$ be the set of all special
+vertices in those special pairs, and let $W'=\bigcup_{\bi}W_{\bi}'$
+be the set of free vertices in our subsets. Note that $\left|Z'\right|=M=\left|X'\right|/2=\left|W'\right|/\left(k-1\right)$.
 Recall that $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(\left|X_{\bi}\right|/\left|W_{\bi}\right|\right)\le\rho$,
 so if $k$ is large then for each $\bi$ we have
 \[
-\frac{\left|W_{\bi}'\right|}{\left|X_{\bi}'\right|}\ge\frac{\left|W_{\bi}\right|/2}{\left|X_{\bi}\right|}\ge\frac{k-1}{2\rho}\ge1.
+\frac{\left|W_{\bi}'\right|}{\left|X_{\bi}'\right|}\ge\frac{\left|W_{\bi}\right|/2}{\left|X_{\bi}\right|}\ge\frac{k-1}{4\rho}\ge1.
 \]
 That is, for each $\bi$ there are at least as many vertices $W_{\bi}'$
 as in $X_{\bi}'$. We now start filling our special sequences with
@@ -1369,7 +1401,7 @@ as follows. The first graph $b_{n_{1},\dots,n_{r}}\left(C\right)$
 graph between $V_{i}$ and $V_{j}$ whenever $\left\{ i,j\right\} $
 is an edge in $C$. The second graph $B\subseteq b_{n_{1},\dots,n_{r}}\left(C\right)$
 (a ``super-regular blow-up'') is obtained by putting edges between
-each such $V_{i}$ and $V_{j}$ such that $\left(V_{i},V_{j}\right)$
+each such $V_{i}$ and $V_{j}$ so that $\left(V_{i},V_{j}\right)$
 is an $\left(\varepsilon,\delta\right)$-super-regular pair.
 
 If a graph $H$ with maximum degree bounded by $\Delta$ can be embedded
@@ -1405,15 +1437,15 @@ corresponds to a special path connecting $\x$ and $\y$. See \ref{fig:cluster-pat
 \draw (0,-\rh) -| (\rw,\rh) -| cycle;
 \draw (0,0) -- (\rw,0);
 
-\coordinate (xb11) at (\rw-0.25,-\rh);
-\coordinate (xb12) at (0.25,-\rh);
-\coordinate (xb21) at (0.25,\rh);
-\coordinate (xb22) at (\rw-0.25,\rh);
-\coordinate (xc1) at (\rw/2,-\rh);
-\coordinate (xc2) at (\rw/2,\rh);
+\node[shape=coordinate] (xb11) at (\rw-0.25,-\rh) {};
+\node[shape=coordinate] (xb12) at (0.25,-\rh) {};
+\node[shape=coordinate] (xb21) at (0.25,\rh) {};
+\node[shape=coordinate] (xb22) at (\rw-0.25,\rh) {};
+\node[shape=coordinate] (xc1) at (\rw/2,-\rh) {};
+\node[shape=coordinate] (xc2) at (\rw/2,\rh) {};
 
-\node at (\rw/2,\rh/2) {$S_0=X_{(i,1)}$};
-\node at (\rw/2,-\rh/2) {$S_3=X_{(i,2)}$};
+\node at (\rw/2,\rh/2) {$S_i^0=X_{(i,1)}$};
+\node at (\rw/2,-\rh/2) {$S_i^3=X_{(i,2)}$};
 
 \def\rw{5}
 \def\rsx{6}
@@ -1427,18 +1459,18 @@ corresponds to a special path connecting $\x$ and $\y$. See \ref{fig:cluster-pat
 \begin{scope}[shift={(\rsx,-\rsy)},rotate=\rrot2]
 
 \def\rn{1}
-\coordinate (r\rn1) at (-\rw/2,0.5){};
-\coordinate (r\rn2) at (-\rw/2,-0.5){};
-\coordinate (r\rn3) at (\rw/2,-0.5){};
-\coordinate (r\rn4) at (\rw/2,0.5){};
+\node[shape=coordinate] (r\rn1) at (-\rw/2,0.5){};
+\node[shape=coordinate] (r\rn2) at (-\rw/2,-0.5){};
+\node[shape=coordinate] (r\rn3) at (\rw/2,-0.5){};
+\node[shape=coordinate] (r\rn4) at (\rw/2,0.5){};
 \draw (r\rn1) -- (r\rn2) -- (r\rn3) -- (r\rn4) -- (r\rn1);
-\coordinate (r{\rn}p1) at (-\rw*0.3,-0.5){};
-\coordinate (r{\rn}p2) at (-\rw*0.15,-0.5){};
-\coordinate (r{\rn}p3) at (0,-0.5){};
-\coordinate (r{\rn}p4) at (\rw*0.15,-0.5){};
-\coordinate (r{\rn}p5) at (\rw*0.3,-0.5){};
-\coordinate (r{\rn}b1) at (-\rw/2+0.5,-0.5){};
-\coordinate (r{\rn}b2) at (\rw/2-0.5,-0.5){};
+\node[shape=coordinate] (r{\rn}p1) at (-\rw*0.3,-0.5){};
+\node[shape=coordinate] (r{\rn}p2) at (-\rw*0.15,-0.5){};
+\node[shape=coordinate] (r{\rn}p3) at (0,-0.5){};
+\node[shape=coordinate] (r{\rn}p4) at (\rw*0.15,-0.5){};
+\node[shape=coordinate] (r{\rn}p5) at (\rw*0.3,-0.5){};
+\node[shape=coordinate] (r{\rn}b1) at (-\rw/2+0.5,-0.5){};
+\node[shape=coordinate] (r{\rn}b2) at (\rw/2-0.5,-0.5){};
 
 \fill [opacity=0.15] (xb\rn1) -- (r{\rn}b1) -- (r{\rn}b2) -- (xb\rn2) -- cycle;
 
@@ -1446,18 +1478,18 @@ corresponds to a special path connecting $\x$ and $\y$. See \ref{fig:cluster-pat
 \begin{scope}[shift={(0,\rshifty2)},rotate=-\rr]
 
 \def\rn{2}
-\coordinate (r\rn1) at (-\rw/2,0.5){};
-\coordinate (r\rn2) at (-\rw/2,-0.5){};
-\coordinate (r\rn3) at (\rw/2,-0.5){};
-\coordinate (r\rn4) at (\rw/2,0.5){};
+\node[shape=coordinate] (r\rn1) at (-\rw/2,0.5){};
+\node[shape=coordinate] (r\rn2) at (-\rw/2,-0.5){};
+\node[shape=coordinate] (r\rn3) at (\rw/2,-0.5){};
+\node[shape=coordinate] (r\rn4) at (\rw/2,0.5){};
 \draw (r\rn1) -- (r\rn2) -- (r\rn3) -- (r\rn4) -- (r\rn1);
-\coordinate (r{\rn}p1) at (-\rw*0.3,-0.5){};
-\coordinate (r{\rn}p2) at (-\rw*0.15,-0.5){};
-\coordinate (r{\rn}p3) at (0,-0.5){};
-\coordinate (r{\rn}p4) at (\rw*0.15,-0.5){};
-\coordinate (r{\rn}p5) at (\rw*0.3,-0.5){};
-\coordinate (r{\rn}b1) at (-\rw/2+0.5,-0.5){};
-\coordinate (r{\rn}b2) at (\rw/2-0.5,-0.5){};
+\node[shape=coordinate] (r{\rn}p1) at (-\rw*0.3,-0.5){};
+\node[shape=coordinate] (r{\rn}p2) at (-\rw*0.15,-0.5){};
+\node[shape=coordinate] (r{\rn}p3) at (0,-0.5){};
+\node[shape=coordinate] (r{\rn}p4) at (\rw*0.15,-0.5){};
+\node[shape=coordinate] (r{\rn}p5) at (\rw*0.3,-0.5){};
+\node[shape=coordinate] (r{\rn}b1) at (-\rw/2+0.5,-0.5){};
+\node[shape=coordinate] (r{\rn}b2) at (\rw/2-0.5,-0.5){};
 
 \fill [opacity=0.15] (xb\rn1) -- (r{\rn}b1) -- (r{\rn}b2) -- (xb\rn2) -- cycle;
 
@@ -1477,8 +1509,8 @@ corresponds to a special path connecting $\x$ and $\y$. See \ref{fig:cluster-pat
 
 %}
 
-\node[rotate=\rr] at (\rsx,-\rsy) {$S_2=W_{(i,1)}$};
-\node[rotate=-\rr] at (\rsx,\rsy) {$S_1=W_{(i,2)}$};
+\node[rotate=\rr] at (\rsx,-\rsy) {$S_i^2=W_{(i,1)}$};
+\node[rotate=-\rr] at (\rsx,\rsy) {$S_i^1=W_{(i,2)}$};
 
 \end{tikzpicture}
 \end{center}
@@ -1494,11 +1526,11 @@ blow-up of a 3-cycle $C_{3}$, with part sizes
 n_{i}^{Z},\quad n_{i}^{1}:=\left(\left(k-1\right)/2\right)n_{i}^{Z},\quad n_{i}^{2}:=\left(\left(k-1\right)/2\right)n_{i}^{Z}.
 \]
 The corresponding complete blow-up $b_{n_{i}^{Z},n_{i}^{1},n_{i}^{2}}\left(C_{3}\right)$
-contains $n_{i}^{Z}$ disjoint $k$-cycles (each has a vertex in $S_{i}^{Z}$
-and its other $k-1$ vertices alternate between $S_{i}^{1}$ and $S_{i}^{2}$).
-By the blow-up lemma, $G_{i}$ also contains $n_{i}^{Z}$ disjoint
-$k$-cycles. Since $k$ is odd, each of these must use at least one
-vertex from $S_{i}^{Z}$, but since $\left|S_{i}^{Z}\right|=n_{i}^{Z}$,
+contains $n_{i}^{Z}$ vertex-disjoint $k$-cycles (each has a vertex
+in $S_{i}^{Z}$ and its other $k-1$ vertices alternate between $S_{i}^{1}$
+and $S_{i}^{2}$). By the blow-up lemma, $G_{i}$ also contains $n_{i}^{Z}$
+vertex-disjoint $k$-cycles. Since $k$ is odd, each of these must
+use at least one vertex from $S_{i}^{Z}$, but since $\left|S_{i}^{Z}\right|=n_{i}^{Z}$,
 each cycle must then use exactly one vertex from $S_{i}^{Z}$. These
 cycles correspond to special paths which complete our embedding of
 $\T$.
@@ -1507,17 +1539,19 @@ $\T$.
 \section{Concluding Remarks}
 
 We have proved that any given bounded-degree spanning tree typically
-appears when a linear number of random edges are added to a dense
-graph. There are a few interesting questions that remain open. Most
-prominent is the question of embedding more general kinds of spanning
-subgraphs into randomly perturbed graphs. It would be particularly
+appears when a linear number of random edges are added to an arbitrary
+dense graph. There are a few interesting questions that remain open.
+Most prominent is the question of embedding more general kinds of
+spanning subgraphs into randomly perturbed graphs. It would be particularly
 interesting if the general result of \cite{BST09} (concerning arbitrary
 spanning graphs with bounded degree and low bandwidth) could be adapted
-to this setting. It is also possible that our use of Szemer\'edi's
-regularity lemma could be avoided, thus drastically improving the
-constants $\c\left(\a\right)$ and perhaps allowing us to say something
-about random perturbations of graphs which have slightly sublinear
-minimum degree.
+to this setting. There is also the question of universality: whether
+it is true that a randomly perturbed dense graph typically contains
+every bounded-degree spanning tree at once. Finally, it is possible
+that our use of Szemer\'edi's regularity lemma could be avoided,
+thus drastically improving the constants $\c\left(\a\right)$ and
+perhaps allowing us to say something about random perturbations of
+graphs which have slightly sublinear minimum degree.
 
 \noindent \textbf{Acknowledgement.} Parts of this work were carried
 out when the first author visited the Institute for Mathematical Research

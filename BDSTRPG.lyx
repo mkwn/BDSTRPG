@@ -1374,26 +1374,8 @@ reference "lem:almost-spanning"
 \end_inset
 
 , it remains to match the the vertices needing leaves with leftover vertices.
- This amounts to finding a perfect matching in a certain bipartite graph.
- The random edges in 
-\begin_inset Formula $\R$
-\end_inset
-
- provide several almost-perfect matchings on their own; we combine these
- with the dense graph 
-\begin_inset Formula $\G$
-\end_inset
-
- to satisfy the conditions of Hall's marriage theorem and guarantee the
- required perfect matching.
- The details for this case are given in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:many-leaves"
-
-\end_inset
-
-.
+ We show that this is possible by verifying that a certain Hall-type condition
+ typically holds.
 \end_layout
 
 \begin_layout Standard
@@ -1443,14 +1425,7 @@ reference "lem:almost-spanning"
 
 \end_inset
 
- (the details are in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:embed-forest"
-
-\end_inset
-
-).
+.
  In order to complete this forest into our spanning tree 
 \begin_inset Formula $\T$
 \end_inset
@@ -1467,14 +1442,7 @@ special pairs
 \end_layout
 
 \begin_layout Standard
-In order to make this task feasible, in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:partition-into-blobs"
-
-\end_inset
-
- we first use Szemer
+In order to make this task feasible, we first use Szemer
 \begin_inset ERT
 status open
 
@@ -1492,14 +1460,6 @@ edi's regularity lemma to divide the vertex set into a bounded number of
 \begin_inset Quotes eld
 \end_inset
 
-clusters
-\begin_inset Quotes erd
-\end_inset
-
-, which we can partition into 
-\begin_inset Quotes eld
-\end_inset
-
 super-regular pairs
 \begin_inset Quotes erd
 \end_inset
@@ -1509,47 +1469,9 @@ super-regular pairs
 \end_inset
 
 ).
- After embedding our small forest, In 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:fix-endpoints"
-
-\end_inset
-
- we find some short paths that effectively 
-\begin_inset Quotes eld
-\end_inset
-
-move
-\begin_inset Quotes erd
-\end_inset
-
- the special pairs we need to join up.
- We do this in such a way that it remains to join up special pairs of vertices
- which are each fully contained in one of the super-regular cluster-pairs
- with which we partitioned 
-\begin_inset Formula $\G$
-\end_inset
-
-.
- Combining the super-regularity in the cluster-pairs with the random edges
- in 
-\begin_inset Formula $\R$
-\end_inset
-
-, in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:cluster-adjustment"
-
-\end_inset
-
- we can then greedily find many of our desired paths.
- We carefully set aside some of these special paths in such a way that the
- numbers of vertices remaining in each cluster satisfy certain divisibility
- requirements.
- From here the super-regularity of the pairs allows us to find the rest
- of our paths using a tool called the 
+ After embedding our small forest and making a number of further adjustments,
+ we can find our desired special paths using super-regularity and a tool
+ called the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1557,14 +1479,7 @@ blow-up lemma
 \begin_inset Quotes erd
 \end_inset
 
- (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:blow-up"
-
-\end_inset
-
-).
+.
 \end_layout
 
 \begin_layout Section
@@ -2191,6 +2106,15 @@ name "sub:few leaves"
 \end_layout
 
 \begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\h}{h}
+{\boldsymbol{h}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Now we address the second case where there are fewer than 
 \begin_inset Formula $\lambda n$
 \end_inset
@@ -2200,6 +2124,223 @@ Now we address the second case where there are fewer than
 \end_inset
 
 .
+ The argument is broken into a number of subsections, which we outline here.
+ The first step (carried out in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:partition-into-blobs"
+
+\end_inset
+
+) is to divide 
+\begin_inset Formula $\G$
+\end_inset
+
+ into a bounded number of pairs of 
+\begin_inset Quotes eld
+\end_inset
+
+partner clusters
+\begin_inset Quotes erd
+\end_inset
+
+ with edges well-distributed between them.
+ Specifically, the edges between each pair of partner clusters will each
+ have a property called 
+\begin_inset Quotes eld
+\end_inset
+
+super-regularity
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+.
+
+\emph default
+ The significance of this is that one can use a tool called the 
+\begin_inset Quotes eld
+\end_inset
+
+blow up lemma
+\begin_inset Quotes erd
+\end_inset
+
+ to easily embed bounded-degree spanning structures into super-regular pairs.
+\end_layout
+
+\begin_layout Standard
+Guided by our partition into pairs of clusters, we then embed most of 
+\begin_inset Formula $\T$
+\end_inset
+
+ into 
+\begin_inset Formula $\G\cup\R$
+\end_inset
+
+ in a step-by-step fashion.
+ The objective is to do this in such a way that, afterwards, the remaining
+ connected components of 
+\begin_inset Formula $\T$
+\end_inset
+
+ can each be assigned to their own cluster-pair, so that we can finish the
+ embedding in each cluster-pair individually; we can do this with the blow-up
+ lemma.
+\end_layout
+
+\begin_layout Standard
+As outlined in the introduction, the fact that 
+\begin_inset Formula $\T$
+\end_inset
+
+ has few leaves means that it is mostly comprised of long 
+\emph on
+bare paths
+\emph default
+: paths where every vertex has degree two.
+ The first step in the embedding is to embed the non-bare-path parts of
+ 
+\begin_inset Formula $\T$
+\end_inset
+
+ using only the random edges in 
+\begin_inset Formula $\R$
+\end_inset
+
+.
+ That is, we obtain a forest 
+\begin_inset Formula $\F$
+\end_inset
+
+ by removing bare paths from 
+\begin_inset Formula $\T$
+\end_inset
+
+, then we embed 
+\begin_inset Formula $\F$
+\end_inset
+
+ into 
+\begin_inset Formula $\R$
+\end_inset
+
+ using 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:almost-spanning"
+
+\end_inset
+
+.
+ This step is performed in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:embed-forest"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+After embedding 
+\begin_inset Formula $\F$
+\end_inset
+
+, it remains to connect certain 
+\begin_inset Quotes eld
+\end_inset
+
+special pairs
+\begin_inset Quotes erd
+\end_inset
+
+ of vertices with paths of certain lengths in 
+\begin_inset Formula $\G\cup\R$
+\end_inset
+
+, using the vertices that were not yet used to embed 
+\begin_inset Formula $\F$
+\end_inset
+
+.
+ (That is, we need to embed the bare paths we deleted from 
+\begin_inset Formula $\T$
+\end_inset
+
+ to obtain 
+\begin_inset Formula $\F$
+\end_inset
+
+).
+ There are a few problems we need to overcome before we can apply the blow-up
+ lemma to accomplish this.
+ First, the vertices in special pairs, in general, lie in totally different
+ clusters in our partition, so we cannot hope to embed each path in a single
+ cluster-pair.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:fix-endpoints"
+
+\end_inset
+
+, we correct this problem by finding very short paths from the vertices
+ of each special pair to a common cluster-pair.
+\end_layout
+
+\begin_layout Standard
+The next issue is that the relative sizes of the cluster-pairs will not
+ in general match the number of special pairs they contain.
+ For example, if a cluster-pair contains 
+\begin_inset Formula $N$
+\end_inset
+
+ special pairs which we need to connect with paths of length 
+\begin_inset Formula $k$
+\end_inset
+
+, then we need that cluster-pair to have exactly 
+\begin_inset Formula $\left(k-1\right)N$
+\end_inset
+
+ vertices that were not used for anything so far.
+ To fix this problem, in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:cluster-adjustment"
+
+\end_inset
+
+ we already start to embed some of the paths between special pairs, mainly
+ using the random edges in 
+\begin_inset Formula $\R$
+\end_inset
+
+.
+ We choose the vertices for these paths in a very specific way, to control
+ the relative quantities of remaining vertices in the clusters.
+\end_layout
+
+\begin_layout Standard
+After these adjustments, in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:blow-up"
+
+\end_inset
+
+ we are able to complete the embedding of 
+\begin_inset Formula $\T$
+\end_inset
+
+.
+ We show that finding paths between distinguished vertices is equivalent
+ to finding cycles with certain properties in a certain auxiliary graph.
+ These cycles can be found in a straightforward manner using the blow-up
+ lemma and super-regularity.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2214,7 +2355,7 @@ name "sub:partition-into-blobs"
 \end_layout
 
 \begin_layout Standard
-As outlined in the introduction, we first need to divide 
+As outlined, we first need to divide 
 \begin_inset Formula $\G$
 \end_inset
 
@@ -2226,36 +2367,11 @@ partner clusters
 \begin_inset Quotes erd
 \end_inset
 
- with edges well-distributed between them.
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\h}{h}
-{\boldsymbol{h}}
-\end_inset
-
-
+ with well-distributed edges.
 \end_layout
 
 \begin_layout Definition
-For a disjoint pair of vertex sets 
-\begin_inset Formula $\left(X,Y\right)$
-\end_inset
-
- in a graph 
-\begin_inset Formula $G$
-\end_inset
-
-, let its 
-\emph on
-density
-\emph default
- 
-\begin_inset Formula $d\left(X,Y\right)$
-\end_inset
-
- be the number of edges between 
+s between 
 \begin_inset Formula $X$
 \end_inset
 
@@ -3568,15 +3684,7 @@ name "sub:embed-forest"
 \end_layout
 
 \begin_layout Standard
-Having fixed our partition of 
-\begin_inset Formula $G$
-\end_inset
-
- into 
-\begin_inset Formula $V_{\bi}$
-\end_inset
-
-, in this section we will start to embed 
+In this section we will start to embed 
 \begin_inset Formula $\T$
 \end_inset
 
@@ -5582,7 +5690,10 @@ Suppose we specify a multiset of templates (each of which we interpret as
 \end_inset
 
 -super-regular.
- Note that our condition on the templates says precisely that at least a
+\end_layout
+
+\begin_layout Standard
+Note that our condition on the templates says precisely that at least a
  
 \begin_inset Formula $\gamma$
 \end_inset
@@ -5595,7 +5706,7 @@ Suppose we specify a multiset of templates (each of which we interpret as
 \begin_inset Formula $W_{\bi}$
 \end_inset
 
- should remain after these deletions.
+ should remain after deleting the vertices of the special paths.
 \end_layout
 
 \begin_layout Standard
@@ -6216,7 +6327,7 @@ reference "lem:adjusting-paths"
 \end_inset
 
 The basic idea is to split the clusters into many random subsets, one for
- each good template, and apply 
+ each good template, and to apply 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cor:adjusting-paths-basic"
@@ -6292,7 +6403,7 @@ If we are able to successfully find our special paths, those with template
 
 \begin_layout Proof
 Now, for some small 
-\begin_inset Formula $\xi$
+\begin_inset Formula $\xi>0$
 \end_inset
 
  to be determined, we want to partition each 
@@ -6661,9 +6772,8 @@ reference "lem:adjusting-paths"
 \end_inset
 
 .
- We can actually choose our templates almost arbitrarily.
- It's a little fiddly to rigorously explain why, so we wrap up the details
- in the following claim.
+ We can actually choose our templates almost arbitrarily; we wrap up the
+ details in the following claim.
 \end_layout
 
 \begin_layout Claim
@@ -6732,7 +6842,7 @@ Arbitrarily choose subsets
 \begin_inset Formula $X_{\bi}$
 \end_inset
 
- from special pairs in 
+ coming from special pairs in 
 \begin_inset Formula $Z_{\left[\bi\right]}'$
 \end_inset
 
@@ -6770,7 +6880,7 @@ Arbitrarily choose subsets
  we have
 \begin_inset Formula 
 \[
-\frac{\left|W_{\bi}'\right|}{\left|X_{\bi}'\right|}\ge\frac{\left|W_{\bi}\right|/2}{\left|X_{\bi}\right|}\ge\frac{k-1}{2\rho}\ge1.
+\frac{\left|W_{\bi}'\right|}{\left|X_{\bi}'\right|}\ge\frac{\left|W_{\bi}\right|/2}{\left|X_{\bi}\right|}\ge\frac{k-1}{4\rho}\ge1.
 \]
 
 \end_inset
@@ -7129,7 +7239,7 @@ super-regular blow-up
 \begin_inset Formula $V_{j}$
 \end_inset
 
- such that 
+ so that 
 \begin_inset Formula $\left(V_{i},V_{j}\right)$
 \end_inset
 
@@ -7371,62 +7481,62 @@ rw,0);
 
 
 \backslash
-coordinate (xb11) at (
+node[shape=coordinate] (xb11) at (
 \backslash
 rw-0.25,-
 \backslash
-rh);
+rh) {};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-coordinate (xb12) at (0.25,-
+node[shape=coordinate] (xb12) at (0.25,-
 \backslash
-rh);
+rh) {};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-coordinate (xb21) at (0.25,
+node[shape=coordinate] (xb21) at (0.25,
 \backslash
-rh);
+rh) {};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-coordinate (xb22) at (
+node[shape=coordinate] (xb22) at (
 \backslash
 rw-0.25,
 \backslash
-rh);
+rh) {};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-coordinate (xc1) at (
+node[shape=coordinate] (xc1) at (
 \backslash
 rw/2,-
 \backslash
-rh);
+rh) {};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-coordinate (xc2) at (
+node[shape=coordinate] (xc2) at (
 \backslash
 rw/2,
 \backslash
-rh);
+rh) {};
 \end_layout
 
 \begin_layout Plain Layout
@@ -7441,7 +7551,7 @@ node at (
 \backslash
 rw/2,
 \backslash
-rh/2) {$S_0=X_{(i,1)}$};
+rh/2) {$S_i^0=X_{(i,1)}$};
 \end_layout
 
 \begin_layout Plain Layout
@@ -7452,7 +7562,7 @@ node at (
 \backslash
 rw/2,-
 \backslash
-rh/2) {$S_3=X_{(i,2)}$};
+rh/2) {$S_i^3=X_{(i,2)}$};
 \end_layout
 
 \begin_layout Plain Layout
@@ -7564,7 +7674,7 @@ rn{1}
 
 
 \backslash
-coordinate (r
+node[shape=coordinate] (r
 \backslash
 rn1) at (-
 \backslash
@@ -7575,7 +7685,7 @@ rw/2,0.5){};
 
 
 \backslash
-coordinate (r
+node[shape=coordinate] (r
 \backslash
 rn2) at (-
 \backslash
@@ -7586,7 +7696,7 @@ rw/2,-0.5){};
 
 
 \backslash
-coordinate (r
+node[shape=coordinate] (r
 \backslash
 rn3) at (
 \backslash
@@ -7597,7 +7707,7 @@ rw/2,-0.5){};
 
 
 \backslash
-coordinate (r
+node[shape=coordinate] (r
 \backslash
 rn4) at (
 \backslash
@@ -7625,7 +7735,7 @@ rn1);
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}p1) at (-
 \backslash
@@ -7636,7 +7746,7 @@ rw*0.3,-0.5){};
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}p2) at (-
 \backslash
@@ -7647,7 +7757,7 @@ rw*0.15,-0.5){};
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}p3) at (0,-0.5){};
 \end_layout
@@ -7656,7 +7766,7 @@ rn}p3) at (0,-0.5){};
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}p4) at (
 \backslash
@@ -7667,7 +7777,7 @@ rw*0.15,-0.5){};
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}p5) at (
 \backslash
@@ -7678,7 +7788,7 @@ rw*0.3,-0.5){};
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}b1) at (-
 \backslash
@@ -7689,7 +7799,7 @@ rw/2+0.5,-0.5){};
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}b2) at (
 \backslash
@@ -7756,7 +7866,7 @@ rn{2}
 
 
 \backslash
-coordinate (r
+node[shape=coordinate] (r
 \backslash
 rn1) at (-
 \backslash
@@ -7767,7 +7877,7 @@ rw/2,0.5){};
 
 
 \backslash
-coordinate (r
+node[shape=coordinate] (r
 \backslash
 rn2) at (-
 \backslash
@@ -7778,7 +7888,7 @@ rw/2,-0.5){};
 
 
 \backslash
-coordinate (r
+node[shape=coordinate] (r
 \backslash
 rn3) at (
 \backslash
@@ -7789,7 +7899,7 @@ rw/2,-0.5){};
 
 
 \backslash
-coordinate (r
+node[shape=coordinate] (r
 \backslash
 rn4) at (
 \backslash
@@ -7817,7 +7927,7 @@ rn1);
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}p1) at (-
 \backslash
@@ -7828,7 +7938,7 @@ rw*0.3,-0.5){};
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}p2) at (-
 \backslash
@@ -7839,7 +7949,7 @@ rw*0.15,-0.5){};
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}p3) at (0,-0.5){};
 \end_layout
@@ -7848,7 +7958,7 @@ rn}p3) at (0,-0.5){};
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}p4) at (
 \backslash
@@ -7859,7 +7969,7 @@ rw*0.15,-0.5){};
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}p5) at (
 \backslash
@@ -7870,7 +7980,7 @@ rw*0.3,-0.5){};
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}b1) at (-
 \backslash
@@ -7881,7 +7991,7 @@ rw/2+0.5,-0.5){};
 
 
 \backslash
-coordinate (r{
+node[shape=coordinate] (r{
 \backslash
 rn}b2) at (
 \backslash
@@ -8019,7 +8129,7 @@ rr] at (
 \backslash
 rsx,-
 \backslash
-rsy) {$S_2=W_{(i,1)}$};
+rsy) {$S_i^2=W_{(i,1)}$};
 \end_layout
 
 \begin_layout Plain Layout
@@ -8032,7 +8142,7 @@ rr] at (
 \backslash
 rsx,
 \backslash
-rsy) {$S_1=W_{(i,2)}$};
+rsy) {$S_i^1=W_{(i,2)}$};
 \end_layout
 
 \begin_layout Plain Layout
@@ -8119,7 +8229,7 @@ The corresponding complete blow-up
 \begin_inset Formula $n_{i}^{Z}$
 \end_inset
 
- disjoint 
+ vertex-disjoint 
 \begin_inset Formula $k$
 \end_inset
 
@@ -8148,7 +8258,7 @@ The corresponding complete blow-up
 \begin_inset Formula $n_{i}^{Z}$
 \end_inset
 
- disjoint 
+ vertex-disjoint 
 \begin_inset Formula $k$
 \end_inset
 
@@ -8184,7 +8294,7 @@ Concluding Remarks
 
 \begin_layout Standard
 We have proved that any given bounded-degree spanning tree typically appears
- when a linear number of random edges are added to a dense graph.
+ when a linear number of random edges are added to an arbitrary dense graph.
  There are a few interesting questions that remain open.
  Most prominent is the question of embedding more general kinds of spanning
  subgraphs into randomly perturbed graphs.
@@ -8197,7 +8307,10 @@ key "BST09"
 
  (concerning arbitrary spanning graphs with bounded degree and low bandwidth)
  could be adapted to this setting.
- It is also possible that our use of Szemer
+ There is also the question of universality: whether it is true that a randomly
+ perturbed dense graph typically contains every bounded-degree spanning
+ tree at once.
+ Finally, it is possible that our use of Szemer
 \begin_inset ERT
 status open
 
