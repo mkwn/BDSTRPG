@@ -2371,7 +2371,23 @@ partner clusters
 \end_layout
 
 \begin_layout Definition
-s between 
+For a disjoint pair of vertex sets 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ in a graph 
+\begin_inset Formula $G$
+\end_inset
+
+, let its 
+\emph on
+density
+\emph default
+ 
+\begin_inset Formula $d\left(X,Y\right)$
+\end_inset
+
+ be the number of edges between 
 \begin_inset Formula $X$
 \end_inset
 
@@ -4907,7 +4923,7 @@ and
 \end_inset
 
 as required.
- (We emphasize that since 
+ We emphasize that since 
 \begin_inset Formula $\delta_{2}$
 \end_inset
 
@@ -4919,15 +4935,19 @@ as required.
 \begin_inset Formula $\varepsilon$
 \end_inset
 
-, also 
+ (depending only on 
+\begin_inset Formula $\alpha$
+\end_inset
+
+), we can also choose 
 \begin_inset Formula $k$
 \end_inset
 
- is independent of 
+ independent of 
 \begin_inset Formula $\varepsilon$
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
@@ -6733,10 +6753,22 @@ Impose that
 \end_inset
 
 , leaving a total of 
-\begin_inset Formula $L=\sum_{i}\left(L_{i}^{Z}+L_{i}^{W}\right)$
+\begin_inset Formula $L=\sum_{i}\left(2L_{i}^{Z}+2L_{i}^{W}\right)$
 \end_inset
 
  vertices.
+ (The reason we divide 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ by 2 will become clear in the proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "claim:find-templates"
+
+\end_inset
+
+, to follow).
  Recall from 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6745,17 +6777,17 @@ reference "sub:fix-endpoints"
 \end_inset
 
  that each 
-\begin_inset Formula $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(2\left|Z_{\left[\bi\right]}\right|/\left|W_{\bi}\right|\right)\le\rho$
+\begin_inset Formula $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(\left|Z_{\left[\bi\right]}\right|/\left|W_{\bi}\right|\right)\le\rho$
 \end_inset
 
 , so 
-\begin_inset Formula $m_{i}\ge2\rho^{-1}\left|Z_{i}\right|$
+\begin_inset Formula $m_{i}\ge\rho^{-1}\left|Z_{i}\right|$
 \end_inset
 
  and 
 \begin_inset Formula 
 \[
-L_{i}^{Z}/\left|Z_{i}\right|\ge\left(1+o\left(1\right)\right)\rho^{-1},\quad L_{\left[\bi\right]}^{W}/\left|W_{\bi}\right|\ge\left(1+o\left(1\right)\right)\rho^{-2}/2.
+L_{i}^{Z}/\left|Z_{i}\right|\ge\left(1+o\left(1\right)\right)\rho^{-1}/2,\quad L_{\left[\bi\right]}^{W}/\left|W_{\bi}\right|\ge\left(1+o\left(1\right)\right)\rho^{-2}/2.
 \]
 
 \end_inset
@@ -6865,11 +6897,19 @@ Arbitrarily choose subsets
 \end_inset
 
 .
- Recall that 
+\end_layout
+
+\begin_layout Proof
+Recall that 
 \begin_inset Formula $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(\left|X_{\bi}\right|/\left|W_{\bi}\right|\right)\le\rho$
 \end_inset
 
-, so if 
+ and note that 
+\begin_inset Formula $\left|W_{\bi}'\right|\ge\left|W_{\bi}'\right|-m_{i}/2\ge\left|W_{\bi}\right|/2$
+\end_inset
+
+.
+ So, if 
 \begin_inset Formula $k$
 \end_inset
 
@@ -6889,7 +6929,7 @@ That is, for each
 \begin_inset Formula $\bi$
 \end_inset
 
- there are at least as many vertices 
+ there are at least as many vertices in 
 \begin_inset Formula $W_{\bi}'$
 \end_inset
 

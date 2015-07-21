@@ -602,7 +602,9 @@ manner using the blow-up lemma and super-regularity.
 As outlined, we first need to divide $\G$ into a bounded number of
 pairs of ``partner clusters'' with well-distributed edges.
 \begin{defn}
-s between $X$ and $Y$, divided by $\left|X\right|\left|Y\right|$.
+For a disjoint pair of vertex sets $\left(X,Y\right)$ in a graph
+$G$, let its \emph{density} $d\left(X,Y\right)$ be the number of
+edges between $X$ and $Y$, divided by $\left|X\right|\left|Y\right|$.
 A pair of vertex sets $\left(V_{1},V_{2}\right)$ is said to be \emph{$\varepsilon$-regular}
 in $G$ if for any $U_{1},U_{2}$ with $U_{\h}\subseteq V_{\h}$ and
 $\left|U_{\h}\right|\ge\varepsilon\left|V_{\h}\right|$, we have $\left|d\left(U_{1},U_{2}\right)-d\left(V_{1},V_{2}\right)\right|\le\varepsilon$.
@@ -994,8 +996,9 @@ and
 \[
 \left|W_{\br}^{\left(2\right)}\backslash S\right|\ge\frac{\left|W_{\bi}\right|}{2}-\frac{\left|X\right|}{2q}\sim\frac{s_{\bi}}{2}n-\frac{2s}{k-1}n\ge\left(\frac{1}{2}-\frac{2\rho}{k-1}\right)s_{\bi}n=\Omega\left(n\right),
 \]
-as required. (We emphasize that since $\delta_{2}$ and $\rho$ are
-independent of $\varepsilon$, also $k$ is independent of $\varepsilon$).
+as required. We emphasize that since $\delta_{2}$ and $\rho$ are
+independent of $\varepsilon$ (depending only on $\alpha$), we can
+also choose $k$ independent of $\varepsilon$.
 
 After we have found our length-2 paths, let $X_{\bi}'\subseteq W_{\bi}$
 be the set of ``new special vertices'' $\x',\y'$ in $W_{\bi}$.
@@ -1316,11 +1319,13 @@ m_{i}=\min\left\{ \left|Z_{i}\right|,\,2\left|W_{\left(i,1\right)}\right|/\left(
 \]
 Impose that $k$ is odd; we want to leave $L_{i}^{Z}:=\floor{m_{i}/2}$
 special pairs in each $Z_{i}$ and $L_{i}^{W}:=\left(\left(k-1\right)/2\right)\floor{m_{i}/2}$
-vertices in each $W_{\left(i,h\right)}$, leaving a total of $L=\sum_{i}\left(L_{i}^{Z}+L_{i}^{W}\right)$
-vertices. Recall from \ref{sub:fix-endpoints} that each $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(2\left|Z_{\left[\bi\right]}\right|/\left|W_{\bi}\right|\right)\le\rho$,
-so $m_{i}\ge2\rho^{-1}\left|Z_{i}\right|$ and 
+vertices in each $W_{\left(i,h\right)}$, leaving a total of $L=\sum_{i}\left(2L_{i}^{Z}+2L_{i}^{W}\right)$
+vertices. (The reason we divide $m_{i}$ by 2 will become clear in
+the proof of \ref{claim:find-templates}, to follow). Recall from
+\ref{sub:fix-endpoints} that each $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(\left|Z_{\left[\bi\right]}\right|/\left|W_{\bi}\right|\right)\le\rho$,
+so $m_{i}\ge\rho^{-1}\left|Z_{i}\right|$ and 
 \[
-L_{i}^{Z}/\left|Z_{i}\right|\ge\left(1+o\left(1\right)\right)\rho^{-1},\quad L_{\left[\bi\right]}^{W}/\left|W_{\bi}\right|\ge\left(1+o\left(1\right)\right)\rho^{-2}/2.
+L_{i}^{Z}/\left|Z_{i}\right|\ge\left(1+o\left(1\right)\right)\rho^{-1}/2,\quad L_{\left[\bi\right]}^{W}/\left|W_{\bi}\right|\ge\left(1+o\left(1\right)\right)\rho^{-2}/2.
 \]
 Provided we can find suitable templates, we can therefore apply \ref{lem:adjusting-paths}
 with $\gamma=\rho^{-2}/3$. We can actually choose our templates almost
@@ -1344,12 +1349,14 @@ Let $Z'=\bigcup_{i}Z_{i}'$ be the set of all special pairs in our
 subsets, let $X'=\bigcup_{\bi}X_{\bi}$ be the set of all special
 vertices in those special pairs, and let $W'=\bigcup_{\bi}W_{\bi}'$
 be the set of free vertices in our subsets. Note that $\left|Z'\right|=M=\left|X'\right|/2=\left|W'\right|/\left(k-1\right)$.
-Recall that $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(\left|X_{\bi}\right|/\left|W_{\bi}\right|\right)\le\rho$,
-so if $k$ is large then for each $\bi$ we have
+
+Recall that $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(\left|X_{\bi}\right|/\left|W_{\bi}\right|\right)\le\rho$
+and note that $\left|W_{\bi}'\right|\ge\left|W_{\bi}'\right|-m_{i}/2\ge\left|W_{\bi}\right|/2$.
+So, if $k$ is large then for each $\bi$ we have
 \[
 \frac{\left|W_{\bi}'\right|}{\left|X_{\bi}'\right|}\ge\frac{\left|W_{\bi}\right|/2}{\left|X_{\bi}\right|}\ge\frac{k-1}{4\rho}\ge1.
 \]
-That is, for each $\bi$ there are at least as many vertices $W_{\bi}'$
+That is, for each $\bi$ there are at least as many vertices in $W_{\bi}'$
 as in $X_{\bi}'$. We now start filling our special sequences with
 the vertices in $X'\cup W'$ (note $\left|X'\cup W'\right|=\left(k+1\right)M$,
 as required). For each special sequence we choose its first and last
