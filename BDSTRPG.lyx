@@ -188,7 +188,94 @@ Bounded-degree spanning trees in randomly perturbed graphs
 \end_layout
 
 \begin_layout Author
-Michael Krivelevich, Matthew Kwan, Benny Sudakov
+Michael Krivelevich 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+School of Mathematical Sciences, Raymond and Beverly Sackler Faculty of
+ Exact Sciences, Tel Aviv University, 6997801, Israel.
+ Email: 
+\begin_inset CommandInset href
+LatexCommand href
+target "krivelev@post.tau.ac.il"
+type "mailto:"
+
+\end_inset
+
+.
+ Research supported in part by USA-Israel BSF Grant 2010115 and by grant
+ 912/12 from the Israel Science Foundation.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Matthew Kwan
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Department of Mathematics, ETH, 8092 Zurich.
+ Email: 
+\begin_inset CommandInset href
+LatexCommand href
+target "matthew.kwan@math.ethz.ch"
+type "mailto:"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Benny Sudakov
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Department of Mathematics, ETH, 8092 Zurich.
+ Email: 
+\begin_inset CommandInset href
+LatexCommand href
+target "benjamin.sudakov@math.ethz.ch"
+type "mailto:"
+
+\end_inset
+
+.
+ Research supported in part by SNSF grant 200021-149111.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -762,7 +849,7 @@ key "Dir52"
  graph.
  More recently, there have been many results showing that this kind of minimum
  degree condition is sufficient to guarantee the existence of different
- kinds of spanning graphs.
+ kinds of spanning subgraphs.
  For example, in 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1826,7 +1913,8 @@ We can assume
 \begin_inset Formula $\beta=\lambda\a/\left(2\D\right)$
 \end_inset
 
-; by a concentration inequality (for example, see 
+; by a concentration inequality for the hypergeometric distribution (for
+ example, see 
 \begin_inset CommandInset citation
 LatexCommand cite
 after "Theorem 2.10"
@@ -2186,8 +2274,7 @@ Guided by our partition into pairs of clusters, we then embed most of
 \end_inset
 
  can each be assigned to their own cluster-pair, so that we can finish the
- embedding in each cluster-pair individually; we can do this with the blow-up
- lemma.
+ embedding in each cluster-pair individually, with the blow-up lemma.
 \end_layout
 
 \begin_layout Standard
@@ -2860,14 +2947,7 @@ key "KOT05"
 \end_layout
 
 \begin_layout Standard
-Before we proceed to the proof of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:partition-into-blobs"
-
-\end_inset
-
-, we give some simple lemmas about 
+We now give some simple lemmas about 
 \begin_inset Formula $\left(\varepsilon,\delta\right)$
 \end_inset
 
@@ -3347,7 +3427,7 @@ edi's regularity lemma, with some
 \end_inset
 
  to be determined (which we will repeatedly assume is sufficiently small).
- Consider a cover of 
+ Consider a cover of the cluster graph 
 \begin_inset Formula $C$
 \end_inset
 
@@ -3521,15 +3601,15 @@ Each bad vertex
 \begin_inset Formula $V_{i}^{\h}$
 \end_inset
 
- which have fewer than 
+ which contain fewer than 
 \begin_inset Formula $\delta''\left|V_{i}^{\h}\right|$
 \end_inset
 
- such neighbours contain at most 
+ of these neighbours, altogether contain at most 
 \begin_inset Formula $\delta''n$
 \end_inset
 
- of these neighbours.
+ such neighbours.
  Each 
 \begin_inset Formula $V_{i}^{\h}$
 \end_inset
@@ -5216,7 +5296,7 @@ which is smaller than
  by super-regularity, so 
 \begin_inset Formula 
 \[
-\left|N_{\G}\left(v\right)\cap W_{\flip{\bi}}'\right|\ge\left|N_{\G}\left(v\right)\cap W_{\flip{\bi}}'\right|-\left|W_{\bi}\backslash W_{\bi}'\right|\ge\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}\right|\ge\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}'\right|.
+\left|N_{\G}\left(v\right)\cap W_{\flip{\bi}}'\right|\ge\left|N_{\G}\left(v\right)\cap W_{\flip{\bi}}\right|-\left|W_{\bi}\backslash W_{\bi}'\right|\ge\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}\right|\ge\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}'\right|.
 \]
 
 \end_inset
@@ -5311,7 +5391,7 @@ Now we can redefine each
 \end_inset
 
 ).
- Redefine 
+ Update the sets 
 \begin_inset Formula $X=\bigcup_{\bi}X_{\bi}$
 \end_inset
 
@@ -5486,7 +5566,7 @@ special sequence
 \end_inset
 
 .
- For any special path we might find, the sequence of verticess in that path
+ For any special path we might find, the sequence of vertices in that path
  will be special.
  In fact, the special sequences are precisely the allowed sequences of vertices
  in special paths.
@@ -5686,7 +5766,7 @@ Suppose we specify a multiset of templates (each of which we interpret as
 \begin_inset Formula $\left(1-\gamma\right)\left|X_{\bi}\right|$
 \end_inset
 
- times (respectively, no more than 
+ times (respectively, at most 
 \begin_inset Formula $\left(1-\gamma\right)\left|W_{\bi}\right|$
 \end_inset
 
@@ -5947,7 +6027,7 @@ It follows that (a.a.s.) if we choose any subsets
 \end_inset
 
  in that order.
- Indeed, we have just proven there is a matching of size 
+ Indeed, we have just proven there is a matching of size greater than 
 \begin_inset Formula $\left|W_{i}'\right|-\delta\xi n/\left(k-2\right)$
 \end_inset
 
@@ -6362,7 +6442,7 @@ reference "cor:adjusting-paths-basic"
  different templates).
  We also need to guarantee super-regularity in what remains.
  For this, we set aside another random subset of each cluster, which we
- will not touch (this is the same idea we used in 
+ will not touch (we used a similar idea in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:fix-endpoints"
@@ -6654,7 +6734,8 @@ s and
 \begin_inset Formula $Z_{i}'$
 \end_inset
 
- and the bounds on the neighbourhood sizes in the last paragraph, each 
+s and the bounds on the neighbourhood sizes in the last paragraph, each
+ 
 \begin_inset Formula $w\in W_{\flip{\bi}}$
 \end_inset
 
@@ -6683,7 +6764,7 @@ s and
 \end_inset
 
  neighbours in 
-\begin_inset Formula $W_{\flip{\bi}}'$
+\begin_inset Formula $W_{\flip{\bi}}$
 \end_inset
 
 .
@@ -6870,7 +6951,7 @@ Arbitrarily choose subsets
 \begin_inset Formula $X_{\bi}'\subseteq X_{\bi}$
 \end_inset
 
- be the subset of special vertices from 
+ be the subset of special vertices in 
 \begin_inset Formula $X_{\bi}$
 \end_inset
 
@@ -6884,7 +6965,7 @@ Arbitrarily choose subsets
 \end_inset
 
  be the set of all special pairs in our subsets, let 
-\begin_inset Formula $X'=\bigcup_{\bi}X_{\bi}$
+\begin_inset Formula $X'=\bigcup_{\bi}X_{\bi}'$
 \end_inset
 
  be the set of all special vertices in those special pairs, and let 
@@ -6905,7 +6986,7 @@ Recall that
 \end_inset
 
  and note that 
-\begin_inset Formula $\left|W_{\bi}'\right|\ge\left|W_{\bi}'\right|-m_{i}/2\ge\left|W_{\bi}\right|/2$
+\begin_inset Formula $\left|W_{\bi}'\right|\ge\left|W_{\bi}\right|-m_{i}/2\ge\left|W_{\bi}\right|/2$
 \end_inset
 
 .
@@ -6990,7 +7071,7 @@ That is, for each
  for this to be possible.
  After we have determined the first, second, second last and last vertices
  of every sequence, we can use the remaining 
-\begin_inset Formula $\left(k-1\right)M$
+\begin_inset Formula $\left(k-3\right)M$
 \end_inset
 
  vertices in 
@@ -7086,7 +7167,7 @@ reference "claim:find-templates"
 \end_inset
 
  and 
-\begin_inset Formula $\varepsilon_{4}=\varepsilon_{3}/\gamma$
+\begin_inset Formula $\varepsilon_{4}=3\rho^{2}\varepsilon_{3}$
 \end_inset
 
 .

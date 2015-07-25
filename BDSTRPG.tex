@@ -152,7 +152,12 @@
 \title{Bounded-degree spanning trees in randomly perturbed graphs}
 
 
-\author{Michael Krivelevich, Matthew Kwan, Benny Sudakov}
+\author{Michael Krivelevich \thanks{School of Mathematical Sciences, Raymond and Beverly Sackler Faculty
+of Exact Sciences, Tel Aviv University, 6997801, Israel. Email: \protect\href{mailto:krivelev@post.tau.ac.il}{krivelev@post.tau.ac.il}.
+Research supported in part by USA-Israel BSF Grant 2010115 and by
+grant 912/12 from the Israel Science Foundation.}\and Matthew Kwan\thanks{Department of Mathematics, ETH, 8092 Zurich. Email: \protect\href{mailto:matthew.kwan@math.ethz.ch}{matthew.kwan@math.ethz.ch}}\and
+Benny Sudakov\thanks{Department of Mathematics, ETH, 8092 Zurich. Email: \protect\href{mailto:benjamin.sudakov@math.ethz.ch}{benjamin.sudakov@math.ethz.ch}.
+Research supported in part by SNSF grant 200021-149111.}}
 
 \maketitle
 \global\long\def\RR{\mathbb{R}}
@@ -331,7 +336,7 @@ graph ($n\ge3$) with minimum degree at least $n/2$ has a Hamilton
 cycle: a cycle that passes through all the vertices of the graph.
 More recently, there have been many results showing that this kind
 of minimum degree condition is sufficient to guarantee the existence
-of different kinds of spanning graphs. For example, in \cite[Theorem~1$'$]{KSS95}
+of different kinds of spanning subgraphs. For example, in \cite[Theorem~1$'$]{KSS95}
 Koml\'os, S\'ark\"ozy and Szemer\'edi proved that for any $\Delta$
 and $\gamma>0$, any $n$-vertex graph ($n$ sufficiently large) with
 minimum degree $\left(1/2+\gamma\right)n$ contains every spanning
@@ -501,13 +506,13 @@ is hypergeometrically distributed with expected value at least $\lambda\a n$,
 and similarly each $\left|N_{\G}\left(b\right)\cap A\right|$ ($b\in B$)
 is hypergeometric with expectation at least $\lambda\a n/\D$. Let
 $\beta=\lambda\a/\left(2\D\right)$; by a concentration inequality
-(for example, see \cite[Theorem 2.10]{JLR00}) and the union bound,
-in $\G$ each $a\in A$ a.a.s. has at least $\beta n$ neighbours
-in $B$, and each $b\in B$ a.a.s. has at least $\beta n$ neighbours
-in $A$. That is to say, the bipartite graph induced by $\G$ on the
-bipartition $A\cup B$ has minimum degree at least $\beta n$. We
-treat $A$ and $B$ as fixed sets satisfying this property. It suffices
-to prove the following lemma.
+for the hypergeometric distribution (for example, see \cite[Theorem 2.10]{JLR00})
+and the union bound, in $\G$ each $a\in A$ a.a.s. has at least $\beta n$
+neighbours in $B$, and each $b\in B$ a.a.s. has at least $\beta n$
+neighbours in $A$. That is to say, the bipartite graph induced by
+$\G$ on the bipartition $A\cup B$ has minimum degree at least $\beta n$.
+We treat $A$ and $B$ as fixed sets satisfying this property. It
+suffices to prove the following lemma.
 \begin{lem}
 \label{lem:bipartite-perturbed-stars}For any $\beta>0$ and $\Delta\in\RR$
 there is $\c=\c\left(\beta\right)$ such that the following holds.
@@ -557,8 +562,8 @@ Guided by our partition into pairs of clusters, we then embed most
 of $\T$ into $\G\cup\R$ in a step-by-step fashion. The objective
 is to do this in such a way that, afterwards, the remaining connected
 components of $\T$ can each be assigned to their own cluster-pair,
-so that we can finish the embedding in each cluster-pair individually;
-we can do this with the blow-up lemma.
+so that we can finish the embedding in each cluster-pair individually,
+with the blow-up lemma.
 
 As outlined in the introduction, the fact that $\T$ has few leaves
 means that it is mostly comprised of long \emph{bare paths}: paths
@@ -660,8 +665,7 @@ This version of Szemer\'edi's regularity lemma is just the ``degree
 form'' of \cite[Theorem~1.10]{KS96}, plus a straightforward claim
 about minimum degree. Our statement follows directly from \cite[Proposition~9]{KOT05}.
 
-Before we proceed to the proof of \ref{lem:partition-into-blobs},
-we give some simple lemmas about $\left(\varepsilon,\delta\right)$-denseness.
+We now give some simple lemmas about $\left(\varepsilon,\delta\right)$-denseness.
 Note that $\left(\varepsilon,\delta\right)$-denseness is basically
 a one-sided version of $\varepsilon$-regularity that is more convenient
 in proofs about super-regularity. In particular, an $\varepsilon$-regular
@@ -737,12 +741,13 @@ We conclude that $S$ covers $G$, as desired.
 \begin{proof}[Proof of \ref{lem:partition-into-blobs}]
 Apply our minimum degree form of Szemer\'edi's regularity lemma,
 with some $\varepsilon'$ to be determined (which we will repeatedly
-assume is sufficiently small). Consider a cover of $C$ by stars $T_{1},\dots,T_{q}$
-of size at most $1+1/\a'$, as guaranteed by \ref{lem:star-cover}.
-Let $W_{i}^{1}$ be the center cluster of $T_{i}$, and let $W_{i}^{2}$
-be the union of the leaf clusters of $T_{i}$ (for two-vertex stars,
-arbitrarily choose one vertex as the ``leaf'' and one as the ``center'').
-Each edge of the cluster graph $C$ corresponds to an $\left(\varepsilon',\a'/2\right)$-dense
+assume is sufficiently small). Consider a cover of the cluster graph
+$C$ by stars $T_{1},\dots,T_{q}$ of size at most $1+1/\a'$, as
+guaranteed by \ref{lem:star-cover}. Let $W_{i}^{1}$ be the center
+cluster of $T_{i}$, and let $W_{i}^{2}$ be the union of the leaf
+clusters of $T_{i}$ (for two-vertex stars, arbitrarily choose one
+vertex as the ``leaf'' and one as the ``center''). Each edge of
+the cluster graph $C$ corresponds to an $\left(\varepsilon',\a'/2\right)$-dense
 pair, and each $W_{i}^{\h}$ is the union of at most $1/\a'$ clusters
 $V_{i}$. By \ref{lem:combine-clusters}, with $\delta'=\left(\a'\right)^{2}/2$
 each pair $\left(W_{i}^{1},W_{i}^{2}\right)$ is $\left(\varepsilon',\delta'\right)$-dense
@@ -757,10 +762,11 @@ $2\varepsilon'n$ ``bad'' vertices which are not part of a super-regular
 pair.
 
 Each bad vertex $v$ has at least $\a'n-2\varepsilon'n$ neighbours
-to the clusters $V_{i}^{\h}$. The clusters $V_{i}^{\h}$ which have
-fewer than $\delta''\left|V_{i}^{\h}\right|$ such neighbours contain
-at most $\delta''n$ of these neighbours. Each $V_{i}^{\h}$ has size
-at most $sn/\a'$, so for small $\varepsilon'$ there are at least
+to the clusters $V_{i}^{\h}$. The clusters $V_{i}^{\h}$ which contain
+fewer than $\delta''\left|V_{i}^{\h}\right|$ of these neighbours,
+altogether contain at most $\delta''n$ such neighbours. Each $V_{i}^{\h}$
+has size at most $sn/\a'$, so for small $\varepsilon'$ there are
+at least
 \[
 \frac{\a'n-2\varepsilon'n-\delta''n}{sn/\a'}\ge\left(\a'\right)^{2}/\left(2s\right)
 \]
@@ -1050,7 +1056,7 @@ which is smaller than $\delta_{2}/2$ for large $k$. For $v\in W_{\bi}$
 we have $\left|N_{\G}\left(v\right)\cap W_{\flip{\bi}}\right|\ge\delta_{2}\left|W_{\flip{\bi}}\right|$
 by super-regularity, so 
 \[
-\left|N_{\G}\left(v\right)\cap W_{\flip{\bi}}'\right|\ge\left|N_{\G}\left(v\right)\cap W_{\flip{\bi}}'\right|-\left|W_{\bi}\backslash W_{\bi}'\right|\ge\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}\right|\ge\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}'\right|.
+\left|N_{\G}\left(v\right)\cap W_{\flip{\bi}}'\right|\ge\left|N_{\G}\left(v\right)\cap W_{\flip{\bi}}\right|-\left|W_{\bi}\backslash W_{\bi}'\right|\ge\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}\right|\ge\left(\delta_{2}/2\right)\left|W_{\flip{\bi}}'\right|.
 \]
 Combining this with \ref{lem:large-preserves-dense}, a.a.s. each
 $\left(W_{\bi}',W_{\flip{\bi}}'\right)$ is $\left(\varepsilon_{2}/\left(1-\delta_{2}/2\right),\delta_{2}/2\right)$-super-regular
@@ -1069,7 +1075,7 @@ all the vertices used in our length-2 paths (that is, set $X_{\bi}=X_{\bi}'$
 and $W_{\bi}=W_{\bi}'$). All the special pairs are between some $X_{\bi}$
 and $X_{\flip{\bi}}$; let $Z_{\left[\bi\right]}=Z_{\left[\flip{\bi}\right]}$
 be the set of such pairs (recall that $\left[\left(i,\h\right)\right]=i$).
-Redefine $X=\bigcup_{\bi}X_{\bi}$ and $W=\bigcup_{\bi}W_{\bi}$,
+Update the sets $X=\bigcup_{\bi}X_{\bi}$ and $W=\bigcup_{\bi}W_{\bi}$,
 and let $Z=\bigcup_{i}Z_{i}$ be the set of all special pairs, so
 $\left|Z\right|=\left|X\right|/2$.
 
@@ -1105,7 +1111,7 @@ to follow.
 A ``special sequence'' is a sequence of vertices $\x,w_{1},\dots,w_{k-1},\y$,
 such that $\left\{ \x,\y\right\} $ is a special pair and each $w_{j}$
 is in some $W_{\bi}$. For any special path we might find, the sequence
-of verticess in that path will be special. In fact, the special sequences
+of vertices in that path will be special. In fact, the special sequences
 are precisely the allowed sequences of vertices in special paths.
 
 We also define an equivalence relation on special sequences: two special
@@ -1144,7 +1150,7 @@ that the following holds.
 Suppose we specify a multiset of templates (each of which we interpret
 as sequences of clusters), in such a way that each $X_{\bi}$ (respectively,
 each $W_{\bi}$) appears in these templates at most $\left(1-\gamma\right)\left|X_{\bi}\right|$
-times (respectively, no more than $\left(1-\gamma\right)\left|W_{\bi}\right|$
+times (respectively, at most $\left(1-\gamma\right)\left|W_{\bi}\right|$
 times). Then, we can a.a.s. find special paths in $\G\cup\R_{4}$
 with our desired templates in such a way that after the removal of
 their vertices, each $\left(X_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},W_{\flip{\bi}}\right)$
@@ -1187,9 +1193,9 @@ It follows that (a.a.s.) if we choose any subsets $W_{i}'\subseteq W_{i}$
 ($1\le i\le k-1$) with $\left|W_{1}'\right|=\dots=\left|W_{k-1}'\right|=\delta\xi n$,
 there is a path in $\R$ running through the $W_{1}',\dots,W_{k-1}'$
 in that order. Indeed, we have just proven there is a matching of
-size $\left|W_{i}'\right|-\delta\xi n/\left(k-2\right)$ between each
-$W_{i}'$ and $W_{i+1}'$; the union of such matchings must include
-a suitable path.
+size greater than $\left|W_{i}'\right|-\delta\xi n/\left(k-2\right)$
+between each $W_{i}'$ and $W_{i+1}'$; the union of such matchings
+must include a suitable path.
 
 Now, consider a $\xi n$-element subset $Z'$ of the special pairs,
 and consider a $\xi n$-element subset $W_{i}'$ of each $W_{i}$.
@@ -1252,8 +1258,7 @@ one for each good template, and to apply \ref{cor:adjusting-paths-basic}
 many times. (Note that there are fewer than $Q^{k}=O\left(1\right)$
 different templates). We also need to guarantee super-regularity in
 what remains. For this, we set aside another random subset of each
-cluster, which we will not touch (this is the same idea we used in
-\ref{sub:fix-endpoints}).
+cluster, which we will not touch (we used a similar idea in \ref{sub:fix-endpoints}).
 
 If we are able to successfully find our special paths, those with
 template $\tau$ will contain some number $t_{\bi}^{\tau}\left|W_{\bi}\right|$
@@ -1298,12 +1303,12 @@ need $\varepsilon'\le\varepsilon\left(\delta_{3}/2,\xi\right)$).
 After deleting the vertices in these special paths, by \ref{lem:large-preserves-dense}
 each $\left(X_{\bi},W_{\flip{\bi}}\right)$ and $\left(W_{\bi},W_{\flip{\bi}}\right)$
 are $\left(\varepsilon_{3}/\gamma,\delta_{3}\right)$-dense. By the
-condition on the sizes of the $W_{\bi}'$s and $Z_{i}'$ and the bounds
-on the neighbourhood sizes in the last paragraph, each $w\in W_{\flip{\bi}}$
+condition on the sizes of the $W_{\bi}'$s and $Z_{i}'$s and the
+bounds on the neighbourhood sizes in the last paragraph, each $w\in W_{\flip{\bi}}$
 now has at least $\left(\delta_{3}/4\right)\left|W_{\bi}\right|$
 neighbours in $W_{\bi}$ and at least $\left(\delta_{3}/4\right)\left|X_{\bi}\right|$
 neighbours in $X_{\bi}$, and each $x\in X_{\bi}$ has at least $\left(\delta_{3}/4\right)\left|W_{\flip{\bi}}\right|$
-neighbours in $W_{\flip{\bi}}'$. So each $\left(X_{\bi},W_{\flip{\bi}}\right)$
+neighbours in $W_{\flip{\bi}}$. So each $\left(X_{\bi},W_{\flip{\bi}}\right)$
 and $\left(W_{\bi},W_{\flip{\bi}}\right)$ are $\left(\varepsilon_{3}/\gamma,\delta_{3}/4\right)$-super-regular,
 as required.
 \end{proof}
@@ -1344,14 +1349,14 @@ special sequences will give our templates.
 Arbitrarily choose subsets $Z_{i}'\subseteq Z_{i}$ and $W_{\bi}'\subseteq W_{\bi}$
 with $\left|Z_{i}'\right|=\left|Z_{i}\right|-L_{i}^{Z}$ and $\left|W_{\bi}'\right|=\left|W_{\bi}\right|-L_{\left[\bi\right]}^{W}$.
 Let $X_{\bi}'\subseteq X_{\bi}$ be the subset of special vertices
-from $X_{\bi}$ coming from special pairs in $Z_{\left[\bi\right]}'$.
+in $X_{\bi}$ coming from special pairs in $Z_{\left[\bi\right]}'$.
 Let $Z'=\bigcup_{i}Z_{i}'$ be the set of all special pairs in our
-subsets, let $X'=\bigcup_{\bi}X_{\bi}$ be the set of all special
+subsets, let $X'=\bigcup_{\bi}X_{\bi}'$ be the set of all special
 vertices in those special pairs, and let $W'=\bigcup_{\bi}W_{\bi}'$
 be the set of free vertices in our subsets. Note that $\left|Z'\right|=M=\left|X'\right|/2=\left|W'\right|/\left(k-1\right)$.
 
 Recall that $\rho^{-1}\le\left(\left(k-1\right)/2\right)\left(\left|X_{\bi}\right|/\left|W_{\bi}\right|\right)\le\rho$
-and note that $\left|W_{\bi}'\right|\ge\left|W_{\bi}'\right|-m_{i}/2\ge\left|W_{\bi}\right|/2$.
+and note that $\left|W_{\bi}'\right|\ge\left|W_{\bi}\right|-m_{i}/2\ge\left|W_{\bi}\right|/2$.
 So, if $k$ is large then for each $\bi$ we have
 \[
 \frac{\left|W_{\bi}'\right|}{\left|X_{\bi}'\right|}\ge\frac{\left|W_{\bi}\right|/2}{\left|X_{\bi}\right|}\ge\frac{k-1}{4\rho}\ge1.
@@ -1370,7 +1375,7 @@ from $W_{\left(i,2\right)}'$ should be second and a vertex from $W_{\left(i,1\ri
 should be second-last). We have just confirmed that there are enough
 vertices in the $W_{\bi}$ for this to be possible. After we have
 determined the first, second, second last and last vertices of every
-sequence, we can use the remaining $\left(k-1\right)M$ vertices in
+sequence, we can use the remaining $\left(k-3\right)M$ vertices in
 $W'$ to complete our special sequences arbitrarily.\end{proof}
 \begin{rem}
 If we are careful, instead of choosing our templates arbitrarily we
@@ -1386,7 +1391,7 @@ and remove the vertices of the special paths that we find. Update
 the $W_{\bi}$, $X_{\bi}$ and $Z_{i}$; we finally have $2\left|W_{\bi}\right|=\left(k-1\right)\floor{m_{\left[\bi\right]}/2}=\left(k-1\right)\left|X_{\bi}\right|$
 for each $\bi$, and each $\left(X_{\bi},W_{\flip{\bi}}\right)$ and
 $\left(W_{\bi},W_{\flip{\bi}}\right)$ are $\left(\varepsilon_{4},\delta_{4}\right)$-super-regular,
-where $\delta_{4}=\delta_{3}/4$ and $\varepsilon_{4}=\varepsilon_{3}/\gamma$.
+where $\delta_{4}=\delta_{3}/4$ and $\varepsilon_{4}=3\rho^{2}\varepsilon_{3}$.
 
 
 \subsubsection{Completing the embedding with the blow-up lemma\label{sub:blow-up}}
