@@ -7019,6 +7019,19 @@ That is, for each
 \end_inset
 
 .
+ (The only reason we divided 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ by 2 in the definitions of 
+\begin_inset Formula $L_{i}^{Z}$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{i}^{W}$
+\end_inset
+
+ was to guarantee this).
  We now start filling our special sequences with the vertices in 
 \begin_inset Formula $X'\cup W'$
 \end_inset
