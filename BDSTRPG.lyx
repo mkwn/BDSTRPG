@@ -995,7 +995,7 @@ status open
 
 \end_inset
 
-edi improved their result to to allow 
+edi improved their result to allow 
 \begin_inset Formula $\Delta$
 \end_inset
 
@@ -1248,7 +1248,7 @@ key "ST04"
 \end_inset
 
 .
- This is is a hybrid of worst-case and average-case analysis, studying the
+ This is a hybrid of worst-case and average-case analysis, studying the
  performance of algorithms in the more realistic setting of inputs that
  are 
 \begin_inset Quotes eld
@@ -1460,7 +1460,7 @@ reference "lem:almost-spanning"
 \begin_inset Formula $\T$
 \end_inset
 
-, it remains to match the the vertices needing leaves with leftover vertices.
+, it remains to match the vertices needing leaves with leftover vertices.
  We show that this is possible by verifying that a certain Hall-type condition
  typically holds.
 \end_layout
@@ -1863,7 +1863,14 @@ reference "lem:hall-stars"
 \end_layout
 
 \begin_layout Standard
-We can assume 
+In accordance with 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "rem:symmetry"
+
+\end_inset
+
+ we can assume 
 \begin_inset Formula $A$
 \end_inset
 
@@ -1883,7 +1890,11 @@ We can assume
 \begin_inset Formula $\left|B\right|=\lambda n$
 \end_inset
 
-).
+), not depending on 
+\begin_inset Formula $\G$
+\end_inset
+
+.
  For each 
 \begin_inset Formula $a\in A$
 \end_inset
@@ -2715,7 +2726,7 @@ cluster graph
 \begin_inset Formula $T_{i}$
 \end_inset
 
-, the center cluster will correspond to 
+, the center cluster will give us 
 \begin_inset Formula $V_{i}^{1}$
 \end_inset
 
@@ -2724,8 +2735,8 @@ cluster graph
 \end_inset
 
 .
- We will then have to redistribute some of the vertices to ensure super-regulari
-ty.
+ We will then have to redistribute some of the vertices between the clusters
+ to ensure super-regularity.
  Before giving the details of the proof, we give a statement of (a version
  of) Szemer
 \begin_inset ERT
@@ -2996,11 +3007,15 @@ name "lem:combine-clusters"
 
 \end_inset
 
-Suppose 
-\begin_inset Formula $V_{1}^{2},\dots,V_{r}^{2}$
+Consider disjoint vertex sets 
+\begin_inset Formula $V^{1},V_{1}^{2},\dots,V_{r}^{2}$
 \end_inset
 
- are disjoint clusters of the same size such that each 
+, such that each 
+\begin_inset Formula $V_{i}^{2}$
+\end_inset
+
+ is the same size and each 
 \begin_inset Formula $\left(V^{1},V_{i}^{2}\right)$
 \end_inset
 
@@ -3690,11 +3705,15 @@ reference "lem:robust-regular"
 \end_inset
 
 -super-regular.
- With 
+ To conclude, let 
 \begin_inset Formula $\delta=\delta''/4$
 \end_inset
 
  and 
+\begin_inset Formula $\rho=2\a'$
+\end_inset
+
+, and choose some 
 \begin_inset Formula $\varepsilon'$
 \end_inset
 
@@ -3702,7 +3721,7 @@ reference "lem:robust-regular"
 \begin_inset Formula $\varepsilon$
 \end_inset
 
-, we are done.
+.
 \end_layout
 
 \begin_layout Standard
@@ -3929,11 +3948,15 @@ In our case
 \begin_inset Formula $k$
 \end_inset
 
- large enough and 
+ large enough and choose 
 \begin_inset Formula $\lambda$
 \end_inset
 
- small enough, then 
+ small enough relative to 
+\begin_inset Formula $k$
+\end_inset
+
+, then 
 \begin_inset Formula $\T$
 \end_inset
 
@@ -4092,8 +4115,16 @@ Let
 \end_inset
 
 .
- By a concentration inequality for the hypergeometric distribution and the
- union bound, a.a.s.
+ By a concentration inequality for the hypergeometric distribution (for
+ example, 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem 2.10"
+key "JLR00"
+
+\end_inset
+
+) and the union bound, a.a.s.
  each 
 \begin_inset Formula $\left|W_{\bi}\right|\sim s_{\bi}n/2$
 \end_inset
@@ -4374,8 +4405,15 @@ It remains to consider the degree condition for super-regularity.
 \begin_inset Formula $n_{\flip h}=\Omega\left(n\right)$
 \end_inset
 
-, a concentration inequality and the union bound immediately tells us that
- a.a.s.
+, a hypergeometric concentration inequality (for example, 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem 2.10"
+key "JLR00"
+
+\end_inset
+
+) and the union bound immediately tells us that a.a.s.
  each such 
 \begin_inset Formula $v$
 \end_inset
@@ -4485,7 +4523,7 @@ removing
 \end_inset
 
  so that they sum to 
-\begin_inset Formula $\left(\left(k-1\right)/\left(k+1\right)\right)n$
+\begin_inset Formula $\left(\left(k-1\right)/\left(k+1\right)\right)$
 \end_inset
 
 .
@@ -4805,31 +4843,41 @@ s and we will take the intermediate vertices in our length-2 paths from
 \end_inset
 
 s.
- By 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:random-preserves-superregular"
-
-\end_inset
-
-, in 
+ Note that in 
 \begin_inset Formula $\G$
 \end_inset
 
- a.a.s.
+, a.a.s.
  each 
 \begin_inset Formula $\x\in X_{\bi}$
 \end_inset
 
  has at least 
-\begin_inset Formula $\left(\delta_{2}/2\right)s_{\flip{\bi}}n$
+\begin_inset Formula $\left(\delta_{2}/3\right)s_{\flip{\bi}}n$
 \end_inset
 
  neighbours in 
-\begin_inset Formula $W_{\flip{\bi}}^{\left(1\right)}$
+\begin_inset Formula $W_{\bi}^{\left(1\right)}$
 \end_inset
 
 .
+ This follows from a concentration inequality (for example, 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem 2.10"
+key "JLR00"
+
+\end_inset
+
+) applied to the hypergeometric random variables 
+\begin_inset Formula $\left|N_{\G}\left(\x\right)\cap W_{\flip{\bi}}^{\left(1\right)}\right|$
+\end_inset
+
+ (which have mean at least 
+\begin_inset Formula $\delta_{2}s_{\flip{\bi}}n/2$
+\end_inset
+
+ by super-regularity), plus the union bound.
  Arbitrarily choose an ordering of the special pairs, and choose some 
 \begin_inset Quotes eld
 \end_inset
@@ -4847,7 +4895,7 @@ destination
 \end_inset
 
  is chosen for a 
-\begin_inset Formula $1/\left(2q\right)$
+\begin_inset Formula $\left(1+o\left(1\right)\right)/\left(2q\right)$
 \end_inset
 
  fraction of the special pairs.
@@ -4961,7 +5009,7 @@ To prove the claims in the preceding argument, note that we always have
 \end_inset
 
  and 
-\begin_inset Formula $\left|W_{\br}^{\left(2\right)}\cap S\right|\le\left|X\right|/\left(2q\right)$
+\begin_inset Formula $\left|W_{\br}^{\left(2\right)}\cap S\right|\le\left(1+o\left(1\right)\right)\left|X\right|/\left(2q\right)$
 \end_inset
 
 .
@@ -4989,7 +5037,7 @@ To prove the claims in the preceding argument, note that we always have
 ,
 \begin_inset Formula 
 \[
-\left|N_{\G}\left(\x\right)\cap\left(W_{\flip{\bi}}^{\left(1\right)}\backslash S\right)\right|\ge\frac{\delta_{2}s_{\flip{\bi}}}{2}n-\left|X_{\bi}\right|\sim\frac{\delta_{2}s_{\flip{\bi}}}{2}n-\frac{2s_{\bi}}{k-1}n\ge\left(\frac{\delta_{2}}{2}-\frac{2\rho}{k-1}\right)s_{\flip{\bi}}n=\Omega\left(n\right),
+\left|N_{\G}\left(\x\right)\cap\left(W_{\flip{\bi}}^{\left(1\right)}\backslash S\right)\right|\ge\frac{\delta_{2}s_{\flip{\bi}}}{3}n-\left|X_{\bi}\right|\sim\frac{\delta_{2}s_{\flip{\bi}}}{3}n-\frac{2s_{\bi}}{k-1}n\ge\left(\frac{\delta_{2}}{3}-\frac{2\rho}{k-1}\right)s_{\flip{\bi}}n=\Omega\left(n\right),
 \]
 
 \end_inset
@@ -4997,7 +5045,7 @@ To prove the claims in the preceding argument, note that we always have
 and
 \begin_inset Formula 
 \[
-\left|W_{\br}^{\left(2\right)}\backslash S\right|\ge\frac{\left|W_{\bi}\right|}{2}-\frac{\left|X\right|}{2q}\sim\frac{s_{\bi}}{2}n-\frac{2s}{k-1}n\ge\left(\frac{1}{2}-\frac{2\rho}{k-1}\right)s_{\bi}n=\Omega\left(n\right),
+\left|W_{\br}^{\left(2\right)}\backslash S\right|\ge\frac{\left|W_{\bi}\right|}{2}-\left(1+o\left(1\right)\right)\frac{\left|X\right|}{2q}\sim\frac{s_{\bi}}{2}n-\frac{2s}{k-1}n\ge\left(\frac{1}{2}-\frac{2\rho}{k-1}\right)s_{\bi}n=\Omega\left(n\right),
 \]
 
 \end_inset
@@ -5192,22 +5240,33 @@ Since each
 \begin_inset Formula $W_{\bi}$
 \end_inset
 
- of its size, and by 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:random-preserves-superregular"
+ of its size.
+ So, each 
+\begin_inset Formula $\left|N_{\G}\left(w\right)\cap X_{\bi}'\right|$
+\end_inset
+
+ is hypergeometrically distributed with mean at least 
+\begin_inset Formula $\delta_{2}\left|X_{\bi}'\right|$
+\end_inset
+
+.
+ By a concentration inequality (for example, 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem 2.10"
+key "JLR00"
 
 \end_inset
 
-, in 
+) and the union bound, in 
 \begin_inset Formula $\G$
 \end_inset
 
+ a.a.s.
  each 
 \begin_inset Formula $w\in W_{\flip{\bi}}$
 \end_inset
 
- a.a.s.
  has at least 
 \begin_inset Formula $\left(\delta_{2}/2\right)\left|X_{\bi}'\right|$
 \end_inset
@@ -5985,7 +6044,7 @@ reference "lem:edge-between-large-sets"
 \end_inset
 
  there is a matching with more than 
-\begin_inset Formula $\min\left\{ \left|W_{i}'\right|,\left|W_{i}'\right|\right\} -\delta\xi n/\left(k-2\right)$
+\begin_inset Formula $\min\left\{ \left|W_{i}'\right|,\left|W_{i+1}'\right|\right\} -\delta\xi n/\left(k-2\right)$
 \end_inset
 
  edges, in 
@@ -6606,6 +6665,8 @@ Choose the sizes of the
 
 ).
  Given these part sizes choose our partitions uniformly at random.
+ (Note that this means the marginal distribution of each part is uniform
+ on subsets of its size).
 \end_layout
 
 \begin_layout Proof
@@ -7595,7 +7656,9 @@ rh) -| (
 \backslash
 rw,
 \backslash
-rh) -| cycle;
+rh) -| (0,-
+\backslash
+rh);
 \end_layout
 
 \begin_layout Plain Layout

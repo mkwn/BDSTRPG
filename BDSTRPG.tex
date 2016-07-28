@@ -1,4 +1,4 @@
-%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[11pt,english]{article}
 \renewcommand{\rmdefault}{cmr}
@@ -11,8 +11,8 @@
 \setlength{\parskip}{\bigskipamount}
 \setlength{\parindent}{0pt}
 \usepackage{babel}
-\usepackage{amsthm}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{setspace}
 \setstretch{0.96}
@@ -342,7 +342,7 @@ and $\gamma>0$, any $n$-vertex graph ($n$ sufficiently large) with
 minimum degree $\left(1/2+\gamma\right)n$ contains every spanning
 tree which has maximum degree at most $\Delta$. This has also been
 generalized further in two directions. In \cite{KSS01} Koml\'os,
-S\'ark\"ozy and Szemer\'edi improved their result to to allow $\Delta$
+S\'ark\"ozy and Szemer\'edi improved their result to allow $\Delta$
 to grow with $n$, and in \cite{BST09} B\"ottcher, Schacht and Taraz
 gave a result for much more general spanning subgraphs than trees
 (see also a result \cite{Csa08} due to Csaba).
@@ -383,7 +383,7 @@ other natural models, including those that delete as well as add edges
 (this can be accomplished with standard coupling and conditioning
 arguments). We also note that a particularly important motivation
 is the notion of \emph{smoothed analysis} of algorithms introduced
-by Spielman and Teng in \cite{ST04}. This is is a hybrid of worst-case
+by Spielman and Teng in \cite{ST04}. This is a hybrid of worst-case
 and average-case analysis, studying the performance of algorithms
 in the more realistic setting of inputs that are ``noisy'' but not
 completely random.
@@ -426,7 +426,7 @@ We will split the proof of \ref{thm:main-theorem} into two cases
 in a similar way to \cite{Kri10}. If our spanning tree $\T$ has
 many leaves, then we remove the leaves and embed the resulting non-spanning
 tree in $\R$ using \ref{lem:almost-spanning}. To complete this into
-our spanning tree $\T$, it remains to match the the vertices needing
+our spanning tree $\T$, it remains to match the vertices needing
 leaves with leftover vertices. We show that this is possible by verifying
 that a certain Hall-type condition typically holds.
 
@@ -499,9 +499,10 @@ a center vertex $a\in A$ and $\ell\left(a\right)$ leaves in $B$.
 theorem to an auxiliary bipartite graph which has $\ell\left(a\right)$
 copies of each vertex $a\in A$.
 
-We can assume $A$ and $B$ are uniformly random disjoint subsets
-of $V$ of their size (note $\left|A\right|\ge\lambda n/\D$ and $\left|B\right|=\lambda n$).
-For each $a\in A$, the random variable $\left|N_{\G}\left(a\right)\cap B\right|$
+In accordance with \ref{rem:symmetry} we can assume $A$ and $B$
+are uniformly random disjoint subsets of $V$ of their size (note
+$\left|A\right|\ge\lambda n/\D$ and $\left|B\right|=\lambda n$),
+not depending on $\G$. For each $a\in A$, the random variable $\left|N_{\G}\left(a\right)\cap B\right|$
 is hypergeometrically distributed with expected value at least $\lambda\a n$,
 and similarly each $\left|N_{\G}\left(b\right)\cap A\right|$ ($b\in B$)
 is hypergeometric with expectation at least $\lambda\a n/\D$. Let
@@ -638,10 +639,10 @@ of $\varepsilon$.
 To prove \ref{lem:partition-into-blobs}, we will apply Szemer\'edi's
 regularity lemma to obtain a reduced \emph{cluster graph}, then decompose
 this cluster graph into small stars. In each star $T_{i}$, the center
-cluster will correspond to $V_{i}^{1}$ and the leaf clusters will
-be combined to form $V_{i}^{2}$. We will then have to redistribute
-some of the vertices to ensure super-regularity. Before giving the
-details of the proof, we give a statement of (a version of) Szemer\'edi's
+cluster will give us $V_{i}^{1}$ and the leaf clusters will be combined
+to form $V_{i}^{2}$. We will then have to redistribute some of the
+vertices between the clusters to ensure super-regularity. Before giving
+the details of the proof, we give a statement of (a version of) Szemer\'edi's
 regularity lemma and some auxiliary lemmas for working with regularity
 and super-regularity.
 \begin{lem}[Szemer\'edi's regularity lemma, minimum degree form]
@@ -674,8 +675,8 @@ Here and in later sections, most of the theorems about $\left(\varepsilon,\delta
 pairs correspond to analogous theorems for $\varepsilon$-regular
 pairs with density about $\delta$.
 \begin{lem}
-\label{lem:combine-clusters}Suppose $V_{1}^{2},\dots,V_{r}^{2}$
-are disjoint clusters of the same size such that each $\left(V^{1},V_{i}^{2}\right)$
+\label{lem:combine-clusters}Consider disjoint vertex sets $V^{1},V_{1}^{2},\dots,V_{r}^{2}$,
+such that each $V_{i}^{2}$ is the same size and each $\left(V^{1},V_{i}^{2}\right)$
 is $\left(\varepsilon,\delta\right)$-dense. Let $V^{2}=\bigcup_{i=1}^{r}V_{i}^{2}$;
 then $\left(V^{1},V^{2}\right)$ is $\left(\varepsilon,\delta/r\right)$-dense.\end{lem}
 \begin{proof}
@@ -778,8 +779,8 @@ at most $2\left(2\varepsilon'n\right)/\left(\left(\a'\right)^{2}/\left(2s\right)
 bad vertices have been added to each $V_{i}^{\h}$. By \ref{lem:robust-regular},
 for small $\varepsilon'$ each $\left(V_{i}^{1},V_{i}^{2}\right)$
 is now $\left(O\left(\varepsilon'\right),\delta''/4\right)$-super-regular.
-With $\delta=\delta''/4$ and $\varepsilon'$ small relative to $\varepsilon$,
-we are done.
+To conclude, let $\delta=\delta''/4$ and $\rho=2\a'$, and choose
+some $\varepsilon'$ small relative to $\varepsilon$.
 \end{proof}
 \global\long\def\bi{\mathbf{i}}
 
@@ -823,11 +824,12 @@ vertex-disjoint bare paths of length $k$ each.
 
 
 In our case $\ell=\lambda n$. If we choose $k$ large enough and
-$\lambda$ small enough, then $\T$ contains a collection of $n/\left(2\left(k-1\right)\right)$
-disjoint bare $k$-paths. (The definite value of $k$ will be determined
-later; it will be odd and depend on $\a$ but not $\varepsilon$).
-If we delete the interior vertices of these paths, then we are left
-with a forest $\F$ on $n/2$ vertices.
+choose $\lambda$ small enough relative to $k$, then $\T$ contains
+a collection of $n/\left(2\left(k-1\right)\right)$ disjoint bare
+$k$-paths. (The definite value of $k$ will be determined later;
+it will be odd and depend on $\a$ but not $\varepsilon$). If we
+delete the interior vertices of these paths, then we are left with
+a forest $\F$ on $n/2$ vertices.
 
 Now, embed $\F$ into the random graph $\R_{2}$ (also, with some
 abuse of notation, denote this embedded subgraph by $\F$). There
@@ -847,8 +849,9 @@ of $X$ into pairs. Note that $2\left|W\right|=\left(k-1\right)\left|X\right|$.
 
 Let $X_{\bi}=V_{\bi}\cap X$ and $W_{\bi}=V_{\bi}\backslash F$ be
 the set of free vertices remaining in $V_{\bi}$. By a concentration
-inequality for the hypergeometric distribution and the union bound,
-a.a.s. each $\left|W_{\bi}\right|\sim s_{\bi}n/2$ and $\left|X_{\bi}\right|\sim s_{\bi}n/\left(k-1\right)$.
+inequality for the hypergeometric distribution (for example, \cite[Theorem 2.10]{JLR00})
+and the union bound, a.a.s. each $\left|W_{\bi}\right|\sim s_{\bi}n/2$
+and $\left|X_{\bi}\right|\sim s_{\bi}n/\left(k-1\right)$.
 
 Here and in future parts of the proof, it is critical that after we
 take certain subsets of our super-regular pairs, we maintain super-regularity
@@ -889,9 +892,10 @@ for suitable $\varepsilon$, follows from two applications of \cite[Theorem~3.6]{
 It remains to consider the degree condition for super-regularity.
 For each $v\in W^{\h}$, the number of neighbours of $v$ in $W^{\flip{\h}}$
 is hypergeometrically distributed, with expected value at least $\delta n_{\flip{\h}}$.
-Since $n_{\flip h}=\Omega\left(n\right)$, a concentration inequality
-and the union bound immediately tells us that a.a.s. each such $v$
-has $\delta n_{\flip h}/2$ such neighbours, as required.
+Since $n_{\flip h}=\Omega\left(n\right)$, a hypergeometric concentration
+inequality (for example, \cite[Theorem 2.10]{JLR00}) and the union
+bound immediately tells us that a.a.s. each such $v$ has $\delta n_{\flip h}/2$
+such neighbours, as required.
 \end{proof}
 Let $\flip{\left(i,\h\right)}=\left(i,\flip{\h}\right)$, and let
 $\left[\left(i,\h\right)\right]=i$. It is an immediate consequence
@@ -908,7 +912,7 @@ gradually making the remaining graph easier to deal with. So, update
 $n$ to be the number of vertices not used to embed $\F\backslash X$
 (previously $\left(1/2+1/\left(k-1\right)\right)n$), and update $s_{\bi}$
 to satisfy $\left|W_{\bi}\right|=s_{\bi}n$. Note that (asymptotically
-speaking) this just rescales the $s_{\bi}$ so that they sum to $\left(\left(k-1\right)/\left(k+1\right)\right)n$.
+speaking) this just rescales the $s_{\bi}$ so that they sum to $\left(\left(k-1\right)/\left(k+1\right)\right)$.
 Therefore the variation between the $s_{\bi}$ is still bounded independently
 of $\varepsilon$; we can increase $\rho$ slightly so that each $\left|s_{\bi}\right|/\left|s_{\bj}\right|\le\rho$.
 We then have $\left|X_{\bi}\right|\sim2s_{\bi}n/\left(k-1\right)$
@@ -965,15 +969,18 @@ Uniformly at random partition each $W_{\bi}$ into sets $W_{\bi}^{\left(1\right)}
 and $W_{\bi}^{\left(2\right)}$ of size $\left|W_{\bi}\right|/2$.
 We will take the $\x'$,$\y'$ from the $W_{\bi}^{\left(2\right)}$s
 and we will take the intermediate vertices in our length-2 paths from
-the $W_{\bi}^{\left(1\right)}$s. By \ref{lem:random-preserves-superregular},
-in $\G$ a.a.s. each $\x\in X_{\bi}$ has at least $\left(\delta_{2}/2\right)s_{\flip{\bi}}n$
-neighbours in $W_{\flip{\bi}}^{\left(1\right)}$. Arbitrarily choose
-an ordering of the special pairs, and choose some ``destination''
-index $\br$ for each special pair, in such a way that each $\br$
-is chosen for a $1/\left(2q\right)$ fraction of the special pairs.
-(Recall that $q$ is the number of pairs of partner clusters). We
-will find our length-2 paths greedily, by repeatedly applying the
-following argument.
+the $W_{\bi}^{\left(1\right)}$s. Note that in $\G$, a.a.s. each
+$\x\in X_{\bi}$ has at least $\left(\delta_{2}/3\right)s_{\flip{\bi}}n$
+neighbours in $W_{\bi}^{\left(1\right)}$. This follows from a concentration
+inequality (for example, \cite[Theorem 2.10]{JLR00}) applied to the
+hypergeometric random variables $\left|N_{\G}\left(\x\right)\cap W_{\flip{\bi}}^{\left(1\right)}\right|$
+(which have mean at least $\delta_{2}s_{\flip{\bi}}n/2$ by super-regularity),
+plus the union bound. Arbitrarily choose an ordering of the special
+pairs, and choose some ``destination'' index $\br$ for each special
+pair, in such a way that each $\br$ is chosen for a $\left(1+o\left(1\right)\right)/\left(2q\right)$
+fraction of the special pairs. (Recall that $q$ is the number of
+pairs of partner clusters). We will find our length-2 paths greedily,
+by repeatedly applying the following argument.
 
 Suppose we have already found length-2 paths for the first $i-1$
 special pairs, and let $S$ be the set of vertices in these paths.
@@ -991,16 +998,16 @@ passing through $W_{\flip{\bj}}^{\left(1\right)}$.
 
 To prove the claims in the preceding argument, note that we always
 have $\left|W_{\flip{\bi}}^{\left(1\right)}\cap S\right|\le\left|X_{\bi}\right|$
-and $\left|W_{\br}^{\left(2\right)}\cap S\right|\le\left|X\right|/\left(2q\right)$.
+and $\left|W_{\br}^{\left(2\right)}\cap S\right|\le\left(1+o\left(1\right)\right)\left|X\right|/\left(2q\right)$.
 Let $s=\left(\left(k-1\right)/\left(k+1\right)\right)/2q$ be the
 average $s_{\bi}$, and recall that $\rho$ controls the relative
 sizes of the $s_{\bi}$. For large $k$,
 \[
-\left|N_{\G}\left(\x\right)\cap\left(W_{\flip{\bi}}^{\left(1\right)}\backslash S\right)\right|\ge\frac{\delta_{2}s_{\flip{\bi}}}{2}n-\left|X_{\bi}\right|\sim\frac{\delta_{2}s_{\flip{\bi}}}{2}n-\frac{2s_{\bi}}{k-1}n\ge\left(\frac{\delta_{2}}{2}-\frac{2\rho}{k-1}\right)s_{\flip{\bi}}n=\Omega\left(n\right),
+\left|N_{\G}\left(\x\right)\cap\left(W_{\flip{\bi}}^{\left(1\right)}\backslash S\right)\right|\ge\frac{\delta_{2}s_{\flip{\bi}}}{3}n-\left|X_{\bi}\right|\sim\frac{\delta_{2}s_{\flip{\bi}}}{3}n-\frac{2s_{\bi}}{k-1}n\ge\left(\frac{\delta_{2}}{3}-\frac{2\rho}{k-1}\right)s_{\flip{\bi}}n=\Omega\left(n\right),
 \]
 and
 \[
-\left|W_{\br}^{\left(2\right)}\backslash S\right|\ge\frac{\left|W_{\bi}\right|}{2}-\frac{\left|X\right|}{2q}\sim\frac{s_{\bi}}{2}n-\frac{2s}{k-1}n\ge\left(\frac{1}{2}-\frac{2\rho}{k-1}\right)s_{\bi}n=\Omega\left(n\right),
+\left|W_{\br}^{\left(2\right)}\backslash S\right|\ge\frac{\left|W_{\bi}\right|}{2}-\left(1+o\left(1\right)\right)\frac{\left|X\right|}{2q}\sim\frac{s_{\bi}}{2}n-\frac{2s}{k-1}n\ge\left(\frac{1}{2}-\frac{2\rho}{k-1}\right)s_{\bi}n=\Omega\left(n\right),
 \]
 as required. We emphasize that since $\delta_{2}$ and $\rho$ are
 independent of $\varepsilon$ (depending only on $\alpha$), we can
@@ -1038,9 +1045,12 @@ satisfying
 \begin{proof}
 Since each $W_{\bi}^{\left(2\right)}$ is a uniformly random subset
 of $W_{\bi}$, we can assume each $X_{\bi}'$ is a uniformly random
-subset of $W_{\bi}$ of its size, and by \ref{lem:random-preserves-superregular},
-in $\G$ each $w\in W_{\flip{\bi}}$ a.a.s. has at least $\left(\delta_{2}/2\right)\left|X_{\bi}'\right|$
-neighbours in $X_{\bi}'$. Next, note that each $\left|X_{\bi}'\right|\sim2sn/\left(k-1\right)$.
+subset of $W_{\bi}$ of its size. So, each $\left|N_{\G}\left(w\right)\cap X_{\bi}'\right|$
+is hypergeometrically distributed with mean at least $\delta_{2}\left|X_{\bi}'\right|$.
+By a concentration inequality (for example, \cite[Theorem 2.10]{JLR00})
+and the union bound, in $\G$ a.a.s. each $w\in W_{\flip{\bi}}$ has
+at least $\left(\delta_{2}/2\right)\left|X_{\bi}'\right|$ neighbours
+in $X_{\bi}'$. Next, note that each $\left|X_{\bi}'\right|\sim2sn/\left(k-1\right)$.
 Since $s/s_{\flip{\bi}}\ge1/\rho$, we have $\rho\left(k-1\right)\left|X_{\bi}'\right|\ge\left|W_{\flip{\bi}}\right|$
 and by \ref{lem:large-preserves-dense} each $\left(X_{\bi}',W_{\flip{\bi}}\right)$
 is $\left(\rho\left(k-1\right)\varepsilon_{2},\delta_{2}\right)$-dense.
@@ -1184,7 +1194,7 @@ with $\left|W_{i}'\right|,\left|W_{i+1}'\right|\ge\delta\xi n/\left(k-2\right)$,
 for any $1\le i<k-1$. We can prove this fact with basically the same
 argument as in the proof of \ref{lem:edge-between-large-sets}. In
 fact, it immediately follows that a.a.s. between any such $W_{i}'$
-and $W_{i+1}'$ there is a matching with more than $\min\left\{ \left|W_{i}'\right|,\left|W_{i}'\right|\right\} -\delta\xi n/\left(k-2\right)$
+and $W_{i+1}'$ there is a matching with more than $\min\left\{ \left|W_{i}'\right|,\left|W_{i+1}'\right|\right\} -\delta\xi n/\left(k-2\right)$
 edges, in $\R$. This is because in a maximal matching, the subsets
 of unmatched vertices in $W_{i}'$ and $W_{i+1}'$ have no edge between
 them.
@@ -1287,6 +1297,8 @@ and also each $\left|W_{\bi}'\right|\ge\left(l_{\bi}/2\right)\left|W_{\bi}\right
 and $\left|Z_{i}'\right|\ge\left(r_{i}/2\right)\left|Z_{i}\right|$
 (this will be possible if $\xi$ is small enough to satisfy $\left(1-\gamma\right)/\left(1-\xi\right)+\xi\le\left(1-\gamma/2\right)$).
 Given these part sizes choose our partitions uniformly at random.
+(Note that this means the marginal distribution of each part is uniform
+on subsets of its size).
 
 By \ref{lem:random-preserves-superregular}, for any $\varepsilon'>0$
 we can choose $\varepsilon_{3}$ such that each $\left(X_{\bi}^{\tau},W_{\flip{\bi}}^{\tau}\right)$
@@ -1448,7 +1460,7 @@ corresponds to a special path connecting $\x$ and $\y$. See \ref{fig:cluster-pat
 \def\rh{1}
 \def\rw{3}
 
-\draw (0,-\rh) -| (\rw,\rh) -| cycle;
+\draw (0,-\rh) -| (\rw,\rh) -| (0,-\rh);
 \draw (0,0) -- (\rw,0);
 
 \node[shape=coordinate] (xb11) at (\rw-0.25,-\rh) {};
@@ -1529,7 +1541,7 @@ corresponds to a special path connecting $\x$ and $\y$. See \ref{fig:cluster-pat
 \end{tikzpicture}
 \end{center}
 
-\protect\caption{\label{fig:cluster-paths}An example special path is shown, for $k=7$.}
+\caption{\label{fig:cluster-paths}An example special path is shown, for $k=7$.}
 \end{figure}
 
 
@@ -1574,7 +1586,107 @@ of Mathematical Sciences of Tel Aviv University, Israel. We would
 like to thank both institutions for their hospitality and for creating
 a stimulating research environment.
 
-\bibliographystyle{amsplain_initials}
-\bibliography{references}
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{AKS07}
+N.~Alon, M.~Krivelevich, and B.~Sudakov, \emph{Embedding nearly-spanning
+  bounded degree trees}, Combinatorica \textbf{27} (2007), no.~6, 629--644.
+
+\bibitem{BHM04}
+T.~Bohman, A.~Frieze, M.~Krivelevich, and R.~Martin, \emph{Adding random edges
+  to dense graphs}, Random Structures \& Algorithms \textbf{24} (2004), no.~2,
+  105--117.
+
+\bibitem{BFM03}
+T.~Bohman, A.~Frieze, and R.~Martin, \emph{How many random edges make a dense
+  graph {H}amiltonian?}, Random Structures \& Algorithms \textbf{22} (2003),
+  no.~1, 33--42.
+
+\bibitem{BST08}
+J.~B{\"o}ttcher, M.~Schacht, and A.~Taraz, \emph{Spanning 3-colourable
+  subgraphs of small bandwidth in dense graphs}, Journal of Combinatorial
+  Theory, Series B \textbf{98} (2008), no.~4, 752--777.
+
+\bibitem{BST09}
+\bysame, \emph{Proof of the bandwidth conjecture of {B}ollob{\'a}s and
+  {K}oml{\'o}s}, Mathematische Annalen \textbf{343} (2009), no.~1, 175--205.
+
+\bibitem{Csa08}
+B.~Csaba, \emph{On embedding well-separable graphs}, Discrete Mathematics
+  \textbf{308} (2008), no.~19, 4322--4331.
+
+\bibitem{Dir52}
+G.~A. Dirac, \emph{Some theorems on abstract graphs}, Proceedings of the London
+  Mathematical Society \textbf{3} (1952), no.~1, 69--81.
+
+\bibitem{GKRS07}
+S.~Gerke, Y.~Kohayakawa, V.~R{\"o}dl, and A.~Steger, \emph{Small subsets
+  inherit sparse $\varepsilon$-regularity}, Journal of Combinatorial Theory,
+  Series B \textbf{97} (2007), no.~1, 34--56.
+
+\bibitem{JLR00}
+S.~Janson, T.~{\L{}}uczak, and A.~Ruci{\'n}ski, \emph{Random graphs}, Cambridge
+  University Press, 2000.
+
+\bibitem{KS96}
+J.~Koml\'os and M.~Simonovits, \emph{Szemer\'edi's regularity lemma and its
+  applications in graph theory}, Combinatorics, {P}aul {E}rd\H{o}s is eighty
+  (D.~Mikl\'os, V.~Sos, and T.~Szonyi, eds.), Bolyai Society mathematical
+  studies, vol.~2, J\'anos {B}olyai Mathematical Society, Budapest, 1996,
+  pp.~295--352.
+
+\bibitem{KSS95}
+J.~Koml{\'o}s, G.~N. S{\'a}rk{\"o}zy, and E.~Szemer{\'e}di, \emph{Proof of a
+  packing conjecture of {B}ollob{\'a}s}, Combinatorics, Probability and
+  Computing \textbf{4} (1995), no.~03, 241--255.
+
+\bibitem{KSS97}
+\bysame, \emph{Blow-up lemma}, Combinatorica \textbf{17} (1997), no.~1,
+  109--123.
+
+\bibitem{KSS01}
+\bysame, \emph{Spanning trees in dense graphs}, Combinatorics, Probability and
+  Computing \textbf{10} (2001), 397--416.
+
+\bibitem{Kri10}
+M.~Krivelevich, \emph{Embedding spanning trees in random graphs}, SIAM Journal
+  on Discrete Mathematics \textbf{24} (2010), no.~4, 1495--1500.
+
+\bibitem{KKS15}
+M.~Krivelevich, M.~Kwan, and B.~Sudakov, \emph{Cycles and matchings in randomly
+  perturbed digraphs and hypergraphs}, Combinatorics, Probability and
+  Computing, available on CJO2016. (2015).
+
+\bibitem{KST06}
+M.~Krivelevich, B.~Sudakov, and P.~Tetali, \emph{On smoothed analysis in dense
+  graphs and formulas}, Random Structures \& Algorithms \textbf{29} (2006),
+  no.~2, 180--193.
+
+\bibitem{KOT05}
+D.~K{\"u}hn, D.~Osthus, and A.~Taraz, \emph{Large planar subgraphs in dense
+  graphs}, Journal of Combinatorial Theory, Series B \textbf{95} (2005), no.~2,
+  263--282.
+
+\bibitem{Mon14}
+R.~Montgomery, \emph{Embedding bounded degree spanning trees in random graphs},
+  arXiv preprint arXiv:1405.6559 (2014).
+
+\bibitem{Pos76}
+L.~P{\'o}sa, \emph{{H}amiltonian circuits in random graphs}, Discrete
+  Mathematics \textbf{14} (1976), no.~4, 359--364.
+
+\bibitem{ST04}
+D.~A. Spielman and S.-H. Teng, \emph{Smoothed analysis of algorithms: Why the
+  simplex algorithm usually takes polynomial time}, Journal of the ACM
+  \textbf{51} (2004), no.~3, 385--463.
+
+\end{thebibliography}
 
 \end{document}
