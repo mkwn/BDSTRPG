@@ -497,15 +497,22 @@ a center vertex $a\in A$ and $\ell\left(a\right)$ leaves in $B$.
 theorem to an auxiliary bipartite graph which has $\ell\left(a\right)$
 copies of each vertex $a\in A$.
 
-In accordance with \ref{rem:symmetry} we can assume $A$ and $B$
+In this section, and at several points later in the paper, we will need to consider the intersection of random sets with fixed sets. The following concentration inequality (taken from \cite[Theorem 2.10]{JLR00}) will be useful.
+
+\begin{lem}\label{lem:hypergeometric-concentration}For a set $\Gamma$ with $|\Gamma|=N$, a fixed subset $\Gamma'\subseteq \Gamma$ with $\Gamma'=m$, and a uniformly random $n$-element subset $\Gamma_n\subseteq \Gamma$, define the random variable $X=|\Gamma_n\cap\Gamma'|$. This random variable is said to have the \emph{hypergeometric distribution} with parameters $N$,$n$ and $m$. Noting that $\E X=mn/N$, we have
+\[
+\Pr\left(|X-\E X|\ge \varepsilon \E X\right)\le \exp(c_\varepsilon \E X)
+\]
+for some constant $c_\varepsilon$ depending on $\varepsilon$.
+\end{lem}
+
+Now, in accordance with \ref{rem:symmetry} we can assume $A$ and $B$
 are uniformly random disjoint subsets of $V$ of their size (note
 $\left|A\right|\ge\lambda n/\D$ and $\left|B\right|=\lambda n$),
-not depending on $\G$. For each $a\in A$, the random variable $\left|N_{\G}\left(a\right)\cap B\right|$
-is hypergeometrically distributed with expected value at least $\lambda\a n$,
+not depending on $\G$. For each $a\in A$, the random variable $\left|N_{\G}\left(a\right)\cap B\right|$ is hypergeometrically distributed with expected value at least $\lambda\a n$,
 and similarly each $\left|N_{\G}\left(b\right)\cap A\right|$ ($b\in B$)
 is hypergeometric with expectation at least $\lambda\a n/\D$. Let
-$\beta=\lambda\a/\left(2\D\right)$; by a concentration inequality
-for the hypergeometric distribution (for example, see \cite[Theorem 2.10]{JLR00})
+$\beta=\lambda\a/\left(2\D\right)$; by \ref{lem:hypergeometric-concentration}
 and the union bound, in $\G$ each $a\in A$ a.a.s. has at least $\beta n$
 neighbours in $B$, and each $b\in B$ a.a.s. has at least $\beta n$
 neighbours in $A$. That is to say, the bipartite graph induced by
@@ -846,8 +853,7 @@ that the special pairs correspond to a uniformly random partition
 of $X$ into pairs. Note that $2\left|W\right|=\left(k-1\right)\left|X\right|$.
 
 Let $X_{\bi}=V_{\bi}\cap X$ and $W_{\bi}=V_{\bi}\backslash F$ be
-the set of free vertices remaining in $V_{\bi}$. By a concentration
-inequality for the hypergeometric distribution (for example, \cite[Theorem 2.10]{JLR00})
+the set of free vertices remaining in $V_{\bi}$. By \ref{lem:hypergeometric-concentration}
 and the union bound, a.a.s. each $\left|W_{\bi}\right|\sim s_{\bi}n/2$
 and $\left|X_{\bi}\right|\sim s_{\bi}n/\left(k-1\right)$.
 
@@ -890,8 +896,7 @@ for suitable $\varepsilon$, follows from two applications of \cite[Theorem~3.6]{
 It remains to consider the degree condition for super-regularity.
 For each $v\in W^{\h}$, the number of neighbours of $v$ in $W^{\flip{\h}}$
 is hypergeometrically distributed, with expected value at least $\delta n_{\flip{\h}}$.
-Since $n_{\flip h}=\Omega\left(n\right)$, a hypergeometric concentration
-inequality (for example, \cite[Theorem 2.10]{JLR00}) and the union
+Since $n_{\flip h}=\Omega\left(n\right)$, \ref{lem:hypergeometric-concentration} and the union
 bound immediately tells us that a.a.s. each such $v$ has $\delta n_{\flip h}/2$
 such neighbours, as required.
 \end{proof}
@@ -969,8 +974,7 @@ We will take the $\x'$,$\y'$ from the $W_{\bi}^{\left(2\right)}$s
 and we will take the intermediate vertices in our length-2 paths from
 the $W_{\bi}^{\left(1\right)}$s. Note that in $\G$, a.a.s. each
 $\x\in X_{\bi}$ has at least $\left(\delta_{2}/3\right)s_{\flip{\bi}}n$
-neighbours in $W_{\bi}^{\left(1\right)}$. This follows from a concentration
-inequality (for example, \cite[Theorem 2.10]{JLR00}) applied to the
+neighbours in $W_{\bi}^{\left(1\right)}$. This follows from \ref{lem:hypergeometric-concentration} applied to the
 hypergeometric random variables $\left|N_{\G}\left(\x\right)\cap W_{\flip{\bi}}^{\left(1\right)}\right|$
 (which have mean at least $\delta_{2}s_{\flip{\bi}}n/2$ by super-regularity),
 plus the union bound. Arbitrarily choose an ordering of the special
@@ -1045,7 +1049,7 @@ Since each $W_{\bi}^{\left(2\right)}$ is a uniformly random subset
 of $W_{\bi}$, we can assume each $X_{\bi}'$ is a uniformly random
 subset of $W_{\bi}$ of its size. So, each $\left|N_{\G}\left(w\right)\cap X_{\bi}'\right|$
 is hypergeometrically distributed with mean at least $\delta_{2}\left|X_{\bi}'\right|$.
-By a concentration inequality (for example, \cite[Theorem 2.10]{JLR00})
+By \ref{lem:hypergeometric-concentration}
 and the union bound, in $\G$ a.a.s. each $w\in W_{\flip{\bi}}$ has
 at least $\left(\delta_{2}/2\right)\left|X_{\bi}'\right|$ neighbours
 in $X_{\bi}'$. Next, note that each $\left|X_{\bi}'\right|\sim2sn/\left(k-1\right)$.
